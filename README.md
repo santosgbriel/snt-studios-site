@@ -3,7 +3,7 @@
 Landing page moderna, responsiva e de alta conversão para o **SNT Studios** em Guarulhos - SP (próximo ao Aeroporto Internacional GRU).
 
 - **Domínios oficiais:** `sntstudios.com.br` / `sntstudios.com`
-- **WhatsApp Oficial:** `(11) 5444-4789`
+- **WhatsApp Oficial:** `(11) 5444-3110`
 - **Gestão Operacional:** Integrado ao SNT Command Center
 
 ## Tecnologias
