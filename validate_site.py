@@ -90,6 +90,7 @@ def main() -> None:
         "/api/studios/public/cotacao",
         'id="resultadoCotacao"',
         "assets/og-cover.jpg",
+        "assets/site.css",
         ".webp",
     )
     for trecho in obrigatorios:
@@ -100,6 +101,7 @@ def main() -> None:
         "snt-lavanderia-bot-production.up.railway.app/studios\"",
         "STONE_API_KEY_AQUI",
         "confirmarReservaStone",
+        "cdn.tailwindcss.com",
         "assets/fotos/20251030_162521(1).jpg",
     )
     for trecho in proibidos:

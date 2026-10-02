@@ -57,32 +57,8 @@ site_code = '''<!DOCTYPE html>
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#070b14">
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              50: '#ecfdf5',
-              100: '#d1fae5',
-              400: '#34d399',
-              500: '#10b981',
-              600: '#059669',
-              700: '#047857',
-              900: '#064e3b',
-              950: '#022c22',
-            },
-            dark: {
-              900: '#0b1120',
-              950: '#070b14',
-            }
-          }
-        }
-      }
-    }
-  </script>
+  <!-- CSS gerado no build: sem compilador ou dependência visual no navegador. -->
+  <link rel="stylesheet" href="assets/site.css">
 
   <!-- Google Fonts: Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">

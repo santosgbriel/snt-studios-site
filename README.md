@@ -25,9 +25,15 @@ Antes de incluir ou trocar fotos, gere novamente as versões leves e o HTML:
 ```bash
 python optimize_images.py
 python build_site.py
+pnpm install --frozen-lockfile
+pnpm run build:css
 python validate_site.py
 ```
 
 O otimizador corrige a orientação, limita a maior dimensão a 1.920 px, gera
 WebP e recria a capa social. O site e as galerias devem sempre apontar para as
 versões WebP.
+
+O Tailwind também é compilado em `assets/site.css`: o navegador não executa
+o compilador via CDN. A CI recria esse arquivo e falha se alguém alterar o HTML
+sem versionar o CSS correspondente.

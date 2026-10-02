@@ -1,0 +1,12 @@
+{
+  "name": "snt-studios-site",
+  "private": true,
+  "packageManager": "pnpm@11.19.0",
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/tailwind.css -o ./assets/site.css --minify",
+    "verify:css": "pnpm run build:css && git diff --exit-code -- assets/site.css"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.17"
+  }
+}
