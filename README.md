@@ -25,8 +25,8 @@ Antes de incluir ou trocar fotos, gere novamente as versões leves e o HTML:
 ```bash
 python optimize_images.py
 python build_site.py
-pnpm install --frozen-lockfile
-pnpm run build:css
+npm ci
+npm run build:css
 python validate_site.py
 ```
 
