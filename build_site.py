@@ -105,11 +105,11 @@ site_code = '''<!DOCTYPE html>
 
       <!-- BOTÃO DIRETO WHATSAPP -->
       <div class="flex items-center gap-3">
-        <a href="https://wa.me/551154443110" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-2 text-xs font-semibold text-slate-300 hover:text-emerald-400 transition px-3 py-2 rounded-lg bg-slate-900 border border-slate-800">
+        <a href="https://api.whatsapp.com/send?phone=551154443110" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-2 text-xs font-semibold text-slate-300 hover:text-emerald-400 transition px-3 py-2 rounded-lg bg-slate-900 border border-slate-800">
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
           <span>(11) 5444-3110</span>
         </a>
-        <a href="https://wa.me/551154443110?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20uma%20reserva%20direta%20no%20SNT%20Studios%20com%2010%25%20de%20desconto." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm shadow-lg shadow-emerald-500/20 transition transform hover:-translate-y-0.5">
+        <a href="https://api.whatsapp.com/send?phone=551154443110&text=Ola%21%20Gostaria%20de%20consultar%20uma%20reserva%20direta%20no%20SNT%20Studios%20com%2010%25%20de%20desconto." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm shadow-lg shadow-emerald-500/20 transition transform hover:-translate-y-0.5">
           <span>Reservar no WhatsApp</span>
           <span class="bg-slate-950/20 text-slate-950 text-[10px] px-1.5 py-0.5 rounded font-black">-10%</span>
         </a>
@@ -150,12 +150,12 @@ site_code = '''<!DOCTYPE html>
         <div class="text-xs font-bold uppercase tracking-wider text-emerald-400 mb-3 flex items-center justify-between">
           <span class="flex items-center gap-2">
             <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-            Consultar Disponibilidade & Tarifas · 10% OFF Direto
+            Consultar Disponibilidade · 10% OFF Direto
           </span>
-          <span class="text-slate-400 font-normal normal-case hidden sm:inline">Sem taxas de intermediação</span>
+          <span class="text-slate-400 font-normal normal-case hidden sm:inline">Alocação automática da melhor acomodação</span>
         </div>
 
-        <form id="formCotador" onsubmit="event.preventDefault(); consultarNoWhatsApp();" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+        <form id="formCotador" onsubmit="event.preventDefault(); consultarNoWhatsApp();" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           
           <!-- CHECK-IN -->
           <div class="space-y-1">
@@ -167,18 +167,6 @@ site_code = '''<!DOCTYPE html>
           <div class="space-y-1">
             <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Check-out</label>
             <input type="date" id="inputCheckOut" class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-3 py-2.5 text-xs text-slate-100 font-medium focus:ring-2 focus:ring-emerald-500 focus:outline-none" required>
-          </div>
-
-          <!-- SELETOR DE STUDIO -->
-          <div class="space-y-1">
-            <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Studio Preferido</label>
-            <select id="selectStudio" class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-3 py-2.5 text-xs text-slate-100 font-medium focus:ring-2 focus:ring-emerald-500 focus:outline-none">
-              <option value="any">Qualquer Disponível (Recomendado)</option>
-              <option value="Studio 12 (Master King · O Maior · Cortinas)">Studio 12 (O Maior · Cortinas)</option>
-              <option value="Studio 14 (Grande Executivo · Cortinas)">Studio 14 (Grande Executivo · Cortinas)</option>
-              <option value="Studio 11 (Compacto Smart · Janela Superior)">Studio 11 (Compacto Smart · Janela Superior)</option>
-              <option value="Studio 13 (Compacto Acolhedor · Janela Superior)">Studio 13 (Compacto Acolhedor · Janela Superior)</option>
-            </select>
           </div>
 
           <!-- HÓSPEDES -->
@@ -201,8 +189,8 @@ site_code = '''<!DOCTYPE html>
         </form>
 
         <div class="mt-4 pt-3 border-t border-slate-800/80 flex flex-wrap items-center justify-between text-xs text-slate-400 gap-2">
-          <span>✓ Atendimento direto com a equipe oficial dos Studios</span>
-          <span>✓ Resposta ágil com confirmação de datas e senha da fechadura</span>
+          <span>✓ Alocamos automaticamente a melhor acomodação disponível para o seu período</span>
+          <span>✓ Atendimento direto oficial com garantia de 10% de desconto</span>
         </div>
 
       </div>
@@ -253,7 +241,7 @@ site_code = '''<!DOCTYPE html>
         <h2 class="text-xs font-bold uppercase tracking-wider text-emerald-400">Nossas Acomodações</h2>
         <p class="text-3xl sm:text-4xl font-extrabold text-white">Conheça cada um dos nossos 4 studios</p>
         <p class="text-slate-400 text-sm">
-          Todos os 4 studios contam com fechadura digital 24h com senha pessoal, Wi-Fi fibra de 600 Mbps, Smart TV, ar-condicionado/ventilador, cozinha compacta completa e banheiro privativo.
+          Todos os 4 studios contam com fechadura digital 24h com senha pessoal, Wi-Fi fibra de 600 Mbps, Smart TV, ar-condicionado/ventilador, cozinha compacta completa e banheiro privativo. <strong>Ao consultar sua reserva, selecionamos e alocamos automaticamente a melhor acomodação disponível para o seu período.</strong>
         </p>
       </div>
 
@@ -302,8 +290,8 @@ site_code = '''<!DOCTYPE html>
             </div>
             
             <div class="pt-2 flex flex-col gap-2">
-              <a href="https://wa.me/551154443110?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20disponibilidade%20para%20o%20Studio%2012%20(Master%20King)%20com%20desconto%20direto." target="_blank" class="w-full text-center py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-extrabold transition shadow-md shadow-emerald-500/20">
-                Consultar Studio 12 no WhatsApp
+              <a href="https://api.whatsapp.com/send?phone=551154443110&text=Ola%21%20Gostaria%20de%20consultar%20disponibilidade%20para%20reserva%20direta%20no%20SNT%20Studios%20com%2010%25%20de%20desconto." target="_blank" rel="noopener noreferrer" class="w-full text-center py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-extrabold transition shadow-md shadow-emerald-500/20">
+                Consultar Disponibilidade no WhatsApp
               </a>
             </div>
           </div>
@@ -344,8 +332,8 @@ site_code = '''<!DOCTYPE html>
             </div>
             
             <div class="pt-2 flex flex-col gap-2">
-              <a href="https://wa.me/551154443110?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20disponibilidade%20para%20o%20Studio%2014%20(Executivo)%20com%20desconto%20direto." target="_blank" class="w-full text-center py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-extrabold transition shadow-md shadow-emerald-500/20">
-                Consultar Studio 14 no WhatsApp
+              <a href="https://api.whatsapp.com/send?phone=551154443110&text=Ola%21%20Gostaria%20de%20consultar%20disponibilidade%20para%20reserva%20direta%20no%20SNT%20Studios%20com%2010%25%20de%20desconto." target="_blank" rel="noopener noreferrer" class="w-full text-center py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-extrabold transition shadow-md shadow-emerald-500/20">
+                Consultar Disponibilidade no WhatsApp
               </a>
             </div>
           </div>
@@ -386,8 +374,8 @@ site_code = '''<!DOCTYPE html>
             </div>
             
             <div class="pt-2 flex flex-col gap-2">
-              <a href="https://wa.me/551154443110?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20disponibilidade%20para%20o%20Studio%2011%20(Standard)%20com%20desconto%20direto." target="_blank" class="w-full text-center py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-extrabold transition shadow-md shadow-emerald-500/20">
-                Consultar Studio 11 no WhatsApp
+              <a href="https://api.whatsapp.com/send?phone=551154443110&text=Ola%21%20Gostaria%20de%20consultar%20disponibilidade%20para%20reserva%20direta%20no%20SNT%20Studios%20com%2010%25%20de%20desconto." target="_blank" rel="noopener noreferrer" class="w-full text-center py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-extrabold transition shadow-md shadow-emerald-500/20">
+                Consultar Disponibilidade no WhatsApp
               </a>
             </div>
           </div>
@@ -428,8 +416,8 @@ site_code = '''<!DOCTYPE html>
             </div>
             
             <div class="pt-2 flex flex-col gap-2">
-              <a href="https://wa.me/551154443110?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20disponibilidade%20para%20o%20Studio%2013%20(Standard)%20com%20desconto%20direto." target="_blank" class="w-full text-center py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-extrabold transition shadow-md shadow-emerald-500/20">
-                Consultar Studio 13 no WhatsApp
+              <a href="https://api.whatsapp.com/send?phone=551154443110&text=Ola%21%20Gostaria%20de%20consultar%20disponibilidade%20para%20reserva%20direta%20no%20SNT%20Studios%20com%2010%25%20de%20desconto." target="_blank" rel="noopener noreferrer" class="w-full text-center py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-extrabold transition shadow-md shadow-emerald-500/20">
+                Consultar Disponibilidade no WhatsApp
               </a>
             </div>
           </div>
@@ -748,7 +736,7 @@ site_code = '''<!DOCTYPE html>
         Fale diretamente com nossa equipe no WhatsApp oficial, confira as datas disponíveis e aproveite o melhor preço sem intermediários.
       </p>
       <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
-        <a href="https://wa.me/551154443110?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20disponibilidade%20e%20fazer%20uma%20reserva%20direta%20no%20SNT%20Studios%20com%2010%25%20de%20desconto." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold px-8 py-4 rounded-xl text-sm sm:text-base shadow-xl shadow-emerald-500/25 transition transform hover:-translate-y-0.5">
+        <a href="https://api.whatsapp.com/send?phone=551154443110&text=Ola%21%20Gostaria%20de%20consultar%20disponibilidade%20e%20fazer%20uma%20reserva%20direta%20no%20SNT%20Studios%20com%2010%25%20de%20desconto." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold px-8 py-4 rounded-xl text-sm sm:text-base shadow-xl shadow-emerald-500/25 transition transform hover:-translate-y-0.5">
           <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.159.57 4.184 1.564 5.938l-1.664 6.086 6.257-1.64c1.706.924 3.659 1.45 5.743 1.45 6.627 0 12-5.373 12-12 0-6.627-5.373-12-12-12z"/></svg>
           <span>Falar no WhatsApp Oficial: (11) 5444-3110</span>
         </a>
@@ -766,7 +754,7 @@ site_code = '''<!DOCTYPE html>
       </div>
       <div class="flex flex-wrap items-center justify-center gap-6">
         <span>Guarulhos — SP &bull; Próximo a GRU</span>
-        <a href="https://wa.me/551154443110" class="hover:text-emerald-400 transition font-bold">(11) 5444-3110</a>
+        <a href="https://api.whatsapp.com/send?phone=551154443110" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition font-bold">(11) 5444-3110</a>
         <a href="https://snt-lavanderia-bot-production.up.railway.app/studios" target="_blank" class="hover:text-emerald-400 transition">Acesso Painel</a>
       </div>
     </div>
@@ -928,28 +916,34 @@ site_code = '''<!DOCTYPE html>
       return `${dia}/${mes}/${ano}`;
     }
 
-    // Ação do Formulário do Hero: Monta mensagem completa e abre no WhatsApp
+    // Acao do Formulario do Hero: Monta mensagem 100% limpa, sem caracteres especiais ou emojis que quebram
     function consultarNoWhatsApp() {
       const inVal = document.getElementById('inputCheckIn').value;
       const outVal = document.getElementById('inputCheckOut').value;
-      const studioChoice = document.getElementById('selectStudio').value;
       const guests = document.getElementById('selectGuests').value;
+
+      if (!inVal || !outVal) {
+        alert("Por favor, selecione as datas de Check-in e Check-out.");
+        return;
+      }
 
       const dIn = new Date(inVal);
       const dOut = new Date(outVal);
       const diffTime = dOut - dIn;
       const noites = Math.max(1, Math.round(diffTime / (1000 * 60 * 60 * 24)));
 
-      const studioNome = studioChoice === 'any' ? 'Qualquer studio disponível' : studioChoice;
+      const linhas = [
+        "Ola! Gostaria de consultar disponibilidade para reserva direta no SNT Studios com 10% de desconto:",
+        "",
+        "- Check-in: " + formatarDataBr(inVal),
+        "- Check-out: " + formatarDataBr(outVal) + " (" + noites + " noite" + (noites > 1 ? "s" : "") + ")",
+        "- Hospedes: " + guests + " pessoa" + (guests > 1 ? "s" : ""),
+        "",
+        "Poderiam me confirmar a disponibilidade e o valor com o desconto direto?"
+      ];
 
-      const texto = `Olá! Gostaria de consultar a disponibilidade e valores para uma reserva direta no SNT Studios com 10% de desconto:\n\n` +
-        `📅 *Check-in:* ${formatarDataBr(inVal)}\n` +
-        `📅 *Check-out:* ${formatarDataBr(outVal)} (${noites} noite${noites > 1 ? 's' : ''})\n` +
-        `🏠 *Acomodação:* ${studioNome}\n` +
-        `👥 *Hóspedes:* ${guests} pessoa${guests > 1 ? 's' : ''}\n\n` +
-        `Poderia me confirmar a disponibilidade e o valor com o desconto direto?`;
-
-      const urlZap = `https://wa.me/551154443110?text=${encodeURIComponent(texto)}`;
+      const texto = linhas.join(String.fromCharCode(10));
+      const urlZap = "https://api.whatsapp.com/send?phone=551154443110&text=" + encodeURIComponent(texto);
       window.open(urlZap, '_blank');
     }
 
@@ -1028,6 +1022,13 @@ site_code = '''<!DOCTYPE html>
       }
     });
   </script>
+
+
+  <!-- BOTAO FLUTUANTE WHATSAPP -->
+  <a href="https://api.whatsapp.com/send?phone=551154443110&text=Ola%21%20Gostaria%20de%20consultar%20uma%20reserva%20direta%20no%20SNT%20Studios%20com%2010%25%20de%20desconto." target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold p-3.5 sm:px-5 sm:py-3.5 rounded-full shadow-2xl shadow-emerald-500/30 transition transform hover:scale-105" title="Falar no WhatsApp Oficial">
+    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.159.57 4.184 1.564 5.938l-1.664 6.086 6.257-1.64c1.706.924 3.659 1.45 5.743 1.45 6.627 0 12-5.373 12-12 0-6.627-5.373-12-12-12z"/></svg>
+    <span class="hidden sm:inline text-xs tracking-wide">Falar no WhatsApp</span>
+  </a>
 
 </body>
 </html>
