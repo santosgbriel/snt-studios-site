@@ -1233,8 +1233,8 @@
       });
     }
 
-    // Processamento da Cotação Dinâmica
-    function processarCotacao() {
+    // Processamento da Cotação Dinâmica com Sincronização em Tempo Real (Painel + Smoobu)
+    async function processarCotacao() {
       const inVal = document.getElementById('inputCheckIn').value;
       const outVal = document.getElementById('inputCheckOut').value;
       const studioChoice = document.getElementById('selectStudio').value;
@@ -1245,15 +1245,139 @@
       const diffTime = dOut - dIn;
       const noites = Math.max(1, Math.round(diffTime / (1000 * 60 * 60 * 24)));
 
+      const resultadoDiv = document.getElementById('resultadoCotacao');
+      resultadoDiv.classList.remove('hidden');
+      
+      // Estado de Carregamento
+      resultadoDiv.innerHTML = `
+        <div class="flex items-center justify-center gap-3 p-5 text-emerald-400 bg-slate-900/90 rounded-xl border border-slate-800">
+          <svg class="animate-spin w-5 h-5 text-emerald-400" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+          <span class="text-xs font-semibold">Consultando disponibilidade e tarifas oficiais em tempo real no Smoobu...</span>
+        </div>
+      `;
+
+      try {
+        const urlApi = `https://snt-lavanderia-bot-production.up.railway.app/api/studios/public/cotacao?entrada=${inVal}&saida=${outVal}&studioId=${studioChoice}`;
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 6000);
+        const resp = await fetch(urlApi, { signal: controller.signal });
+        clearTimeout(timeoutId);
+        const data = await resp.json();
+
+        if (!data.ok || !data.studios || !data.studios.length) {
+          throw new Error(data.erro || 'Falha ao consultar disponibilidade');
+        }
+
+        // Seleciona o studio requisitado ou o primeiro disponível
+        let studioAlvo = data.studios[0];
+        if (studioChoice !== 'any') {
+          const match = data.studios.find(s => s.numero === studioChoice || s.id === studioChoice);
+          if (match) studioAlvo = match;
+        } else {
+          const primeiroLivre = data.studios.find(s => s.disponivel);
+          if (primeiroLivre) studioAlvo = primeiroLivre;
+        }
+
+        // CASO 1: INDISPONÍVEL (OCUPADO NO SMOOBU / AIRBNB / BOOKING)
+        if (!studioAlvo.disponivel) {
+          const outrosDisponiveis = data.studios.filter(s => s.disponivel && s.numero !== studioAlvo.numero);
+          
+          let htmlAlternativas = "";
+          if (outrosDisponiveis.length > 0) {
+            htmlAlternativas = `
+              <div class="mt-3 pt-3 border-t border-slate-800 text-xs">
+                <p class="text-slate-300 font-semibold mb-2">💡 Studios com vaga livre para este mesmo período:</p>
+                <div class="flex flex-wrap gap-2">
+                  ${outrosDisponiveis.map(s => `
+                    <button onclick="selecionarParaReserva('${s.numero}')" class="px-3 py-1.5 rounded-lg bg-emerald-500/20 hover:bg-emerald-500 hover:text-slate-950 text-emerald-300 border border-emerald-500/40 text-xs font-bold transition">
+                      ${s.nome} · R$ ${s.totalDireta.toFixed(2)} (-10%)
+                    </button>
+                  `).join('')}
+                </div>
+              </div>
+            `;
+          }
+
+          resultadoDiv.innerHTML = `
+            <div class="bg-rose-950/40 border border-rose-500/40 p-5 rounded-xl space-y-2">
+              <div class="flex items-center gap-2 text-rose-400 font-bold text-sm">
+                <span>❌ Datas Indisponíveis no ${studioAlvo.nome}</span>
+              </div>
+              <p class="text-xs text-rose-200">
+                ${studioAlvo.motivo || 'Este studio já possui reserva confirmada para as datas selecionadas.'}
+              </p>
+              ${htmlAlternativas}
+              <div class="pt-2 flex items-center justify-between text-xs">
+                <span class="text-slate-400">Deseja consultar períodos alternativos?</span>
+                <a href="https://wa.me/551154443110?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20outras%20datas%20para%20o%20${encodeURIComponent(studioAlvo.nome)}%20(datas%20${inVal}%20a%20${outVal}%20estavam%20ocupadas)." target="_blank" class="text-emerald-400 hover:underline font-bold">
+                  Consultar Equipe no WhatsApp &rarr;
+                </a>
+              </div>
+            </div>
+          `;
+          return;
+        }
+
+        // CASO 2: DISPONÍVEL! COTAÇÃO OFICIAL CALCULADA PELO PAINEL
+        reservaAtual = {
+          studioId: studioAlvo.numero,
+          smoobuId: studioAlvo.id,
+          checkIn: inVal,
+          checkOut: outVal,
+          noites: studioAlvo.noites,
+          hospedes: guests,
+          diariaBase: studioAlvo.porNoite,
+          subtotalDiarias: studioAlvo.diariasTotal,
+          limpeza: studioAlvo.limpeza,
+          descontoDireto: 0.10,
+          valorTotal: studioAlvo.totalDireta,
+          valorOTA: studioAlvo.totalBooking,
+          economia: studioAlvo.economia,
+          metodoPagamento: "pix",
+          hospede: {}
+        };
+
+        resultadoDiv.innerHTML = `
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center bg-slate-900/90 p-5 rounded-xl border border-emerald-500/30">
+            <div class="space-y-1 md:col-span-2">
+              <div class="flex items-center gap-2">
+                <span class="text-base font-extrabold text-white">${studioAlvo.nome}</span>
+                <span class="bg-emerald-500/10 text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded border border-emerald-500/20">✓ DISPONÍVEL · 10% OFF DIRETO</span>
+              </div>
+              <p class="text-xs text-slate-400">Estadia de ${studioAlvo.noites} noite${studioAlvo.noites > 1 ? 's' : ''} (${formatarDataBr(inVal)} a ${formatarDataBr(outVal)}) · Tarifas oficiais integradas ao Smoobu</p>
+              <div class="flex flex-wrap items-center gap-4 text-xs text-slate-300 pt-2">
+                <span>Diárias: <b>R$ ${studioAlvo.diariasTotal.toFixed(2)}</b></span>
+                <span>• Limpeza única: <b>R$ ${studioAlvo.limpeza.toFixed(2)}</b></span>
+                <span class="text-emerald-400 font-semibold">Economia garantida vs OTA: <b>R$ ${studioAlvo.economia.toFixed(2)}</b></span>
+              </div>
+            </div>
+            <div class="text-left md:text-right border-t md:border-t-0 pt-3 md:pt-0 border-slate-800">
+              <span class="text-[11px] text-slate-400 line-through block">De R$ ${studioAlvo.totalBooking.toFixed(2)}</span>
+              <span class="text-2xl font-black text-emerald-400">R$ ${studioAlvo.totalDireta.toFixed(2)}</span>
+              <button onclick="irParaCheckout()" class="mt-2 w-full md:w-auto inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold px-5 py-2.5 rounded-xl text-xs uppercase tracking-wider transition shadow-lg shadow-emerald-500/20">
+                <span>Continuar para Reserva</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+              </button>
+            </div>
+          </div>
+        `;
+
+      } catch (err) {
+        console.warn("API de disponibilidade em transição, usando cálculo base:", err);
+        renderizarCotacaoOffline(inVal, outVal, studioChoice, guests, noites, resultadoDiv);
+      }
+    }
+
+    function renderizarCotacaoOffline(inVal, outVal, studioChoice, guests, noites, resultadoDiv) {
       let sId = studioChoice === 'any' ? '12' : studioChoice;
       const studio = STUDIOS_DATA[sId];
-
       const baseDiaria = studio.precoBase;
       const subtotal = baseDiaria * noites;
       const taxaLimpeza = 150;
       const totalSemDesconto = subtotal + taxaLimpeza;
-      
-      // Desconto de 10% na reserva direta
       const totalComDesconto = Math.round(totalSemDesconto * 0.90);
       const economia = totalSemDesconto - totalComDesconto;
 
@@ -1269,19 +1393,35 @@
         descontoDireto: 0.10,
         valorTotal: totalComDesconto,
         valorOTA: totalSemDesconto,
+        economia: economia,
         metodoPagamento: "pix",
         hospede: {}
       };
 
-      // Atualiza interface da cotação
-      document.getElementById('resStudioNome').innerText = studio.nome;
-      document.getElementById('resDetalheNoites').innerText = `Estadia de ${noites} noite${noites > 1 ? 's' : ''} (${formatarDataBr(inVal)} a ${formatarDataBr(outVal)}) · Check-in 15h`;
-      document.getElementById('resDiarias').innerText = `R$ ${subtotal.toFixed(2)}`;
-      document.getElementById('resEconomia').innerText = `R$ ${economia.toFixed(2)}`;
-      document.getElementById('resPrecoOTA').innerText = `De R$ ${totalSemDesconto.toFixed(2)}`;
-      document.getElementById('resPrecoTotal').innerText = `R$ ${totalComDesconto.toFixed(2)}`;
-
-      document.getElementById('resultadoCotacao').classList.remove('hidden');
+      resultadoDiv.innerHTML = `
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center bg-slate-900/80 p-5 rounded-xl border border-slate-800">
+          <div class="space-y-1 md:col-span-2">
+            <div class="flex items-center gap-2">
+              <span class="text-base font-extrabold text-white">${studio.nome}</span>
+              <span class="bg-emerald-500/10 text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded border border-emerald-500/20">10% OFF DIRETO GARANTIDO</span>
+            </div>
+            <p class="text-xs text-slate-400">Estadia de ${noites} noite${noites > 1 ? 's' : ''} (${formatarDataBr(inVal)} a ${formatarDataBr(outVal)}) · Check-in 15h</p>
+            <div class="flex flex-wrap items-center gap-4 text-xs text-slate-300 pt-2">
+              <span>Diárias: <b>R$ ${subtotal.toFixed(2)}</b></span>
+              <span>• Limpeza única: <b>R$ ${taxaLimpeza.toFixed(2)}</b></span>
+              <span class="text-emerald-400 font-semibold">Economia vs OTA: <b>R$ ${economia.toFixed(2)}</b></span>
+            </div>
+          </div>
+          <div class="text-left md:text-right border-t md:border-t-0 pt-3 md:pt-0 border-slate-800">
+            <span class="text-[11px] text-slate-400 line-through block">De R$ ${totalSemDesconto.toFixed(2)}</span>
+            <span class="text-2xl font-black text-emerald-400">R$ ${totalComDesconto.toFixed(2)}</span>
+            <button onclick="irParaCheckout()" class="mt-2 w-full md:w-auto inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold px-5 py-2.5 rounded-xl text-xs uppercase tracking-wider transition shadow-lg shadow-emerald-500/20">
+              <span>Continuar para Reserva</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </button>
+          </div>
+        </div>
+      `;
     }
 
     function formatarDataBr(isoStr) {
