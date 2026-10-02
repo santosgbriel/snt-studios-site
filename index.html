@@ -7,11 +7,37 @@
   
   <!-- SEO & Social Sharing -->
   <meta name="description" content="Studios modernos, privativos e confortáveis em Guarulhos, a apenas 10-15 min do Aeroporto GRU. Internet fibra 600MB, fechadura eletrônica 24h, cozinha compacta e reserva direta com 10% de desconto.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://www.sntstudios.com/">
   <meta property="og:title" content="SNT Studios · Hospedagem Moderna ao Lado do Aeroporto GRU">
   <meta property="og:description" content="Reserve direto com 10% de desconto no WhatsApp oficial. Studios privativos com Wi-Fi 600MB, fechadura digital 24h e cozinha completa.">
-  <meta property="og:image" content="https://sntstudios.com.br/assets/fotos/20251030_162521(1).jpg">
-  <meta property="og:url" content="https://sntstudios.com.br">
+  <meta property="og:image" content="https://www.sntstudios.com/assets/fotos/20251030_162521(1).jpg">
+  <meta property="og:url" content="https://www.sntstudios.com/">
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="SNT Studios">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LodgingBusiness",
+    "name": "SNT Studios",
+    "legalName": "SNT Empreendimentos Imobiliários LTDA",
+    "identifier": "63.223.844/0001-11",
+    "url": "https://www.sntstudios.com/",
+    "telephone": "+55 11 5444-3110",
+    "image": "https://www.sntstudios.com/assets/fotos/20251030_162521(1).jpg",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Avenida Aguanil, 51",
+      "addressLocality": "Guarulhos",
+      "addressRegion": "SP",
+      "addressCountry": "BR"
+    }
+  }
+  </script>
 
   <!-- Favicon & Icons -->
   <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -152,45 +178,47 @@
             <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
             Consultar Disponibilidade · 10% OFF Direto
           </span>
-          <span class="text-slate-400 font-normal normal-case hidden sm:inline">Alocação automática da melhor acomodação</span>
+          <span class="text-slate-400 font-normal normal-case hidden sm:inline">Cotação real com alocação da melhor acomodação</span>
         </div>
 
-        <form id="formCotador" onsubmit="event.preventDefault(); consultarNoWhatsApp();" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <form id="formCotador" onsubmit="event.preventDefault(); consultarDisponibilidade();" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           
           <!-- CHECK-IN -->
           <div class="space-y-1">
-            <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Check-in</label>
+            <label for="inputCheckIn" class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Check-in</label>
             <input type="date" id="inputCheckIn" class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-3 py-2.5 text-xs text-slate-100 font-medium focus:ring-2 focus:ring-emerald-500 focus:outline-none" required>
           </div>
 
           <!-- CHECK-OUT -->
           <div class="space-y-1">
-            <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Check-out</label>
+            <label for="inputCheckOut" class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Check-out</label>
             <input type="date" id="inputCheckOut" class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-3 py-2.5 text-xs text-slate-100 font-medium focus:ring-2 focus:ring-emerald-500 focus:outline-none" required>
           </div>
 
           <!-- HÓSPEDES -->
           <div class="space-y-1">
-            <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Hóspedes</label>
+            <label for="selectGuests" class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Hóspedes</label>
             <select id="selectGuests" class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-3 py-2.5 text-xs text-slate-100 font-medium focus:ring-2 focus:ring-emerald-500 focus:outline-none">
               <option value="1">1 Hóspede</option>
               <option value="2" selected>2 Hóspedes (Casal)</option>
             </select>
           </div>
 
-          <!-- BOTÃO CONSULTAR WHATSAPP -->
+          <!-- BOTÃO CONSULTAR DISPONIBILIDADE -->
           <div class="flex items-end">
-            <button type="submit" class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold px-4 py-3 rounded-xl text-xs tracking-wide uppercase transition shadow-lg shadow-emerald-500/25 flex items-center justify-center gap-2">
-              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.159.57 4.184 1.564 5.938l-1.664 6.086 6.257-1.64c1.706.924 3.659 1.45 5.743 1.45 6.627 0 12-5.373 12-12 0-6.627-5.373-12-12-12z"/></svg>
-              <span>Consultar no WhatsApp</span>
+            <button id="btnConsultar" type="submit" class="w-full bg-emerald-500 hover:bg-emerald-400 disabled:cursor-wait disabled:opacity-70 text-slate-950 font-extrabold px-4 py-3 rounded-xl text-xs tracking-wide uppercase transition shadow-lg shadow-emerald-500/25 flex items-center justify-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="m21 21-4.35-4.35m2.1-5.4a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z"/></svg>
+              <span>Ver disponibilidade</span>
             </button>
           </div>
 
         </form>
 
+        <div id="resultadoCotacao" class="hidden mt-5 pt-5 border-t border-slate-800" aria-live="polite"></div>
+
         <div class="mt-4 pt-3 border-t border-slate-800/80 flex flex-wrap items-center justify-between text-xs text-slate-400 gap-2">
-          <span>✓ Alocamos automaticamente a melhor acomodação disponível para o seu período</span>
-          <span>✓ Atendimento direto oficial com garantia de 10% de desconto</span>
+          <span>✓ Calendário e preços consultados em tempo real</span>
+          <span>✓ A confirmação final acontece no WhatsApp oficial</span>
         </div>
 
       </div>
@@ -258,7 +286,7 @@
         <!-- STUDIO 12 (O MAIOR) -->
         <div class="card-studio glass-card rounded-2xl overflow-hidden flex flex-col group hover:border-emerald-500/40 transition duration-300" data-tipo="amplos">
           <div class="relative h-60 overflow-hidden bg-slate-950">
-            <img src="assets/fotos/20251030_162521(1).jpg" alt="Studio 12 - Master King" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="abrirGaleria('12')">
+            <img src="assets/fotos/20251030_162521(1).jpg" alt="Studio 12 - Master King" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="abrirGaleria('12')">
             <div class="absolute top-3 left-3 flex flex-col gap-1.5">
               <span class="bg-amber-400 text-slate-950 text-[10px] font-black px-2.5 py-0.5 rounded shadow">🏆 O MAIOR STUDIO</span>
               <span class="bg-slate-950/80 backdrop-blur text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded border border-slate-700">Studio 12</span>
@@ -300,7 +328,7 @@
         <!-- STUDIO 14 (GRANDE EXECUTIVO) -->
         <div class="card-studio glass-card rounded-2xl overflow-hidden flex flex-col group hover:border-emerald-500/40 transition duration-300" data-tipo="amplos">
           <div class="relative h-60 overflow-hidden bg-slate-950">
-            <img src="assets/fotos/20251030_164004.jpg" alt="Studio 14 - Executivo" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="abrirGaleria('14')">
+            <img src="assets/fotos/20251030_164004.jpg" alt="Studio 14 - Executivo" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="abrirGaleria('14')">
             <div class="absolute top-3 left-3 flex flex-col gap-1.5">
               <span class="bg-teal-400 text-slate-950 text-[10px] font-black px-2.5 py-0.5 rounded shadow">⭐ GRANDE & EXECUTIVO</span>
               <span class="bg-slate-950/80 backdrop-blur text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded border border-slate-700">Studio 14</span>
@@ -342,7 +370,7 @@
         <!-- STUDIO 11 (COMPACTO SMART) -->
         <div class="card-studio glass-card rounded-2xl overflow-hidden flex flex-col group hover:border-emerald-500/40 transition duration-300" data-tipo="compactos">
           <div class="relative h-60 overflow-hidden bg-slate-950">
-            <img src="assets/fotos/20251030_143554.jpg" alt="Studio 11 - Standard Smart" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="abrirGaleria('11')">
+            <img src="assets/fotos/20251030_143554.jpg" alt="Studio 11 - Standard Smart" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="abrirGaleria('11')">
             <div class="absolute top-3 left-3 flex flex-col gap-1.5">
               <span class="bg-slate-800 text-slate-200 text-[10px] font-bold px-2.5 py-0.5 rounded shadow border border-slate-700">COMPACTO & PRÁTICO</span>
               <span class="bg-slate-950/80 backdrop-blur text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded border border-slate-700">Studio 11</span>
@@ -384,7 +412,7 @@
         <!-- STUDIO 13 (COMPACTO ACOLHEDOR) -->
         <div class="card-studio glass-card rounded-2xl overflow-hidden flex flex-col group hover:border-emerald-500/40 transition duration-300" data-tipo="compactos">
           <div class="relative h-60 overflow-hidden bg-slate-950">
-            <img src="assets/fotos/20251030_144024.jpg" alt="Studio 13 - Standard Acolhedor" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="abrirGaleria('13')">
+            <img src="assets/fotos/20251030_144024.jpg" alt="Studio 13 - Standard Acolhedor" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="abrirGaleria('13')">
             <div class="absolute top-3 left-3 flex flex-col gap-1.5">
               <span class="bg-slate-800 text-slate-200 text-[10px] font-bold px-2.5 py-0.5 rounded shadow border border-slate-700">COMPACTO & RESERVADO</span>
               <span class="bg-slate-950/80 backdrop-blur text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded border border-slate-700">Studio 13</span>
@@ -750,12 +778,11 @@
       <div class="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
         <img src="assets/snt-empreendimentos-horizontal-branco.png" alt="SNT Studios" class="h-8 w-auto opacity-70">
         <span>&bull; SNT Empreendimentos Imobiliários LTDA</span>
-        <span>&bull; CNPJ 38.650.087/0001-08</span>
+        <span>&bull; CNPJ 63.223.844/0001-11</span>
       </div>
       <div class="flex flex-wrap items-center justify-center gap-6">
         <span>Guarulhos — SP &bull; Próximo a GRU</span>
         <a href="https://api.whatsapp.com/send?phone=551154443110" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition font-bold">(11) 5444-3110</a>
-        <a href="https://snt-lavanderia-bot-production.up.railway.app/studios" target="_blank" class="hover:text-emerald-400 transition">Acesso Painel</a>
       </div>
     </div>
   </footer>
@@ -916,35 +943,145 @@
       return `${dia}/${mes}/${ano}`;
     }
 
-    // Acao do Formulario do Hero: Monta mensagem 100% limpa, sem caracteres especiais ou emojis que quebram
-    function consultarNoWhatsApp() {
+    const API_COTACAO = "https://snt-lavanderia-bot-production.up.railway.app/api/studios/public/cotacao";
+    let ultimaCotacao = null;
+
+    function formatarMoeda(valor) {
+      return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(Number(valor) || 0);
+    }
+
+    function escaparHtml(valor) {
+      return String(valor == null ? '' : valor)
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#039;');
+    }
+
+    function abrirWhatsAppCotacao(studioNumero) {
+      const dados = ultimaCotacao || {};
+      const inVal = dados.entrada || document.getElementById('inputCheckIn').value;
+      const outVal = dados.saida || document.getElementById('inputCheckOut').value;
+      const guests = dados.hospedes || document.getElementById('selectGuests').value;
+      const studio = dados.studios && dados.studios.find(s => String(s.numero) === String(studioNumero));
+      const linhas = [
+        "Ola! Consultei o site oficial do SNT Studios e quero confirmar uma reserva direta:",
+        "",
+        "- Check-in: " + formatarDataBr(inVal),
+        "- Check-out: " + formatarDataBr(outVal),
+        "- Hospedes: " + guests + " pessoa" + (Number(guests) > 1 ? "s" : "")
+      ];
+
+      if (studio) {
+        linhas.push("- Cotacao de referencia: Studio " + studio.numero + " - " + formatarMoeda(studio.totalDireta));
+        linhas.push("- Alocacao: melhor acomodacao disponivel para o periodo");
+      } else {
+        linhas.push("- Alocacao: melhor acomodacao disponivel para o periodo");
+      }
+
+      linhas.push("");
+      linhas.push("Podem confirmar a disponibilidade e o valor final, por favor?");
+      window.open("https://api.whatsapp.com/send?phone=551154443110&text=" + encodeURIComponent(linhas.join(String.fromCharCode(10))), '_blank', 'noopener');
+    }
+
+    async function consultarDisponibilidade() {
       const inVal = document.getElementById('inputCheckIn').value;
       const outVal = document.getElementById('inputCheckOut').value;
       const guests = document.getElementById('selectGuests').value;
+      const resultado = document.getElementById('resultadoCotacao');
+      const botao = document.getElementById('btnConsultar');
 
       if (!inVal || !outVal) {
-        alert("Por favor, selecione as datas de Check-in e Check-out.");
+        resultado.classList.remove('hidden');
+        resultado.innerHTML = '<div class="rounded-xl border border-amber-500/40 bg-amber-500/10 p-4 text-sm text-amber-200">Selecione as datas de check-in e check-out.</div>';
         return;
       }
 
-      const dIn = new Date(inVal);
-      const dOut = new Date(outVal);
-      const diffTime = dOut - dIn;
-      const noites = Math.max(1, Math.round(diffTime / (1000 * 60 * 60 * 24)));
+      const noites = Math.round((new Date(outVal + 'T12:00:00') - new Date(inVal + 'T12:00:00')) / 86400000);
+      if (noites < 1 || noites > 120) {
+        resultado.classList.remove('hidden');
+        resultado.innerHTML = '<div class="rounded-xl border border-rose-500/40 bg-rose-500/10 p-4 text-sm text-rose-200">O check-out deve ser posterior ao check-in e a estadia pode ter no máximo 120 noites.</div>';
+        return;
+      }
 
-      const linhas = [
-        "Ola! Gostaria de consultar disponibilidade para reserva direta no SNT Studios com 10% de desconto:",
-        "",
-        "- Check-in: " + formatarDataBr(inVal),
-        "- Check-out: " + formatarDataBr(outVal) + " (" + noites + " noite" + (noites > 1 ? "s" : "") + ")",
-        "- Hospedes: " + guests + " pessoa" + (guests > 1 ? "s" : ""),
-        "",
-        "Poderiam me confirmar a disponibilidade e o valor com o desconto direto?"
-      ];
+      resultado.classList.remove('hidden');
+      resultado.innerHTML = '<div class="flex items-center justify-center gap-3 rounded-xl border border-slate-700 bg-slate-900/90 p-5 text-sm text-emerald-300"><span class="h-4 w-4 animate-spin rounded-full border-2 border-emerald-400 border-t-transparent"></span>Consultando calendário e tarifas oficiais...</div>';
+      botao.disabled = true;
 
-      const texto = linhas.join(String.fromCharCode(10));
-      const urlZap = "https://api.whatsapp.com/send?phone=551154443110&text=" + encodeURIComponent(texto);
-      window.open(urlZap, '_blank');
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 10000);
+
+      try {
+        const url = new URL(API_COTACAO);
+        url.searchParams.set('entrada', inVal);
+        url.searchParams.set('saida', outVal);
+        const resposta = await fetch(url.toString(), {
+          signal: controller.signal,
+          headers: { Accept: 'application/json' }
+        });
+        const dados = await resposta.json().catch(() => ({}));
+        if (!resposta.ok || !dados.ok || !Array.isArray(dados.studios)) {
+          throw new Error(dados.erro || 'Não foi possível consultar o calendário.');
+        }
+
+        ultimaCotacao = { ...dados, hospedes: guests };
+        const ordemPreferencia = ['12', '14', '11', '13'];
+        const livres = dados.studios
+          .filter(studio => studio && studio.disponivel && Number.isFinite(Number(studio.totalDireta)))
+          .sort((a, b) => ordemPreferencia.indexOf(String(a.numero)) - ordemPreferencia.indexOf(String(b.numero)));
+
+        if (!livres.length) {
+          resultado.innerHTML = `
+            <div class="rounded-xl border border-rose-500/40 bg-rose-500/10 p-5">
+              <h3 class="font-bold text-rose-200">Não há studio livre para todo esse período</h3>
+              <p class="mt-1 text-xs leading-relaxed text-slate-300">Podemos verificar datas próximas ou uma combinação de acomodações pelo WhatsApp.</p>
+              <button type="button" onclick="abrirWhatsAppCotacao('')" class="mt-4 rounded-lg bg-emerald-500 px-4 py-2.5 text-xs font-extrabold text-slate-950 hover:bg-emerald-400">Consultar alternativas no WhatsApp</button>
+            </div>`;
+          return;
+        }
+
+        const studio = livres[0];
+        const card = `
+          <article class="rounded-xl border border-emerald-500/50 bg-emerald-500/5 p-4">
+            <div class="flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <div class="flex items-center gap-2">
+                  <h3 class="font-extrabold text-white">${escaparHtml(studio.nome)}</h3>
+                  <span class="rounded bg-emerald-500/15 px-2 py-0.5 text-[10px] font-bold text-emerald-300">ALOCAÇÃO RECOMENDADA</span>
+                </div>
+                <p class="mt-1 text-xs text-slate-400">${dados.noites} noite${dados.noites > 1 ? 's' : ''} · limpeza incluída: ${formatarMoeda(studio.limpeza)}</p>
+              </div>
+              <div class="text-left sm:text-right">
+                <div class="text-2xl font-black text-emerald-400">${formatarMoeda(studio.totalDireta)}</div>
+                <div class="text-[11px] text-slate-400">${formatarMoeda(studio.porNoite)} por noite · total da estadia</div>
+              </div>
+            </div>
+            <div class="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-slate-700/70 pt-3">
+              <span class="text-xs text-emerald-300">Economia direta estimada: <strong>${formatarMoeda(studio.economia)}</strong></span>
+              <button type="button" onclick="abrirWhatsAppCotacao('${escaparHtml(studio.numero)}')" class="rounded-lg bg-emerald-500 px-4 py-2.5 text-xs font-extrabold text-slate-950 hover:bg-emerald-400">Continuar no WhatsApp</button>
+            </div>
+          </article>`;
+
+        resultado.innerHTML = `
+          <div class="mb-3 flex flex-wrap items-center justify-between gap-2">
+            <div><h3 class="font-bold text-white">Encontramos disponibilidade</h3><p class="text-xs text-slate-400">${livres.length} studio${livres.length > 1 ? 's' : ''} livre${livres.length > 1 ? 's' : ''}; mostramos a acomodação de maior prioridade para ${formatarDataBr(inVal)} a ${formatarDataBr(outVal)}.</p></div>
+            <span class="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-[10px] font-bold text-emerald-300">SMOOBU ATUALIZADO</span>
+          </div>
+          <div class="grid gap-3">${card}</div>
+          <p class="mt-3 text-[11px] leading-relaxed text-slate-500">A cotação não cria nem bloqueia uma reserva. Disponibilidade e valor são confirmados no atendimento oficial.</p>`;
+      } catch (erro) {
+        ultimaCotacao = { entrada: inVal, saida: outVal, hospedes: guests, studios: [] };
+        resultado.innerHTML = `
+          <div class="rounded-xl border border-amber-500/40 bg-amber-500/10 p-5">
+            <h3 class="font-bold text-amber-200">O calendário não respondeu agora</h3>
+            <p class="mt-1 text-xs leading-relaxed text-slate-300">Para não mostrar preço estimado ou disponibilidade incorreta, a consulta seguirá com nossa equipe.</p>
+            <button type="button" onclick="abrirWhatsAppCotacao('')" class="mt-4 rounded-lg bg-emerald-500 px-4 py-2.5 text-xs font-extrabold text-slate-950 hover:bg-emerald-400">Consultar no WhatsApp</button>
+          </div>`;
+      } finally {
+        clearTimeout(timeoutId);
+        botao.disabled = false;
+      }
     }
 
     function copiarEndereco() {

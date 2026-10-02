@@ -2,7 +2,8 @@
 
 Landing page moderna, responsiva e de alta conversão para o **SNT Studios** em Guarulhos - SP (próximo ao Aeroporto Internacional GRU).
 
-- **Domínios oficiais:** `sntstudios.com.br` / `sntstudios.com`
+- **Domínio canônico:** `www.sntstudios.com`
+- **Domínio alternativo:** `www.sntstudios.com.br`
 - **WhatsApp Oficial:** `(11) 5444-3110`
 - **Gestão Operacional:** Integrado ao SNT Command Center
 
@@ -14,4 +15,4 @@ Landing page moderna, responsiva e de alta conversão para o **SNT Studios** em 
 
 ## Publicação
 Pronto para hospedagem com 0 custo no **GitHub Pages**, **Cloudflare Pages** ou **Vercel**.
-O arquivo `CNAME` já está configurado para `sntstudios.com.br`.
+O arquivo `CNAME` aponta para `www.sntstudios.com`. Os domínios sem `www` e o domínio `.com.br` devem redirecionar para o canônico na plataforma de hospedagem.
