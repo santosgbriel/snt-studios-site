@@ -16,3 +16,18 @@ Landing page moderna, responsiva e de alta conversão para o **SNT Studios** em 
 ## Publicação
 Pronto para hospedagem com 0 custo no **GitHub Pages**, **Cloudflare Pages** ou **Vercel**.
 O arquivo `CNAME` aponta para `www.sntstudios.com`. Os domínios sem `www` e o domínio `.com.br` devem redirecionar para o canônico na plataforma de hospedagem.
+
+## Fotos do site
+
+Os JPEGs em `assets/fotos` são os originais e não são enviados pela Vercel.
+Antes de incluir ou trocar fotos, gere novamente as versões leves e o HTML:
+
+```bash
+python optimize_images.py
+python build_site.py
+python validate_site.py
+```
+
+O otimizador corrige a orientação, limita a maior dimensão a 1.920 px, gera
+WebP e recria a capa social. O site e as galerias devem sempre apontar para as
+versões WebP.

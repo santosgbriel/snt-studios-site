@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import ast
 import json
+import re
 import shutil
 import subprocess
 import tempfile
@@ -88,6 +89,8 @@ def main() -> None:
         "63.223.844/0001-11",
         "/api/studios/public/cotacao",
         'id="resultadoCotacao"',
+        "assets/og-cover.jpg",
+        ".webp",
     )
     for trecho in obrigatorios:
         assert trecho in html, f"conteúdo obrigatório ausente: {trecho}"
@@ -97,12 +100,17 @@ def main() -> None:
         "snt-lavanderia-bot-production.up.railway.app/studios\"",
         "STONE_API_KEY_AQUI",
         "confirmarReservaStone",
+        "assets/fotos/20251030_162521(1).jpg",
     )
     for trecho in proibidos:
         assert trecho not in html, f"conteúdo proibido encontrado: {trecho}"
 
     parser = SiteParser()
     parser.feed(html)
+    # As fotos da galeria vivem em listas JavaScript e não aparecem como src
+    # até o visitante abrir o modal. Incluí-las aqui impede publicar uma
+    # galeria que só quebra depois do clique.
+    parser.assets.update(re.findall(r"assets/[A-Za-z0-9_()./\-]+\.(?:webp|jpg|png)", html))
     ausentes = sorted(str(path.relative_to(ROOT)) for asset in parser.assets if (path := caminho_local(asset)) and not path.is_file())
     assert not ausentes, "arquivos referenciados não existem: " + ", ".join(ausentes)
     validar_javascript(parser.inline_scripts)
