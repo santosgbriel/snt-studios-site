@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+# -*- coding: utf-8 -*-
+import os
+
+html_content = '''<!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
@@ -1471,24 +1474,14 @@
       document.getElementById('voucherMetodo').innerText = reservaAtual.metodoPagamento === 'pix' ? 'PIX Instantâneo Stone' : 'Cartão de Crédito Stone';
 
       // Monta Link do WhatsApp com mensagem pronta
-      const textoZap = `Olá! Acabei de realizar uma pré-reserva no site oficial do SNT Studios:
-
-` +
-        `📋 *Código:* ${voucherNum}
-` +
-        `🏠 *Acomodação:* ${studio.nome}
-` +
-        `📅 *Período:* ${formatarDataBr(reservaAtual.checkIn)} a ${formatarDataBr(reservaAtual.checkOut)} (${reservaAtual.noites} noites)
-` +
-        `👤 *Hóspede:* ${reservaAtual.hospede.nome} (CPF: ${reservaAtual.hospede.cpf})
-` +
-        `📱 *WhatsApp:* ${reservaAtual.hospede.whatsapp}
-` +
-        `💳 *Pagamento:* ${reservaAtual.metodoPagamento.toUpperCase()} Stone
-` +
-        `💰 *Total:* R$ ${reservaAtual.valorTotal.toFixed(2)} (com 10% OFF direto)
-
-` +
+      const textoZap = `Olá! Acabei de realizar uma pré-reserva no site oficial do SNT Studios:\n\n` +
+        `📋 *Código:* ${voucherNum}\n` +
+        `🏠 *Acomodação:* ${studio.nome}\n` +
+        `📅 *Período:* ${formatarDataBr(reservaAtual.checkIn)} a ${formatarDataBr(reservaAtual.checkOut)} (${reservaAtual.noites} noites)\n` +
+        `👤 *Hóspede:* ${reservaAtual.hospede.nome} (CPF: ${reservaAtual.hospede.cpf})\n` +
+        `📱 *WhatsApp:* ${reservaAtual.hospede.whatsapp}\n` +
+        `💳 *Pagamento:* ${reservaAtual.metodoPagamento.toUpperCase()} Stone\n` +
+        `💰 *Total:* R$ ${reservaAtual.valorTotal.toFixed(2)} (com 10% OFF direto)\n\n` +
         `Gostaria de confirmar minha reserva e receber as instruções de acesso da fechadura!`;
 
       document.getElementById('btnEnviarWhatsapp').href = `https://wa.me/551154443110?text=${encodeURIComponent(textoZap)}`;
@@ -1565,3 +1558,12 @@
 
 </body>
 </html>
+'''
+
+with open('C:/Users/gabri/.gemini/antigravity/scratch/snt-studios-site/index.html', 'w', encoding='utf-8') as f:
+    f.write(html_content)
+
+with open('C:/Users/gabri/.gemini/antigravity/brain/2df7a644-b0c4-4e39-a06b-3b5ec650766f/preview_site_snt_studios.html', 'w', encoding='utf-8') as f:
+    f.write(html_content)
+
+print('Build completed successfully!')
