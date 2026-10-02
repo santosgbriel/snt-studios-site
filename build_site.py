@@ -1,7 +1,12 @@
 # -*- coding: utf-8 -*-
-import os
+"""
+Script que remove o checkout / reserva direta online por enquanto,
+e direciona todo o funil de cotação e reservas para o WhatsApp oficial (11) 5444-3110.
+Mantém: Fotos reais, Galeria Lightbox, Google Maps com Pin, 600mb internet,
+especificações de tipologia (cortinas vs janela superior) e tabela comparativa.
+"""
 
-html_content = '''<!DOCTYPE html>
+site_code = '''<!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
@@ -11,7 +16,7 @@ html_content = '''<!DOCTYPE html>
   <!-- SEO & Social Sharing -->
   <meta name="description" content="Studios modernos, privativos e confortáveis em Guarulhos, a apenas 10-15 min do Aeroporto GRU. Internet fibra 600MB, fechadura eletrônica 24h, cozinha compacta e reserva direta com 10% de desconto.">
   <meta property="og:title" content="SNT Studios · Hospedagem Moderna ao Lado do Aeroporto GRU">
-  <meta property="og:description" content="Reserve direto com 10% de desconto. Studios privativos com Wi-Fi 600MB, fechadura digital 24h e cozinha completa.">
+  <meta property="og:description" content="Reserve direto com 10% de desconto no WhatsApp oficial. Studios privativos com Wi-Fi 600MB, fechadura digital 24h e cozinha completa.">
   <meta property="og:image" content="https://sntstudios.com.br/assets/fotos/20251030_162521(1).jpg">
   <meta property="og:url" content="https://sntstudios.com.br">
   <meta property="og:type" content="website">
@@ -43,7 +48,7 @@ html_content = '''<!DOCTYPE html>
     }
   </script>
 
-  <!-- Google Fonts: Inter -->
+  <!-- Google Fonts: Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -68,7 +73,6 @@ html_content = '''<!DOCTYPE html>
     .hero-glow {
       background: radial-gradient(circle at 50% 20%, rgba(16, 185, 129, 0.18) 0%, rgba(7, 11, 20, 0) 70%);
     }
-    /* Estilo do modal */
     .modal-backdrop {
       background: rgba(2, 6, 23, 0.85);
       backdrop-filter: blur(8px);
@@ -92,23 +96,23 @@ html_content = '''<!DOCTYPE html>
       <!-- MENU DESKTOP -->
       <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-300">
         <a href="#inicio" class="hover:text-emerald-400 transition">Início</a>
-        <a href="#cotador" class="hover:text-emerald-400 transition">Cotação & Reserva</a>
+        <a href="#cotador" class="hover:text-emerald-400 transition">Cotação & Datas</a>
         <a href="#studios" class="hover:text-emerald-400 transition">Nossos Studios</a>
         <a href="#comodidades" class="hover:text-emerald-400 transition">Comodidades</a>
         <a href="#localizacao" class="hover:text-emerald-400 transition">Localização</a>
         <a href="#faq" class="hover:text-emerald-400 transition">Dúvidas</a>
       </div>
 
-      <!-- BOTÃO DIRETO WHATSAPP & RESERVA -->
+      <!-- BOTÃO DIRETO WHATSAPP -->
       <div class="flex items-center gap-3">
         <a href="https://wa.me/551154443110" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-2 text-xs font-semibold text-slate-300 hover:text-emerald-400 transition px-3 py-2 rounded-lg bg-slate-900 border border-slate-800">
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
           <span>(11) 5444-3110</span>
         </a>
-        <button onclick="abrirModalReserva()" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm shadow-lg shadow-emerald-500/20 transition transform hover:-translate-y-0.5">
-          <span>Reservar Direto</span>
+        <a href="https://wa.me/551154443110?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20uma%20reserva%20direta%20no%20SNT%20Studios%20com%2010%25%20de%20desconto." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm shadow-lg shadow-emerald-500/20 transition transform hover:-translate-y-0.5">
+          <span>Reservar no WhatsApp</span>
           <span class="bg-slate-950/20 text-slate-950 text-[10px] px-1.5 py-0.5 rounded font-black">-10%</span>
-        </button>
+        </a>
       </div>
 
     </div>
@@ -135,23 +139,23 @@ html_content = '''<!DOCTYPE html>
         <!-- SUBTÍTULO -->
         <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
           Studios individuais completos com fechadura digital 24h, internet fibra de <strong>600 Mbps</strong> e cozinha equipada. 
-          Economize com a <strong>garantia de 10% de desconto</strong> em relação ao Airbnb e Booking.
+          Atendimento humanizado e <strong>garantia de 10% de desconto</strong> em reservas diretas em relação ao Airbnb e Booking.
         </p>
 
       </div>
 
-      <!-- MOTOR DE COTAÇÃO & DISPONIBILIDADE (BARRA FLUTUANTE) -->
+      <!-- MOTOR DE COTAÇÃO & CONSULTA (ENVIA DIRETO PARA O WHATSAPP COM OS DADOS PREENCHIDOS) -->
       <div id="cotador" class="mt-12 max-w-5xl mx-auto glass-card p-4 sm:p-6 rounded-2xl shadow-2xl border border-emerald-500/20">
         
         <div class="text-xs font-bold uppercase tracking-wider text-emerald-400 mb-3 flex items-center justify-between">
           <span class="flex items-center gap-2">
             <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-            Motor de Reserva Direta · 10% OFF Automático
+            Consultar Disponibilidade & Tarifas · 10% OFF Direto
           </span>
           <span class="text-slate-400 font-normal normal-case hidden sm:inline">Sem taxas de intermediação</span>
         </div>
 
-        <form id="formCotador" onsubmit="event.preventDefault(); processarCotacao();" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+        <form id="formCotador" onsubmit="event.preventDefault(); consultarNoWhatsApp();" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
           
           <!-- CHECK-IN -->
           <div class="space-y-1">
@@ -170,10 +174,10 @@ html_content = '''<!DOCTYPE html>
             <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Studio Preferido</label>
             <select id="selectStudio" class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-3 py-2.5 text-xs text-slate-100 font-medium focus:ring-2 focus:ring-emerald-500 focus:outline-none">
               <option value="any">Qualquer Disponível (Recomendado)</option>
-              <option value="12">Studio 12 (O Maior · Cortinas)</option>
-              <option value="14">Studio 14 (Grande Executivo · Cortinas)</option>
-              <option value="11">Studio 11 (Compacto Smart · Janela Superior)</option>
-              <option value="13">Studio 13 (Compacto Acolhedor · Janela Superior)</option>
+              <option value="Studio 12 (Master King · O Maior · Cortinas)">Studio 12 (O Maior · Cortinas)</option>
+              <option value="Studio 14 (Grande Executivo · Cortinas)">Studio 14 (Grande Executivo · Cortinas)</option>
+              <option value="Studio 11 (Compacto Smart · Janela Superior)">Studio 11 (Compacto Smart · Janela Superior)</option>
+              <option value="Studio 13 (Compacto Acolhedor · Janela Superior)">Studio 13 (Compacto Acolhedor · Janela Superior)</option>
             </select>
           </div>
 
@@ -186,40 +190,19 @@ html_content = '''<!DOCTYPE html>
             </select>
           </div>
 
-          <!-- BOTÃO VERIFICAR -->
+          <!-- BOTÃO CONSULTAR WHATSAPP -->
           <div class="flex items-end">
             <button type="submit" class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold px-4 py-3 rounded-xl text-xs tracking-wide uppercase transition shadow-lg shadow-emerald-500/25 flex items-center justify-center gap-2">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-              <span>Calcular & Reservar</span>
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.159.57 4.184 1.564 5.938l-1.664 6.086 6.257-1.64c1.706.924 3.659 1.45 5.743 1.45 6.627 0 12-5.373 12-12 0-6.627-5.373-12-12-12z"/></svg>
+              <span>Consultar no WhatsApp</span>
             </button>
           </div>
 
         </form>
 
-        <!-- CARD RESULTADO DA COTAÇÃO (EXPANSÍVEL) -->
-        <div id="resultadoCotacao" class="hidden mt-6 pt-6 border-t border-slate-800 transition-all duration-300">
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center bg-slate-900/80 p-5 rounded-xl border border-slate-800">
-            <div class="space-y-1 md:col-span-2">
-              <div class="flex items-center gap-2">
-                <span id="resStudioNome" class="text-base font-extrabold text-white">Studio 12 (Master King)</span>
-                <span class="bg-emerald-500/10 text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded border border-emerald-500/20">10% OFF DIRETO APLICADO</span>
-              </div>
-              <p id="resDetalheNoites" class="text-xs text-slate-400">Estadia de 2 noites · Check-in 15:00 · Check-out 11:00</p>
-              <div class="flex flex-wrap items-center gap-4 text-xs text-slate-300 pt-2">
-                <span>Diárias: <b id="resDiarias">R$ 420,00</b></span>
-                <span>• Limpeza única: <b>R$ 150,00</b></span>
-                <span class="text-emerald-400 font-semibold">Economia direta vs OTA: <span id="resEconomia">R$ 57,00</span></span>
-              </div>
-            </div>
-            <div class="text-left md:text-right border-t md:border-t-0 pt-3 md:pt-0 border-slate-800">
-              <span class="text-[11px] text-slate-400 line-through block" id="resPrecoOTA">De R$ 627,00</span>
-              <span class="text-2xl font-black text-emerald-400" id="resPrecoTotal">R$ 570,00</span>
-              <button onclick="irParaCheckout()" class="mt-2 w-full md:w-auto inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold px-5 py-2.5 rounded-xl text-xs uppercase tracking-wider transition shadow-lg shadow-emerald-500/20">
-                <span>Continuar para Reserva</span>
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-              </button>
-            </div>
-          </div>
+        <div class="mt-4 pt-3 border-t border-slate-800/80 flex flex-wrap items-center justify-between text-xs text-slate-400 gap-2">
+          <span>✓ Atendimento direto com a equipe oficial dos Studios</span>
+          <span>✓ Resposta ágil com confirmação de datas e senha da fechadura</span>
         </div>
 
       </div>
@@ -254,7 +237,7 @@ html_content = '''<!DOCTYPE html>
         <div class="glass-card p-3.5 rounded-xl text-center space-y-1 col-span-2 sm:col-span-1">
           <div class="text-xl">🛡️</div>
           <h4 class="text-xs font-bold text-white">10% OFF Direto</h4>
-          <p class="text-[11px] text-slate-400">Melhor tarifa garantida sem comissão</p>
+          <p class="text-[11px] text-slate-400">Melhor tarifa garantida sem taxas</p>
         </div>
 
       </div>
@@ -268,7 +251,7 @@ html_content = '''<!DOCTYPE html>
       
       <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
         <h2 class="text-xs font-bold uppercase tracking-wider text-emerald-400">Nossas Acomodações</h2>
-        <p class="text-3xl sm:text-4xl font-extrabold text-white">Escolha a acomodação ideal para sua viagem</p>
+        <p class="text-3xl sm:text-4xl font-extrabold text-white">Conheça cada um dos nossos 4 studios</p>
         <p class="text-slate-400 text-sm">
           Todos os 4 studios contam com fechadura digital 24h com senha pessoal, Wi-Fi fibra de 600 Mbps, Smart TV, ar-condicionado/ventilador, cozinha compacta completa e banheiro privativo.
         </p>
@@ -301,7 +284,7 @@ html_content = '''<!DOCTYPE html>
             <div>
               <div class="flex items-center justify-between mb-1">
                 <h3 class="font-extrabold text-lg text-white">Studio 12 · Master King</h3>
-                <span class="text-xs font-extrabold text-emerald-400">R$ 210<span class="text-[10px] text-slate-400 font-normal">/noite</span></span>
+                <span class="text-xs font-extrabold text-emerald-400">10% OFF <span class="text-[10px] text-slate-400 font-normal">Direto</span></span>
               </div>
               <p class="text-xs text-slate-400">O maior e mais espaçoso do complexo. Ampla iluminação e máxima amplitude.</p>
               
@@ -319,11 +302,8 @@ html_content = '''<!DOCTYPE html>
             </div>
             
             <div class="pt-2 flex flex-col gap-2">
-              <button onclick="selecionarParaReserva('12')" class="w-full text-center py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-extrabold transition shadow-md shadow-emerald-500/20">
-                Reservar Studio 12
-              </button>
-              <a href="https://wa.me/551154443110?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20disponibilidade%20para%20o%20Studio%2012%20(Master%20King)." target="_blank" class="text-center text-[11px] text-slate-400 hover:text-emerald-400 transition">
-                Tirar dúvidas no WhatsApp
+              <a href="https://wa.me/551154443110?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20disponibilidade%20para%20o%20Studio%2012%20(Master%20King)%20com%20desconto%20direto." target="_blank" class="w-full text-center py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-extrabold transition shadow-md shadow-emerald-500/20">
+                Consultar Studio 12 no WhatsApp
               </a>
             </div>
           </div>
@@ -346,7 +326,7 @@ html_content = '''<!DOCTYPE html>
             <div>
               <div class="flex items-center justify-between mb-1">
                 <h3 class="font-extrabold text-lg text-white">Studio 14 · Executivo</h3>
-                <span class="text-xs font-extrabold text-emerald-400">R$ 195<span class="text-[10px] text-slate-400 font-normal">/noite</span></span>
+                <span class="text-xs font-extrabold text-emerald-400">10% OFF <span class="text-[10px] text-slate-400 font-normal">Direto</span></span>
               </div>
               <p class="text-xs text-slate-400">Muito espaçoso (um pouco menor que o 12), elegante e altamente reservado.</p>
               
@@ -364,11 +344,8 @@ html_content = '''<!DOCTYPE html>
             </div>
             
             <div class="pt-2 flex flex-col gap-2">
-              <button onclick="selecionarParaReserva('14')" class="w-full text-center py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-extrabold transition shadow-md shadow-emerald-500/20">
-                Reservar Studio 14
-              </button>
-              <a href="https://wa.me/551154443110?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20disponibilidade%20para%20o%20Studio%2014%20(Executivo)." target="_blank" class="text-center text-[11px] text-slate-400 hover:text-emerald-400 transition">
-                Tirar dúvidas no WhatsApp
+              <a href="https://wa.me/551154443110?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20disponibilidade%20para%20o%20Studio%2014%20(Executivo)%20com%20desconto%20direto." target="_blank" class="w-full text-center py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-extrabold transition shadow-md shadow-emerald-500/20">
+                Consultar Studio 14 no WhatsApp
               </a>
             </div>
           </div>
@@ -391,7 +368,7 @@ html_content = '''<!DOCTYPE html>
             <div>
               <div class="flex items-center justify-between mb-1">
                 <h3 class="font-extrabold text-lg text-white">Studio 11 · Standard Smart</h3>
-                <span class="text-xs font-extrabold text-emerald-400">R$ 175<span class="text-[10px] text-slate-400 font-normal">/noite</span></span>
+                <span class="text-xs font-extrabold text-emerald-400">10% OFF <span class="text-[10px] text-slate-400 font-normal">Direto</span></span>
               </div>
               <p class="text-xs text-slate-400">Planta compacta e inteligente. Ideal para escalas e quem busca silêncio e praticidade.</p>
               
@@ -409,11 +386,8 @@ html_content = '''<!DOCTYPE html>
             </div>
             
             <div class="pt-2 flex flex-col gap-2">
-              <button onclick="selecionarParaReserva('11')" class="w-full text-center py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-extrabold transition shadow-md shadow-emerald-500/20">
-                Reservar Studio 11
-              </button>
-              <a href="https://wa.me/551154443110?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20disponibilidade%20para%20o%20Studio%2011%20(Standard)." target="_blank" class="text-center text-[11px] text-slate-400 hover:text-emerald-400 transition">
-                Tirar dúvidas no WhatsApp
+              <a href="https://wa.me/551154443110?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20disponibilidade%20para%20o%20Studio%2011%20(Standard)%20com%20desconto%20direto." target="_blank" class="w-full text-center py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-extrabold transition shadow-md shadow-emerald-500/20">
+                Consultar Studio 11 no WhatsApp
               </a>
             </div>
           </div>
@@ -436,7 +410,7 @@ html_content = '''<!DOCTYPE html>
             <div>
               <div class="flex items-center justify-between mb-1">
                 <h3 class="font-extrabold text-lg text-white">Studio 13 · Standard Cozy</h3>
-                <span class="text-xs font-extrabold text-emerald-400">R$ 175<span class="text-[10px] text-slate-400 font-normal">/noite</span></span>
+                <span class="text-xs font-extrabold text-emerald-400">10% OFF <span class="text-[10px] text-slate-400 font-normal">Direto</span></span>
               </div>
               <p class="text-xs text-slate-400">Compacto, silencioso e acolhedor. Excelente custo-benefício para quem busca conforto.</p>
               
@@ -454,11 +428,8 @@ html_content = '''<!DOCTYPE html>
             </div>
             
             <div class="pt-2 flex flex-col gap-2">
-              <button onclick="selecionarParaReserva('13')" class="w-full text-center py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-extrabold transition shadow-md shadow-emerald-500/20">
-                Reservar Studio 13
-              </button>
-              <a href="https://wa.me/551154443110?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20disponibilidade%20para%20o%20Studio%2013%20(Standard)." target="_blank" class="text-center text-[11px] text-slate-400 hover:text-emerald-400 transition">
-                Tirar dúvidas no WhatsApp
+              <a href="https://wa.me/551154443110?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20disponibilidade%20para%20o%20Studio%2013%20(Standard)%20com%20desconto%20direto." target="_blank" class="w-full text-center py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-extrabold transition shadow-md shadow-emerald-500/20">
+                Consultar Studio 13 no WhatsApp
               </a>
             </div>
           </div>
@@ -475,7 +446,7 @@ html_content = '''<!DOCTYPE html>
       
       <div class="text-center max-w-2xl mx-auto mb-10 space-y-2">
         <h2 class="text-xs font-bold uppercase tracking-wider text-emerald-400">Transparência Total</h2>
-        <p class="text-2xl sm:text-3xl font-extrabold text-white">Por que reservar diretamente em nosso site?</p>
+        <p class="text-2xl sm:text-3xl font-extrabold text-white">Por que reservar direto conosco pelo WhatsApp?</p>
       </div>
 
       <div class="overflow-x-auto glass-card rounded-2xl border border-slate-800 shadow-xl">
@@ -483,29 +454,29 @@ html_content = '''<!DOCTYPE html>
           <thead>
             <tr class="border-b border-slate-800 text-slate-400 bg-slate-900/60 text-[11px] uppercase tracking-wider">
               <th class="p-4 sm:p-5">Benefício</th>
-              <th class="p-4 sm:p-5 text-emerald-400 font-extrabold bg-emerald-500/5">SNT Studios (Site Oficial)</th>
+              <th class="p-4 sm:p-5 text-emerald-400 font-extrabold bg-emerald-500/5">SNT Studios (Direto Oficial)</th>
               <th class="p-4 sm:p-5 text-slate-400">Plataformas (Booking / Airbnb)</th>
             </tr>
           </thead>
           <tbody class="divide-y divide-slate-800/60 text-slate-300">
             <tr>
-              <td class="p-4 sm:p-5 font-semibold text-white">Preço da Diária</td>
+              <td class="p-4 sm:p-5 font-semibold text-white">Tarifa Final</td>
               <td class="p-4 sm:p-5 font-bold text-emerald-400 bg-emerald-500/5">10% de desconto garantido</td>
-              <td class="p-4 sm:p-5 text-slate-400">Preço cheio com taxas embutidas</td>
+              <td class="p-4 sm:p-5 text-slate-400">Preço cheio com margem embutida</td>
             </tr>
             <tr>
               <td class="p-4 sm:p-5 font-semibold text-white">Taxas de Serviço</td>
-              <td class="p-4 sm:p-5 font-bold text-emerald-400 bg-emerald-500/5">R$ 0,00 (Sem taxa oculta)</td>
+              <td class="p-4 sm:p-5 font-bold text-emerald-400 bg-emerald-500/5">R$ 0,00 (Zero taxa de intermediação)</td>
               <td class="p-4 sm:p-5 text-slate-400">Cobram de 15% a 21% a mais</td>
             </tr>
             <tr>
               <td class="p-4 sm:p-5 font-semibold text-white">Atendimento & Suporte</td>
-              <td class="p-4 sm:p-5 font-bold text-emerald-400 bg-emerald-500/5">WhatsApp direto com a equipe local</td>
-              <td class="p-4 sm:p-5 text-slate-400">Chat do app com intermediários</td>
+              <td class="p-4 sm:p-5 font-bold text-emerald-400 bg-emerald-500/5">WhatsApp direto com nossa equipe local</td>
+              <td class="p-4 sm:p-5 text-slate-400">Chat do app com intermediários e bots genéricos</td>
             </tr>
             <tr>
               <td class="p-4 sm:p-5 font-semibold text-white">Formas de Pagamento</td>
-              <td class="p-4 sm:p-5 font-bold text-emerald-400 bg-emerald-500/5">PIX Instantâneo ou Cartão de Crédito Stone</td>
+              <td class="p-4 sm:p-5 font-bold text-emerald-400 bg-emerald-500/5">PIX ou Cartão combinado direto e com segurança</td>
               <td class="p-4 sm:p-5 text-slate-400">Cartão com cobrança internacional ou regras rígidas</td>
             </tr>
             <tr>
@@ -746,21 +717,21 @@ html_content = '''<!DOCTYPE html>
 
         <details class="glass-card rounded-xl p-5 cursor-pointer group">
           <summary class="font-bold text-sm text-slate-200 flex justify-between items-center list-none">
-            <span>Como recebo a senha da fechadura após o pagamento?</span>
+            <span>Como recebo a senha da fechadura?</span>
             <span class="text-emerald-400 font-bold group-open:rotate-180 transition">▾</span>
           </summary>
           <p class="text-xs text-slate-400 mt-3 leading-relaxed">
-            Assim que a sua reserva é processada no site, você recebe a confirmação imediata na tela e nós enviamos o guia de acesso completo diretamente no seu WhatsApp com a senha temporária exclusiva para a sua estadia.
+            Após a confirmação da sua reserva direta, enviamos as instruções de acesso completas diretamente no seu WhatsApp com a senha temporária exclusiva para a sua estadia.
           </p>
         </details>
 
         <details class="glass-card rounded-xl p-5 cursor-pointer group">
           <summary class="font-bold text-sm text-slate-200 flex justify-between items-center list-none">
-            <span>Como funciona o pagamento via Stone?</span>
+            <span>Como funciona o pagamento da minha reserva?</span>
             <span class="text-emerald-400 font-bold group-open:rotate-180 transition">▾</span>
           </summary>
           <p class="text-xs text-slate-400 mt-3 leading-relaxed">
-            Você pode pagar por <strong>PIX Instantâneo</strong> (com QR Code ou Copia-e-Cola e confirmação em segundos) ou por <strong>Cartão de Crédito</strong> (em até 12x), com total segurança e criptografia bancária processada pela Stone.
+            O pagamento é combinado diretamente com nossa equipe oficial via WhatsApp: você pode pagar por <strong>PIX</strong> ou <strong>Cartão de Crédito</strong> com total segurança e praticidade, aproveitando 10% de desconto exclusivo em relação às plataformas como Airbnb e Booking.
           </p>
         </details>
 
@@ -774,15 +745,12 @@ html_content = '''<!DOCTYPE html>
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6">
       <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Garanta sua hospedagem com 10% de desconto agora</h2>
       <p class="text-slate-300 text-sm max-w-xl mx-auto">
-        Reserve diretamente pelo nosso site e economize as comissões cobradas pelas plataformas. Suporte 24h direto pelo WhatsApp oficial.
+        Fale diretamente com nossa equipe no WhatsApp oficial, confira as datas disponíveis e aproveite o melhor preço sem intermediários.
       </p>
       <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
-        <button onclick="abrirModalReserva()" class="inline-flex items-center gap-3 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold px-8 py-4 rounded-xl text-sm sm:text-base shadow-xl shadow-emerald-500/25 transition transform hover:-translate-y-0.5">
-          <span>Iniciar Reserva com 10% OFF</span>
-        </button>
-        <a href="https://wa.me/551154443110" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-slate-200 font-bold px-6 py-4 rounded-xl text-sm border border-slate-700 transition">
-          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
-          <span>WhatsApp Oficial: (11) 5444-3110</span>
+        <a href="https://wa.me/551154443110?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20disponibilidade%20e%20fazer%20uma%20reserva%20direta%20no%20SNT%20Studios%20com%2010%25%20de%20desconto." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold px-8 py-4 rounded-xl text-sm sm:text-base shadow-xl shadow-emerald-500/25 transition transform hover:-translate-y-0.5">
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.159.57 4.184 1.564 5.938l-1.664 6.086 6.257-1.64c1.706.924 3.659 1.45 5.743 1.45 6.627 0 12-5.373 12-12 0-6.627-5.373-12-12-12z"/></svg>
+          <span>Falar no WhatsApp Oficial: (11) 5444-3110</span>
         </a>
       </div>
     </div>
@@ -803,261 +771,6 @@ html_content = '''<!DOCTYPE html>
       </div>
     </div>
   </footer>
-
-  <!-- ======================================================== -->
-  <!-- MODAL DE RESERVA & CHECKOUT (MOTOR COMPLETO COM STONE) -->
-  <!-- ======================================================== -->
-  <div id="modalReserva" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 modal-backdrop overflow-y-auto">
-    
-    <div class="bg-slate-900 border border-slate-700/80 rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto p-6 sm:p-8 shadow-2xl relative">
-      
-      <!-- BOTÃO FECHAR -->
-      <button onclick="fecharModalReserva()" class="absolute top-5 right-5 text-slate-400 hover:text-white p-1 rounded-lg bg-slate-800 border border-slate-700">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-      </button>
-
-      <!-- CABEÇALHO DO MODAL -->
-      <div class="mb-6 space-y-1">
-        <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">Reserva Direta Garantida · SNT Studios</span>
-        <h3 id="modalTitulo" class="text-2xl font-extrabold text-white">Finalizar sua Reserva</h3>
-        <p class="text-xs text-slate-400">Melhor preço com garantia de 10% de desconto e confirmação instantânea.</p>
-      </div>
-
-      <!-- ETAPAS DO CHECKOUT -->
-      <div class="flex items-center gap-2 mb-6 text-xs font-semibold">
-        <div id="stepTab1" class="flex-1 text-center py-2 rounded-lg bg-emerald-500 text-slate-950 font-bold">1. Seus Dados</div>
-        <div id="stepTab2" class="flex-1 text-center py-2 rounded-lg bg-slate-800 text-slate-400">2. Pagamento Stone</div>
-        <div id="stepTab3" class="flex-1 text-center py-2 rounded-lg bg-slate-800 text-slate-400">3. Confirmação</div>
-      </div>
-
-      <!-- ETAPA 1: DADOS DO HÓSPEDE -->
-      <div id="step1Conteudo" class="space-y-4">
-        
-        <!-- RESUMO DA ESTADIA -->
-        <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-xs space-y-2">
-          <div class="flex justify-between items-center">
-            <span class="text-slate-400">Studio Selecionado:</span>
-            <span id="checkoutStudioNome" class="font-bold text-white">Studio 12 (Master King)</span>
-          </div>
-          <div class="flex justify-between items-center">
-            <span class="text-slate-400">Período:</span>
-            <span id="checkoutPeriodo" class="font-bold text-white">--/--/---- a --/--/---- (2 noites)</span>
-          </div>
-          <div class="flex justify-between items-center border-t border-slate-800 pt-2 text-sm">
-            <span class="font-bold text-emerald-400">Total a Pagar (com 10% OFF):</span>
-            <span id="checkoutValorTotal" class="font-extrabold text-emerald-400 text-base">R$ 570,00</span>
-          </div>
-        </div>
-
-        <form id="formHospede" onsubmit="event.preventDefault(); avancarParaPagamento();" class="space-y-4">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            
-            <div class="space-y-1">
-              <label class="block text-xs font-semibold text-slate-300">Nome Completo *</label>
-              <input type="text" id="hospedeNome" placeholder="Ex: Gabriel Santos" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none" required>
-            </div>
-
-            <div class="space-y-1">
-              <label class="block text-xs font-semibold text-slate-300">WhatsApp com DDD *</label>
-              <input type="tel" id="hospedeWhatsapp" placeholder="(11) 99999-9999" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none" required>
-            </div>
-
-            <div class="space-y-1">
-              <label class="block text-xs font-semibold text-slate-300">E-mail para Confirmação *</label>
-              <input type="email" id="hospedeEmail" placeholder="seuemail@exemplo.com" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none" required>
-            </div>
-
-            <div class="space-y-1">
-              <label class="block text-xs font-semibold text-slate-300">CPF do Titular *</label>
-              <input type="text" id="hospedeCpf" placeholder="000.000.000-00" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none" required>
-            </div>
-
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="space-y-1">
-              <label class="block text-xs font-semibold text-slate-300">Horário Previsto de Chegada</label>
-              <select id="hospedeChegada" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none">
-                <option value="15:00 - 18:00">15:00 às 18:00 (Tarde)</option>
-                <option value="18:00 - 22:00">18:00 às 22:00 (Noite)</option>
-                <option value="22:00 - 02:00">22:00 às 02:00 (Madrugada / Voo)</option>
-                <option value="02:00 - 06:00">02:00 às 06:00 (Madrugada Avançada)</option>
-              </select>
-            </div>
-            <div class="space-y-1">
-              <label class="block text-xs font-semibold text-slate-300">Observações (Opcional)</label>
-              <input type="text" id="hospedeObs" placeholder="Ex: Número do voo, preferência..." class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none">
-            </div>
-          </div>
-
-          <div class="pt-4 flex justify-end">
-            <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold px-6 py-3 rounded-xl text-xs uppercase tracking-wider transition shadow-lg shadow-emerald-500/20">
-              <span>Avançar para Pagamento Stone</span>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-            </button>
-          </div>
-        </form>
-
-      </div>
-
-      <!-- ETAPA 2: FORMAS DE PAGAMENTO (ESTRUTURA STONE) -->
-      <div id="step2Conteudo" class="hidden space-y-5">
-        
-        <div class="flex items-center justify-between bg-slate-950 p-4 rounded-xl border border-slate-800">
-          <div>
-            <span class="text-xs text-slate-400 block">Total a pagar:</span>
-            <span id="pagamentoValorTotal" class="text-xl font-black text-emerald-400">R$ 570,00</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <span class="text-[11px] bg-slate-800 text-slate-300 font-bold px-2 py-1 rounded border border-slate-700">Stone Co.</span>
-            <span class="text-[11px] text-emerald-400 font-bold">🔒 Ambiente Seguro</span>
-          </div>
-        </div>
-
-        <!-- SELETOR DE MÉTODO STONE -->
-        <div class="grid grid-cols-2 gap-3">
-          <button type="button" onclick="selecionarMetodo('pix')" id="btnMetodoPix" class="p-3.5 rounded-xl border-2 border-emerald-500 bg-emerald-500/10 text-center transition">
-            <span class="text-lg block mb-1">⚡</span>
-            <span class="text-xs font-bold text-white block">PIX Instantâneo</span>
-            <span class="text-[10px] text-emerald-400 font-semibold">Aprovação em 2s</span>
-          </button>
-          <button type="button" onclick="selecionarMetodo('cartao')" id="btnMetodoCartao" class="p-3.5 rounded-xl border-2 border-slate-700 bg-slate-950 text-center transition">
-            <span class="text-lg block mb-1">💳</span>
-            <span class="text-xs font-bold text-slate-300 block">Cartão de Crédito</span>
-            <span class="text-[10px] text-slate-400 font-semibold">Até 12x via Stone</span>
-          </button>
-        </div>
-
-        <!-- CONTEÚDO PIX STONE -->
-        <div id="conteudoPix" class="space-y-4 bg-slate-950 p-5 rounded-xl border border-slate-800 text-center">
-          <div class="inline-block p-2 bg-white rounded-xl shadow-lg">
-            <!-- QR CODE PIX SIMULADO -->
-            <svg class="w-40 h-40 text-slate-900" viewBox="0 0 100 100" fill="currentColor">
-              <rect x="0" y="0" width="30" height="30" rx="3" fill="#0f172a" />
-              <rect x="5" y="5" width="20" height="20" rx="2" fill="#fff" />
-              <rect x="9" y="9" width="12" height="12" fill="#0f172a" />
-              <rect x="70" y="0" width="30" height="30" rx="3" fill="#0f172a" />
-              <rect x="75" y="5" width="20" height="20" rx="2" fill="#fff" />
-              <rect x="79" y="9" width="12" height="12" fill="#0f172a" />
-              <rect x="0" y="70" width="30" height="30" rx="3" fill="#0f172a" />
-              <rect x="5" y="75" width="20" height="20" rx="2" fill="#fff" />
-              <rect x="9" y="79" width="12" height="12" fill="#0f172a" />
-              <rect x="35" y="10" width="8" height="8" fill="#10b981" />
-              <rect x="50" y="15" width="8" height="15" fill="#0f172a" />
-              <rect x="40" y="35" width="20" height="20" rx="2" fill="#10b981" />
-              <rect x="70" y="45" width="12" height="8" fill="#0f172a" />
-              <rect x="45" y="70" width="10" height="20" fill="#0f172a" />
-              <rect x="65" y="75" width="25" height="15" fill="#0f172a" />
-            </svg>
-          </div>
-          
-          <div class="space-y-1">
-            <span class="text-xs font-bold text-white block">Escaneie o QR Code no app do seu banco</span>
-            <p class="text-[11px] text-slate-400">Ou copie o código Pix abaixo para pagar por Copia e Cola:</p>
-          </div>
-
-          <div class="flex items-center gap-2">
-            <input type="text" id="pixCopiaCola" readonly value="00020126580014br.gov.bcb.pix0136sntstudios-stone-pix-gateway-544431105204000053039865802BR5925SNT EMPREENDIMENTOS6009GUARULHOS62070503***6304E8A2" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-[10px] text-slate-300 font-mono focus:outline-none">
-            <button onclick="copiarPix()" id="btnCopiarPix" class="shrink-0 px-3.5 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs transition">
-              Copiar Pix
-            </button>
-          </div>
-
-          <div class="flex items-center justify-center gap-2 text-[11px] text-amber-400">
-            <span>⏱️ Código válido por: <strong id="pixTimer">14:59</strong></span>
-          </div>
-        </div>
-
-        <!-- CONTEÚDO CARTÃO STONE -->
-        <div id="conteudoCartao" class="hidden space-y-3 bg-slate-950 p-5 rounded-xl border border-slate-800">
-          <div class="space-y-1">
-            <label class="block text-[11px] font-semibold text-slate-300">Número do Cartão</label>
-            <input type="text" id="cartaoNumero" placeholder="0000 0000 0000 0000" maxlength="19" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none font-mono">
-          </div>
-          <div class="space-y-1">
-            <label class="block text-[11px] font-semibold text-slate-300">Nome Impresso no Cartão</label>
-            <input type="text" id="cartaoNome" placeholder="Ex: GABRIEL SANTOS" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none uppercase">
-          </div>
-          <div class="grid grid-cols-2 gap-3">
-            <div class="space-y-1">
-              <label class="block text-[11px] font-semibold text-slate-300">Validade (MM/AA)</label>
-              <input type="text" id="cartaoValidade" placeholder="MM/AA" maxlength="5" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none font-mono">
-            </div>
-            <div class="space-y-1">
-              <label class="block text-[11px] font-semibold text-slate-300">CVV</label>
-              <input type="password" id="cartaoCvv" placeholder="123" maxlength="4" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none font-mono">
-            </div>
-          </div>
-          <div class="space-y-1 pt-1">
-            <label class="block text-[11px] font-semibold text-slate-300">Opções de Parcelamento</label>
-            <select id="cartaoParcelas" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none">
-              <option value="1">1x sem juros (À vista)</option>
-              <option value="2">2x sem juros</option>
-              <option value="3">3x sem juros</option>
-              <option value="6">6x com taxa reduzida Stone</option>
-              <option value="12">12x com taxa reduzida Stone</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- BOTÕES DE NAVEGAÇÃO -->
-        <div class="flex items-center justify-between pt-2">
-          <button type="button" onclick="voltarParaDados()" class="text-xs font-semibold text-slate-400 hover:text-white transition">
-            &larr; Voltar para dados
-          </button>
-          <button type="button" onclick="confirmarReservaStone()" class="inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold px-6 py-3 rounded-xl text-xs uppercase tracking-wider transition shadow-lg shadow-emerald-500/20">
-            <span>Confirmar Reserva</span>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
-          </button>
-        </div>
-
-      </div>
-
-      <!-- ETAPA 3: CONFIRMAÇÃO & VOUCHER -->
-      <div id="step3Conteudo" class="hidden space-y-6 text-center py-4">
-        
-        <div class="w-16 h-16 bg-emerald-500/10 border-2 border-emerald-500 rounded-full flex items-center justify-center text-emerald-400 text-3xl mx-auto shadow-lg shadow-emerald-500/20 animate-bounce">
-          ✓
-        </div>
-
-        <div class="space-y-2">
-          <h4 class="text-2xl font-extrabold text-white">Reserva Registrada com Sucesso!</h4>
-          <p class="text-xs text-slate-300 max-w-md mx-auto">
-            Sua solicitação de reserva direta foi gerada e o valor com 10% de desconto está garantido.
-          </p>
-        </div>
-
-        <!-- CARTÃO DO VOUCHER -->
-        <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800 text-left space-y-3 max-w-md mx-auto">
-          <div class="flex justify-between items-center border-b border-slate-800 pb-2">
-            <span class="text-xs text-slate-400">Código da Reserva:</span>
-            <span id="voucherCodigo" class="text-sm font-black text-emerald-400 font-mono">#SNT-STU-2026-9481</span>
-          </div>
-          <div class="text-xs space-y-1 text-slate-300">
-            <p><strong>Hóspede:</strong> <span id="voucherNome">Gabriel Santos</span></p>
-            <p><strong>Acomodação:</strong> <span id="voucherStudio">Studio 12 (Master King)</span></p>
-            <p><strong>Período:</strong> <span id="voucherDatas">--/--/---- a --/--/----</span></p>
-            <p><strong>Total:</strong> <span id="voucherTotal" class="text-emerald-400 font-bold">R$ 570,00</span></p>
-            <p><strong>Forma de Pagamento:</strong> <span id="voucherMetodo">PIX Instantâneo Stone</span></p>
-          </div>
-        </div>
-
-        <!-- BOTÃO PARA ENVIAR RESUMO NO WHATSAPP OFICIAL -->
-        <div class="pt-2 space-y-3">
-          <a id="btnEnviarWhatsapp" href="#" target="_blank" class="w-full inline-flex items-center justify-center gap-3 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold px-6 py-4 rounded-xl text-sm uppercase tracking-wide transition shadow-xl shadow-emerald-500/30 transform hover:-translate-y-0.5">
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.159.57 4.184 1.564 5.938l-1.664 6.086 6.257-1.64c1.706.924 3.659 1.45 5.743 1.45 6.627 0 12-5.373 12-12 0-6.627-5.373-12-12-12z"/></svg>
-            <span>Confirmar no WhatsApp Oficial dos Studios</span>
-          </a>
-          <p class="text-[11px] text-slate-400">
-            Nossa equipe validará o comprovante e liberará a senha de acesso da fechadura digital.
-          </p>
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
 
   <!-- ======================================================== -->
   <!-- MODAL DE GALERIA DE FOTOS (LIGHTBOX) -->
@@ -1097,18 +810,14 @@ html_content = '''<!DOCTYPE html>
     </div>
   </div>
 
-  <!-- JAVASCRIPT: MOTOR DE COTAÇÃO, RESERVA, STONE E GALERIA -->
+  <!-- JAVASCRIPT: NAVEGAÇÃO, GALERIA E WHATSAPP -->
   <script>
-    // ========================================================
-    // DADOS DAS ACOMODAÇÕES (HIERARQUIA E FOTOS REAIS)
-    // ========================================================
-    const STUDIOS_DATA = {
+    // DADOS DAS FOTOS DOS STUDIOS
+    const STUDIOS_FOTOS = {
       "12": {
         nome: "Studio 12 (Master King)",
-        tipo: "amplos",
         tag: "O Maior Studio",
         detalheJanela: "Janela ampla com cortinas elegantes",
-        precoBase: 210,
         fotos: [
           "assets/fotos/20251030_162521(1).jpg",
           "assets/fotos/20251030_162403.jpg",
@@ -1119,10 +828,8 @@ html_content = '''<!DOCTYPE html>
       },
       "14": {
         nome: "Studio 14 (Executivo)",
-        tipo: "amplos",
         tag: "Grande & Executivo",
         detalheJanela: "Janela ampla com cortinas elegantes",
-        precoBase: 195,
         fotos: [
           "assets/fotos/20251030_164004.jpg",
           "assets/fotos/20251030_162615(1).jpg",
@@ -1133,10 +840,8 @@ html_content = '''<!DOCTYPE html>
       },
       "11": {
         nome: "Studio 11 (Standard Smart)",
-        tipo: "compactos",
         tag: "Compacto & Inteligente",
         detalheJanela: "Janelinha pequena superior (privacidade & ventilação)",
-        precoBase: 175,
         fotos: [
           "assets/fotos/20251030_143554.jpg",
           "assets/fotos/20251030_143603.jpg",
@@ -1147,10 +852,8 @@ html_content = '''<!DOCTYPE html>
       },
       "13": {
         nome: "Studio 13 (Standard Cozy)",
-        tipo: "compactos",
         tag: "Compacto & Reservado",
         detalheJanela: "Janelinha pequena superior (silêncio & discrição)",
-        precoBase: 175,
         fotos: [
           "assets/fotos/20251030_144024.jpg",
           "assets/fotos/20251030_144035.jpg",
@@ -1159,23 +862,6 @@ html_content = '''<!DOCTYPE html>
           "assets/fotos/20251030_144436.jpg"
         ]
       }
-    };
-
-    // Estado da Reserva
-    let reservaAtual = {
-      studioId: "12",
-      checkIn: "",
-      checkOut: "",
-      noites: 1,
-      hospedes: 2,
-      diariaBase: 210,
-      subtotalDiarias: 210,
-      limpeza: 150,
-      descontoDireto: 0.10,
-      valorTotal: 324,
-      valorOTA: 360,
-      metodoPagamento: "pix",
-      hospede: {}
     };
 
     // Inicialização de Datas
@@ -1236,330 +922,35 @@ html_content = '''<!DOCTYPE html>
       });
     }
 
-    // Processamento da Cotação Dinâmica com Sincronização em Tempo Real (Painel + Smoobu)
-    async function processarCotacao() {
-      const inVal = document.getElementById('inputCheckIn').value;
-      const outVal = document.getElementById('inputCheckOut').value;
-      const studioChoice = document.getElementById('selectStudio').value;
-      const guests = parseInt(document.getElementById('selectGuests').value);
-
-      const dIn = new Date(inVal);
-      const dOut = new Date(outVal);
-      const diffTime = dOut - dIn;
-      const noites = Math.max(1, Math.round(diffTime / (1000 * 60 * 60 * 24)));
-
-      const resultadoDiv = document.getElementById('resultadoCotacao');
-      resultadoDiv.classList.remove('hidden');
-      
-      // Estado de Carregamento
-      resultadoDiv.innerHTML = `
-        <div class="flex items-center justify-center gap-3 p-5 text-emerald-400 bg-slate-900/90 rounded-xl border border-slate-800">
-          <svg class="animate-spin w-5 h-5 text-emerald-400" fill="none" viewBox="0 0 24 24">
-            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-          </svg>
-          <span class="text-xs font-semibold">Consultando disponibilidade e tarifas oficiais em tempo real no Smoobu...</span>
-        </div>
-      `;
-
-      try {
-        const urlApi = `https://snt-lavanderia-bot-production.up.railway.app/api/studios/public/cotacao?entrada=${inVal}&saida=${outVal}&studioId=${studioChoice}`;
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 6000);
-        const resp = await fetch(urlApi, { signal: controller.signal });
-        clearTimeout(timeoutId);
-        const data = await resp.json();
-
-        if (!data.ok || !data.studios || !data.studios.length) {
-          throw new Error(data.erro || 'Falha ao consultar disponibilidade');
-        }
-
-        // Seleciona o studio requisitado ou o primeiro disponível
-        let studioAlvo = data.studios[0];
-        if (studioChoice !== 'any') {
-          const match = data.studios.find(s => s.numero === studioChoice || s.id === studioChoice);
-          if (match) studioAlvo = match;
-        } else {
-          const primeiroLivre = data.studios.find(s => s.disponivel);
-          if (primeiroLivre) studioAlvo = primeiroLivre;
-        }
-
-        // CASO 1: INDISPONÍVEL (OCUPADO NO SMOOBU / AIRBNB / BOOKING)
-        if (!studioAlvo.disponivel) {
-          const outrosDisponiveis = data.studios.filter(s => s.disponivel && s.numero !== studioAlvo.numero);
-          
-          let htmlAlternativas = "";
-          if (outrosDisponiveis.length > 0) {
-            htmlAlternativas = `
-              <div class="mt-3 pt-3 border-t border-slate-800 text-xs">
-                <p class="text-slate-300 font-semibold mb-2">💡 Studios com vaga livre para este mesmo período:</p>
-                <div class="flex flex-wrap gap-2">
-                  ${outrosDisponiveis.map(s => `
-                    <button onclick="selecionarParaReserva('${s.numero}')" class="px-3 py-1.5 rounded-lg bg-emerald-500/20 hover:bg-emerald-500 hover:text-slate-950 text-emerald-300 border border-emerald-500/40 text-xs font-bold transition">
-                      ${s.nome} · R$ ${s.totalDireta.toFixed(2)} (-10%)
-                    </button>
-                  `).join('')}
-                </div>
-              </div>
-            `;
-          }
-
-          resultadoDiv.innerHTML = `
-            <div class="bg-rose-950/40 border border-rose-500/40 p-5 rounded-xl space-y-2">
-              <div class="flex items-center gap-2 text-rose-400 font-bold text-sm">
-                <span>❌ Datas Indisponíveis no ${studioAlvo.nome}</span>
-              </div>
-              <p class="text-xs text-rose-200">
-                ${studioAlvo.motivo || 'Este studio já possui reserva confirmada para as datas selecionadas.'}
-              </p>
-              ${htmlAlternativas}
-              <div class="pt-2 flex items-center justify-between text-xs">
-                <span class="text-slate-400">Deseja consultar períodos alternativos?</span>
-                <a href="https://wa.me/551154443110?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20outras%20datas%20para%20o%20${encodeURIComponent(studioAlvo.nome)}%20(datas%20${inVal}%20a%20${outVal}%20estavam%20ocupadas)." target="_blank" class="text-emerald-400 hover:underline font-bold">
-                  Consultar Equipe no WhatsApp &rarr;
-                </a>
-              </div>
-            </div>
-          `;
-          return;
-        }
-
-        // CASO 2: DISPONÍVEL! COTAÇÃO OFICIAL CALCULADA PELO PAINEL
-        reservaAtual = {
-          studioId: studioAlvo.numero,
-          smoobuId: studioAlvo.id,
-          checkIn: inVal,
-          checkOut: outVal,
-          noites: studioAlvo.noites,
-          hospedes: guests,
-          diariaBase: studioAlvo.porNoite,
-          subtotalDiarias: studioAlvo.diariasTotal,
-          limpeza: studioAlvo.limpeza,
-          descontoDireto: 0.10,
-          valorTotal: studioAlvo.totalDireta,
-          valorOTA: studioAlvo.totalBooking,
-          economia: studioAlvo.economia,
-          metodoPagamento: "pix",
-          hospede: {}
-        };
-
-        resultadoDiv.innerHTML = `
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center bg-slate-900/90 p-5 rounded-xl border border-emerald-500/30">
-            <div class="space-y-1 md:col-span-2">
-              <div class="flex items-center gap-2">
-                <span class="text-base font-extrabold text-white">${studioAlvo.nome}</span>
-                <span class="bg-emerald-500/10 text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded border border-emerald-500/20">✓ DISPONÍVEL · 10% OFF DIRETO</span>
-              </div>
-              <p class="text-xs text-slate-400">Estadia de ${studioAlvo.noites} noite${studioAlvo.noites > 1 ? 's' : ''} (${formatarDataBr(inVal)} a ${formatarDataBr(outVal)}) · Tarifas oficiais integradas ao Smoobu</p>
-              <div class="flex flex-wrap items-center gap-4 text-xs text-slate-300 pt-2">
-                <span>Diárias: <b>R$ ${studioAlvo.diariasTotal.toFixed(2)}</b></span>
-                <span>• Limpeza única: <b>R$ ${studioAlvo.limpeza.toFixed(2)}</b></span>
-                <span class="text-emerald-400 font-semibold">Economia garantida vs OTA: <b>R$ ${studioAlvo.economia.toFixed(2)}</b></span>
-              </div>
-            </div>
-            <div class="text-left md:text-right border-t md:border-t-0 pt-3 md:pt-0 border-slate-800">
-              <span class="text-[11px] text-slate-400 line-through block">De R$ ${studioAlvo.totalBooking.toFixed(2)}</span>
-              <span class="text-2xl font-black text-emerald-400">R$ ${studioAlvo.totalDireta.toFixed(2)}</span>
-              <button onclick="irParaCheckout()" class="mt-2 w-full md:w-auto inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold px-5 py-2.5 rounded-xl text-xs uppercase tracking-wider transition shadow-lg shadow-emerald-500/20">
-                <span>Continuar para Reserva</span>
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-              </button>
-            </div>
-          </div>
-        `;
-
-      } catch (err) {
-        console.warn("API de disponibilidade em transição, usando cálculo base:", err);
-        renderizarCotacaoOffline(inVal, outVal, studioChoice, guests, noites, resultadoDiv);
-      }
-    }
-
-    function renderizarCotacaoOffline(inVal, outVal, studioChoice, guests, noites, resultadoDiv) {
-      let sId = studioChoice === 'any' ? '12' : studioChoice;
-      const studio = STUDIOS_DATA[sId];
-      const baseDiaria = studio.precoBase;
-      const subtotal = baseDiaria * noites;
-      const taxaLimpeza = 150;
-      const totalSemDesconto = subtotal + taxaLimpeza;
-      const totalComDesconto = Math.round(totalSemDesconto * 0.90);
-      const economia = totalSemDesconto - totalComDesconto;
-
-      reservaAtual = {
-        studioId: sId,
-        checkIn: inVal,
-        checkOut: outVal,
-        noites: noites,
-        hospedes: guests,
-        diariaBase: baseDiaria,
-        subtotalDiarias: subtotal,
-        limpeza: taxaLimpeza,
-        descontoDireto: 0.10,
-        valorTotal: totalComDesconto,
-        valorOTA: totalSemDesconto,
-        economia: economia,
-        metodoPagamento: "pix",
-        hospede: {}
-      };
-
-      resultadoDiv.innerHTML = `
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center bg-slate-900/80 p-5 rounded-xl border border-slate-800">
-          <div class="space-y-1 md:col-span-2">
-            <div class="flex items-center gap-2">
-              <span class="text-base font-extrabold text-white">${studio.nome}</span>
-              <span class="bg-emerald-500/10 text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded border border-emerald-500/20">10% OFF DIRETO GARANTIDO</span>
-            </div>
-            <p class="text-xs text-slate-400">Estadia de ${noites} noite${noites > 1 ? 's' : ''} (${formatarDataBr(inVal)} a ${formatarDataBr(outVal)}) · Check-in 15h</p>
-            <div class="flex flex-wrap items-center gap-4 text-xs text-slate-300 pt-2">
-              <span>Diárias: <b>R$ ${subtotal.toFixed(2)}</b></span>
-              <span>• Limpeza única: <b>R$ ${taxaLimpeza.toFixed(2)}</b></span>
-              <span class="text-emerald-400 font-semibold">Economia vs OTA: <b>R$ ${economia.toFixed(2)}</b></span>
-            </div>
-          </div>
-          <div class="text-left md:text-right border-t md:border-t-0 pt-3 md:pt-0 border-slate-800">
-            <span class="text-[11px] text-slate-400 line-through block">De R$ ${totalSemDesconto.toFixed(2)}</span>
-            <span class="text-2xl font-black text-emerald-400">R$ ${totalComDesconto.toFixed(2)}</span>
-            <button onclick="irParaCheckout()" class="mt-2 w-full md:w-auto inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold px-5 py-2.5 rounded-xl text-xs uppercase tracking-wider transition shadow-lg shadow-emerald-500/20">
-              <span>Continuar para Reserva</span>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-            </button>
-          </div>
-        </div>
-      `;
-    }
-
     function formatarDataBr(isoStr) {
       if (!isoStr) return "";
       const [ano, mes, dia] = isoStr.split('-');
       return `${dia}/${mes}/${ano}`;
     }
 
-    function selecionarParaReserva(studioId) {
-      document.getElementById('selectStudio').value = studioId;
-      processarCotacao();
-      irParaCheckout();
-    }
+    // Ação do Formulário do Hero: Monta mensagem completa e abre no WhatsApp
+    function consultarNoWhatsApp() {
+      const inVal = document.getElementById('inputCheckIn').value;
+      const outVal = document.getElementById('inputCheckOut').value;
+      const studioChoice = document.getElementById('selectStudio').value;
+      const guests = document.getElementById('selectGuests').value;
 
-    function irParaCheckout() {
-      const studio = STUDIOS_DATA[reservaAtual.studioId];
-      document.getElementById('checkoutStudioNome').innerText = studio.nome;
-      document.getElementById('checkoutPeriodo').innerText = `${formatarDataBr(reservaAtual.checkIn)} a ${formatarDataBr(reservaAtual.checkOut)} (${reservaAtual.noites} noite${reservaAtual.noites > 1 ? 's' : ''})`;
-      document.getElementById('checkoutValorTotal').innerText = `R$ ${reservaAtual.valorTotal.toFixed(2)}`;
-      document.getElementById('pagamentoValorTotal').innerText = `R$ ${reservaAtual.valorTotal.toFixed(2)}`;
+      const dIn = new Date(inVal);
+      const dOut = new Date(outVal);
+      const diffTime = dOut - dIn;
+      const noites = Math.max(1, Math.round(diffTime / (1000 * 60 * 60 * 24)));
 
-      abrirModalReserva();
-    }
+      const studioNome = studioChoice === 'any' ? 'Qualquer studio disponível' : studioChoice;
 
-    // Modal de Reserva
-    function abrirModalReserva() {
-      if (!reservaAtual.checkIn) {
-        processarCotacao();
-      }
-      document.getElementById('modalReserva').classList.remove('hidden');
-      mostrarStep(1);
-    }
+      const texto = `Olá! Gostaria de consultar a disponibilidade e valores para uma reserva direta no SNT Studios com 10% de desconto:\n\n` +
+        `📅 *Check-in:* ${formatarDataBr(inVal)}\n` +
+        `📅 *Check-out:* ${formatarDataBr(outVal)} (${noites} noite${noites > 1 ? 's' : ''})\n` +
+        `🏠 *Acomodação:* ${studioNome}\n` +
+        `👥 *Hóspedes:* ${guests} pessoa${guests > 1 ? 's' : ''}\n\n` +
+        `Poderia me confirmar a disponibilidade e o valor com o desconto direto?`;
 
-    function fecharModalReserva() {
-      document.getElementById('modalReserva').classList.add('hidden');
-    }
-
-    function mostrarStep(step) {
-      const s1 = document.getElementById('step1Conteudo');
-      const s2 = document.getElementById('step2Conteudo');
-      const s3 = document.getElementById('step3Conteudo');
-
-      const t1 = document.getElementById('stepTab1');
-      const t2 = document.getElementById('stepTab2');
-      const t3 = document.getElementById('stepTab3');
-
-      [s1, s2, s3].forEach(s => s.classList.add('hidden'));
-      [t1, t2, t3].forEach(t => t.className = "flex-1 text-center py-2 rounded-lg bg-slate-800 text-slate-400");
-
-      if (step === 1) {
-        s1.classList.remove('hidden');
-        t1.className = "flex-1 text-center py-2 rounded-lg bg-emerald-500 text-slate-950 font-bold";
-      } else if (step === 2) {
-        s2.classList.remove('hidden');
-        t2.className = "flex-1 text-center py-2 rounded-lg bg-emerald-500 text-slate-950 font-bold";
-      } else {
-        s3.classList.remove('hidden');
-        t3.className = "flex-1 text-center py-2 rounded-lg bg-emerald-500 text-slate-950 font-bold";
-      }
-    }
-
-    function avancarParaPagamento() {
-      const nome = document.getElementById('hospedeNome').value.trim();
-      const zap = document.getElementById('hospedeWhatsapp').value.trim();
-      const email = document.getElementById('hospedeEmail').value.trim();
-      const cpf = document.getElementById('hospedeCpf').value.trim();
-      const chegada = document.getElementById('hospedeChegada').value;
-      const obs = document.getElementById('hospedeObs').value.trim();
-
-      if (!nome || !zap || !email || !cpf) {
-        alert('Por favor, preencha todos os campos obrigatórios (*).');
-        return;
-      }
-
-      reservaAtual.hospede = { nome, whatsapp: zap, email, cpf, chegada, obs };
-      mostrarStep(2);
-      iniciarTimerPix();
-    }
-
-    function voltarParaDados() {
-      mostrarStep(1);
-    }
-
-    function selecionarMetodo(metodo) {
-      reservaAtual.metodoPagamento = metodo;
-      const btnPix = document.getElementById('btnMetodoPix');
-      const btnCartao = document.getElementById('btnMetodoCartao');
-      const boxPix = document.getElementById('conteudoPix');
-      const boxCartao = document.getElementById('conteudoCartao');
-
-      if (metodo === 'pix') {
-        btnPix.className = "p-3.5 rounded-xl border-2 border-emerald-500 bg-emerald-500/10 text-center transition";
-        btnCartao.className = "p-3.5 rounded-xl border-2 border-slate-700 bg-slate-950 text-center transition";
-        boxPix.classList.remove('hidden');
-        boxCartao.classList.add('hidden');
-      } else {
-        btnCartao.className = "p-3.5 rounded-xl border-2 border-emerald-500 bg-emerald-500/10 text-center transition";
-        btnPix.className = "p-3.5 rounded-xl border-2 border-slate-700 bg-slate-950 text-center transition";
-        boxCartao.classList.remove('hidden');
-        boxPix.classList.add('hidden');
-      }
-    }
-
-    // Timer do Pix
-    let timerInterval = null;
-    function iniciarTimerPix() {
-      if (timerInterval) clearInterval(timerInterval);
-      let segundos = 15 * 60;
-      const el = document.getElementById('pixTimer');
-
-      timerInterval = setInterval(() => {
-        segundos--;
-        if (segundos <= 0) {
-          clearInterval(timerInterval);
-          el.innerText = "Expirado";
-          return;
-        }
-        const m = Math.floor(segundos / 60);
-        const s = segundos % 60;
-        el.innerText = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
-      }, 1000);
-    }
-
-    function copiarPix() {
-      const input = document.getElementById('pixCopiaCola');
-      input.select();
-      navigator.clipboard.writeText(input.value);
-      const btn = document.getElementById('btnCopiarPix');
-      const original = btn.innerText;
-      btn.innerText = "✓ Copiado!";
-      btn.classList.add('bg-white', 'text-slate-950');
-      setTimeout(() => {
-        btn.innerText = original;
-        btn.classList.remove('bg-white', 'text-slate-950');
-      }, 2500);
+      const urlZap = `https://wa.me/551154443110?text=${encodeURIComponent(texto)}`;
+      window.open(urlZap, '_blank');
     }
 
     function copiarEndereco() {
@@ -1573,63 +964,6 @@ html_content = '''<!DOCTYPE html>
     }
 
     // ========================================================
-    // INTEGRAÇÃO STONE (ARQUITETURA PRONTA)
-    // ========================================================
-    const StonePaymentService = {
-      config: {
-        sandbox: true,
-        merchantId: "STONE_MERCHANT_ID_AQUI",
-        apiKey: "STONE_API_KEY_AQUI",
-        webhookUrl: "https://snt-lavanderia-bot-production.up.railway.app/studios/webhook/stone"
-      },
-      processar: async function(dadosReserva) {
-        console.log("Enviando dados da reserva para o gateway Stone...", dadosReserva);
-        // Quando a chave Stone for fornecida, a chamada de API é executada aqui.
-        return {
-          sucesso: true,
-          transactionId: "STN-" + Math.floor(100000 + Math.random() * 900000),
-          status: "pending_capture"
-        };
-      }
-    };
-
-    async function confirmarReservaStone() {
-      const voucherNum = "#SNT-STU-" + Math.floor(1000 + Math.random() * 9000);
-      const studio = STUDIOS_DATA[reservaAtual.studioId];
-
-      // Dispara arquitetura Stone
-      await StonePaymentService.processar({
-        voucher: voucherNum,
-        valor: reservaAtual.valorTotal,
-        hospede: reservaAtual.hospede,
-        metodo: reservaAtual.metodoPagamento
-      });
-
-      // Atualiza Voucher na tela
-      document.getElementById('voucherCodigo').innerText = voucherNum;
-      document.getElementById('voucherNome').innerText = reservaAtual.hospede.nome;
-      document.getElementById('voucherStudio').innerText = studio.nome;
-      document.getElementById('voucherDatas').innerText = `${formatarDataBr(reservaAtual.checkIn)} a ${formatarDataBr(reservaAtual.checkOut)} (${reservaAtual.noites} noite${reservaAtual.noites > 1 ? 's' : ''})`;
-      document.getElementById('voucherTotal').innerText = `R$ ${reservaAtual.valorTotal.toFixed(2)}`;
-      document.getElementById('voucherMetodo').innerText = reservaAtual.metodoPagamento === 'pix' ? 'PIX Instantâneo Stone' : 'Cartão de Crédito Stone';
-
-      // Monta Link do WhatsApp com mensagem pronta
-      const textoZap = `Olá! Acabei de realizar uma pré-reserva no site oficial do SNT Studios:\n\n` +
-        `📋 *Código:* ${voucherNum}\n` +
-        `🏠 *Acomodação:* ${studio.nome}\n` +
-        `📅 *Período:* ${formatarDataBr(reservaAtual.checkIn)} a ${formatarDataBr(reservaAtual.checkOut)} (${reservaAtual.noites} noites)\n` +
-        `👤 *Hóspede:* ${reservaAtual.hospede.nome} (CPF: ${reservaAtual.hospede.cpf})\n` +
-        `📱 *WhatsApp:* ${reservaAtual.hospede.whatsapp}\n` +
-        `💳 *Pagamento:* ${reservaAtual.metodoPagamento.toUpperCase()} Stone\n` +
-        `💰 *Total:* R$ ${reservaAtual.valorTotal.toFixed(2)} (com 10% OFF direto)\n\n` +
-        `Gostaria de confirmar minha reserva e receber as instruções de acesso da fechadura!`;
-
-      document.getElementById('btnEnviarWhatsapp').href = `https://wa.me/551154443110?text=${encodeURIComponent(textoZap)}`;
-
-      mostrarStep(3);
-    }
-
-    // ========================================================
     // MODAL DE GALERIA DE FOTOS (LIGHTBOX)
     // ========================================================
     let galeriaStudioId = "12";
@@ -1638,7 +972,7 @@ html_content = '''<!DOCTYPE html>
     function abrirGaleria(studioId) {
       galeriaStudioId = studioId;
       galeriaFotoIdx = 0;
-      const studio = STUDIOS_DATA[studioId];
+      const studio = STUDIOS_FOTOS[studioId];
 
       document.getElementById('galeriaTitulo').innerText = studio.nome;
       document.getElementById('galeriaDesc').innerText = `${studio.tag} · ${studio.detalheJanela}`;
@@ -1653,25 +987,25 @@ html_content = '''<!DOCTYPE html>
     }
 
     function atualizarFotoGaleria() {
-      const studio = STUDIOS_DATA[galeriaStudioId];
+      const studio = STUDIOS_FOTOS[galeriaStudioId];
       document.getElementById('galeriaImgPrincipal').src = studio.fotos[galeriaFotoIdx];
       renderizarThumbs();
     }
 
     function proximaFoto() {
-      const studio = STUDIOS_DATA[galeriaStudioId];
+      const studio = STUDIOS_FOTOS[galeriaStudioId];
       galeriaFotoIdx = (galeriaFotoIdx + 1) % studio.fotos.length;
       atualizarFotoGaleria();
     }
 
     function fotoAnterior() {
-      const studio = STUDIOS_DATA[galeriaStudioId];
+      const studio = STUDIOS_FOTOS[galeriaStudioId];
       galeriaFotoIdx = (galeriaFotoIdx - 1 + studio.fotos.length) % studio.fotos.length;
       atualizarFotoGaleria();
     }
 
     function renderizarThumbs() {
-      const studio = STUDIOS_DATA[galeriaStudioId];
+      const studio = STUDIOS_FOTOS[galeriaStudioId];
       const container = document.getElementById('galeriaThumbs');
       container.innerHTML = "";
 
@@ -1687,10 +1021,9 @@ html_content = '''<!DOCTYPE html>
       });
     }
 
-    // Atalho ESC para fechar modais
+    // Atalho ESC para fechar galeria
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
-        fecharModalReserva();
         fecharGaleria();
       }
     });
@@ -1701,9 +1034,9 @@ html_content = '''<!DOCTYPE html>
 '''
 
 with open('C:/Users/gabri/.gemini/antigravity/scratch/snt-studios-site/index.html', 'w', encoding='utf-8') as f:
-    f.write(html_content)
+    f.write(site_code)
 
 with open('C:/Users/gabri/.gemini/antigravity/brain/2df7a644-b0c4-4e39-a06b-3b5ec650766f/preview_site_snt_studios.html', 'w', encoding='utf-8') as f:
-    f.write(html_content)
+    f.write(site_code)
 
-print('Build completed successfully!')
+print("Generated clean WhatsApp-only booking index.html!")
