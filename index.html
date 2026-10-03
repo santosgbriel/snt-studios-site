@@ -345,8 +345,8 @@
               <!-- CABEÇALHO DO CARD: PREÇO POR NOITE E RESERVA DIRETA -->
               <div class="flex items-baseline justify-between mb-5">
                 <div>
-                  <span class="text-2xl sm:text-3xl font-black text-white" id="headerPrecoNoite">R$ 159</span>
-                  <span class="text-xs sm:text-sm text-slate-400 font-medium" data-i18n="card_por_noite"> / noite</span>
+                  <span class="text-2xl sm:text-3xl font-black text-white" id="headerPrecoNoite" data-i18n="card_ver_valor">Ver valor</span>
+                  <span id="headerPrecoSufixo" class="hidden text-xs sm:text-sm text-slate-400 font-medium" data-i18n="card_por_noite"> / noite</span>
                   <span class="ml-2 inline-flex items-center gap-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 text-[10px] font-bold text-emerald-400" data-i18n="card_badge_desconto">10% OFF DIRETO</span>
                 </div>
                 <div class="text-xs text-slate-400 font-medium" data-i18n="card_tarifa_oficial">
@@ -366,14 +366,14 @@
                   
                   <!-- LINHA SUPERIOR: CHECK-IN E CHECKOUT DIVIDIDOS AO MEIO -->
                   <div class="grid grid-cols-2 divide-x divide-slate-700">
-                    <div class="p-3 sm:p-3.5 hover:bg-slate-800/40 transition cursor-pointer" onclick="clicarBoxCheckIn()">
+                    <button type="button" class="w-full p-3 sm:p-3.5 hover:bg-slate-800/40 transition cursor-pointer text-left" onclick="clicarBoxCheckIn()" aria-controls="calendarioAirbnb" aria-label="Selecionar data de check-in">
                       <span class="block text-[10px] font-black uppercase tracking-wider text-slate-400" data-i18n="lbl_checkin">CHECK-IN</span>
                       <span id="displayCheckIn" class="block text-xs sm:text-sm font-semibold text-white mt-0.5" data-i18n="txt_inserir_data">Adicionar data</span>
-                    </div>
-                    <div class="p-3 sm:p-3.5 hover:bg-slate-800/40 transition cursor-pointer" onclick="clicarBoxCheckOut()">
+                    </button>
+                    <button type="button" class="w-full p-3 sm:p-3.5 hover:bg-slate-800/40 transition cursor-pointer text-left" onclick="clicarBoxCheckOut()" aria-controls="calendarioAirbnb" aria-label="Selecionar data de checkout">
                       <span class="block text-[10px] font-black uppercase tracking-wider text-slate-400" data-i18n="lbl_checkout">CHECKOUT</span>
                       <span id="displayCheckOut" class="block text-xs sm:text-sm font-semibold text-white mt-0.5" data-i18n="txt_inserir_data">Adicionar data</span>
-                    </div>
+                    </button>
                   </div>
 
                   <!-- LINHA INFERIOR: HÓSPEDES LARGURA TOTAL -->
@@ -393,7 +393,7 @@
                 </div>
 
                 <!-- CALENDÁRIO INTERATIVO AIRBNB (SELEÇÃO DE 2 CLIQUES + DUAL-MONTH) -->
-                <div id="calendarioAirbnb" class="hidden mt-3 p-4 sm:p-6 rounded-3xl bg-slate-950 border border-slate-700/80 shadow-2xl transition lg:absolute lg:right-0 lg:top-[102%] lg:w-[660px] lg:z-50">
+                <div id="calendarioAirbnb" role="dialog" aria-label="Selecionar datas de check-in e checkout" class="hidden mt-3 p-4 sm:p-6 rounded-3xl bg-slate-950 border border-slate-700/80 shadow-2xl transition lg:absolute lg:right-0 lg:top-[102%] lg:w-[660px] lg:z-50">
                   
                   <!-- CABEÇALHO DO CALENDÁRIO COM MINI-BOX DE DATAS (ESTILO AIRBNB OFICIAL) -->
                   <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 mb-3 border-b border-slate-800">
@@ -403,14 +403,14 @@
                     </div>
                     
                     <div class="flex items-center rounded-xl border border-slate-700 bg-slate-900/90 divide-x divide-slate-700 text-left text-xs self-start sm:self-auto">
-                      <div id="calMiniBoxIn" class="px-3 py-1.5 min-w-[105px] rounded-l-xl transition border-2 border-emerald-500 bg-emerald-500/10 cursor-pointer" onclick="clicarBoxCheckIn()">
+                      <button type="button" id="calMiniBoxIn" class="px-3 py-1.5 min-w-[105px] rounded-l-xl transition border-2 border-emerald-500 bg-emerald-500/10 cursor-pointer text-left" onclick="clicarBoxCheckIn()" aria-label="Alterar data de check-in">
                         <span class="block text-[9px] font-black tracking-wider text-slate-400 uppercase" data-i18n="lbl_checkin">CHECK-IN</span>
                         <span id="calMiniCheckIn" class="block text-xs font-bold text-white mt-0.5">DD/MM/AAAA</span>
-                      </div>
-                      <div id="calMiniBoxOut" class="px-3 py-1.5 min-w-[105px] rounded-r-xl transition border-2 border-transparent cursor-pointer" onclick="clicarBoxCheckOut()">
+                      </button>
+                      <button type="button" id="calMiniBoxOut" class="px-3 py-1.5 min-w-[105px] rounded-r-xl transition border-2 border-transparent cursor-pointer text-left" onclick="clicarBoxCheckOut()" aria-label="Alterar data de checkout">
                         <span class="block text-[9px] font-black tracking-wider text-slate-400 uppercase" data-i18n="lbl_checkout">CHECKOUT</span>
                         <span id="calMiniCheckOut" class="block text-xs font-bold text-slate-400 mt-0.5" data-i18n="txt_inserir_data">Adicionar data</span>
-                      </div>
+                      </button>
                     </div>
                   </div>
 
@@ -1115,8 +1115,8 @@
   <div id="airbnbMobileBar" class="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-slate-950/95 backdrop-blur-md border-t border-slate-800 px-4 py-3 flex items-center justify-between shadow-2xl transition duration-300">
     <div>
       <div class="flex items-baseline gap-1">
-        <span class="text-base font-black text-white" id="mobileBarPreco">R$ 159</span>
-        <span class="text-xs text-slate-400" data-i18n="card_por_noite">/ noite</span>
+        <span class="text-base font-black text-white" id="mobileBarPreco" data-i18n="card_ver_valor">Ver valor</span>
+        <span id="mobilePrecoSufixo" class="hidden text-xs text-slate-400" data-i18n="card_por_noite">/ noite</span>
       </div>
       <div class="text-[11px] text-emerald-400 font-medium" id="mobileBarDatas" data-i18n="txt_inserir_data">Selecione as datas</div>
     </div>
@@ -1199,7 +1199,7 @@
         regra_checkout_val: "Até as 11:00",
         regra_silencio_tit: "Política de Silêncio:",
         regra_silencio_val: "Respeito ao descanso dos demais hóspedes a partir das 22h",
-        card_por_noite: " / noite",
+        card_por_noite: " / noite", card_ver_valor: "Ver valor",
         card_badge_desconto: "10% OFF DIRETO",
         card_tarifa_oficial: "Tarifa Oficial",
         lbl_checkin: "CHECK-IN",
@@ -1352,7 +1352,7 @@
         regra_checkout_val: "Until 11:00 AM",
         regra_silencio_tit: "Quiet Hours:",
         regra_silencio_val: "Please respect other guests' rest after 10:00 PM",
-        card_por_noite: " / night",
+        card_por_noite: " / night", card_ver_valor: "See price",
         card_badge_desconto: "10% DIRECT OFF",
         card_tarifa_oficial: "Official Rate",
         lbl_checkin: "CHECK-IN",
@@ -1505,7 +1505,7 @@
         regra_checkout_val: "Hasta las 11:00",
         regra_silencio_tit: "Política de Silencio:",
         regra_silencio_val: "Respeto al descanso de los demás huéspedes a partir de las 22:00",
-        card_por_noite: " / noche",
+        card_por_noite: " / noche", card_ver_valor: "Ver precio",
         card_badge_desconto: "10% OFF DIRECTO",
         card_tarifa_oficial: "Tarifa Oficial",
         lbl_checkin: "CHECK-IN",
@@ -1660,6 +1660,7 @@
     }
 
     const API_COTACAO = "https://snt-lavanderia-bot-production.up.railway.app/api/studios/public/cotacao";
+    const API_OCUPACAO = "https://snt-lavanderia-bot-production.up.railway.app/api/studios/public/ocupacao";
     let ultimaCotacao = null;
 
     // ========================================================
@@ -1865,6 +1866,10 @@
         btn.type = "button";
         btn.innerText = String(dia);
         btn.setAttribute('data-date', diaIso);
+        const localeCalendario = idiomaAtual === 'en' ? 'en-US' : (idiomaAtual === 'es' ? 'es-ES' : 'pt-BR');
+        btn.setAttribute('aria-label', new Intl.DateTimeFormat(localeCalendario, {
+          weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
+        }).format(new Date(diaIso + 'T12:00:00')));
 
         if (ehIndisponivel) {
           btn.className = "h-9 w-full flex items-center justify-center rounded-full text-xs font-normal text-slate-600 line-through cursor-not-allowed opacity-35";
@@ -2022,6 +2027,18 @@
       renderizarMeses();
       const resultado = document.getElementById('resultadoCotacao');
       if (resultado) resultado.classList.add('hidden');
+      const precoCabecalho = document.getElementById('headerPrecoNoite');
+      const precoMobile = document.getElementById('mobileBarPreco');
+      if (precoCabecalho) {
+        precoCabecalho.setAttribute('data-i18n', 'card_ver_valor');
+        precoCabecalho.innerText = I18N[idiomaAtual].card_ver_valor;
+      }
+      if (precoMobile) {
+        precoMobile.setAttribute('data-i18n', 'card_ver_valor');
+        precoMobile.innerText = I18N[idiomaAtual].card_ver_valor;
+      }
+      document.getElementById('headerPrecoSufixo')?.classList.add('hidden');
+      document.getElementById('mobilePrecoSufixo')?.classList.add('hidden');
     }
 
     function atualizarDisplayDatas() {
@@ -2088,15 +2105,9 @@
         const dia = String(agora.getDate()).padStart(2, '0');
         const hojeIso = `${ano}-${mes}-${dia}`;
 
-        const futuroData = new Date(agora.getTime() + 120 * 86400000);
-        const fAno = futuroData.getFullYear();
-        const fMes = String(futuroData.getMonth() + 1).padStart(2, '0');
-        const fDia = String(futuroData.getDate()).padStart(2, '0');
-        const futuroIso = `${fAno}-${fMes}-${fDia}`;
-
-        const url = new URL(API_COTACAO);
-        url.searchParams.set('entrada', hojeIso);
-        url.searchParams.set('saida', futuroIso);
+        const url = new URL(API_OCUPACAO);
+        url.searchParams.set('de', hojeIso);
+        url.searchParams.set('dias', '120');
 
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 8000);
@@ -2108,22 +2119,18 @@
 
         if (res.ok) {
           const dados = await res.json().catch(() => ({}));
-          if (dados && Array.isArray(dados.studios) && dados.studios.length > 0) {
-            const totalStudios = dados.studios.length;
-            const mapa = {};
-            dados.studios.forEach(s => {
-              if (Array.isArray(s.diasOcupados)) {
-                s.diasOcupados.forEach(d => {
-                  mapa[d] = (mapa[d] || 0) + 1;
-                });
-              }
-            });
-            datasTotalmenteOcupadas.clear();
-            Object.keys(mapa).forEach(d => {
-              if (mapa[d] >= totalStudios) {
-                datasTotalmenteOcupadas.add(d);
-              }
-            });
+          if (dados && dados.ok) {
+            let totalmenteOcupadas = Array.isArray(dados.totalmenteOcupadas)
+              ? dados.totalmenteOcupadas
+              : [];
+            // Compatibilidade durante a publicação conjunta com o backend antigo.
+            if (!totalmenteOcupadas.length && dados.ocupacao && typeof dados.ocupacao === 'object') {
+              const listas = Object.values(dados.ocupacao).filter(Array.isArray);
+              const contagem = {};
+              listas.forEach(lista => lista.forEach(d => { contagem[d] = (contagem[d] || 0) + 1; }));
+              totalmenteOcupadas = Object.keys(contagem).filter(d => contagem[d] >= listas.length);
+            }
+            datasTotalmenteOcupadas = new Set(totalmenteOcupadas);
             renderizarMeses();
           }
         }
@@ -2295,9 +2302,17 @@
       // Atualiza o preço por noite no cabeçalho do card e na barra mobile
       const diariaEfetiva = studio.totalDireta / dados.noites;
       const precoCabecalho = document.getElementById('headerPrecoNoite');
-      if (precoCabecalho) precoCabecalho.innerText = formatarMoeda(diariaEfetiva);
+      if (precoCabecalho) {
+        precoCabecalho.removeAttribute('data-i18n');
+        precoCabecalho.innerText = formatarMoeda(diariaEfetiva);
+      }
       const mobilePreco = document.getElementById('mobileBarPreco');
-      if (mobilePreco) mobilePreco.innerText = formatarMoeda(diariaEfetiva);
+      if (mobilePreco) {
+        mobilePreco.removeAttribute('data-i18n');
+        mobilePreco.innerText = formatarMoeda(diariaEfetiva);
+      }
+      document.getElementById('headerPrecoSufixo')?.classList.remove('hidden');
+      document.getElementById('mobilePrecoSufixo')?.classList.remove('hidden');
 
       // Agrupa studios disponíveis por categoria comercial para oferecer escolha de preço
       let cardsOpcoesPreco = '';
@@ -2341,7 +2356,7 @@
               <div class="text-[10px] text-emerald-300 font-medium">${dados.noites} ${dados.noites > 1 ? (idiomaAtual === 'en' ? 'nights' : (idiomaAtual === 'es' ? 'noches' : 'noites')) : (idiomaAtual === 'en' ? 'night' : (idiomaAtual === 'es' ? 'noche' : 'noite'))} · ${dados.hospedes} ${Number(dados.hospedes) > 1 ? (idiomaAtual === 'en' ? 'guests' : (idiomaAtual === 'es' ? 'huéspedes' : 'hóspedes')) : (idiomaAtual === 'en' ? 'guest' : (idiomaAtual === 'es' ? 'huésped' : 'hóspede'))}</div>
             </div>
             <span class="rounded bg-emerald-500/20 px-2 py-0.5 text-[10px] font-bold text-emerald-300 uppercase tracking-wider">
-              ${idiomaAtual === 'en' ? 'CONFIRMED' : (idiomaAtual === 'es' ? 'DISPONIBLE' : 'CONFIRMADO')}
+              ${idiomaAtual === 'en' ? 'AVAILABLE' : (idiomaAtual === 'es' ? 'DISPONIBLE' : 'DISPONÍVEL')}
             </span>
           </div>
 
