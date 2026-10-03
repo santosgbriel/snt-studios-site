@@ -113,6 +113,25 @@ if 'calBtnPrevMes' not in html:
 if 'datasTotalmenteOcupadas' not in html or 'carregarDisponibilidadeGeral' not in html:
     erros.append("Lógica de detecção e strike-through de datas ocupadas ausente.")
 
+# O calendário é um modal sobre a tela, não um bloco que empurra o conteúdo para
+# baixo. O clique dentro dele precisa parar antes do listener que fecha ao clicar
+# fora; isso preserva a janela entre o primeiro e o segundo clique do intervalo.
+if 'id="calendarioBackdrop"' not in html or 'aria-modal="true"' not in html:
+    erros.append("Calendário não possui a sobreposição modal esperada.")
+if 'id="calendarioAirbnb"' not in html or 'onclick="event.stopPropagation()"' not in html:
+    erros.append("Clique interno do calendário pode voltar a fechá-lo após o check-in.")
+if 'fixed inset-x-3 top-4 bottom-4 z-[70]' not in html:
+    erros.append("Calendário não está preso à tela com rolagem interna.")
+if "document.body.appendChild(el)" not in html or "document.body.style.overflow = 'hidden'" not in html:
+    erros.append("Calendário não é promovido ao body ou não bloqueia a rolagem externa.")
+
+inicio_selecao = html.find('function selecionarDiaCalendario(diaIso)')
+segundo_clique = html.find('} else if (dataCheckIn && !dataCheckOut)', inicio_selecao)
+if inicio_selecao == -1 or segundo_clique == -1:
+    erros.append("Fluxo de seleção das duas datas não foi encontrado.")
+elif 'fecharCalendario()' in html[inicio_selecao:segundo_clique]:
+    erros.append("O primeiro clique ainda fecha o calendário antes do checkout.")
+
 # 10. Validação Funcional das Regras de Seleção e Checkout do Calendário
 js_teste_calendario = """
 const datasTotalmenteOcupadas = new Set(['2026-10-06', '2026-10-08']);

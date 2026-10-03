@@ -366,11 +366,11 @@
                   
                   <!-- LINHA SUPERIOR: CHECK-IN E CHECKOUT DIVIDIDOS AO MEIO -->
                   <div class="grid grid-cols-2 divide-x divide-slate-700">
-                    <button type="button" class="w-full p-3 sm:p-3.5 hover:bg-slate-800/40 transition cursor-pointer text-left" onclick="clicarBoxCheckIn()" aria-controls="calendarioAirbnb" aria-label="Selecionar data de check-in">
+                    <button type="button" class="w-full p-3 sm:p-3.5 hover:bg-slate-800/40 transition cursor-pointer text-left" onclick="clicarBoxCheckIn()" aria-controls="calendarioAirbnb" aria-expanded="false" aria-label="Selecionar data de check-in">
                       <span class="block text-[10px] font-black uppercase tracking-wider text-slate-400" data-i18n="lbl_checkin">CHECK-IN</span>
                       <span id="displayCheckIn" class="block text-xs sm:text-sm font-semibold text-white mt-0.5" data-i18n="txt_inserir_data">Adicionar data</span>
                     </button>
-                    <button type="button" class="w-full p-3 sm:p-3.5 hover:bg-slate-800/40 transition cursor-pointer text-left" onclick="clicarBoxCheckOut()" aria-controls="calendarioAirbnb" aria-label="Selecionar data de checkout">
+                    <button type="button" class="w-full p-3 sm:p-3.5 hover:bg-slate-800/40 transition cursor-pointer text-left" onclick="clicarBoxCheckOut()" aria-controls="calendarioAirbnb" aria-expanded="false" aria-label="Selecionar data de checkout">
                       <span class="block text-[10px] font-black uppercase tracking-wider text-slate-400" data-i18n="lbl_checkout">CHECKOUT</span>
                       <span id="displayCheckOut" class="block text-xs sm:text-sm font-semibold text-white mt-0.5" data-i18n="txt_inserir_data">Adicionar data</span>
                     </button>
@@ -393,7 +393,8 @@
                 </div>
 
                 <!-- CALENDÁRIO INTERATIVO AIRBNB (SELEÇÃO DE 2 CLIQUES + DUAL-MONTH) -->
-                <div id="calendarioAirbnb" role="dialog" aria-label="Selecionar datas de check-in e checkout" class="hidden mt-3 p-4 sm:p-6 rounded-3xl bg-slate-950 border border-slate-700/80 shadow-2xl transition lg:absolute lg:right-0 lg:top-[102%] lg:w-[660px] lg:z-50">
+                <div id="calendarioBackdrop" class="hidden fixed inset-0 z-[60] bg-slate-950/75 backdrop-blur-sm" aria-hidden="true" onclick="fecharCalendario()"></div>
+                <div id="calendarioAirbnb" role="dialog" aria-modal="true" aria-label="Selecionar datas de check-in e checkout" onclick="event.stopPropagation()" class="hidden fixed inset-x-3 top-4 bottom-4 z-[70] overflow-y-auto overscroll-contain p-4 sm:inset-auto sm:left-1/2 sm:top-1/2 sm:w-[min(660px,calc(100vw-2rem))] sm:max-h-[calc(100vh-2rem)] sm:-translate-x-1/2 sm:-translate-y-1/2 sm:p-6 rounded-3xl bg-slate-950 border border-slate-700/80 shadow-2xl transition">
                   
                   <!-- CABEÇALHO DO CALENDÁRIO COM MINI-BOX DE DATAS (ESTILO AIRBNB OFICIAL) -->
                   <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 mb-3 border-b border-slate-800">
@@ -1711,6 +1712,8 @@
     let calMes = new Date().getMonth(); // 0-11
     let datasTotalmenteOcupadas = new Set();
     let carregandoDisponibilidadeGeral = false;
+    let overflowAntesDoCalendario = "";
+    let calendarioBloqueouRolagem = false;
 
     const NOMES_MESES = {
       pt: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
@@ -1758,8 +1761,23 @@
 
     function abrirCalendario() {
       const el = document.getElementById('calendarioAirbnb');
+      const backdrop = document.getElementById('calendarioBackdrop');
       if (el) {
+        // O calendário nasce dentro do card por organização do HTML, mas vira
+        // filho do body ao abrir. Assim `position: fixed` usa a tela inteira,
+        // mesmo com backdrop-filter/transform nos ancestrais do card.
+        if (backdrop && backdrop.parentElement !== document.body) document.body.appendChild(backdrop);
+        if (el.parentElement !== document.body) document.body.appendChild(el);
+        if (backdrop) backdrop.classList.remove('hidden');
         el.classList.remove('hidden');
+        document.querySelectorAll('[aria-controls="calendarioAirbnb"]').forEach((controle) => {
+          controle.setAttribute('aria-expanded', 'true');
+        });
+        if (!calendarioBloqueouRolagem) {
+          overflowAntesDoCalendario = document.body.style.overflow;
+          document.body.style.overflow = 'hidden';
+          calendarioBloqueouRolagem = true;
+        }
         renderizarMeses();
         if (datasTotalmenteOcupadas.size === 0) {
           carregarDisponibilidadeGeral();
@@ -1769,7 +1787,16 @@
 
     function fecharCalendario() {
       const el = document.getElementById('calendarioAirbnb');
+      const backdrop = document.getElementById('calendarioBackdrop');
       if (el) el.classList.add('hidden');
+      if (backdrop) backdrop.classList.add('hidden');
+      document.querySelectorAll('[aria-controls="calendarioAirbnb"]').forEach((controle) => {
+        controle.setAttribute('aria-expanded', 'false');
+      });
+      if (calendarioBloqueouRolagem) {
+        document.body.style.overflow = overflowAntesDoCalendario;
+        calendarioBloqueouRolagem = false;
+      }
     }
 
     function mudarMes(delta) {
