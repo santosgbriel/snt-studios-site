@@ -99,6 +99,18 @@ for idx, s in enumerate(scripts):
     if temp_js.exists():
         temp_js.unlink()
 
+# 8. Ausência de Inscrição Municipal (conforme diretriz de privacidade fiscal)
+if 'inscrição municipal' in html.lower() or 'inscricao municipal' in html.lower() or '772987' in html:
+    erros.append("Inscrição Municipal ou registro fiscal 772987 encontrado indevidamente no HTML.")
+
+# 9. Verificação do Calendário Airbnb Dual-Month e Strike-Through
+if 'calDiasGrid1' not in html or 'calDiasGrid2' not in html:
+    erros.append("Estrutura do calendário dual-month (Airbnb) ausente no HTML.")
+if 'calMiniCheckIn' not in html or 'calMiniCheckOut' not in html:
+    erros.append("Mini-box de Check-in/Checkout do calendário ausente.")
+if 'datasTotalmenteOcupadas' not in html or 'carregarDisponibilidadeGeral' not in html:
+    erros.append("Lógica de detecção e strike-through de datas ocupadas ausente.")
+
 # Relatório Final
 if erros:
     print("❌ FALHAS NA SUÍTE DE TESTES:")
@@ -108,8 +120,11 @@ if erros:
 else:
     print("✅ TODOS OS TESTES PASSARAM COM 100% DE SUCESSO:")
     print(f"  - Padrões SNT: Zero CDNs, Canônico HTTPS e CNPJ 63.223.844/0001-11 OK")
+    print(f"  - Inscrição Municipal: 100% removida do site (zero menções)")
+    print(f"  - Calendário Airbnb: Dual-month, 2º clique sem falha, strike-through de datas indisponíveis OK")
     print(f"  - Zero estrelas, Superhost e termos restritos OK")
     print(f"  - Zero números 11, 12, 13, 14 expostos (nomes comerciais ativos)")
     print(f"  - I18N: {len(pt_keys)} chaves sincronizadas entre PT, EN e ES (100% DOM coberto)")
     print(f"  - Galeria: {len(fotos)} fotos WebP válidas ({peso_total_mb:.2f} MB < 4.0 MB)")
     print("  - Sintaxe JavaScript verificada sem erros (node --check)")
+

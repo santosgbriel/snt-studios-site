@@ -375,12 +375,12 @@ site_code = '''<!DOCTYPE html>
                 <div id="airbnbDateBox" class="border border-slate-700 rounded-2xl bg-slate-900/90 overflow-hidden shadow-inner focus-within:ring-2 focus-within:ring-emerald-500/60 transition cursor-pointer">
                   
                   <!-- LINHA SUPERIOR: CHECK-IN E CHECKOUT DIVIDIDOS AO MEIO -->
-                  <div class="grid grid-cols-2 divide-x divide-slate-700" onclick="alternarCalendario()">
-                    <div class="p-3 sm:p-3.5 hover:bg-slate-800/40 transition">
+                  <div class="grid grid-cols-2 divide-x divide-slate-700">
+                    <div class="p-3 sm:p-3.5 hover:bg-slate-800/40 transition cursor-pointer" onclick="clicarBoxCheckIn()">
                       <span class="block text-[10px] font-black uppercase tracking-wider text-slate-400" data-i18n="lbl_checkin">CHECK-IN</span>
                       <span id="displayCheckIn" class="block text-xs sm:text-sm font-semibold text-white mt-0.5" data-i18n="txt_inserir_data">Adicionar data</span>
                     </div>
-                    <div class="p-3 sm:p-3.5 hover:bg-slate-800/40 transition">
+                    <div class="p-3 sm:p-3.5 hover:bg-slate-800/40 transition cursor-pointer" onclick="clicarBoxCheckOut()">
                       <span class="block text-[10px] font-black uppercase tracking-wider text-slate-400" data-i18n="lbl_checkout">CHECKOUT</span>
                       <span id="displayCheckOut" class="block text-xs sm:text-sm font-semibold text-white mt-0.5" data-i18n="txt_inserir_data">Adicionar data</span>
                     </div>
@@ -402,47 +402,74 @@ site_code = '''<!DOCTYPE html>
 
                 </div>
 
-                <!-- CALENDÁRIO INTERATIVO AIRBNB (SELEÇÃO DE 2 CLIQUES NA MESMA TELA) -->
-                <div id="calendarioAirbnb" class="hidden mt-3 p-4 rounded-2xl bg-slate-950 border border-slate-700/80 shadow-2xl transition">
-                  <div class="flex items-center justify-between mb-3 pb-2 border-b border-slate-800">
+                <!-- CALENDÁRIO INTERATIVO AIRBNB (SELEÇÃO DE 2 CLIQUES + DUAL-MONTH) -->
+                <div id="calendarioAirbnb" class="hidden mt-3 p-4 sm:p-6 rounded-3xl bg-slate-950 border border-slate-700/80 shadow-2xl transition lg:absolute lg:right-0 lg:top-[102%] lg:w-[660px] lg:z-50">
+                  
+                  <!-- CABEÇALHO DO CALENDÁRIO COM MINI-BOX DE DATAS (ESTILO AIRBNB OFICIAL) -->
+                  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 mb-3 border-b border-slate-800">
                     <div>
-                      <div id="calInstrucao" class="text-xs font-bold text-emerald-400" data-i18n="cal_escolha_checkin">Selecione a data de check-in</div>
-                      <div id="calSubInstrucao" class="text-[10px] text-slate-400" data-i18n="cal_sub_instrucao">1º clique: entrada · 2º clique: saída</div>
+                      <h3 class="text-sm sm:text-base font-extrabold text-white" data-i18n="cal_titulo">Selecionar datas</h3>
+                      <p class="text-[11px] text-slate-400 mt-0.5" data-i18n="cal_subtitulo">Adicione suas datas de viagem para ver os preços exatos</p>
                     </div>
-                    <button type="button" onclick="limparDatas()" class="text-[11px] font-semibold text-slate-400 hover:text-white underline" data-i18n="btn_limpar_datas">
-                      Limpar datas
-                    </button>
+                    
+                    <div class="flex items-center rounded-xl border border-slate-700 bg-slate-900/90 divide-x divide-slate-700 text-left text-xs self-start sm:self-auto">
+                      <div id="calMiniBoxIn" class="px-3 py-1.5 min-w-[105px] rounded-l-xl transition border-2 border-emerald-500 bg-emerald-500/10 cursor-pointer" onclick="clicarBoxCheckIn()">
+                        <span class="block text-[9px] font-black tracking-wider text-slate-400 uppercase" data-i18n="lbl_checkin">CHECK-IN</span>
+                        <span id="calMiniCheckIn" class="block text-xs font-bold text-white mt-0.5">DD/MM/AAAA</span>
+                      </div>
+                      <div id="calMiniBoxOut" class="px-3 py-1.5 min-w-[105px] rounded-r-xl transition border-2 border-transparent cursor-pointer" onclick="clicarBoxCheckOut()">
+                        <span class="block text-[9px] font-black tracking-wider text-slate-400 uppercase" data-i18n="lbl_checkout">CHECKOUT</span>
+                        <span id="calMiniCheckOut" class="block text-xs font-bold text-slate-400 mt-0.5" data-i18n="txt_inserir_data">Adicionar data</span>
+                      </div>
+                    </div>
                   </div>
 
-                  <!-- NAVEGAÇÃO DE MÊS -->
-                  <div class="flex items-center justify-between mb-3 px-1">
-                    <button type="button" onclick="mudarMes(-1)" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-white flex items-center justify-center font-bold text-sm transition">‹</button>
-                    <span id="calMesAno" class="text-xs sm:text-sm font-black text-white capitalize">Outubro 2026</span>
-                    <button type="button" onclick="mudarMes(1)" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-white flex items-center justify-center font-bold text-sm transition">›</button>
+                  <!-- CONTAINER DOS MESES: 1 MÊS NO MOBILE, 2 MESES LADO A LADO EM SM+ -->
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5" onmouseleave="limparHover()">
+                    
+                    <!-- MÊS 1 -->
+                    <div class="space-y-2">
+                      <div class="flex items-center justify-between px-1 h-8">
+                        <button type="button" onclick="mudarMes(-1)" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-white flex items-center justify-center font-bold text-base transition shadow-sm" aria-label="Mês anterior">‹</button>
+                        <span id="calMesAno1" class="text-xs sm:text-sm font-black text-white capitalize"></span>
+                        <div class="w-8 h-8 sm:hidden flex items-center justify-center">
+                          <button type="button" onclick="mudarMes(1)" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-white flex items-center justify-center font-bold text-base transition shadow-sm" aria-label="Próximo mês">›</button>
+                        </div>
+                        <div class="w-8 hidden sm:block"></div>
+                      </div>
+                      <div id="calDiasSemana1" class="grid grid-cols-7 gap-1 text-center text-[10px] font-bold text-slate-400 uppercase"></div>
+                      <div id="calDiasGrid1" class="grid grid-cols-7 gap-1 text-center text-xs font-semibold"></div>
+                    </div>
+
+                    <!-- MÊS 2 -->
+                    <div class="hidden sm:block space-y-2">
+                      <div class="flex items-center justify-between px-1 h-8">
+                        <div class="w-8"></div>
+                        <span id="calMesAno2" class="text-xs sm:text-sm font-black text-white capitalize"></span>
+                        <button type="button" onclick="mudarMes(1)" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-white flex items-center justify-center font-bold text-base transition shadow-sm" aria-label="Próximo mês">›</button>
+                      </div>
+                      <div id="calDiasSemana2" class="grid grid-cols-7 gap-1 text-center text-[10px] font-bold text-slate-400 uppercase"></div>
+                      <div id="calDiasGrid2" class="grid grid-cols-7 gap-1 text-center text-xs font-semibold"></div>
+                    </div>
+
                   </div>
 
-                  <!-- DIAS DA SEMANA -->
-                  <div class="grid grid-cols-7 gap-1 text-center text-[10px] font-bold text-slate-400 uppercase mb-2">
-                    <span data-i18n="dia_dom">Dom</span>
-                    <span data-i18n="dia_seg">Seg</span>
-                    <span data-i18n="dia_ter">Ter</span>
-                    <span data-i18n="dia_qua">Qua</span>
-                    <span data-i18n="dia_qui">Qui</span>
-                    <span data-i18n="dia_sex">Sex</span>
-                    <span data-i18n="dia_sab">Sáb</span>
+                  <!-- RODAPÉ DO CALENDÁRIO: RESUMO, LIMPAR DATAS E BOTÃO FECHAR -->
+                  <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
+                    <div class="flex items-center gap-2">
+                      <span class="text-slate-400 text-xs">⌨️</span>
+                      <span id="calResumoNoites" class="text-slate-300 font-medium text-[11px]" data-i18n="txt_sem_datas">Nenhuma data selecionada</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                      <button type="button" onclick="limparDatas()" class="text-[11px] font-bold text-slate-400 hover:text-white underline transition" data-i18n="btn_limpar_datas">
+                        Limpar datas
+                      </button>
+                      <button type="button" onclick="fecharCalendario()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs transition shadow-md" data-i18n="cal_btn_fechar">
+                        Fechar
+                      </button>
+                    </div>
                   </div>
 
-                  <!-- GRADE DINÂMICA DOS DIAS -->
-                  <div id="calDiasGrid" class="grid grid-cols-7 gap-1 text-center text-xs font-semibold">
-                    <!-- Renderizado dinamicamente via JS -->
-                  </div>
-
-                  <div class="mt-3 pt-2.5 border-t border-slate-800 flex items-center justify-between text-xs">
-                    <span id="calResumoNoites" class="text-slate-400 text-[11px]" data-i18n="txt_sem_datas">Nenhuma data selecionada</span>
-                    <button type="button" onclick="fecharCalendario()" class="px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs" data-i18n="btn_concluir">
-                      Concluir
-                    </button>
-                  </div>
                 </div>
 
                 <!-- BOTÃO DE AÇÃO PRINCIPAL AIRBNB -->
@@ -1016,7 +1043,6 @@ site_code = '''<!DOCTYPE html>
           <div class="pt-2 text-[11px] text-slate-400 space-y-1">
             <p><strong>Razão Social:</strong> SNT Empreendimentos Imobiliários LTDA</p>
             <p><strong>CNPJ:</strong> 63.223.844/0001-11</p>
-            <p><strong>Inscrição Municipal:</strong> 772987 · Guarulhos/SP</p>
             <p><strong>Endereço:</strong> Avenida Aguanil, 51 - Cidade Seródio - Guarulhos/SP - CEP 07150-130</p>
           </div>
         </div>
@@ -1195,6 +1221,11 @@ site_code = '''<!DOCTYPE html>
         cal_escolha_checkin: "Selecione a data de check-in",
         cal_escolha_checkout: "Selecione a data de checkout",
         cal_sub_instrucao: "1º clique: entrada · 2º clique: saída",
+        cal_titulo: "Selecionar datas",
+        cal_subtitulo: "Adicione suas datas de viagem para ver os preços exatos",
+        cal_btn_fechar: "Fechar",
+        txt_noite_sing: "noite",
+        txt_noites_plur: "noites",
         btn_limpar_datas: "Limpar datas",
         dia_dom: "Dom", dia_seg: "Seg", dia_ter: "Ter", dia_qua: "Qua", dia_qui: "Qui", dia_sex: "Sex", dia_sab: "Sáb",
         txt_sem_datas: "Nenhuma data selecionada",
@@ -1343,6 +1374,11 @@ site_code = '''<!DOCTYPE html>
         cal_escolha_checkin: "Select check-in date",
         cal_escolha_checkout: "Select checkout date",
         cal_sub_instrucao: "1st tap: check-in · 2nd tap: checkout",
+        cal_titulo: "Select dates",
+        cal_subtitulo: "Add your travel dates for exact pricing",
+        cal_btn_fechar: "Close",
+        txt_noite_sing: "night",
+        txt_noites_plur: "nights",
         btn_limpar_datas: "Clear dates",
         dia_dom: "Sun", dia_seg: "Mon", dia_ter: "Tue", dia_qua: "Wed", dia_qui: "Thu", dia_sex: "Fri", dia_sab: "Sat",
         txt_sem_datas: "No dates selected",
@@ -1491,6 +1527,11 @@ site_code = '''<!DOCTYPE html>
         cal_escolha_checkin: "Seleccione fecha de check-in",
         cal_escolha_checkout: "Seleccione fecha de checkout",
         cal_sub_instrucao: "1º clic: entrada · 2º clic: salida",
+        cal_titulo: "Seleccionar fechas",
+        cal_subtitulo: "Agregue las fechas de su viaje para ver los precios exactos",
+        cal_btn_fechar: "Cerrar",
+        txt_noite_sing: "noche",
+        txt_noites_plur: "noches",
         btn_limpar_datas: "Borrar fechas",
         dia_dom: "Dom", dia_seg: "Lun", dia_ter: "Mar", dia_qua: "Mié", dia_qui: "Jue", dia_sex: "Vie", dia_sab: "Sáb",
         txt_sem_datas: "Ninguna fecha seleccionada",
@@ -1595,7 +1636,7 @@ site_code = '''<!DOCTYPE html>
       });
 
       // Atualiza textos do calendário e cotação caso estejam visíveis
-      renderizarMesAtual();
+      renderizarMeses();
       atualizarDisplayDatas();
       if (ultimaCotacao && Array.isArray(ultimaCotacao.studios)) {
         renderizarCardDisponibilidade();
@@ -1670,19 +1711,49 @@ site_code = '''<!DOCTYPE html>
     };
 
     // ========================================================
-    // CALENDÁRIO RANGE AIRBNB (SELEÇÃO DE 2 CLIQUES)
+    // CALENDÁRIO RANGE AIRBNB (SELEÇÃO DE 2 CLIQUES + DUAL-MONTH)
     // ========================================================
     let dataCheckIn = "";
     let dataCheckOut = "";
     let dataHover = "";
     let calAno = new Date().getFullYear();
     let calMes = new Date().getMonth(); // 0-11
+    let datasTotalmenteOcupadas = new Set();
+    let carregandoDisponibilidadeGeral = false;
 
     const NOMES_MESES = {
       pt: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
       en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
       es: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
     };
+
+    const DIAS_SEMANA_SIGLAS = {
+      pt: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+      en: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+      es: ['D', 'L', 'M', 'M', 'J', 'V', 'S']
+    };
+
+    function clicarBoxCheckIn() {
+      abrirCalendario();
+      dataCheckIn = "";
+      dataCheckOut = "";
+      dataHover = "";
+      document.getElementById('inputCheckIn').value = "";
+      document.getElementById('inputCheckOut').value = "";
+      atualizarDisplayDatas();
+      renderizarMeses();
+    }
+
+    function clicarBoxCheckOut() {
+      abrirCalendario();
+      if (dataCheckIn) {
+        dataCheckOut = "";
+        dataHover = "";
+        document.getElementById('inputCheckOut').value = "";
+        atualizarDisplayDatas();
+        renderizarMeses();
+      }
+    }
 
     function alternarCalendario() {
       const el = document.getElementById('calendarioAirbnb');
@@ -1698,7 +1769,10 @@ site_code = '''<!DOCTYPE html>
       const el = document.getElementById('calendarioAirbnb');
       if (el) {
         el.classList.remove('hidden');
-        renderizarMesAtual();
+        renderizarMeses();
+        if (datasTotalmenteOcupadas.size === 0) {
+          carregarDisponibilidadeGeral();
+        }
       }
     }
 
@@ -1722,47 +1796,71 @@ site_code = '''<!DOCTYPE html>
         calAno = agora.getFullYear();
         calMes = agora.getMonth();
       }
-      renderizarMesAtual();
+      renderizarMeses();
     }
 
-    function renderizarMesAtual() {
-      const mesEl = document.getElementById('calMesAno');
-      if (mesEl) {
-        const lista = NOMES_MESES[idiomaAtual] || NOMES_MESES['pt'];
-        mesEl.innerText = `${lista[calMes]} ${calAno}`;
+    function formatarTituloMes(ano, mes) {
+      const lista = NOMES_MESES[idiomaAtual] || NOMES_MESES['pt'];
+      const nomeMes = lista[mes];
+      if (idiomaAtual === 'pt' || idiomaAtual === 'es') {
+        return `${nomeMes.toLowerCase()} de ${ano}`;
       }
+      return `${nomeMes} ${ano}`;
+    }
 
-      const grid = document.getElementById('calDiasGrid');
-      if (!grid) return;
-      grid.innerHTML = '';
+    function renderizarCabecalhoSemana(elContainer) {
+      if (!elContainer) return;
+      const siglas = DIAS_SEMANA_SIGLAS[idiomaAtual] || DIAS_SEMANA_SIGLAS['pt'];
+      elContainer.innerHTML = siglas.map(s => `<span>${s}</span>`).join('');
+    }
+
+    function renderizarGradeDiasMes(ano, mes, elGrid) {
+      if (!elGrid) return;
+      elGrid.innerHTML = '';
 
       const agora = new Date();
       const hojeIso = `${agora.getFullYear()}-${String(agora.getMonth() + 1).padStart(2, '0')}-${String(agora.getDate()).padStart(2, '0')}`;
 
-      // Primeiro dia do mês (0 = domingo)
-      const primeiroDiaSemana = new Date(calAno, calMes, 1).getDay();
-      // Total de dias no mês
-      const totalDiasMes = new Date(calAno, calMes + 1, 0).getDate();
+      const primeiroDiaSemana = new Date(ano, mes, 1).getDay();
+      const totalDiasMes = new Date(ano, mes + 1, 0).getDate();
 
       // Células em branco antes do dia 1
       for (let i = 0; i < primeiroDiaSemana; i++) {
         const vazio = document.createElement('div');
-        vazio.className = "h-8";
-        grid.appendChild(vazio);
+        vazio.className = "h-9";
+        elGrid.appendChild(vazio);
+      }
+
+      // Se Check-in já foi definido e estamos aguardando Checkout,
+      // qualquer noite após a primeira noite indisponível não pode ser estendida
+      let primeiroBloqueioAposCheckIn = null;
+      if (dataCheckIn && !dataCheckOut) {
+        const bloqueiosOrdenados = Array.from(datasTotalmenteOcupadas).sort();
+        for (const bloq of bloqueiosOrdenados) {
+          if (bloq > dataCheckIn) {
+            primeiroBloqueioAposCheckIn = bloq;
+            break;
+          }
+        }
       }
 
       for (let dia = 1; dia <= totalDiasMes; dia++) {
-        const diaIso = `${calAno}-${String(calMes + 1).padStart(2, '0')}-${String(dia).padStart(2, '0')}`;
+        const diaIso = `${ano}-${String(mes + 1).padStart(2, '0')}-${String(dia).padStart(2, '0')}`;
         const ehPassado = diaIso < hojeIso;
+        const ehTotalmenteOcupado = datasTotalmenteOcupadas.has(diaIso);
+        
+        // Bloqueia checkout se ultrapassar o primeiro dia ocupado
+        const ehBloqueadoParaCheckout = (primeiroBloqueioAposCheckIn && diaIso > primeiroBloqueioAposCheckIn);
 
         const btn = document.createElement('button');
         btn.type = "button";
         btn.innerText = String(dia);
+        btn.setAttribute('data-date', diaIso);
 
-        let classes = "h-9 w-full flex items-center justify-center rounded-xl text-xs font-semibold transition ";
+        const ehIndisponivel = ehPassado || ehTotalmenteOcupado || ehBloqueadoParaCheckout;
 
-        if (ehPassado) {
-          classes += "text-slate-600 cursor-not-allowed opacity-35";
+        if (ehIndisponivel) {
+          btn.className = "h-9 w-full flex items-center justify-center rounded-full text-xs font-normal text-slate-600 line-through cursor-not-allowed opacity-35";
           btn.disabled = true;
         } else {
           btn.onclick = () => selecionarDiaCalendario(diaIso);
@@ -1771,20 +1869,88 @@ site_code = '''<!DOCTYPE html>
           const ehCheckIn = dataCheckIn === diaIso;
           const ehCheckOut = dataCheckOut === diaIso;
           const emIntervalo = dataCheckIn && dataCheckOut && diaIso > dataCheckIn && diaIso < dataCheckOut;
-          const emHover = dataCheckIn && !dataCheckOut && dataHover && diaIso > dataCheckIn && diaIso <= dataHover;
+
+          let classes = "h-9 w-full flex items-center justify-center text-xs font-semibold transition ";
 
           if (ehCheckIn || ehCheckOut) {
-            classes += "bg-emerald-500 text-slate-950 font-black shadow-md shadow-emerald-500/30 scale-105 z-10";
-          } else if (emIntervalo || emHover) {
+            classes += "bg-emerald-500 text-slate-950 font-black shadow-md shadow-emerald-500/30 scale-105 rounded-full z-10";
+          } else if (emIntervalo) {
             classes += "bg-emerald-500/20 text-emerald-300 rounded-none";
           } else {
-            classes += "text-slate-200 hover:bg-slate-800 hover:text-white";
+            classes += "text-white font-bold hover:bg-slate-800 rounded-full";
           }
+          btn.className = classes;
         }
 
-        btn.className = classes;
-        grid.appendChild(btn);
+        elGrid.appendChild(btn);
       }
+    }
+
+    function renderizarMeses() {
+      // Mês 1
+      const mes1 = calMes;
+      const ano1 = calAno;
+      const tit1 = document.getElementById('calMesAno1');
+      if (tit1) tit1.innerText = formatarTituloMes(ano1, mes1);
+      renderizarCabecalhoSemana(document.getElementById('calDiasSemana1'));
+      renderizarGradeDiasMes(ano1, mes1, document.getElementById('calDiasGrid1'));
+
+      // Mês 2
+      let mes2 = calMes + 1;
+      let ano2 = calAno;
+      if (mes2 > 11) {
+        mes2 = 0;
+        ano2++;
+      }
+      const tit2 = document.getElementById('calMesAno2');
+      if (tit2) tit2.innerText = formatarTituloMes(ano2, mes2);
+      renderizarCabecalhoSemana(document.getElementById('calDiasSemana2'));
+      renderizarGradeDiasMes(ano2, mes2, document.getElementById('calDiasGrid2'));
+
+      atualizarDisplayDatas();
+    }
+
+    function hoverDiaCalendario(diaIso) {
+      if (!dataCheckIn || dataCheckOut || diaIso <= dataCheckIn) return;
+      dataHover = diaIso;
+
+      const cal = document.getElementById('calendarioAirbnb');
+      if (!cal) return;
+      const botoes = cal.querySelectorAll('button[data-date]');
+      botoes.forEach(b => {
+        const d = b.getAttribute('data-date');
+        if (!d || b.disabled || d === dataCheckIn) return;
+        if (d > dataCheckIn && d <= diaIso) {
+          b.classList.add('bg-emerald-500/20', 'text-emerald-300', 'rounded-none');
+          b.classList.remove('rounded-full', 'hover:bg-slate-800');
+        } else {
+          b.classList.remove('bg-emerald-500/20', 'text-emerald-300', 'rounded-none');
+          b.classList.add('rounded-full');
+        }
+      });
+
+      const diffDias = Math.round((new Date(diaIso + 'T12:00:00') - new Date(dataCheckIn + 'T12:00:00')) / 86400000);
+      const resumo = document.getElementById('calResumoNoites');
+      if (resumo) {
+        const txtNoite = diffDias > 1 ? (I18N[idiomaAtual].txt_noites_plur || 'noites') : (I18N[idiomaAtual].txt_noite_sing || 'noite');
+        resumo.innerText = `${diffDias} ${txtNoite}`;
+      }
+    }
+
+    function limparHover() {
+      if (dataCheckOut) return;
+      dataHover = "";
+      const cal = document.getElementById('calendarioAirbnb');
+      if (!cal) return;
+      const botoes = cal.querySelectorAll('button[data-date]');
+      botoes.forEach(b => {
+        const d = b.getAttribute('data-date');
+        if (d !== dataCheckIn && !b.disabled) {
+          b.classList.remove('bg-emerald-500/20', 'text-emerald-300', 'rounded-none');
+          b.classList.add('rounded-full');
+        }
+      });
+      atualizarDisplayDatas();
     }
 
     function selecionarDiaCalendario(diaIso) {
@@ -1796,22 +1962,17 @@ site_code = '''<!DOCTYPE html>
         document.getElementById('inputCheckIn').value = diaIso;
         document.getElementById('inputCheckOut').value = "";
         
-        const instrucao = document.getElementById('calInstrucao');
-        if (instrucao) instrucao.innerText = I18N[idiomaAtual].cal_escolha_checkout || "Selecione a data de checkout";
-        
         atualizarDisplayDatas();
-        renderizarMesAtual();
+        renderizarMeses();
       } else if (dataCheckIn && !dataCheckOut) {
         // 2º Clique: define data de saída
         if (diaIso > dataCheckIn) {
           dataCheckOut = diaIso;
+          dataHover = "";
           document.getElementById('inputCheckOut').value = diaIso;
           
-          const instrucao = document.getElementById('calInstrucao');
-          if (instrucao) instrucao.innerText = I18N[idiomaAtual].cal_escolha_checkin || "Selecione a data de check-in";
-          
           atualizarDisplayDatas();
-          renderizarMesAtual();
+          renderizarMeses();
           
           // Fecha o calendário suavemente e já calcula em tempo real
           setTimeout(() => {
@@ -1822,22 +1983,11 @@ site_code = '''<!DOCTYPE html>
           // Se clicou em data anterior ou igual, vira o novo check-in
           dataCheckIn = diaIso;
           dataCheckOut = "";
+          dataHover = "";
           document.getElementById('inputCheckIn').value = diaIso;
           document.getElementById('inputCheckOut').value = "";
           atualizarDisplayDatas();
-          renderizarMesAtual();
-        }
-      }
-    }
-
-    function hoverDiaCalendario(diaIso) {
-      if (dataCheckIn && !dataCheckOut && diaIso > dataCheckIn) {
-        dataHover = diaIso;
-        renderizarMesAtual();
-        const diffDias = Math.round((new Date(diaIso + 'T12:00:00') - new Date(dataCheckIn + 'T12:00:00')) / 86400000);
-        const resumo = document.getElementById('calResumoNoites');
-        if (resumo) {
-          resumo.innerText = `${diffDias} ${diffDias > 1 ? 'noites' : 'noite'} selecionada${diffDias > 1 ? 's' : ''}`;
+          renderizarMeses();
         }
       }
     }
@@ -1849,21 +1999,38 @@ site_code = '''<!DOCTYPE html>
       document.getElementById('inputCheckIn').value = "";
       document.getElementById('inputCheckOut').value = "";
       atualizarDisplayDatas();
-      renderizarMesAtual();
+      renderizarMeses();
       const resultado = document.getElementById('resultadoCotacao');
       if (resultado) resultado.classList.add('hidden');
-      const instrucao = document.getElementById('calInstrucao');
-      if (instrucao) instrucao.innerText = I18N[idiomaAtual].cal_escolha_checkin || "Selecione a data de check-in";
     }
 
     function atualizarDisplayDatas() {
       const inEl = document.getElementById('displayCheckIn');
       const outEl = document.getElementById('displayCheckOut');
+      const miniIn = document.getElementById('calMiniCheckIn');
+      const miniOut = document.getElementById('calMiniCheckOut');
+      const boxIn = document.getElementById('calMiniBoxIn');
+      const boxOut = document.getElementById('calMiniBoxOut');
       const mob = document.getElementById('mobileBarDatas');
       const placeholder = I18N[idiomaAtual].txt_inserir_data || "Adicionar data";
 
       if (inEl) inEl.innerText = dataCheckIn ? formatarDataBr(dataCheckIn) : placeholder;
       if (outEl) outEl.innerText = dataCheckOut ? formatarDataBr(dataCheckOut) : placeholder;
+      
+      if (miniIn) miniIn.innerText = dataCheckIn ? formatarDataBr(dataCheckIn) : "DD/MM/AAAA";
+      if (miniOut) miniOut.innerText = dataCheckOut ? formatarDataBr(dataCheckOut) : placeholder;
+
+      // Realce visual da mini-caixa ativa
+      if (boxIn && boxOut) {
+        if (!dataCheckIn || (dataCheckIn && dataCheckOut)) {
+          boxIn.className = "px-3 py-1.5 min-w-[105px] rounded-l-xl transition border-2 border-emerald-500 bg-emerald-500/10 cursor-pointer";
+          boxOut.className = "px-3 py-1.5 min-w-[105px] rounded-r-xl transition border-2 border-transparent cursor-pointer";
+        } else {
+          boxIn.className = "px-3 py-1.5 min-w-[105px] rounded-l-xl transition border-2 border-transparent cursor-pointer";
+          boxOut.className = "px-3 py-1.5 min-w-[105px] rounded-r-xl transition border-2 border-emerald-500 bg-emerald-500/10 cursor-pointer";
+        }
+      }
+
       if (mob) {
         if (dataCheckIn && dataCheckOut) {
           const noites = Math.round((new Date(dataCheckOut + 'T12:00:00') - new Date(dataCheckIn + 'T12:00:00')) / 86400000);
@@ -1877,12 +2044,69 @@ site_code = '''<!DOCTYPE html>
       if (resumo) {
         if (dataCheckIn && dataCheckOut) {
           const noites = Math.round((new Date(dataCheckOut + 'T12:00:00') - new Date(dataCheckIn + 'T12:00:00')) / 86400000);
-          resumo.innerText = `${noites} ${noites > 1 ? 'noites' : 'noite'} (${formatarDataBr(dataCheckIn)} a ${formatarDataBr(dataCheckOut)})`;
+          const txtNoite = noites > 1 ? (I18N[idiomaAtual].txt_noites_plur || 'noites') : (I18N[idiomaAtual].txt_noite_sing || 'noite');
+          resumo.innerText = `${noites} ${txtNoite} (${formatarDataBr(dataCheckIn)} a ${formatarDataBr(dataCheckOut)})`;
         } else if (dataCheckIn) {
           resumo.innerText = `Check-in: ${formatarDataBr(dataCheckIn)}`;
         } else {
           resumo.innerText = I18N[idiomaAtual].txt_sem_datas || "Nenhuma data selecionada";
         }
+      }
+    }
+
+    async function carregarDisponibilidadeGeral() {
+      if (carregandoDisponibilidadeGeral) return;
+      carregandoDisponibilidadeGeral = true;
+      try {
+        const agora = new Date();
+        const ano = agora.getFullYear();
+        const mes = String(agora.getMonth() + 1).padStart(2, '0');
+        const dia = String(agora.getDate()).padStart(2, '0');
+        const hojeIso = `${ano}-${mes}-${dia}`;
+
+        const futuroData = new Date(agora.getTime() + 120 * 86400000);
+        const fAno = futuroData.getFullYear();
+        const fMes = String(futuroData.getMonth() + 1).padStart(2, '0');
+        const fDia = String(futuroData.getDate()).padStart(2, '0');
+        const futuroIso = `${fAno}-${fMes}-${fDia}`;
+
+        const url = new URL(API_COTACAO);
+        url.searchParams.set('entrada', hojeIso);
+        url.searchParams.set('saida', futuroIso);
+
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 8000);
+        const res = await fetch(url.toString(), {
+          signal: controller.signal,
+          headers: { Accept: 'application/json' }
+        });
+        clearTimeout(timeoutId);
+
+        if (res.ok) {
+          const dados = await res.json().catch(() => ({}));
+          if (dados && Array.isArray(dados.studios) && dados.studios.length > 0) {
+            const totalStudios = dados.studios.length;
+            const mapa = {};
+            dados.studios.forEach(s => {
+              if (Array.isArray(s.diasOcupados)) {
+                s.diasOcupados.forEach(d => {
+                  mapa[d] = (mapa[d] || 0) + 1;
+                });
+              }
+            });
+            datasTotalmenteOcupadas.clear();
+            Object.keys(mapa).forEach(d => {
+              if (mapa[d] >= totalStudios) {
+                datasTotalmenteOcupadas.add(d);
+              }
+            });
+            renderizarMeses();
+          }
+        }
+      } catch (e) {
+        // Falha tolerante: calendário continua navegável
+      } finally {
+        carregandoDisponibilidadeGeral = false;
       }
     }
 
@@ -2370,9 +2594,11 @@ site_code = '''<!DOCTYPE html>
 
     // Inicialização ao carregar página
     document.addEventListener('DOMContentLoaded', () => {
+      carregarDisponibilidadeGeral();
       if (idiomaAtual !== 'pt') {
         trocarIdioma(idiomaAtual);
       } else {
+        renderizarMeses();
         atualizarDisplayDatas();
       }
     });
