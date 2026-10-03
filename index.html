@@ -6,7 +6,7 @@
   <title>SNT Studios · Hospitalidade & Hospedagem Próximo ao Aeroporto de Guarulhos (GRU)</title>
   
   <!-- SEO & Social Sharing -->
-  <meta name="description" content="Studios modernos, privativos e confortáveis em Guarulhos, a apenas 10-15 min do Aeroporto GRU. Internet fibra 600MB, fechadura eletrônica 24h, cozinha compacta e reserva direta com 10% de desconto.">
+  <meta name="description" content="Studios privativos modernos e confortáveis em Guarulhos, a apenas 10-15 min do Aeroporto GRU. Internet fibra 600MB, fechadura eletrônica 24h, cozinha compacta e reserva direta com 10% de desconto.">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <link rel="canonical" href="https://www.sntstudios.com/">
   <meta property="og:title" content="SNT Studios · Hospedagem Moderna ao Lado do Aeroporto GRU">
@@ -60,12 +60,12 @@
       font-family: 'Plus Jakarta Sans', sans-serif;
     }
     .glass-nav {
-      background: rgba(7, 11, 20, 0.88);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: rgba(7, 11, 20, 0.90);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
     }
     .glass-card {
-      background: rgba(15, 23, 42, 0.78);
+      background: rgba(15, 23, 42, 0.80);
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.08);
     }
@@ -78,14 +78,6 @@
     .modal-backdrop {
       background: rgba(2, 6, 23, 0.88);
       backdrop-filter: blur(8px);
-    }
-    input[type="date"]::-webkit-calendar-picker-indicator {
-      filter: invert(1);
-      opacity: 0.65;
-      cursor: pointer;
-    }
-    input[type="date"]::-webkit-calendar-picker-indicator:hover {
-      opacity: 1;
     }
     @keyframes pulseFocus {
       0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
@@ -105,29 +97,43 @@
       <!-- LOGO SNT STUDIOS -->
       <a href="#" class="flex items-center gap-3 group">
         <img src="assets/snt-empreendimentos-horizontal-branco.png" alt="SNT Studios" class="h-9 sm:h-11 w-auto object-contain transition transform group-hover:scale-[1.02]">
-        <span class="hidden md:inline-block bg-emerald-500/10 text-emerald-400 text-[11px] font-bold px-2.5 py-0.5 rounded-full border border-emerald-500/20">
+        <span class="hidden md:inline-block bg-emerald-500/10 text-emerald-400 text-[11px] font-bold px-2.5 py-0.5 rounded-full border border-emerald-500/20" data-i18n="badge_boutique">
           STUDIOS BOUTIQUE
         </span>
       </a>
 
       <!-- MENU DESKTOP -->
-      <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-300">
-        <a href="#inicio" class="hover:text-emerald-400 transition">Início</a>
-        <a href="#cotador" class="hover:text-emerald-400 transition">Disponibilidade</a>
-        <a href="#studios" class="hover:text-emerald-400 transition">Nossos Studios</a>
-        <a href="#comodidades" class="hover:text-emerald-400 transition">Comodidades</a>
-        <a href="#localizacao" class="hover:text-emerald-400 transition">Localização</a>
-        <a href="#faq" class="hover:text-emerald-400 transition">Dúvidas</a>
+      <div class="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-300">
+        <a href="#inicio" class="hover:text-emerald-400 transition" data-i18n="nav_inicio">Início</a>
+        <a href="#cotador" class="hover:text-emerald-400 transition" data-i18n="nav_disponibilidade">Disponibilidade</a>
+        <a href="#studios" class="hover:text-emerald-400 transition" data-i18n="nav_studios">Acomodações</a>
+        <a href="#comodidades" class="hover:text-emerald-400 transition" data-i18n="nav_comodidades">Comodidades</a>
+        <a href="#localizacao" class="hover:text-emerald-400 transition" data-i18n="nav_localizacao">Localização</a>
+        <a href="#faq" class="hover:text-emerald-400 transition" data-i18n="nav_faq">Dúvidas</a>
       </div>
 
-      <!-- BOTÃO DIRETO WHATSAPP -->
+      <!-- SELETOR DE IDIOMAS & BOTAO WHATSAPP -->
       <div class="flex items-center gap-3">
-        <a href="https://api.whatsapp.com/send?phone=551154443110" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-2 text-xs font-semibold text-slate-300 hover:text-emerald-400 transition px-3 py-2 rounded-lg bg-slate-900 border border-slate-800">
+        
+        <!-- SELETOR MULTILÍNGUE (PT / EN / ES) -->
+        <div class="flex items-center bg-slate-900 border border-slate-700/80 rounded-xl p-1 text-xs">
+          <button type="button" onclick="trocarIdioma('pt')" id="btnLangPt" class="px-2 py-1 rounded-lg font-bold transition bg-emerald-500 text-slate-950" title="Português">
+            🇧🇷 PT
+          </button>
+          <button type="button" onclick="trocarIdioma('en')" id="btnLangEn" class="px-2 py-1 rounded-lg font-bold transition text-slate-400 hover:text-white" title="English">
+            🇺🇸 EN
+          </button>
+          <button type="button" onclick="trocarIdioma('es')" id="btnLangEs" class="px-2 py-1 rounded-lg font-bold transition text-slate-400 hover:text-white" title="Español">
+            🇪🇸 ES
+          </button>
+        </div>
+
+        <a href="https://api.whatsapp.com/send?phone=551154443110" target="_blank" rel="noopener noreferrer" class="hidden xl:inline-flex items-center gap-2 text-xs font-semibold text-slate-300 hover:text-emerald-400 transition px-3 py-2 rounded-lg bg-slate-900 border border-slate-800">
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
           <span>(11) 5444-3110</span>
         </a>
-        <a href="https://api.whatsapp.com/send?phone=551154443110&text=Ola%21%20Gostaria%20de%20consultar%20uma%20reserva%20direta%20no%20SNT%20Studios%20com%2010%25%20de%20desconto." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm shadow-lg shadow-emerald-500/20 transition transform hover:-translate-y-0.5">
-          <span>Reservar no WhatsApp</span>
+        <a href="https://api.whatsapp.com/send?phone=551154443110&text=Ola%21%20Gostaria%20de%20consultar%20uma%20reserva%20direta%20no%20SNT%20Studios%20com%2010%25%20de%20desconto." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-3.5 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm shadow-lg shadow-emerald-500/20 transition transform hover:-translate-y-0.5">
+          <span data-i18n="btn_nav_reserva">Reservar no WhatsApp</span>
           <span class="bg-slate-950/20 text-slate-950 text-[10px] px-1.5 py-0.5 rounded font-black">-10%</span>
         </a>
       </div>
@@ -135,44 +141,42 @@
     </div>
   </nav>
 
-  <!-- LISTING AIRBNB SHOWCASE (O MODELO DE QUANDO O HÓSPEDE JÁ ESTÁ DENTRO DO IMÓVEL) -->
+  <!-- LISTING SHOWCASE (MODELO DE QUANDO O HÓSPEDE JÁ ESTÁ DENTRO DO IMÓVEL) -->
   <section id="inicio" class="relative pt-28 pb-16 lg:pt-36 lg:pb-24 hero-glow overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-      <!-- CABEÇALHO DO ANÚNCIO (ESTILO LISTING AIRBNB) -->
+      <!-- CABEÇALHO DO ANÚNCIO (SEM ESTRELAS / FOCO EM VALOR E LOCALIZAÇÃO) -->
       <div class="mb-6 space-y-2.5">
         <div class="flex flex-wrap items-center gap-2">
-          <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 px-3 py-1 text-xs font-bold text-emerald-400">
+          <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 px-3 py-1 text-xs font-bold text-emerald-400" data-i18n="badge_topo_local">
             <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
             Hospedagem Privativa em Guarulhos · Aeroporto GRU
           </span>
-          <span class="inline-flex items-center gap-1 rounded-full bg-amber-400/10 border border-amber-400/30 px-3 py-1 text-xs font-bold text-amber-300">
-            ★ 4.98 · Preferido dos hóspedes
-          </span>
-          <span class="inline-flex items-center gap-1 rounded-full bg-slate-800 border border-slate-700 px-3 py-1 text-xs font-semibold text-slate-300">
+          <span class="inline-flex items-center gap-1 rounded-full bg-slate-800 border border-slate-700 px-3 py-1 text-xs font-semibold text-slate-300" data-i18n="badge_topo_desconto">
             🛡️ 10% OFF Reserva Direta Garantida
+          </span>
+          <span class="inline-flex items-center gap-1 rounded-full bg-slate-800 border border-slate-700 px-3 py-1 text-xs font-semibold text-slate-300" data-i18n="badge_topo_checkin">
+            🔑 Auto Check-in 24h
           </span>
         </div>
 
-        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight" data-i18n="hero_title">
           SNT Studios · Studios Privativos a 10 min do Aeroporto GRU
         </h1>
 
-        <!-- BARRA SUB-HEADER AIRBNB -->
+        <!-- BARRA SUB-HEADER -->
         <div class="flex flex-wrap items-center justify-between gap-3 text-xs sm:text-sm text-slate-300 pt-1 pb-4 border-b border-slate-800/80">
           <div class="flex flex-wrap items-center gap-2">
-            <span class="font-black text-amber-400 flex items-center gap-1">★ 4.98</span>
+            <span class="text-slate-300 font-semibold" data-i18n="sub_hospitalidade">Hospitalidade Independente</span>
             <span class="text-slate-500">·</span>
-            <a href="#studios" class="underline underline-offset-4 hover:text-white font-medium">42 avaliações reais de hóspedes</a>
-            <span class="text-slate-500">·</span>
-            <span class="text-slate-300 font-semibold">🏆 Superhost SNT</span>
+            <span class="text-slate-400" data-i18n="sub_gru_dist">A 10-15 minutos dos Terminais 1, 2 e 3</span>
             <span class="text-slate-500">·</span>
             <a href="#localizacao" class="underline underline-offset-4 hover:text-emerald-400 text-slate-400">Avenida Aguanil, 51 · Seródio, Guarulhos - SP</a>
           </div>
           <div class="flex items-center gap-3">
             <button type="button" onclick="compartilharSite()" class="flex items-center gap-1.5 text-xs text-slate-400 hover:text-white transition">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
-              <span id="btnShareText">Compartilhar</span>
+              <span id="btnShareText" data-i18n="btn_compartilhar">Compartilhar</span>
             </button>
           </div>
         </div>
@@ -182,40 +186,40 @@
       <div class="relative rounded-3xl overflow-hidden border border-slate-800 shadow-2xl mb-12 group">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-2 h-[340px] sm:h-[420px] lg:h-[480px]">
           <!-- Foto Principal Grande (Esquerda: 2 colunas no desktop) -->
-          <div class="md:col-span-2 relative overflow-hidden bg-slate-950 cursor-pointer" onclick="abrirGaleria('12')">
-            <img src="assets/fotos/20251030_162521(1).webp" alt="Studio 12 - Master King" class="w-full h-full object-cover group-hover:scale-[1.02] transition duration-500">
+          <div class="md:col-span-2 relative overflow-hidden bg-slate-950 cursor-pointer" onclick="abrirGaleria('master')">
+            <img src="assets/fotos/20251030_162521(1).webp" alt="Studio Master King" class="w-full h-full object-cover group-hover:scale-[1.02] transition duration-500">
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex flex-col justify-end p-5">
-              <span class="bg-amber-400 text-slate-950 text-[10px] font-black px-2.5 py-0.5 rounded shadow w-max mb-1">🏆 STUDIO 12 · MASTER KING</span>
-              <span class="text-white text-sm font-bold">O maior studio · Ampla iluminação e cortinas elegantes</span>
+              <span class="bg-emerald-500 text-slate-950 text-[10px] font-black px-2.5 py-0.5 rounded shadow w-max mb-1 uppercase tracking-wider" data-i18n="tag_master_king">STUDIO MASTER KING</span>
+              <span class="text-white text-sm font-bold" data-i18n="desc_master_king_curta">Ampla iluminação, cama Queen Size e cortinas elegantes</span>
             </div>
           </div>
           <!-- Coluna 2 (2 fotos empilhadas) -->
           <div class="hidden md:grid grid-rows-2 gap-2">
-            <div class="relative overflow-hidden bg-slate-950 cursor-pointer" onclick="abrirGaleria('14')">
-              <img src="assets/fotos/20251030_164004.webp" alt="Studio 14 - Executivo" class="w-full h-full object-cover hover:scale-105 transition duration-500">
-              <div class="absolute bottom-2 left-2 bg-slate-950/80 backdrop-blur px-2 py-0.5 rounded text-[10px] font-bold text-teal-300 border border-slate-700">Studio 14 Executivo</div>
+            <div class="relative overflow-hidden bg-slate-950 cursor-pointer" onclick="abrirGaleria('executivo')">
+              <img src="assets/fotos/20251030_164004.webp" alt="Studio Executivo Premium" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+              <div class="absolute bottom-2 left-2 bg-slate-950/80 backdrop-blur px-2 py-0.5 rounded text-[10px] font-bold text-teal-300 border border-slate-700" data-i18n="tag_executivo_premium">Executivo Premium</div>
             </div>
-            <div class="relative overflow-hidden bg-slate-950 cursor-pointer" onclick="abrirGaleria('12')">
+            <div class="relative overflow-hidden bg-slate-950 cursor-pointer" onclick="abrirGaleria('master')">
               <img src="assets/fotos/20251030_144616.webp" alt="Cozinha Compacta Completa" class="w-full h-full object-cover hover:scale-105 transition duration-500">
-              <div class="absolute bottom-2 left-2 bg-slate-950/80 backdrop-blur px-2 py-0.5 rounded text-[10px] font-bold text-emerald-300 border border-slate-700">Cozinha Compacta</div>
+              <div class="absolute bottom-2 left-2 bg-slate-950/80 backdrop-blur px-2 py-0.5 rounded text-[10px] font-bold text-emerald-300 border border-slate-700" data-i18n="tag_cozinha_priv">Cozinha Compacta</div>
             </div>
           </div>
           <!-- Coluna 3 (2 fotos empilhadas) -->
           <div class="hidden md:grid grid-rows-2 gap-2">
-            <div class="relative overflow-hidden bg-slate-950 cursor-pointer" onclick="abrirGaleria('11')">
-              <img src="assets/fotos/20251030_143554.webp" alt="Studio 11 - Standard Smart" class="w-full h-full object-cover hover:scale-105 transition duration-500">
-              <div class="absolute bottom-2 left-2 bg-slate-950/80 backdrop-blur px-2 py-0.5 rounded text-[10px] font-bold text-slate-300 border border-slate-700">Studio 11 Smart</div>
+            <div class="relative overflow-hidden bg-slate-950 cursor-pointer" onclick="abrirGaleria('smart')">
+              <img src="assets/fotos/20251030_143554.webp" alt="Studio Standard Smart" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+              <div class="absolute bottom-2 left-2 bg-slate-950/80 backdrop-blur px-2 py-0.5 rounded text-[10px] font-bold text-slate-300 border border-slate-700" data-i18n="tag_standard_smart">Standard Smart</div>
             </div>
-            <div class="relative overflow-hidden bg-slate-950 cursor-pointer" onclick="abrirGaleria('13')">
-              <img src="assets/fotos/20251030_144024.webp" alt="Studio 13 - Standard Cozy" class="w-full h-full object-cover hover:scale-105 transition duration-500">
-              <div class="absolute bottom-2 left-2 bg-slate-950/80 backdrop-blur px-2 py-0.5 rounded text-[10px] font-bold text-slate-300 border border-slate-700">Studio 13 Cozy</div>
+            <div class="relative overflow-hidden bg-slate-950 cursor-pointer" onclick="abrirGaleria('cozy')">
+              <img src="assets/fotos/20251030_144024.webp" alt="Studio Standard Cozy" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+              <div class="absolute bottom-2 left-2 bg-slate-950/80 backdrop-blur px-2 py-0.5 rounded text-[10px] font-bold text-slate-300 border border-slate-700" data-i18n="tag_standard_cozy">Standard Cozy</div>
             </div>
           </div>
         </div>
         <!-- Botão no Canto Inferior Direito: Mostrar todas as fotos -->
-        <button type="button" onclick="abrirGaleria('12')" class="absolute bottom-4 right-4 bg-slate-950/90 hover:bg-white hover:text-slate-950 backdrop-blur text-white text-xs font-extrabold px-4 py-2.5 rounded-xl border border-slate-700 transition flex items-center gap-2 shadow-2xl">
+        <button type="button" onclick="abrirGaleria('todas')" class="absolute bottom-4 right-4 bg-slate-950/90 hover:bg-white hover:text-slate-950 backdrop-blur text-white text-xs font-extrabold px-4 py-2.5 rounded-xl border border-slate-700 transition flex items-center gap-2 shadow-2xl">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-          <span>Mostrar todas as 20 fotos</span>
+          <span data-i18n="btn_todas_fotos">Mostrar todas as 20 fotos</span>
         </button>
       </div>
 
@@ -228,8 +232,8 @@
           <!-- RESUMO DO ESPAÇO -->
           <div class="flex items-start justify-between pb-6 border-b border-slate-800">
             <div>
-              <h2 class="text-xl sm:text-2xl font-bold text-white">Studio privativo inteiro · Hospedagem SNT</h2>
-              <p class="text-xs sm:text-sm text-slate-400 mt-1">Até 2 hóspedes · 1 cama queen ou casal · 1 banheiro privativo · Cozinha privativa compacta</p>
+              <h2 class="text-xl sm:text-2xl font-bold text-white" data-i18n="detalhe_tipo_espaco">Studio privativo inteiro · Hospedagem SNT</h2>
+              <p class="text-xs sm:text-sm text-slate-400 mt-1" data-i18n="detalhe_capacidade">Até 2 hóspedes · 1 cama queen ou casal · 1 banheiro privativo · Cozinha privativa equipada</p>
             </div>
             <div class="w-12 h-12 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-extrabold text-sm shrink-0">
               SNT
@@ -241,93 +245,93 @@
             <div class="flex items-start gap-4">
               <div class="w-6 text-xl text-emerald-400 shrink-0">🔑</div>
               <div>
-                <h3 class="text-sm font-bold text-white">Auto check-in 24h via fechadura digital</h3>
-                <p class="text-xs text-slate-400 mt-0.5">Acesse o complexo e seu studio com senha individual a qualquer hora da noite ou madrugada, sem precisar de chaves físicas.</p>
+                <h3 class="text-sm font-bold text-white" data-i18n="feature_checkin_tit">Auto check-in 24h via fechadura digital</h3>
+                <p class="text-xs text-slate-400 mt-0.5" data-i18n="feature_checkin_desc">Acesse o complexo e seu studio com senha individual a qualquer hora da noite ou madrugada, sem precisar de chaves físicas.</p>
               </div>
             </div>
 
             <div class="flex items-start gap-4">
               <div class="w-6 text-xl text-emerald-400 shrink-0">⚡</div>
               <div>
-                <h3 class="text-sm font-bold text-white">Wi-Fi fibra de 600 Mbps dedicado</h3>
-                <p class="text-xs text-slate-400 mt-0.5">Internet ultra-veloz testada para chamadas de vídeo, reuniões executivas e streaming 4K sem interrupções.</p>
+                <h3 class="text-sm font-bold text-white" data-i18n="feature_wifi_tit">Wi-Fi fibra de 600 Mbps dedicado</h3>
+                <p class="text-xs text-slate-400 mt-0.5" data-i18n="feature_wifi_desc">Internet ultra-veloz testada para chamadas de vídeo, reuniões executivas e streaming 4K sem interrupções.</p>
               </div>
             </div>
 
             <div class="flex items-start gap-4">
               <div class="w-6 text-xl text-emerald-400 shrink-0">🍳</div>
               <div>
-                <h3 class="text-sm font-bold text-white">Cozinha privativa equipada</h3>
-                <p class="text-xs text-slate-400 mt-0.5">Equipada com frigobar, micro-ondas, cooktop, cafeteira Dolce Gusto, louças e talheres para sua conveniência.</p>
+                <h3 class="text-sm font-bold text-white" data-i18n="feature_cozinha_tit">Cozinha privativa equipada</h3>
+                <p class="text-xs text-slate-400 mt-0.5" data-i18n="feature_cozinha_desc">Equipada com frigobar, micro-ondas, cooktop, cafeteira Dolce Gusto, louças e talheres para sua conveniência.</p>
               </div>
             </div>
 
             <div class="flex items-start gap-4">
               <div class="w-6 text-xl text-emerald-400 shrink-0">✈️</div>
               <div>
-                <h3 class="text-sm font-bold text-white">10 a 15 minutos do Aeroporto de Guarulhos (GRU)</h3>
-                <p class="text-xs text-slate-400 mt-0.5">Localização estratégica com rota rápida para os Terminais 1, 2 e 3 por aplicativo, ideal para conexões e escalas.</p>
+                <h3 class="text-sm font-bold text-white" data-i18n="feature_gru_tit">10 a 15 minutos do Aeroporto de Guarulhos (GRU)</h3>
+                <p class="text-xs text-slate-400 mt-0.5" data-i18n="feature_gru_desc">Localização estratégica com rota rápida para os Terminais 1, 2 e 3 por aplicativo, ideal para conexões e escalas.</p>
               </div>
             </div>
           </div>
 
-          <!-- DESCRIÇÃO DO ESPAÇO E AS DUAS TIPOLOGIAS -->
+          <!-- DESCRIÇÃO DO ESPAÇO E AS DUAS TIPOLOGIAS COMERCIAIS -->
           <div class="space-y-4 pb-6 border-b border-slate-800">
-            <h3 class="text-base font-bold text-white">Sobre o espaço</h3>
-            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              O <strong>SNT Studios</strong> foi projetado para oferecer o máximo em privacidade, silêncio e praticidade. Cada uma das 4 unidades é inteiramente privativa, com banheiro exclusivo, bancada e ambiente climatizado.
+            <h3 class="text-base font-bold text-white" data-i18n="sobre_espaco_tit">Sobre o espaço</h3>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed" data-i18n="sobre_espaco_p1">
+              O <strong>SNT Studios</strong> oferece uma proposta inteligente de hospitalidade autônoma: privacidade completa, acabamento refinado e excelente localização próxima ao Aeroporto GRU. Todas as acomodações são 100% privativas com banheiro exclusivo, bancada e ambiente climatizado.
             </p>
             
             <div class="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-3">
-              <h4 class="text-xs font-bold uppercase tracking-wider text-emerald-400">Nossas 2 Tipologias de Studios</h4>
+              <h4 class="text-xs font-bold uppercase tracking-wider text-emerald-400" data-i18n="tipologias_tit">Duas Categorias Disponíveis</h4>
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-                <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
-                  <span class="font-bold text-white block mb-1">Studios Maiores (12 e 14)</span>
-                  <p class="text-slate-400 text-[11px]">Janela ampla com cortinas elegantes, mais espaço de circulação e bancada ampla de trabalho.</p>
+                <div class="p-3.5 rounded-xl bg-slate-800/60 border border-slate-700/60">
+                  <span class="font-bold text-white block mb-1" data-i18n="cat_ampla_tit">Studios Maiores com Cortinas (Master & Executivo)</span>
+                  <p class="text-slate-400 text-[11px]" data-i18n="cat_ampla_desc">Janela ampla com cortinas elegantes, cama Queen/Casal, maior circulação e bancada espaçosa de trabalho.</p>
                 </div>
-                <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
-                  <span class="font-bold text-white block mb-1">Studios Compactos (11 e 13)</span>
-                  <p class="text-slate-400 text-[11px]">Janelinha superior voltada para silêncio e discrição máxima. Planta inteligente e econômica.</p>
+                <div class="p-3.5 rounded-xl bg-slate-800/60 border border-slate-700/60">
+                  <span class="font-bold text-white block mb-1" data-i18n="cat_compacta_tit">Studios Standard (Smart & Cozy)</span>
+                  <p class="text-slate-400 text-[11px]" data-i18n="cat_compacta_desc">Janelinha superior voltada para silêncio e discrição máxima. Planta inteligente, compacta e excelente custo-benefício.</p>
                 </div>
               </div>
-              <p class="text-[11px] text-slate-400">
-                <em>Ao selecionar suas datas ao lado, o sistema aloca e garante automaticamente a melhor acomodação disponível no calendário oficial.</em>
+              <p class="text-[11px] text-slate-400" data-i18n="tipologias_nota">
+                <em>Ao selecionar suas datas ao lado, o sistema verifica a disponibilidade em tempo real e calcula o valor total consolidado.</em>
               </p>
             </div>
           </div>
 
           <!-- O QUE ESSE LUGAR OFERECE (COMODIDADES AIRBNB) -->
           <div class="space-y-4 pb-6 border-b border-slate-800">
-            <h3 class="text-base font-bold text-white">O que esse lugar oferece</h3>
+            <h3 class="text-base font-bold text-white" data-i18n="comodidades_grid_tit">O que esse lugar oferece</h3>
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs text-slate-300">
-              <div class="flex items-center gap-2.5"><span>⚡</span><span>Wi-Fi Fibra 600 Mbps</span></div>
-              <div class="flex items-center gap-2.5"><span>🔑</span><span>Fechadura digital 24h</span></div>
-              <div class="flex items-center gap-2.5"><span>📺</span><span>Smart TV com Streaming</span></div>
-              <div class="flex items-center gap-2.5"><span>🍳</span><span>Cozinha com Cooktop</span></div>
-              <div class="flex items-center gap-2.5"><span>❄️</span><span>Ar-condicionado / Ventilador</span></div>
-              <div class="flex items-center gap-2.5"><span>☕</span><span>Cafeteira Dolce Gusto</span></div>
-              <div class="flex items-center gap-2.5"><span>🚿</span><span>Banho quente pressurizado</span></div>
-              <div class="flex items-center gap-2.5"><span>🧺</span><span>Enxoval higienizado</span></div>
-              <div class="flex items-center gap-2.5"><span>💻</span><span>Bancada para notebook</span></div>
-              <div class="flex items-center gap-2.5"><span>🛡️</span><span>Câmeras nas áreas comuns</span></div>
-              <div class="flex items-center gap-2.5"><span>🚗</span><span>Fácil acesso para Uber/99</span></div>
-              <div class="flex items-center gap-2.5"><span>🧊</span><span>Frigobar e Micro-ondas</span></div>
+              <div class="flex items-center gap-2.5"><span>⚡</span><span data-i18n="comod_wifi">Wi-Fi Fibra 600 Mbps</span></div>
+              <div class="flex items-center gap-2.5"><span>🔑</span><span data-i18n="comod_fechadura">Fechadura digital 24h</span></div>
+              <div class="flex items-center gap-2.5"><span>📺</span><span data-i18n="comod_tv">Smart TV com Streaming</span></div>
+              <div class="flex items-center gap-2.5"><span>🍳</span><span data-i18n="comod_cooktop">Cozinha com Cooktop</span></div>
+              <div class="flex items-center gap-2.5"><span>❄️</span><span data-i18n="comod_ar">Ar-condicionado / Ventilador</span></div>
+              <div class="flex items-center gap-2.5"><span>☕</span><span data-i18n="comod_cafe">Cafeteira Dolce Gusto</span></div>
+              <div class="flex items-center gap-2.5"><span>🚿</span><span data-i18n="comod_ducha">Banho quente pressurizado</span></div>
+              <div class="flex items-center gap-2.5"><span>🧺</span><span data-i18n="comod_enxoval">Enxoval higienizado</span></div>
+              <div class="flex items-center gap-2.5"><span>💻</span><span data-i18n="comod_bancada">Bancada para notebook</span></div>
+              <div class="flex items-center gap-2.5"><span>🛡️</span><span data-i18n="comod_cameras">Câmeras nas áreas comuns</span></div>
+              <div class="flex items-center gap-2.5"><span>🚗</span><span data-i18n="comod_transporte">Fácil acesso para Uber/99</span></div>
+              <div class="flex items-center gap-2.5"><span>🧊</span><span data-i18n="comod_frigobar">Frigobar e Micro-ondas</span></div>
             </div>
           </div>
 
           <!-- REGRAS DA CASA RÁPIDAS -->
           <div class="space-y-2 text-xs text-slate-400">
             <div class="flex items-center gap-3">
-              <span class="font-bold text-white">Check-in:</span>
-              <span>A partir das 15:00 (Acesso autônomo 24h via código)</span>
+              <span class="font-bold text-white" data-i18n="regra_checkin_tit">Check-in:</span>
+              <span data-i18n="regra_checkin_val">A partir das 15:00 (Acesso autônomo 24h via código)</span>
             </div>
             <div class="flex items-center gap-3">
-              <span class="font-bold text-white">Check-out:</span>
-              <span>Até as 11:00</span>
+              <span class="font-bold text-white" data-i18n="regra_checkout_tit">Check-out:</span>
+              <span data-i18n="regra_checkout_val">Até as 11:00</span>
             </div>
             <div class="flex items-center gap-3">
-              <span class="font-bold text-white">Política de Silêncio:</span>
-              <span>Respeito ao descanso dos demais hóspedes a partir das 22h</span>
+              <span class="font-bold text-white" data-i18n="regra_silencio_tit">Política de Silêncio:</span>
+              <span data-i18n="regra_silencio_val">Respeito ao descanso dos demais hóspedes a partir das 22h</span>
             </div>
           </div>
 
@@ -338,43 +342,47 @@
           <div class="lg:sticky lg:top-28">
             <div id="cotador" class="glass-card rounded-3xl p-6 sm:p-7 shadow-2xl border border-slate-700/80 hover:border-emerald-500/30 transition duration-300 relative">
               
-              <!-- CABEÇALHO DO CARD: PREÇO POR NOITE E AVALIAÇÕES -->
+              <!-- CABEÇALHO DO CARD: PREÇO POR NOITE E RESERVA DIRETA -->
               <div class="flex items-baseline justify-between mb-5">
                 <div>
                   <span class="text-2xl sm:text-3xl font-black text-white" id="headerPrecoNoite">R$ 159</span>
-                  <span class="text-xs sm:text-sm text-slate-400 font-medium"> / noite</span>
-                  <span class="ml-2 inline-flex items-center gap-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 text-[10px] font-bold text-emerald-400">10% OFF DIRETO</span>
+                  <span class="text-xs sm:text-sm text-slate-400 font-medium" data-i18n="card_por_noite"> / noite</span>
+                  <span class="ml-2 inline-flex items-center gap-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 text-[10px] font-bold text-emerald-400" data-i18n="card_badge_desconto">10% OFF DIRETO</span>
                 </div>
-                <div class="flex items-center gap-1.5 text-xs">
-                  <span class="text-amber-400 font-bold">★ 4.98</span>
-                  <span class="text-slate-500">·</span>
-                  <span class="text-slate-300 font-medium underline underline-offset-2">Hóspedes reais</span>
+                <div class="text-xs text-slate-400 font-medium" data-i18n="card_tarifa_oficial">
+                  Tarifa Oficial
                 </div>
               </div>
 
-              <!-- O BOXED SELECTOR AIRBNB (CHECK-IN / CHECKOUT / HÓSPEDES) -->
+              <!-- O BOXED SELECTOR AIRBNB COM CALENDÁRIO INTERATIVO POR CLIQUES -->
               <form id="formCotador" onsubmit="event.preventDefault(); consultarDisponibilidade();">
-                <div class="border border-slate-700 rounded-2xl bg-slate-900/90 overflow-hidden shadow-inner focus-within:ring-2 focus-within:ring-emerald-500/60 focus-within:border-emerald-500/60 transition">
+                
+                <!-- CAMPOS OCULTOS PARA INTEGRAÇÃO -->
+                <input type="hidden" id="inputCheckIn" value="">
+                <input type="hidden" id="inputCheckOut" value="">
+
+                <!-- CAIXA PRINCIPAL DE DATAS & HÓSPEDES (AIRBNB SIGNATURE BOX) -->
+                <div id="airbnbDateBox" class="border border-slate-700 rounded-2xl bg-slate-900/90 overflow-hidden shadow-inner focus-within:ring-2 focus-within:ring-emerald-500/60 transition cursor-pointer">
                   
                   <!-- LINHA SUPERIOR: CHECK-IN E CHECKOUT DIVIDIDOS AO MEIO -->
-                  <div class="grid grid-cols-2 divide-x divide-slate-700">
-                    <label for="inputCheckIn" class="block p-3 sm:p-3.5 hover:bg-slate-800/40 cursor-pointer transition">
-                      <span class="block text-[10px] font-black uppercase tracking-wider text-slate-400">CHECK-IN</span>
-                      <input type="date" id="inputCheckIn" class="w-full bg-transparent text-xs sm:text-sm font-semibold text-white focus:outline-none cursor-pointer mt-0.5" required>
-                    </label>
-                    <label for="inputCheckOut" class="block p-3 sm:p-3.5 hover:bg-slate-800/40 cursor-pointer transition">
-                      <span class="block text-[10px] font-black uppercase tracking-wider text-slate-400">CHECKOUT</span>
-                      <input type="date" id="inputCheckOut" class="w-full bg-transparent text-xs sm:text-sm font-semibold text-white focus:outline-none cursor-pointer mt-0.5" required>
-                    </label>
+                  <div class="grid grid-cols-2 divide-x divide-slate-700" onclick="alternarCalendario()">
+                    <div class="p-3 sm:p-3.5 hover:bg-slate-800/40 transition">
+                      <span class="block text-[10px] font-black uppercase tracking-wider text-slate-400" data-i18n="lbl_checkin">CHECK-IN</span>
+                      <span id="displayCheckIn" class="block text-xs sm:text-sm font-semibold text-white mt-0.5" data-i18n="txt_inserir_data">Adicionar data</span>
+                    </div>
+                    <div class="p-3 sm:p-3.5 hover:bg-slate-800/40 transition">
+                      <span class="block text-[10px] font-black uppercase tracking-wider text-slate-400" data-i18n="lbl_checkout">CHECKOUT</span>
+                      <span id="displayCheckOut" class="block text-xs sm:text-sm font-semibold text-white mt-0.5" data-i18n="txt_inserir_data">Adicionar data</span>
+                    </div>
                   </div>
 
                   <!-- LINHA INFERIOR: HÓSPEDES LARGURA TOTAL -->
-                  <div class="border-t border-slate-700 p-3 sm:p-3.5 hover:bg-slate-800/40 transition">
-                    <label for="selectGuests" class="block text-[10px] font-black uppercase tracking-wider text-slate-400 cursor-pointer">HÓSPEDES</label>
+                  <div class="border-t border-slate-700 p-3 sm:p-3.5 hover:bg-slate-800/40 transition" onclick="event.stopPropagation()">
+                    <label for="selectGuests" class="block text-[10px] font-black uppercase tracking-wider text-slate-400 cursor-pointer" data-i18n="lbl_hospedes">HÓSPEDES</label>
                     <div class="relative mt-0.5">
-                      <select id="selectGuests" class="w-full bg-transparent text-xs sm:text-sm font-semibold text-white focus:outline-none cursor-pointer appearance-none pr-8">
-                        <option value="1" class="bg-slate-900 text-white">1 hóspede</option>
-                        <option value="2" class="bg-slate-900 text-white" selected>2 hóspedes (Casal)</option>
+                      <select id="selectGuests" onchange="atualizarHospedes()" class="w-full bg-transparent text-xs sm:text-sm font-semibold text-white focus:outline-none cursor-pointer appearance-none pr-8">
+                        <option value="1" class="bg-slate-900 text-white" data-i18n="opt_1_hospede">1 hóspede</option>
+                        <option value="2" class="bg-slate-900 text-white" selected data-i18n="opt_2_hospedes">2 hóspedes (Casal)</option>
                       </select>
                       <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center text-slate-400">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -384,20 +392,63 @@
 
                 </div>
 
+                <!-- CALENDÁRIO INTERATIVO AIRBNB (SELEÇÃO DE 2 CLIQUES NA MESMA TELA) -->
+                <div id="calendarioAirbnb" class="hidden mt-3 p-4 rounded-2xl bg-slate-950 border border-slate-700/80 shadow-2xl transition">
+                  <div class="flex items-center justify-between mb-3 pb-2 border-b border-slate-800">
+                    <div>
+                      <div id="calInstrucao" class="text-xs font-bold text-emerald-400" data-i18n="cal_escolha_checkin">Selecione a data de check-in</div>
+                      <div id="calSubInstrucao" class="text-[10px] text-slate-400" data-i18n="cal_sub_instrucao">1º clique: entrada · 2º clique: saída</div>
+                    </div>
+                    <button type="button" onclick="limparDatas()" class="text-[11px] font-semibold text-slate-400 hover:text-white underline" data-i18n="btn_limpar_datas">
+                      Limpar datas
+                    </button>
+                  </div>
+
+                  <!-- NAVEGAÇÃO DE MÊS -->
+                  <div class="flex items-center justify-between mb-3 px-1">
+                    <button type="button" onclick="mudarMes(-1)" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-white flex items-center justify-center font-bold text-sm transition">‹</button>
+                    <span id="calMesAno" class="text-xs sm:text-sm font-black text-white capitalize">Outubro 2026</span>
+                    <button type="button" onclick="mudarMes(1)" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-white flex items-center justify-center font-bold text-sm transition">›</button>
+                  </div>
+
+                  <!-- DIAS DA SEMANA -->
+                  <div class="grid grid-cols-7 gap-1 text-center text-[10px] font-bold text-slate-400 uppercase mb-2">
+                    <span data-i18n="dia_dom">Dom</span>
+                    <span data-i18n="dia_seg">Seg</span>
+                    <span data-i18n="dia_ter">Ter</span>
+                    <span data-i18n="dia_qua">Qua</span>
+                    <span data-i18n="dia_qui">Qui</span>
+                    <span data-i18n="dia_sex">Sex</span>
+                    <span data-i18n="dia_sab">Sáb</span>
+                  </div>
+
+                  <!-- GRADE DINÂMICA DOS DIAS -->
+                  <div id="calDiasGrid" class="grid grid-cols-7 gap-1 text-center text-xs font-semibold">
+                    <!-- Renderizado dinamicamente via JS -->
+                  </div>
+
+                  <div class="mt-3 pt-2.5 border-t border-slate-800 flex items-center justify-between text-xs">
+                    <span id="calResumoNoites" class="text-slate-400 text-[11px]" data-i18n="txt_sem_datas">Nenhuma data selecionada</span>
+                    <button type="button" onclick="fecharCalendario()" class="px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs" data-i18n="btn_concluir">
+                      Concluir
+                    </button>
+                  </div>
+                </div>
+
                 <!-- BOTÃO DE AÇÃO PRINCIPAL AIRBNB -->
                 <button id="btnConsultar" type="submit" class="w-full mt-4 bg-emerald-500 hover:bg-emerald-400 active:scale-[0.99] text-slate-950 font-black py-3.5 px-4 rounded-xl text-xs sm:text-sm uppercase tracking-wider transition-all duration-200 shadow-xl shadow-emerald-500/20 flex items-center justify-center gap-2">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="m21 21-4.35-4.35m2.1-5.4a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z"/></svg>
-                  <span id="btnConsultarTexto">Conferir disponibilidade</span>
+                  <span id="btnConsultarTexto" data-i18n="btn_conferir_disp">Conferir disponibilidade</span>
                 </button>
 
                 <!-- FRASE CLÁSSICA DO AIRBNB -->
-                <p class="text-center text-[11px] sm:text-xs text-slate-400 mt-2.5 font-medium">
+                <p class="text-center text-[11px] sm:text-xs text-slate-400 mt-2.5 font-medium" data-i18n="txt_nao_cobrado">
                   Você ainda não será cobrado
                 </p>
 
               </form>
 
-              <!-- RESULTADO DA COTAÇÃO & DETALHAMENTO DE PREÇO (AIRBNB STYLE) -->
+              <!-- RESULTADO DA COTAÇÃO & DETALHAMENTO DE PREÇO (VALOR CONSOLIDADO SEM TAXAS EXTRAS) -->
               <div id="resultadoCotacao" class="hidden mt-4 pt-4 border-t border-slate-800" aria-live="polite"></div>
 
               <!-- DIFERENCIAIS DA RESERVA DIRETA NO CARD -->
@@ -405,23 +456,23 @@
                 <div class="flex items-center justify-between text-emerald-400 font-medium">
                   <span class="flex items-center gap-1.5">
                     <svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                    Desconto Direto de 10%
+                    <span data-i18n="vantagem_10_desc">Desconto Direto de 10%</span>
                   </span>
-                  <span class="font-bold">Garantido</span>
+                  <span class="font-bold" data-i18n="txt_garantido">Garantido</span>
                 </div>
                 <div class="flex items-center justify-between">
                   <span class="flex items-center gap-1.5">
                     <svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                    Sem taxas de serviço de terceiros
+                    <span data-i18n="vantagem_zero_taxas">Sem taxas de serviço de terceiros</span>
                   </span>
-                  <span class="text-slate-300">Economia real</span>
+                  <span class="text-slate-300" data-i18n="txt_economia_real">Economia real</span>
                 </div>
                 <div class="flex items-center justify-between">
                   <span class="flex items-center gap-1.5">
                     <svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                    Sincronização ao vivo Smoobu
+                    <span data-i18n="vantagem_tempo_real">Disponibilidade em tempo real</span>
                   </span>
-                  <span class="text-slate-300">24 horas</span>
+                  <span class="text-slate-300">24h</span>
                 </div>
               </div>
 
@@ -436,32 +487,32 @@
         
         <div class="glass-card p-3.5 rounded-xl text-center space-y-1">
           <div class="text-xl">⚡</div>
-          <h4 class="text-xs font-bold text-white">Wi-Fi 600 Mbps</h4>
-          <p class="text-[11px] text-slate-400">Fibra óptica dedicada ultra-rápida</p>
+          <h4 class="text-xs font-bold text-white" data-i18n="diff_wifi_tit">Wi-Fi 600 Mbps</h4>
+          <p class="text-[11px] text-slate-400" data-i18n="diff_wifi_sub">Fibra óptica dedicada ultra-rápida</p>
         </div>
 
         <div class="glass-card p-3.5 rounded-xl text-center space-y-1">
           <div class="text-xl">🔑</div>
-          <h4 class="text-xs font-bold text-white">Self Check-in 24h</h4>
-          <p class="text-[11px] text-slate-400">Fechadura eletrônica por código individual</p>
+          <h4 class="text-xs font-bold text-white" data-i18n="diff_checkin_tit">Self Check-in 24h</h4>
+          <p class="text-[11px] text-slate-400" data-i18n="diff_checkin_sub">Fechadura eletrônica por código individual</p>
         </div>
 
         <div class="glass-card p-3.5 rounded-xl text-center space-y-1">
           <div class="text-xl">✈️</div>
-          <h4 class="text-xs font-bold text-white">10-15 Min de GRU</h4>
-          <p class="text-[11px] text-slate-400">Acesso descomplicado aos terminais</p>
+          <h4 class="text-xs font-bold text-white" data-i18n="diff_gru_tit">10-15 Min de GRU</h4>
+          <p class="text-[11px] text-slate-400" data-i18n="diff_gru_sub">Acesso descomplicado aos terminais</p>
         </div>
 
         <div class="glass-card p-3.5 rounded-xl text-center space-y-1">
           <div class="text-xl">🍳</div>
-          <h4 class="text-xs font-bold text-white">Cozinha Equipada</h4>
-          <p class="text-[11px] text-slate-400">Micro-ondas, frigobar & cafeteira</p>
+          <h4 class="text-xs font-bold text-white" data-i18n="diff_cozinha_tit">Cozinha Equipada</h4>
+          <p class="text-[11px] text-slate-400" data-i18n="diff_cozinha_sub">Micro-ondas, frigobar & cafeteira</p>
         </div>
 
         <div class="glass-card p-3.5 rounded-xl text-center space-y-1 col-span-2 sm:col-span-1">
           <div class="text-xl">🛡️</div>
-          <h4 class="text-xs font-bold text-white">10% OFF Direto</h4>
-          <p class="text-[11px] text-slate-400">Melhor tarifa garantida sem taxas</p>
+          <h4 class="text-xs font-bold text-white" data-i18n="diff_desconto_tit">10% OFF Direto</h4>
+          <p class="text-[11px] text-slate-400" data-i18n="diff_desconto_sub">Melhor tarifa garantida sem taxas</p>
         </div>
 
       </div>
@@ -469,191 +520,187 @@
     </div>
   </section>
 
-  <!-- SEÇÃO DE STUDIOS (ACOMODAÇÕES) -->
+  <!-- SEÇÃO DE STUDIOS (ACOMODAÇÕES COM NOMES COMERCIAIS) -->
   <section id="studios" class="py-20 bg-slate-900/40 border-t border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
-        <h2 class="text-xs font-bold uppercase tracking-wider text-emerald-400">Nossas Acomodações</h2>
-        <p class="text-3xl sm:text-4xl font-extrabold text-white">Conheça cada um dos nossos 4 studios</p>
-        <p class="text-slate-400 text-sm">
-          Todos os 4 studios contam com fechadura digital 24h com senha pessoal, Wi-Fi fibra de 600 Mbps, Smart TV, ar-condicionado/ventilador, cozinha compacta completa e banheiro privativo. <strong>Ao consultar sua reserva, selecionamos e alocamos automaticamente a melhor acomodação disponível para o seu período.</strong>
+        <h2 class="text-xs font-bold uppercase tracking-wider text-emerald-400" data-i18n="sec_studios_tag">Nossas Acomodações</h2>
+        <p class="text-3xl sm:text-4xl font-extrabold text-white" data-i18n="sec_studios_tit">Conheça nossas opções privativas</p>
+        <p class="text-slate-400 text-sm" data-i18n="sec_studios_sub">
+          Todas as acomodações contam com fechadura digital 24h com senha pessoal, Wi-Fi fibra de 600 Mbps, Smart TV, ar-condicionado/ventilador, cozinha compacta completa e banheiro privativo.
         </p>
       </div>
 
-      <!-- FILTRO DE TIPOLOGIA -->
+      <!-- FILTRO DE CATEGORIA -->
       <div class="flex items-center justify-center gap-2 mb-10">
-        <button onclick="filtrarStudios('todos')" id="btnFiltroTodos" class="px-4 py-2 rounded-xl text-xs font-bold bg-emerald-500 text-slate-950 transition">Todos (4 Studios)</button>
-        <button onclick="filtrarStudios('amplos')" id="btnFiltroAmplos" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:text-white transition">Studios Maiores (Cortinas · 12 e 14)</button>
-        <button onclick="filtrarStudios('compactos')" id="btnFiltroCompactos" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:text-white transition">Studios Compactos (Janela Superior · 11 e 13)</button>
+        <button onclick="filtrarStudios('todos')" id="btnFiltroTodos" class="px-4 py-2 rounded-xl text-xs font-bold bg-emerald-500 text-slate-950 transition" data-i18n="btn_filtro_todos">Todos os Studios</button>
+        <button onclick="filtrarStudios('amplos')" id="btnFiltroAmplos" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:text-white transition" data-i18n="btn_filtro_amplos">Studios Maiores (Cortinas)</button>
+        <button onclick="filtrarStudios('compactos')" id="btnFiltroCompactos" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:text-white transition" data-i18n="btn_filtro_compactos">Studios Standard (Compactos)</button>
       </div>
 
-      <!-- GRID DOS 4 STUDIOS -->
+      <!-- GRID DOS STUDIOS COM NOMES COMERCIAIS -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-        <!-- STUDIO 12 (O MAIOR) -->
+        <!-- STUDIO MASTER KING -->
         <div class="card-studio glass-card rounded-2xl overflow-hidden flex flex-col group hover:border-emerald-500/40 transition duration-300" data-tipo="amplos">
           <div class="relative h-60 overflow-hidden bg-slate-950">
-            <img src="assets/fotos/20251030_162521(1).webp" alt="Studio 12 - Master King" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="abrirGaleria('12')">
+            <img src="assets/fotos/20251030_162521(1).webp" alt="Studio Master King" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="abrirGaleria('master')">
             <div class="absolute top-3 left-3 flex flex-col gap-1.5">
-              <span class="bg-amber-400 text-slate-950 text-[10px] font-black px-2.5 py-0.5 rounded shadow">🏆 O MAIOR STUDIO</span>
-              <span class="bg-slate-950/80 backdrop-blur text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded border border-slate-700">Studio 12</span>
+              <span class="bg-amber-400 text-slate-950 text-[10px] font-black px-2.5 py-0.5 rounded shadow" data-i18n="badge_maior_studio">O MAIOR STUDIO</span>
+              <span class="bg-slate-950/80 backdrop-blur text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded border border-slate-700">Master King</span>
             </div>
-            <button onclick="abrirGaleria('12')" class="absolute bottom-3 right-3 bg-slate-950/80 hover:bg-emerald-500 hover:text-slate-950 backdrop-blur text-slate-200 text-[11px] font-bold px-2.5 py-1 rounded-lg border border-slate-700 transition flex items-center gap-1.5">
+            <button onclick="abrirGaleria('master')" class="absolute bottom-3 right-3 bg-slate-950/80 hover:bg-emerald-500 hover:text-slate-950 backdrop-blur text-slate-200 text-[11px] font-bold px-2.5 py-1 rounded-lg border border-slate-700 transition flex items-center gap-1.5">
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-              <span>Ver Fotos</span>
+              <span data-i18n="btn_ver_fotos">Ver Fotos</span>
             </button>
           </div>
           <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
             <div>
               <div class="flex items-center justify-between mb-1">
-                <h3 class="font-extrabold text-lg text-white">Studio 12 · Master King</h3>
-                <span class="text-xs font-extrabold text-emerald-400">10% OFF <span class="text-[10px] text-slate-400 font-normal">Direto</span></span>
+                <h3 class="font-extrabold text-lg text-white">Studio Master King</h3>
+                <span class="text-xs font-extrabold text-emerald-400">10% OFF</span>
               </div>
-              <p class="text-xs text-slate-400">O maior e mais espaçoso do complexo. Ampla iluminação e máxima amplitude.</p>
+              <p class="text-xs text-slate-400" data-i18n="card_master_desc">O maior e mais espaçoso studio do complexo. Ampla iluminação e máxima amplitude.</p>
               
-              <!-- ESPECIFICAÇÃO FÍSICA -->
-              <div class="my-3 p-2.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-[11px] text-emerald-300 font-medium">
+              <div class="my-3 p-2.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-[11px] text-emerald-300 font-medium" data-i18n="card_master_esp">
                 🪟 <strong>Janela ampla com cortinas elegantes</strong> & espaço extra para circulação.
               </div>
 
               <ul class="space-y-1.5 text-xs text-slate-300">
-                <li class="flex items-center gap-2">✓ Cama Queen Size & Enxoval Hotelaria</li>
-                <li class="flex items-center gap-2">✓ Bancada Home Office & Wi-Fi 600MB</li>
-                <li class="flex items-center gap-2">✓ Cozinha Compacta com Cooktop & Frigobar</li>
-                <li class="flex items-center gap-2">✓ Smart TV & Fechadura Digital 24h</li>
+                <li class="flex items-center gap-2">✓ <span data-i18n="item_cama_queen">Cama Queen Size & Enxoval Hotelaria</span></li>
+                <li class="flex items-center gap-2">✓ <span data-i18n="item_home_office">Bancada Home Office & Wi-Fi 600MB</span></li>
+                <li class="flex items-center gap-2">✓ <span data-i18n="item_cozinha_cooktop">Cozinha Compacta com Cooktop & Frigobar</span></li>
+                <li class="flex items-center gap-2">✓ <span data-i18n="item_fechadura_tv">Smart TV & Fechadura Digital 24h</span></li>
               </ul>
             </div>
             
             <div class="pt-2 flex flex-col gap-2">
-              <button type="button" onclick="focarCotadorStudio('12')" class="w-full text-center py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-extrabold transition shadow-md shadow-emerald-500/20">
-                Verificar Disponibilidade & Tarifas
+              <button type="button" onclick="focarCotador()" class="w-full text-center py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-extrabold transition shadow-md shadow-emerald-500/20" data-i18n="btn_verificar_datas">
+                Verificar Datas & Disponibilidade
               </button>
             </div>
           </div>
         </div>
 
-        <!-- STUDIO 14 (GRANDE EXECUTIVO) -->
+        <!-- STUDIO EXECUTIVO PREMIUM -->
         <div class="card-studio glass-card rounded-2xl overflow-hidden flex flex-col group hover:border-emerald-500/40 transition duration-300" data-tipo="amplos">
           <div class="relative h-60 overflow-hidden bg-slate-950">
-            <img src="assets/fotos/20251030_164004.webp" alt="Studio 14 - Executivo" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="abrirGaleria('14')">
+            <img src="assets/fotos/20251030_164004.webp" alt="Studio Executivo Premium" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="abrirGaleria('executivo')">
             <div class="absolute top-3 left-3 flex flex-col gap-1.5">
-              <span class="bg-teal-400 text-slate-950 text-[10px] font-black px-2.5 py-0.5 rounded shadow">⭐ GRANDE & EXECUTIVO</span>
-              <span class="bg-slate-950/80 backdrop-blur text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded border border-slate-700">Studio 14</span>
+              <span class="bg-teal-400 text-slate-950 text-[10px] font-black px-2.5 py-0.5 rounded shadow" data-i18n="badge_executivo">GRANDE & EXECUTIVO</span>
+              <span class="bg-slate-950/80 backdrop-blur text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded border border-slate-700">Executivo Premium</span>
             </div>
-            <button onclick="abrirGaleria('14')" class="absolute bottom-3 right-3 bg-slate-950/80 hover:bg-emerald-500 hover:text-slate-950 backdrop-blur text-slate-200 text-[11px] font-bold px-2.5 py-1 rounded-lg border border-slate-700 transition flex items-center gap-1.5">
+            <button onclick="abrirGaleria('executivo')" class="absolute bottom-3 right-3 bg-slate-950/80 hover:bg-emerald-500 hover:text-slate-950 backdrop-blur text-slate-200 text-[11px] font-bold px-2.5 py-1 rounded-lg border border-slate-700 transition flex items-center gap-1.5">
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-              <span>Ver Fotos</span>
+              <span data-i18n="btn_ver_fotos">Ver Fotos</span>
             </button>
           </div>
           <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
             <div>
               <div class="flex items-center justify-between mb-1">
-                <h3 class="font-extrabold text-lg text-white">Studio 14 · Executivo</h3>
-                <span class="text-xs font-extrabold text-emerald-400">10% OFF <span class="text-[10px] text-slate-400 font-normal">Direto</span></span>
+                <h3 class="font-extrabold text-lg text-white">Studio Executivo Premium</h3>
+                <span class="text-xs font-extrabold text-emerald-400">10% OFF</span>
               </div>
-              <p class="text-xs text-slate-400">Muito espaçoso (um pouco menor que o 12), elegante e altamente reservado.</p>
+              <p class="text-xs text-slate-400" data-i18n="card_executivo_desc">Amplo, elegante e altamente reservado. Ambiente perfeito para estadias de negócios e escalas.</p>
               
-              <!-- ESPECIFICAÇÃO FÍSICA -->
-              <div class="my-3 p-2.5 rounded-lg bg-teal-500/10 border border-teal-500/20 text-[11px] text-teal-300 font-medium">
+              <div class="my-3 p-2.5 rounded-lg bg-teal-500/10 border border-teal-500/20 text-[11px] text-teal-300 font-medium" data-i18n="card_executivo_esp">
                 🪟 <strong>Janela com cortinas elegantes</strong> & ambiente sofisticado.
               </div>
 
               <ul class="space-y-1.5 text-xs text-slate-300">
-                <li class="flex items-center gap-2">✓ Cama de Casal Confort & Enxoval Premium</li>
-                <li class="flex items-center gap-2">✓ Bancada de Trabalho / Home Office</li>
-                <li class="flex items-center gap-2">✓ Cozinha Equipada & Cafeteira Dolce Gusto</li>
-                <li class="flex items-center gap-2">✓ Wi-Fi 600MB & Smart TV com Streaming</li>
+                <li class="flex items-center gap-2">✓ <span data-i18n="item_cama_casal_premium">Cama de Casal Confort & Enxoval Premium</span></li>
+                <li class="flex items-center gap-2">✓ <span data-i18n="item_home_office">Bancada Home Office & Wi-Fi 600MB</span></li>
+                <li class="flex items-center gap-2">✓ <span data-i18n="item_cozinha_cafeteira">Cozinha Equipada & Cafeteira Dolce Gusto</span></li>
+                <li class="flex items-center gap-2">✓ <span data-i18n="item_fechadura_tv">Smart TV & Fechadura Digital 24h</span></li>
               </ul>
             </div>
             
             <div class="pt-2 flex flex-col gap-2">
-              <button type="button" onclick="focarCotadorStudio('14')" class="w-full text-center py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-extrabold transition shadow-md shadow-emerald-500/20">
-                Verificar Disponibilidade & Tarifas
+              <button type="button" onclick="focarCotador()" class="w-full text-center py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-extrabold transition shadow-md shadow-emerald-500/20" data-i18n="btn_verificar_datas">
+                Verificar Datas & Disponibilidade
               </button>
             </div>
           </div>
         </div>
 
-        <!-- STUDIO 11 (COMPACTO SMART) -->
+        <!-- STUDIO STANDARD SMART -->
         <div class="card-studio glass-card rounded-2xl overflow-hidden flex flex-col group hover:border-emerald-500/40 transition duration-300" data-tipo="compactos">
           <div class="relative h-60 overflow-hidden bg-slate-950">
-            <img src="assets/fotos/20251030_143554.webp" alt="Studio 11 - Standard Smart" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="abrirGaleria('11')">
+            <img src="assets/fotos/20251030_143554.webp" alt="Studio Standard Smart" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="abrirGaleria('smart')">
             <div class="absolute top-3 left-3 flex flex-col gap-1.5">
-              <span class="bg-slate-800 text-slate-200 text-[10px] font-bold px-2.5 py-0.5 rounded shadow border border-slate-700">COMPACTO & PRÁTICO</span>
-              <span class="bg-slate-950/80 backdrop-blur text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded border border-slate-700">Studio 11</span>
+              <span class="bg-slate-800 text-slate-200 text-[10px] font-bold px-2.5 py-0.5 rounded shadow border border-slate-700" data-i18n="badge_smart">COMPACTO & PRÁTICO</span>
+              <span class="bg-slate-950/80 backdrop-blur text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded border border-slate-700">Standard Smart</span>
             </div>
-            <button onclick="abrirGaleria('11')" class="absolute bottom-3 right-3 bg-slate-950/80 hover:bg-emerald-500 hover:text-slate-950 backdrop-blur text-slate-200 text-[11px] font-bold px-2.5 py-1 rounded-lg border border-slate-700 transition flex items-center gap-1.5">
+            <button onclick="abrirGaleria('smart')" class="absolute bottom-3 right-3 bg-slate-950/80 hover:bg-emerald-500 hover:text-slate-950 backdrop-blur text-slate-200 text-[11px] font-bold px-2.5 py-1 rounded-lg border border-slate-700 transition flex items-center gap-1.5">
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-              <span>Ver Fotos</span>
+              <span data-i18n="btn_ver_fotos">Ver Fotos</span>
             </button>
           </div>
           <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
             <div>
               <div class="flex items-center justify-between mb-1">
-                <h3 class="font-extrabold text-lg text-white">Studio 11 · Standard Smart</h3>
-                <span class="text-xs font-extrabold text-emerald-400">10% OFF <span class="text-[10px] text-slate-400 font-normal">Direto</span></span>
+                <h3 class="font-extrabold text-lg text-white">Studio Standard Smart</h3>
+                <span class="text-xs font-extrabold text-emerald-400">10% OFF</span>
               </div>
-              <p class="text-xs text-slate-400">Planta compacta e inteligente. Ideal para escalas e quem busca silêncio e praticidade.</p>
+              <p class="text-xs text-slate-400" data-i18n="card_smart_desc">Planta compacta e inteligente. Ideal para escalas e viajantes que buscam silêncio e praticidade.</p>
               
-              <!-- ESPECIFICAÇÃO FÍSICA -->
-              <div class="my-3 p-2.5 rounded-lg bg-slate-800/80 border border-slate-700 text-[11px] text-slate-300 font-medium">
+              <div class="my-3 p-2.5 rounded-lg bg-slate-800/80 border border-slate-700 text-[11px] text-slate-300 font-medium" data-i18n="card_smart_esp">
                 🚪 <strong>Janelinha pequena superior</strong> para total privacidade e ventilação.
               </div>
 
               <ul class="space-y-1.5 text-xs text-slate-300">
-                <li class="flex items-center gap-2">✓ Cama de Casal Confortável</li>
-                <li class="flex items-center gap-2">✓ Frigobar & Micro-ondas Privativo</li>
-                <li class="flex items-center gap-2">✓ Wi-Fi Fibra 600MB & Smart TV</li>
-                <li class="flex items-center gap-2">✓ Fechadura Eletrônica 24h</li>
+                <li class="flex items-center gap-2">✓ <span data-i18n="item_cama_casal">Cama de Casal Confortável</span></li>
+                <li class="flex items-center gap-2">✓ <span data-i18n="item_frigobar_micro">Frigobar & Micro-ondas Privativo</span></li>
+                <li class="flex items-center gap-2">✓ <span data-i18n="item_wifi_tv">Wi-Fi Fibra 600MB & Smart TV</span></li>
+                <li class="flex items-center gap-2">✓ <span data-i18n="item_fechadura_24h">Fechadura Eletrônica 24h</span></li>
               </ul>
             </div>
             
             <div class="pt-2 flex flex-col gap-2">
-              <button type="button" onclick="focarCotadorStudio('11')" class="w-full text-center py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-extrabold transition shadow-md shadow-emerald-500/20">
-                Verificar Disponibilidade & Tarifas
+              <button type="button" onclick="focarCotador()" class="w-full text-center py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-extrabold transition shadow-md shadow-emerald-500/20" data-i18n="btn_verificar_datas">
+                Verificar Datas & Disponibilidade
               </button>
             </div>
           </div>
         </div>
 
-        <!-- STUDIO 13 (COMPACTO ACOLHEDOR) -->
+        <!-- STUDIO STANDARD COZY -->
         <div class="card-studio glass-card rounded-2xl overflow-hidden flex flex-col group hover:border-emerald-500/40 transition duration-300" data-tipo="compactos">
           <div class="relative h-60 overflow-hidden bg-slate-950">
-            <img src="assets/fotos/20251030_144024.webp" alt="Studio 13 - Standard Acolhedor" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="abrirGaleria('13')">
+            <img src="assets/fotos/20251030_144024.webp" alt="Studio Standard Cozy" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="abrirGaleria('cozy')">
             <div class="absolute top-3 left-3 flex flex-col gap-1.5">
-              <span class="bg-slate-800 text-slate-200 text-[10px] font-bold px-2.5 py-0.5 rounded shadow border border-slate-700">COMPACTO & RESERVADO</span>
-              <span class="bg-slate-950/80 backdrop-blur text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded border border-slate-700">Studio 13</span>
+              <span class="bg-slate-800 text-slate-200 text-[10px] font-bold px-2.5 py-0.5 rounded shadow border border-slate-700" data-i18n="badge_cozy">COMPACTO & SILENCIOSO</span>
+              <span class="bg-slate-950/80 backdrop-blur text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded border border-slate-700">Standard Cozy</span>
             </div>
-            <button onclick="abrirGaleria('13')" class="absolute bottom-3 right-3 bg-slate-950/80 hover:bg-emerald-500 hover:text-slate-950 backdrop-blur text-slate-200 text-[11px] font-bold px-2.5 py-1 rounded-lg border border-slate-700 transition flex items-center gap-1.5">
+            <button onclick="abrirGaleria('cozy')" class="absolute bottom-3 right-3 bg-slate-950/80 hover:bg-emerald-500 hover:text-slate-950 backdrop-blur text-slate-200 text-[11px] font-bold px-2.5 py-1 rounded-lg border border-slate-700 transition flex items-center gap-1.5">
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-              <span>Ver Fotos</span>
+              <span data-i18n="btn_ver_fotos">Ver Fotos</span>
             </button>
           </div>
           <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
             <div>
               <div class="flex items-center justify-between mb-1">
-                <h3 class="font-extrabold text-lg text-white">Studio 13 · Standard Cozy</h3>
-                <span class="text-xs font-extrabold text-emerald-400">10% OFF <span class="text-[10px] text-slate-400 font-normal">Direto</span></span>
+                <h3 class="font-extrabold text-lg text-white">Studio Standard Cozy</h3>
+                <span class="text-xs font-extrabold text-emerald-400">10% OFF</span>
               </div>
-              <p class="text-xs text-slate-400">Compacto, silencioso e acolhedor. Excelente custo-benefício para quem busca conforto.</p>
+              <p class="text-xs text-slate-400" data-i18n="card_cozy_desc">Compacto, silencioso e acolhedor. Excelente custo-benefício com foco em uma noite reparadora de descanso.</p>
               
-              <!-- ESPECIFICAÇÃO FÍSICA -->
-              <div class="my-3 p-2.5 rounded-lg bg-slate-800/80 border border-slate-700 text-[11px] text-slate-300 font-medium">
+              <div class="my-3 p-2.5 rounded-lg bg-slate-800/80 border border-slate-700 text-[11px] text-slate-300 font-medium" data-i18n="card_cozy_esp">
                 🚪 <strong>Janelinha pequena superior</strong> para máximo silêncio e discrição.
               </div>
 
               <ul class="space-y-1.5 text-xs text-slate-300">
-                <li class="flex items-center gap-2">✓ Cama Casal & Travesseiros Antialérgicos</li>
-                <li class="flex items-center gap-2">✓ Ducha de Alta Pressão & Banheiro Privativo</li>
-                <li class="flex items-center gap-2">✓ Frigobar, Micro-ondas & Cafeteira</li>
-                <li class="flex items-center gap-2">✓ Wi-Fi Fibra 600MB & Smart TV</li>
+                <li class="flex items-center gap-2">✓ <span data-i18n="item_cama_casal_travesseiro">Cama Casal & Travesseiros Confort</span></li>
+                <li class="flex items-center gap-2">✓ <span data-i18n="item_ducha_press">Ducha de Alta Pressão & Banheiro Privativo</span></li>
+                <li class="flex items-center gap-2">✓ <span data-i18n="item_frigobar_cafe">Frigobar, Micro-ondas & Cafeteira</span></li>
+                <li class="flex items-center gap-2">✓ <span data-i18n="item_wifi_tv">Wi-Fi Fibra 600MB & Smart TV</span></li>
               </ul>
             </div>
             
             <div class="pt-2 flex flex-col gap-2">
-              <button type="button" onclick="focarCotadorStudio('13')" class="w-full text-center py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-extrabold transition shadow-md shadow-emerald-500/20">
-                Verificar Disponibilidade & Tarifas
+              <button type="button" onclick="focarCotador()" class="w-full text-center py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-extrabold transition shadow-md shadow-emerald-500/20" data-i18n="btn_verificar_datas">
+                Verificar Datas & Disponibilidade
               </button>
             </div>
           </div>
@@ -669,44 +716,44 @@
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-2xl mx-auto mb-10 space-y-2">
-        <h2 class="text-xs font-bold uppercase tracking-wider text-emerald-400">Transparência Total</h2>
-        <p class="text-2xl sm:text-3xl font-extrabold text-white">Por que reservar direto conosco pelo WhatsApp?</p>
+        <h2 class="text-xs font-bold uppercase tracking-wider text-emerald-400" data-i18n="comp_tag">Transparência Total</h2>
+        <p class="text-2xl sm:text-3xl font-extrabold text-white" data-i18n="comp_tit">Por que reservar direto conosco pelo WhatsApp?</p>
       </div>
 
       <div class="overflow-x-auto glass-card rounded-2xl border border-slate-800 shadow-xl">
         <table class="w-full text-left text-xs sm:text-sm">
           <thead>
             <tr class="border-b border-slate-800 text-slate-400 bg-slate-900/60 text-[11px] uppercase tracking-wider">
-              <th class="p-4 sm:p-5">Benefício</th>
-              <th class="p-4 sm:p-5 text-emerald-400 font-extrabold bg-emerald-500/5">SNT Studios (Direto Oficial)</th>
-              <th class="p-4 sm:p-5 text-slate-400">Plataformas (Booking / Airbnb)</th>
+              <th class="p-4 sm:p-5" data-i18n="th_beneficio">Benefício</th>
+              <th class="p-4 sm:p-5 text-emerald-400 font-extrabold bg-emerald-500/5" data-i18n="th_direto">SNT Studios (Direto Oficial)</th>
+              <th class="p-4 sm:p-5 text-slate-400" data-i18n="th_plataformas">Plataformas (Booking / Airbnb)</th>
             </tr>
           </thead>
           <tbody class="divide-y divide-slate-800/60 text-slate-300">
             <tr>
-              <td class="p-4 sm:p-5 font-semibold text-white">Tarifa Final</td>
-              <td class="p-4 sm:p-5 font-bold text-emerald-400 bg-emerald-500/5">10% de desconto garantido</td>
-              <td class="p-4 sm:p-5 text-slate-400">Preço cheio com margem embutida</td>
+              <td class="p-4 sm:p-5 font-semibold text-white" data-i18n="td_tarifa">Tarifa Final</td>
+              <td class="p-4 sm:p-5 font-bold text-emerald-400 bg-emerald-500/5" data-i18n="td_tarifa_direto">10% de desconto garantido</td>
+              <td class="p-4 sm:p-5 text-slate-400" data-i18n="td_tarifa_plat">Preço cheio com margem embutida</td>
             </tr>
             <tr>
-              <td class="p-4 sm:p-5 font-semibold text-white">Taxas de Serviço</td>
-              <td class="p-4 sm:p-5 font-bold text-emerald-400 bg-emerald-500/5">R$ 0,00 (Zero taxa de intermediação)</td>
-              <td class="p-4 sm:p-5 text-slate-400">Cobram de 15% a 21% a mais</td>
+              <td class="p-4 sm:p-5 font-semibold text-white" data-i18n="td_taxas">Taxas de Serviço</td>
+              <td class="p-4 sm:p-5 font-bold text-emerald-400 bg-emerald-500/5" data-i18n="td_taxas_direto">R$ 0,00 (Zero taxa de intermediação)</td>
+              <td class="p-4 sm:p-5 text-slate-400" data-i18n="td_taxas_plat">Cobram de 15% a 21% a mais</td>
             </tr>
             <tr>
-              <td class="p-4 sm:p-5 font-semibold text-white">Atendimento & Suporte</td>
-              <td class="p-4 sm:p-5 font-bold text-emerald-400 bg-emerald-500/5">WhatsApp direto com nossa equipe local</td>
-              <td class="p-4 sm:p-5 text-slate-400">Chat do app com intermediários e bots genéricos</td>
+              <td class="p-4 sm:p-5 font-semibold text-white" data-i18n="td_atendimento">Atendimento & Suporte</td>
+              <td class="p-4 sm:p-5 font-bold text-emerald-400 bg-emerald-500/5" data-i18n="td_atend_direto">WhatsApp direto com nossa equipe local</td>
+              <td class="p-4 sm:p-5 text-slate-400" data-i18n="td_atend_plat">Chat do app com intermediários e bots genéricos</td>
             </tr>
             <tr>
-              <td class="p-4 sm:p-5 font-semibold text-white">Formas de Pagamento</td>
-              <td class="p-4 sm:p-5 font-bold text-emerald-400 bg-emerald-500/5">PIX ou Cartão combinado direto e com segurança</td>
-              <td class="p-4 sm:p-5 text-slate-400">Cartão com cobrança internacional ou regras rígidas</td>
+              <td class="p-4 sm:p-5 font-semibold text-white" data-i18n="td_pagamento">Formas de Pagamento</td>
+              <td class="p-4 sm:p-5 font-bold text-emerald-400 bg-emerald-500/5" data-i18n="td_pag_direto">PIX ou Cartão combinado direto e com segurança</td>
+              <td class="p-4 sm:p-5 text-slate-400" data-i18n="td_pag_plat">Cartão com cobrança internacional ou regras rígidas</td>
             </tr>
             <tr>
-              <td class="p-4 sm:p-5 font-semibold text-white">Flexibilidade de Horários</td>
-              <td class="p-4 sm:p-5 font-bold text-emerald-400 bg-emerald-500/5">Possibilidade de Early Check-in sob consulta direta</td>
-              <td class="p-4 sm:p-5 text-slate-400">Regras automáticas sem contato direto</td>
+              <td class="p-4 sm:p-5 font-semibold text-white" data-i18n="td_flexibilidade">Flexibilidade de Horários</td>
+              <td class="p-4 sm:p-5 font-bold text-emerald-400 bg-emerald-500/5" data-i18n="td_flex_direto">Possibilidade de Early Check-in sob consulta direta</td>
+              <td class="p-4 sm:p-5 text-slate-400" data-i18n="td_flex_plat">Regras automáticas sem contato direto</td>
             </tr>
           </tbody>
         </table>
@@ -720,56 +767,56 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
-        <h2 class="text-xs font-bold uppercase tracking-wider text-emerald-400">Infraestrutura Completa</h2>
-        <p class="text-3xl font-extrabold text-white">Tudo o que você precisa para uma estadia impecável</p>
+        <h2 class="text-xs font-bold uppercase tracking-wider text-emerald-400" data-i18n="sec_infra_tag">Infraestrutura Completa</h2>
+        <p class="text-3xl font-extrabold text-white" data-i18n="sec_infra_tit">Tudo o que você precisa para uma estadia impecável</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         
         <div class="glass-card p-6 rounded-2xl space-y-3">
           <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-xl font-bold">⚡</div>
-          <h3 class="text-base font-bold text-white">Internet Fibra 600 Mbps</h3>
-          <p class="text-xs text-slate-400 leading-relaxed">
+          <h3 class="text-base font-bold text-white" data-i18n="infra_wifi_tit">Internet Fibra 600 Mbps</h3>
+          <p class="text-xs text-slate-400 leading-relaxed" data-i18n="infra_wifi_desc">
             Conexão dedicada de ultra-alta velocidade com roteador potente. Perfeito para chamadas de vídeo, reuniões executivas e streaming em 4K sem qualquer oscilação.
           </p>
         </div>
 
         <div class="glass-card p-6 rounded-2xl space-y-3">
           <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-xl font-bold">🔑</div>
-          <h3 class="text-base font-bold text-white">Acesso Eletrônico 24h</h3>
-          <p class="text-xs text-slate-400 leading-relaxed">
+          <h3 class="text-base font-bold text-white" data-i18n="infra_checkin_tit">Acesso Eletrônico 24h</h3>
+          <p class="text-xs text-slate-400 leading-relaxed" data-i18n="infra_checkin_desc">
             Fechaduras digitais na entrada e nos quartos. Você recebe sua senha pessoal pelo WhatsApp e pode chegar a qualquer hora da noite ou madrugada com total autonomia.
           </p>
         </div>
 
         <div class="glass-card p-6 rounded-2xl space-y-3">
           <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-xl font-bold">🍳</div>
-          <h3 class="text-base font-bold text-white">Cozinha Compacta Privativa</h3>
-          <p class="text-xs text-slate-400 leading-relaxed">
+          <h3 class="text-base font-bold text-white" data-i18n="infra_cozinha_tit">Cozinha Compacta Privativa</h3>
+          <p class="text-xs text-slate-400 leading-relaxed" data-i18n="infra_cozinha_desc">
             Equipada com frigobar, micro-ondas, cooktop, cafeteira Dolce Gusto, louças, copos e panelas. Prepare suas próprias refeições com praticidade e economia.
           </p>
         </div>
 
         <div class="glass-card p-6 rounded-2xl space-y-3">
           <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-xl font-bold">🚿</div>
-          <h3 class="text-base font-bold text-white">Ducha de Alta Pressão</h3>
-          <p class="text-xs text-slate-400 leading-relaxed">
+          <h3 class="text-base font-bold text-white" data-i18n="infra_ducha_tit">Ducha de Alta Pressão</h3>
+          <p class="text-xs text-slate-400 leading-relaxed" data-i18n="infra_ducha_desc">
             Banheiros privativos impecáveis com banho quente pressurizado, toalhas de corpo e rosto de hotelaria higienizadas e secador de cabelo disponível.
           </p>
         </div>
 
         <div class="glass-card p-6 rounded-2xl space-y-3">
           <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-xl font-bold">🧺</div>
-          <h3 class="text-base font-bold text-white">Parceria SNT Lavanderia</h3>
-          <p class="text-xs text-slate-400 leading-relaxed">
+          <h3 class="text-base font-bold text-white" data-i18n="infra_lav_tit">Parceria SNT Lavanderia</h3>
+          <p class="text-xs text-slate-400 leading-relaxed" data-i18n="infra_lav_desc">
             Acesso facilitado à rede parceira SNT Lavanderia Self-Service para lavar e secar suas roupas em menos de 1 hora com sabão e amaciante OMO/Comfort dosados.
           </p>
         </div>
 
         <div class="glass-card p-6 rounded-2xl space-y-3">
           <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-xl font-bold">🛡️</div>
-          <h3 class="text-base font-bold text-white">Segurança & Monitoramento</h3>
-          <p class="text-xs text-slate-400 leading-relaxed">
+          <h3 class="text-base font-bold text-white" data-i18n="infra_seg_tit">Segurança & Monitoramento</h3>
+          <p class="text-xs text-slate-400 leading-relaxed" data-i18n="infra_seg_desc">
             Circuito interno de câmeras nas áreas comuns e iluminação inteligente para garantir a máxima tranquilidade para você e suas bagagens.
           </p>
         </div>
@@ -786,11 +833,11 @@
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
         
         <div class="lg:col-span-6 space-y-6">
-          <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">Localização Privilegiada</span>
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
+          <span class="text-xs font-bold uppercase tracking-wider text-emerald-400" data-i18n="loc_tag">Localização Privilegiada</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white leading-tight" data-i18n="loc_tit">
             Perto de tudo em Guarulhos e na Grande São Paulo
           </h2>
-          <p class="text-sm text-slate-300 leading-relaxed">
+          <p class="text-sm text-slate-300 leading-relaxed" data-i18n="loc_desc">
             Localizado no bairro Cidade Seródio em Guarulhos, com rota rápida e desimpedida para os terminais do <strong>Aeroporto Internacional de Guarulhos (GRU)</strong>, Rodovia Pres. Dutra e Rodovia Ayrton Senna.
           </p>
 
@@ -799,7 +846,7 @@
             <div class="flex items-center gap-3">
               <span class="text-emerald-400 text-xl">📍</span>
               <div>
-                <span class="text-[11px] text-slate-400 font-bold uppercase tracking-wider block">Endereço Oficial</span>
+                <span class="text-[11px] text-slate-400 font-bold uppercase tracking-wider block" data-i18n="loc_endereco_oficial">Endereço Oficial</span>
                 <span class="text-xs sm:text-sm font-bold text-white">Avenida Aguanil, 51 - Cidade Seródio - Guarulhos/SP</span>
               </div>
             </div>
@@ -812,31 +859,31 @@
           <div class="flex flex-wrap gap-3">
             <a href="https://www.google.com/maps/search/?api=1&query=Avenida+Aguanil,+51+-+Cidade+Ser%C3%B3dio,+Guarulhos+-+SP" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-bold px-4 py-2.5 rounded-xl text-xs border border-slate-700 transition">
               <svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-              <span>Abrir no Google Maps</span>
+              <span>Google Maps</span>
             </a>
             <a href="https://waze.com/ul?q=Avenida+Aguanil+51+Guarulhos+SP" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-bold px-4 py-2.5 rounded-xl text-xs border border-slate-700 transition">
               <svg class="w-4 h-4 text-sky-400" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1010 10A10 10 0 0012 2zm1 14.5a1.5 1.5 0 111.5-1.5 1.5 1.5 0 01-1.5 1.5zm-3-4a1 1 0 111-1 1 1 0 01-1 1zm4 0a1 1 0 111-1 1 1 0 01-1 1z"/></svg>
-              <span>Traçar Rota no Waze</span>
+              <span>Waze</span>
             </a>
           </div>
 
           <!-- DISTÂNCIAS PRINCIPAIS -->
           <div class="grid grid-cols-2 gap-3 pt-2">
             <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
-              <span class="text-xs text-slate-400 block">Aeroporto GRU</span>
-              <span class="text-sm font-bold text-emerald-400">10-15 minutos</span>
+              <span class="text-xs text-slate-400 block" data-i18n="dist_gru_tit">Aeroporto GRU</span>
+              <span class="text-sm font-bold text-emerald-400" data-i18n="dist_gru_val">10-15 minutos</span>
             </div>
             <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
-              <span class="text-xs text-slate-400 block">Linha 13-Jade CPTM</span>
-              <span class="text-sm font-bold text-white">8 minutos</span>
+              <span class="text-xs text-slate-400 block" data-i18n="dist_cptm_tit">Linha 13-Jade CPTM</span>
+              <span class="text-sm font-bold text-white" data-i18n="dist_cptm_val">8 minutos</span>
             </div>
             <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
-              <span class="text-xs text-slate-400 block">Supermercado & Padaria</span>
-              <span class="text-sm font-bold text-white">200 metros</span>
+              <span class="text-xs text-slate-400 block" data-i18n="dist_comercio_tit">Comércio & Padaria</span>
+              <span class="text-sm font-bold text-white" data-i18n="dist_comercio_val">200 metros</span>
             </div>
             <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
-              <span class="text-xs text-slate-400 block">Shopping Bosque Maia</span>
-              <span class="text-sm font-bold text-white">18 minutos</span>
+              <span class="text-xs text-slate-400 block" data-i18n="dist_shopping_tit">Shopping Bosque Maia</span>
+              <span class="text-sm font-bold text-white" data-i18n="dist_shopping_val">18 minutos</span>
             </div>
           </div>
         </div>
@@ -865,68 +912,68 @@
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center mb-14 space-y-2">
-        <h2 class="text-xs font-bold uppercase tracking-wider text-emerald-400">Tire Suas Dúvidas</h2>
-        <p class="text-3xl font-extrabold text-white">Perguntas Frequentes</p>
+        <h2 class="text-xs font-bold uppercase tracking-wider text-emerald-400" data-i18n="faq_tag">Tire Suas Dúvidas</h2>
+        <p class="text-3xl font-extrabold text-white" data-i18n="faq_tit">Perguntas Frequentes</p>
       </div>
 
       <div class="space-y-4">
         
         <details class="glass-card rounded-xl p-5 group cursor-pointer">
           <summary class="font-bold text-sm sm:text-base text-white flex items-center justify-between">
-            <span>Como funciona o check-in se meu voo chegar de madrugada?</span>
+            <span data-i18n="faq_q1">Como funciona o check-in se meu voo chegar de madrugada?</span>
             <span class="text-emerald-400 transition group-open:rotate-180">▼</span>
           </summary>
-          <p class="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
+          <p class="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed" data-i18n="faq_a1">
             Totalmente tranquilo! Nosso sistema é 100% automatizado através de fechaduras eletrônicas digitais tanto no portão de pedestres quanto na porta do seu studio. Após a confirmação no WhatsApp, você recebe sua senha individual e pode chegar em qualquer horário entre 15:00 e a manhã seguinte sem depender de recepção ou espera.
           </p>
         </details>
 
         <details class="glass-card rounded-xl p-5 group cursor-pointer">
           <summary class="font-bold text-sm sm:text-base text-white flex items-center justify-between">
-            <span>Como funciona o desconto de 10% na reserva direta?</span>
+            <span data-i18n="faq_q2">Como funciona o desconto de 10% na reserva direta?</span>
             <span class="text-emerald-400 transition group-open:rotate-180">▼</span>
           </summary>
-          <p class="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
+          <p class="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed" data-i18n="faq_a2">
             Plataformas como Booking e Airbnb cobram de 15% a 21% de comissão sobre a estadia. Reservando direto conosco pelo WhatsApp oficial, eliminamos essa taxa e repassamos 10% de economia garantida para você no valor final da hospedagem.
           </p>
         </details>
 
         <details class="glass-card rounded-xl p-5 group cursor-pointer">
           <summary class="font-bold text-sm sm:text-base text-white flex items-center justify-between">
-            <span>Qual a diferença entre os studios com cortinas e os compactos?</span>
+            <span data-i18n="faq_q3">Qual a diferença entre os studios com cortinas e os compactos?</span>
             <span class="text-emerald-400 transition group-open:rotate-180">▼</span>
           </summary>
-          <p class="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
-            Os <strong>Studios 12 e 14</strong> são os maiores da propriedade, contam com janelas amplas com cortinas elegantes e ampla circulação. Os <strong>Studios 11 e 13</strong> são mais compactos e possuem uma janelinha superior basculante de ventilação, sendo extremamente silenciosos e com custo mais acessível.
+          <p class="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed" data-i18n="faq_a3">
+            Os studios <strong>Master King e Executivo</strong> são os maiores da propriedade, contam com janelas amplas com cortinas elegantes e ampla circulação. Os studios <strong>Standard (Smart & Cozy)</strong> são mais compactos e possuem uma janelinha superior basculante de ventilação, sendo extremamente silenciosos e com custo mais acessível.
           </p>
         </details>
 
         <details class="glass-card rounded-xl p-5 group cursor-pointer">
           <summary class="font-bold text-sm sm:text-base text-white flex items-center justify-between">
-            <span>A internet suporta reuniões em vídeo e trabalho remoto?</span>
+            <span data-i18n="faq_q4">A internet suporta reuniões em vídeo e trabalho remoto?</span>
             <span class="text-emerald-400 transition group-open:rotate-180">▼</span>
           </summary>
-          <p class="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
+          <p class="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed" data-i18n="faq_a4">
             Sim! Temos fibra óptica dedicada de <strong>600 Mbps</strong> com baixa latência e sinal forte em todos os studios. Nossos hóspedes executivos utilizam regularmente para chamadas no Teams, Zoom, Google Meet e streaming.
           </p>
         </details>
 
         <details class="glass-card rounded-xl p-5 group cursor-pointer">
           <summary class="font-bold text-sm sm:text-base text-white flex items-center justify-between">
-            <span>Quais as formas de pagamento aceitas para a reserva direta?</span>
+            <span data-i18n="faq_q5">Quais as formas de pagamento aceitas para a reserva direta?</span>
             <span class="text-emerald-400 transition group-open:rotate-180">▼</span>
           </summary>
-          <p class="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
+          <p class="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed" data-i18n="faq_a5">
             Você pode pagar com total segurança via <strong>PIX</strong> (com confirmação instantânea) ou <strong>Cartão de Crédito</strong>. Todo o fluxo é combinado com clareza e recibo pelo WhatsApp oficial.
           </p>
         </details>
 
         <details class="glass-card rounded-xl p-5 group cursor-pointer">
           <summary class="font-bold text-sm sm:text-base text-white flex items-center justify-between">
-            <span>Tem comércio ou alimentação perto do studio?</span>
+            <span data-i18n="faq_q6">Tem comércio ou alimentação perto do studio?</span>
             <span class="text-emerald-400 transition group-open:rotate-180">▼</span>
           </summary>
-          <p class="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
+          <p class="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed" data-i18n="faq_a6">
             Sim! A menos de 2 a 5 minutos a pé você encontra padaria, farmácia, supermercado e restaurantes, além de ampla cobertura de entrega do iFood com entrega rápida na nossa porta.
           </p>
         </details>
@@ -936,7 +983,7 @@
       <!-- CTA FINAL DA SEÇÃO FAQ -->
       <div class="mt-12 text-center">
         <a href="https://api.whatsapp.com/send?phone=551154443110&text=Ola%21%20Gostaria%20de%20tirar%20uma%20duvida%20sobre%20a%20hospedagem%20no%20SNT%20Studios." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold px-8 py-4 rounded-xl text-sm sm:text-base shadow-xl shadow-emerald-500/25 transition transform hover:-translate-y-0.5">
-          <span>Ainda tem dúvidas? Fale com a gente no WhatsApp</span>
+          <span data-i18n="btn_faq_whatsapp">Ainda tem dúvidas? Fale com a gente no WhatsApp</span>
           <span>→</span>
         </a>
       </div>
@@ -953,7 +1000,7 @@
         <!-- COLUNA 1: MARCA & IDENTIDADE -->
         <div class="space-y-3 md:col-span-2">
           <img src="assets/snt-empreendimentos-horizontal-branco.png" alt="SNT Studios" class="h-10 w-auto object-contain">
-          <p class="text-slate-400 max-w-sm leading-relaxed text-[11px]">
+          <p class="text-slate-400 max-w-sm leading-relaxed text-[11px]" data-i18n="footer_desc">
             Hospitalidade inteligente e moderna em Guarulhos. Studios privativos completos para quem valoriza silêncio, conforto, tecnologia e proximidade com o Aeroporto GRU.
           </p>
           <div class="pt-2 text-[11px] text-slate-400 space-y-1">
@@ -966,38 +1013,38 @@
 
         <!-- COLUNA 2: LINKS RÁPIDOS -->
         <div class="space-y-2">
-          <h4 class="font-bold text-white uppercase tracking-wider text-[11px]">Navegação</h4>
+          <h4 class="font-bold text-white uppercase tracking-wider text-[11px]" data-i18n="footer_nav_tit">Navegação</h4>
           <ul class="space-y-1.5 text-[11px]">
-            <li><a href="#inicio" class="hover:text-emerald-400 transition">Início & Anúncio</a></li>
-            <li><a href="#cotador" class="hover:text-emerald-400 transition">Verificar Disponibilidade</a></li>
-            <li><a href="#studios" class="hover:text-emerald-400 transition">Nossas 4 Acomodações</a></li>
-            <li><a href="#comodidades" class="hover:text-emerald-400 transition">Comodidades & Wi-Fi</a></li>
-            <li><a href="#localizacao" class="hover:text-emerald-400 transition">Localização & Rotas GRU</a></li>
-            <li><a href="#faq" class="hover:text-emerald-400 transition">Dúvidas Frequentes</a></li>
+            <li><a href="#inicio" class="hover:text-emerald-400 transition" data-i18n="nav_inicio">Início & Anúncio</a></li>
+            <li><a href="#cotador" class="hover:text-emerald-400 transition" data-i18n="nav_disponibilidade">Verificar Disponibilidade</a></li>
+            <li><a href="#studios" class="hover:text-emerald-400 transition" data-i18n="nav_studios">Nossas Acomodações</a></li>
+            <li><a href="#comodidades" class="hover:text-emerald-400 transition" data-i18n="nav_comodidades">Comodidades & Wi-Fi</a></li>
+            <li><a href="#localizacao" class="hover:text-emerald-400 transition" data-i18n="nav_localizacao">Localização & Rotas GRU</a></li>
+            <li><a href="#faq" class="hover:text-emerald-400 transition" data-i18n="nav_faq">Dúvidas Frequentes</a></li>
           </ul>
         </div>
 
         <!-- COLUNA 3: CONTATO & CANAIS -->
         <div class="space-y-2">
-          <h4 class="font-bold text-white uppercase tracking-wider text-[11px]">Atendimento Oficial</h4>
-          <p class="text-[11px] text-slate-400">Atendimento humanizado para cotações, reservas e suporte ao hóspede:</p>
+          <h4 class="font-bold text-white uppercase tracking-wider text-[11px]" data-i18n="footer_atend_tit">Atendimento Oficial</h4>
+          <p class="text-[11px] text-slate-400" data-i18n="footer_atend_desc">Atendimento humanizado para cotações, reservas e suporte ao hóspede:</p>
           <a href="https://api.whatsapp.com/send?phone=551154443110" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-bold text-xs py-1">
             <span>WhatsApp: (11) 5444-3110</span>
           </a>
-          <p class="text-[11px] text-slate-400">Check-in: a partir das 15:00<br>Check-out: até as 11:00</p>
+          <p class="text-[11px] text-slate-400" data-i18n="footer_horarios">Check-in: a partir das 15:00<br>Check-out: até as 11:00</p>
         </div>
 
       </div>
 
       <div class="pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-400">
         <p>© 2026 SNT Studios (SNT Empreendimentos Imobiliários LTDA). Todos os direitos reservados.</p>
-        <p class="text-slate-400">Desenvolvido com tecnologia sustentável e zero CDNs externas em produção.</p>
+        <p class="text-slate-400" data-i18n="footer_sustentavel">Desenvolvido com tecnologia sustentável e zero CDNs externas em produção.</p>
       </div>
 
     </div>
   </footer>
 
-  <!-- MODAL DE GALERIA DE FOTOS (LIGHTBOX 20 FOTOS) -->
+  <!-- MODAL DE GALERIA DE FOTOS (LIGHTBOX 20 FOTOS WEBP) -->
   <div id="modalGaleria" class="fixed inset-0 z-50 modal-backdrop hidden flex items-center justify-center p-4">
     <div class="relative max-w-4xl w-full bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
       
@@ -1005,7 +1052,7 @@
       <div class="p-4 border-b border-slate-800 flex items-center justify-between">
         <div>
           <h3 id="modalGaleriaTitulo" class="font-bold text-white text-sm sm:text-base">Fotos Reais do SNT Studios</h3>
-          <p id="modalGaleriaSubtitulo" class="text-xs text-slate-400">Fotos 100% autênticas dos nossos 4 studios</p>
+          <p id="modalGaleriaSubtitulo" class="text-xs text-slate-400">Fotos 100% autênticas das nossas acomodações</p>
         </div>
         <button onclick="fecharGaleria()" class="w-9 h-9 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-200 flex items-center justify-center font-bold text-lg transition">
           ✕
@@ -1014,7 +1061,7 @@
 
       <!-- VISUALIZADOR DA FOTO ATUAL -->
       <div class="relative flex-1 bg-black flex items-center justify-center min-h-[300px] sm:min-h-[460px] overflow-hidden">
-        <img id="modalFotoPrincipal" src="" alt="Foto do Studio" class="max-h-[70vh] w-auto max-w-full object-contain">
+        <img id="modalFotoPrincipal" src="" alt="Foto da Acomodação" class="max-h-[70vh] w-auto max-w-full object-contain">
         
         <!-- BOTOES DE NAVEGAÇÃO -->
         <button onclick="anteriorFotoGaleria()" class="absolute left-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-slate-950/80 hover:bg-emerald-500 hover:text-slate-950 text-white flex items-center justify-center font-black text-xl transition border border-slate-800 shadow-xl">
@@ -1043,11 +1090,11 @@
     <div>
       <div class="flex items-baseline gap-1">
         <span class="text-base font-black text-white" id="mobileBarPreco">R$ 159</span>
-        <span class="text-xs text-slate-400">/ noite</span>
+        <span class="text-xs text-slate-400" data-i18n="card_por_noite">/ noite</span>
       </div>
-      <div class="text-[11px] text-emerald-400 font-medium" id="mobileBarDatas">Selecione as datas</div>
+      <div class="text-[11px] text-emerald-400 font-medium" id="mobileBarDatas" data-i18n="txt_inserir_data">Selecione as datas</div>
     </div>
-    <button type="button" onclick="focarCotador()" class="bg-emerald-500 hover:bg-emerald-400 active:scale-95 text-slate-950 font-black px-4 py-2.5 rounded-xl text-xs uppercase tracking-wider shadow-lg shadow-emerald-500/25 transition">
+    <button type="button" onclick="focarCotador()" class="bg-emerald-500 hover:bg-emerald-400 active:scale-95 text-slate-950 font-black px-4 py-2.5 rounded-xl text-xs uppercase tracking-wider shadow-lg shadow-emerald-500/25 transition" data-i18n="btn_verificar_datas_curto">
       Verificar Datas
     </button>
   </div>
@@ -1058,10 +1105,1095 @@
     <span class="hidden sm:inline text-xs tracking-wide">Falar no WhatsApp</span>
   </a>
 
-  <!-- SCRIPTS FUNCIONAIS -->
+  <!-- SCRIPTS FUNCIONAIS: I18N, CALENDÁRIO RANGE AIRBNB E COTAÇÃO -->
   <script>
     // ========================================================
-    // FILTRAGEM DE STUDIOS
+    // INTERNACIONALIZAÇÃO (PT / EN / ES)
+    // ========================================================
+    let idiomaAtual = localStorage.getItem('snt_studios_lang') || 'pt';
+
+    const I18N = {
+      pt: {
+        badge_boutique: "STUDIOS BOUTIQUE",
+        nav_inicio: "Início",
+        nav_disponibilidade: "Disponibilidade",
+        nav_studios: "Acomodações",
+        nav_comodidades: "Comodidades",
+        nav_localizacao: "Localização",
+        nav_faq: "Dúvidas",
+        btn_nav_reserva: "Reservar no WhatsApp",
+        badge_topo_local: "Hospedagem Privativa em Guarulhos · Aeroporto GRU",
+        badge_topo_desconto: "🛡️ 10% OFF Reserva Direta Garantida",
+        badge_topo_checkin: "🔑 Auto Check-in 24h",
+        hero_title: "SNT Studios · Studios Privativos a 10 min do Aeroporto GRU",
+        sub_hospitalidade: "Hospitalidade Independente",
+        sub_gru_dist: "A 10-15 minutos dos Terminais 1, 2 e 3",
+        btn_compartilhar: "Compartilhar",
+        tag_master_king: "STUDIO MASTER KING",
+        desc_master_king_curta: "Ampla iluminação, cama Queen Size e cortinas elegantes",
+        tag_executivo_premium: "Executivo Premium",
+        tag_cozinha_priv: "Cozinha Compacta",
+        tag_standard_smart: "Standard Smart",
+        tag_standard_cozy: "Standard Cozy",
+        btn_todas_fotos: "Mostrar todas as 20 fotos",
+        detalhe_tipo_espaco: "Studio privativo inteiro · Hospedagem SNT",
+        detalhe_capacidade: "Até 2 hóspedes · 1 cama queen ou casal · 1 banheiro privativo · Cozinha privativa equipada",
+        feature_checkin_tit: "Auto check-in 24h via fechadura digital",
+        feature_checkin_desc: "Acesse o complexo e seu studio com senha individual a qualquer hora da noite ou madrugada, sem precisar de chaves físicas.",
+        feature_wifi_tit: "Wi-Fi fibra de 600 Mbps dedicado",
+        feature_wifi_desc: "Internet ultra-veloz testada para chamadas de vídeo, reuniões executivas e streaming 4K sem interrupções.",
+        feature_cozinha_tit: "Cozinha privativa equipada",
+        feature_cozinha_desc: "Equipada com frigobar, micro-ondas, cooktop, cafeteira Dolce Gusto, louças e talheres para sua conveniência.",
+        feature_gru_tit: "10 a 15 minutos do Aeroporto de Guarulhos (GRU)",
+        feature_gru_desc: "Localização estratégica com rota rápida para os Terminais 1, 2 e 3 por aplicativo, ideal para conexões e escalas.",
+        sobre_espaco_tit: "Sobre o espaço",
+        sobre_espaco_p1: "O SNT Studios oferece uma proposta inteligente de hospitalidade autônoma: privacidade completa, acabamento refinado e excelente localização próxima ao Aeroporto GRU. Todas as acomodações são 100% privativas com banheiro exclusivo, bancada e ambiente climatizado.",
+        tipologias_tit: "Duas Categorias Disponíveis",
+        cat_ampla_tit: "Studios Maiores com Cortinas (Master & Executivo)",
+        cat_ampla_desc: "Janela ampla com cortinas elegantes, cama Queen/Casal, maior circulação e bancada espaçosa de trabalho.",
+        cat_compacta_tit: "Studios Standard (Smart & Cozy)",
+        cat_compacta_desc: "Janelinha superior voltada para silêncio e discrição máxima. Planta inteligente, compacta e excelente custo-benefício.",
+        tipologias_nota: "Ao selecionar suas datas ao lado, o sistema verifica a disponibilidade em tempo real e calcula o valor total consolidado.",
+        comodidades_grid_tit: "O que esse lugar oferece",
+        comod_wifi: "Wi-Fi Fibra 600 Mbps",
+        comod_fechadura: "Fechadura digital 24h",
+        comod_tv: "Smart TV com Streaming",
+        comod_cooktop: "Cozinha com Cooktop",
+        comod_ar: "Ar-condicionado / Ventilador",
+        comod_cafe: "Cafeteira Dolce Gusto",
+        comod_ducha: "Banho quente pressurizado",
+        comod_enxoval: "Enxoval higienizado",
+        comod_bancada: "Bancada para notebook",
+        comod_cameras: "Câmeras nas áreas comuns",
+        comod_transporte: "Fácil acesso para Uber/99",
+        comod_frigobar: "Frigobar e Micro-ondas",
+        regra_checkin_tit: "Check-in:",
+        regra_checkin_val: "A partir das 15:00 (Acesso autônomo 24h via código)",
+        regra_checkout_tit: "Check-out:",
+        regra_checkout_val: "Até as 11:00",
+        regra_silencio_tit: "Política de Silêncio:",
+        regra_silencio_val: "Respeito ao descanso dos demais hóspedes a partir das 22h",
+        card_por_noite: " / noite",
+        card_badge_desconto: "10% OFF DIRETO",
+        card_tarifa_oficial: "Tarifa Oficial",
+        lbl_checkin: "CHECK-IN",
+        lbl_checkout: "CHECKOUT",
+        lbl_hospedes: "HÓSPEDES",
+        txt_inserir_data: "Adicionar data",
+        opt_1_hospede: "1 hóspede",
+        opt_2_hospedes: "2 hóspedes (Casal)",
+        cal_escolha_checkin: "Selecione a data de check-in",
+        cal_escolha_checkout: "Selecione a data de checkout",
+        cal_sub_instrucao: "1º clique: entrada · 2º clique: saída",
+        btn_limpar_datas: "Limpar datas",
+        dia_dom: "Dom", dia_seg: "Seg", dia_ter: "Ter", dia_qua: "Qua", dia_qui: "Qui", dia_sex: "Sex", dia_sab: "Sáb",
+        txt_sem_datas: "Nenhuma data selecionada",
+        btn_concluir: "Concluir",
+        btn_conferir_disp: "Conferir disponibilidade",
+        btn_verificar_datas_curto: "Verificar Datas",
+        txt_nao_cobrado: "Você ainda não será cobrado",
+        vantagem_10_desc: "Desconto Direto de 10%",
+        txt_garantido: "Garantido",
+        vantagem_zero_taxas: "Sem taxas de serviço de terceiros",
+        txt_economia_real: "Economia real",
+        vantagem_tempo_real: "Disponibilidade em tempo real",
+        diff_wifi_tit: "Wi-Fi 600 Mbps", diff_wifi_sub: "Fibra óptica dedicada ultra-rápida",
+        diff_checkin_tit: "Self Check-in 24h", diff_checkin_sub: "Fechadura eletrônica por código individual",
+        diff_gru_tit: "10-15 Min de GRU", diff_gru_sub: "Acesso descomplicado aos terminais",
+        diff_cozinha_tit: "Cozinha Equipada", diff_cozinha_sub: "Micro-ondas, frigobar & cafeteira",
+        diff_desconto_tit: "10% OFF Direto", diff_desconto_sub: "Melhor tarifa garantida sem taxas",
+        sec_studios_tag: "Nossas Acomodações", sec_studios_tit: "Conheça nossas opções privativas",
+        sec_studios_sub: "Todas as acomodações contam com fechadura digital 24h com senha pessoal, Wi-Fi fibra de 600 Mbps, Smart TV, ar-condicionado/ventilador, cozinha compacta completa e banheiro privativo.",
+        btn_filtro_todos: "Todos os Studios", btn_filtro_amplos: "Studios Maiores (Cortinas)", btn_filtro_compactos: "Studios Standard (Compactos)",
+        badge_maior_studio: "O MAIOR STUDIO", badge_executivo: "GRANDE & EXECUTIVO", badge_smart: "COMPACTO & PRÁTICO", badge_cozy: "COMPACTO & SILENCIOSO",
+        btn_ver_fotos: "Ver Fotos", btn_verificar_datas: "Verificar Datas & Disponibilidade",
+        card_master_desc: "O maior e mais espaçoso studio do complexo. Ampla iluminação e máxima amplitude.",
+        card_master_esp: "🪟 Janela ampla com cortinas elegantes & espaço extra para circulação.",
+        item_cama_queen: "Cama Queen Size & Enxoval Hotelaria", item_home_office: "Bancada Home Office & Wi-Fi 600MB",
+        item_cozinha_cooktop: "Cozinha Compacta com Cooktop & Frigobar", item_fechadura_tv: "Smart TV & Fechadura Digital 24h",
+        card_executivo_desc: "Amplo, elegante e altamente reservado. Ambiente perfeito para estadias de negócios e escalas.",
+        card_executivo_esp: "🪟 Janela com cortinas elegantes & ambiente sofisticado.",
+        item_cama_casal_premium: "Cama de Casal Confort & Enxoval Premium", item_cozinha_cafeteira: "Cozinha Equipada & Cafeteira Dolce Gusto",
+        card_smart_desc: "Planta compacta e inteligente. Ideal para escalas e viajantes que buscam silêncio e praticidade.",
+        card_smart_esp: "🚪 Janelinha pequena superior para total privacidade e ventilação.",
+        item_cama_casal: "Cama de Casal Confortável", item_frigobar_micro: "Frigobar & Micro-ondas Privativo", item_wifi_tv: "Wi-Fi Fibra 600MB & Smart TV", item_fechadura_24h: "Fechadura Eletrônica 24h",
+        card_cozy_desc: "Compacto, silencioso e acolhedor. Excelente custo-benefício com foco em uma noite reparadora de descanso.",
+        card_cozy_esp: "🚪 Janelinha pequena superior para máximo silêncio e discrição.",
+        item_cama_casal_travesseiro: "Cama Casal & Travesseiros Confort", item_ducha_press: "Ducha de Alta Pressão & Banheiro Privativo", item_frigobar_cafe: "Frigobar, Micro-ondas & Cafeteira",
+        comp_tag: "Transparência Total", comp_tit: "Por que reservar direto conosco pelo WhatsApp?",
+        th_beneficio: "Benefício", th_direto: "SNT Studios (Direto Oficial)", th_plataformas: "Plataformas (Booking / Airbnb)",
+        td_tarifa: "Tarifa Final", td_tarifa_direto: "10% de desconto garantido", td_tarifa_plat: "Preço cheio com margem embutida",
+        td_taxas: "Taxas de Serviço", td_taxas_direto: "R$ 0,00 (Zero taxa de intermediação)", td_taxas_plat: "Cobram de 15% a 21% a mais",
+        td_atendimento: "Atendimento & Suporte", td_atend_direto: "WhatsApp direto com nossa equipe local", td_atend_plat: "Chat do app com intermediários e bots genéricos",
+        td_pagamento: "Formas de Pagamento", td_pag_direto: "PIX ou Cartão combinado direto e com segurança", td_pag_plat: "Cartão com cobrança internacional ou regras rígidas",
+        td_flexibilidade: "Flexibilidade de Horários", td_flex_direto: "Possibilidade de Early Check-in sob consulta direta", td_flex_plat: "Regras automáticas sem contato direto",
+        sec_infra_tag: "Infraestrutura Completa", sec_infra_tit: "Tudo o que você precisa para uma estadia impecável",
+        infra_wifi_tit: "Internet Fibra 600 Mbps", infra_wifi_desc: "Conexão dedicada de ultra-alta velocidade com roteador potente. Perfeito para chamadas de vídeo, reuniões executivas e streaming em 4K sem qualquer oscilação.",
+        infra_checkin_tit: "Acesso Eletrônico 24h", infra_checkin_desc: "Fechaduras digitais na entrada e nos quartos. Você recebe sua senha pessoal pelo WhatsApp e pode chegar a qualquer hora da noite ou madrugada com total autonomia.",
+        infra_cozinha_tit: "Cozinha Compacta Privativa", infra_cozinha_desc: "Equipada com frigobar, micro-ondas, cooktop, cafeteira Dolce Gusto, louças, copos e panelas. Prepare suas próprias refeições com praticidade e economia.",
+        infra_ducha_tit: "Ducha de Alta Pressão", infra_ducha_desc: "Banheiros privativos impecáveis com banho quente pressurizado, toalhas de corpo e rosto de hotelaria higienizadas e secador de cabelo disponível.",
+        infra_lav_tit: "Parceria SNT Lavanderia", infra_lav_desc: "Acesso facilitado à rede parceira SNT Lavanderia Self-Service para lavar e secar suas roupas em menos de 1 hora com sabão e amaciante OMO/Comfort dosados.",
+        infra_seg_tit: "Segurança & Monitoramento", infra_seg_desc: "Circuito interno de câmeras nas áreas comuns e iluminação inteligente para garantir a máxima tranquilidade para você e suas bagagens.",
+        loc_tag: "Localização Privilegiada", loc_tit: "Perto de tudo em Guarulhos e na Grande São Paulo",
+        loc_desc: "Localizado no bairro Cidade Seródio em Guarulhos, com rota rápida e desimpedida para os terminais do Aeroporto Internacional de Guarulhos (GRU), Rodovia Pres. Dutra e Rodovia Ayrton Senna.",
+        loc_endereco_oficial: "Endereço Oficial",
+        dist_gru_tit: "Aeroporto GRU", dist_gru_val: "10-15 minutos",
+        dist_cptm_tit: "Linha 13-Jade CPTM", dist_cptm_val: "8 minutos",
+        dist_comercio_tit: "Comércio & Padaria", dist_comercio_val: "200 metros",
+        dist_shopping_tit: "Shopping Bosque Maia", dist_shopping_val: "18 minutos",
+        faq_tag: "Tire Suas Dúvidas", faq_tit: "Perguntas Frequentes",
+        faq_q1: "Como funciona o check-in se meu voo chegar de madrugada?",
+        faq_a1: "Totalmente tranquilo! Nosso sistema é 100% automatizado através de fechaduras eletrônicas digitais tanto no portão de pedestres quanto na porta do seu studio. Após a confirmação no WhatsApp, você recebe sua senha individual e pode chegar em qualquer horário entre 15:00 e a manhã seguinte sem depender de recepção ou espera.",
+        faq_q2: "Como funciona o desconto de 10% na reserva direta?",
+        faq_a2: "Plataformas como Booking e Airbnb cobram de 15% a 21% de comissão sobre a estadia. Reservando direto conosco pelo WhatsApp oficial, eliminamos essa taxa e repassamos 10% de economia garantida para você no valor final da hospedagem.",
+        faq_q3: "Qual a diferença entre os studios com cortinas e os compactos?",
+        faq_a3: "Os studios Master King e Executivo são os maiores da propriedade, contam com janelas amplas com cortinas elegantes e ampla circulação. Os studios Standard (Smart & Cozy) são mais compactos e possuem uma janelinha superior basculante de ventilação, sendo extremamente silenciosos e com custo mais acessível.",
+        faq_q4: "A internet suporta reuniões em vídeo e trabalho remoto?",
+        faq_a4: "Sim! Temos fibra óptica dedicada de 600 Mbps com baixa latência e sinal forte em todos os studios. Nossos hóspedes executivos utilizam regularmente para chamadas no Teams, Zoom, Google Meet e streaming.",
+        faq_q5: "Quais as formas de pagamento aceitas para a reserva direta?",
+        faq_a5: "Você pode pagar com total segurança via PIX (com confirmação instantânea) ou Cartão de Crédito. Todo o fluxo é combinado com clareza e recibo pelo WhatsApp oficial.",
+        faq_q6: "Tem comércio ou alimentação perto do studio?",
+        faq_a6: "Sim! A menos de 2 a 5 minutos a pé você encontra padaria, farmácia, supermercado e restaurantes, além de ampla cobertura de entrega do iFood com entrega rápida na nossa porta.",
+        btn_faq_whatsapp: "Ainda tem dúvidas? Fale com a gente no WhatsApp",
+        footer_desc: "Hospitalidade inteligente e moderna em Guarulhos. Studios privativos completos para quem valoriza silêncio, conforto, tecnologia e proximidade com o Aeroporto GRU.",
+        footer_nav_tit: "Navegação", footer_atend_tit: "Atendimento Oficial",
+        footer_atend_desc: "Atendimento humanizado para cotações, reservas e suporte ao hóspede:",
+        footer_horarios: "Check-in: a partir das 15:00<br>Check-out: até as 11:00",
+        footer_sustentavel: "Desenvolvido com tecnologia sustentável e zero CDNs externas em produção."
+      },
+      en: {
+        badge_boutique: "BOUTIQUE STUDIOS",
+        nav_inicio: "Home",
+        nav_disponibilidade: "Availability",
+        nav_studios: "Accommodations",
+        nav_comodidades: "Amenities",
+        nav_localizacao: "Location",
+        nav_faq: "FAQ",
+        btn_nav_reserva: "Book on WhatsApp",
+        badge_topo_local: "Private Stay in Guarulhos · GRU Airport",
+        badge_topo_desconto: "🛡️ 10% OFF Direct Booking Guaranteed",
+        badge_topo_checkin: "🔑 24/7 Digital Self Check-in",
+        hero_title: "SNT Studios · Private Studios 10 min from GRU Airport",
+        sub_hospitalidade: "Independent Hospitality",
+        sub_gru_dist: "10-15 minutes from Terminals 1, 2, and 3",
+        btn_compartilhar: "Share",
+        tag_master_king: "MASTER KING STUDIO",
+        desc_master_king_curta: "Bright windows, Queen Size bed, and elegant drapes",
+        tag_executivo_premium: "Executive Premium",
+        tag_cozinha_priv: "Compact Kitchen",
+        tag_standard_smart: "Standard Smart",
+        tag_standard_cozy: "Standard Cozy",
+        btn_todas_fotos: "Show all 20 photos",
+        detalhe_tipo_espaco: "Entire private studio · Hosted by SNT Studios",
+        detalhe_capacidade: "Up to 2 guests · 1 queen or double bed · 1 private bathroom · Fully equipped kitchenette",
+        feature_checkin_tit: "24/7 self check-in via electronic lock",
+        feature_checkin_desc: "Access the complex and your studio with a personal passcode at any time of day or night, no physical keys needed.",
+        feature_wifi_tit: "Dedicated 600 Mbps fiber Wi-Fi",
+        feature_wifi_desc: "Ultra-fast, reliable internet tested for video calls, remote work, and uninterrupted 4K streaming.",
+        feature_cozinha_tit: "Fully equipped private kitchenette",
+        feature_cozinha_desc: "Equipped with mini-fridge, microwave, stovetop, Dolce Gusto coffee maker, cookware, and tableware.",
+        feature_gru_tit: "10 to 15 minutes from Guarulhos Airport (GRU)",
+        feature_gru_desc: "Quick, uncomplicated route to Terminals 1, 2, and 3 via Uber/taxi, ideal for layovers and business trips.",
+        sobre_espaco_tit: "About the space",
+        sobre_espaco_p1: "SNT Studios offers an autonomous hospitality concept: full privacy, modern finish, and unbeatable proximity to GRU Airport. Every unit is completely private with dedicated bathroom, workspace, and air conditioning/fan.",
+        tipologias_tit: "Two Available Categories",
+        cat_ampla_tit: "Larger Studios with Window Curtains (Master & Executive)",
+        cat_ampla_desc: "Wide windows with blackout curtains, Queen/Double bed, generous space, and a wide workstation desk.",
+        cat_compacta_tit: "Standard Studios (Smart & Cozy)",
+        cat_compacta_desc: "High top transom window for maximum quietness and discretion. Smart, compact layout at an exceptional value.",
+        tipologias_nota: "Select your dates to verify live availability and calculate the final bundled rate.",
+        comodidades_grid_tit: "What this place offers",
+        comod_wifi: "600 Mbps Fiber Wi-Fi",
+        comod_fechadura: "24/7 Keyless digital entry",
+        comod_tv: "Smart TV with Streaming",
+        comod_cooktop: "Kitchenette with Cooktop",
+        comod_ar: "Air Conditioning / Fan",
+        comod_cafe: "Dolce Gusto Coffee Maker",
+        comod_ducha: "Pressurized hot shower",
+        comod_enxoval: "Sanitized hotel linen",
+        comod_bancada: "Laptop work desk",
+        comod_cameras: "Security cameras in common areas",
+        comod_transporte: "Easy pickup for Uber/99",
+        comod_frigobar: "Mini-fridge & Microwave",
+        regra_checkin_tit: "Check-in:",
+        regra_checkin_val: "From 3:00 PM (24/7 autonomous digital access)",
+        regra_checkout_tit: "Check-out:",
+        regra_checkout_val: "Until 11:00 AM",
+        regra_silencio_tit: "Quiet Hours:",
+        regra_silencio_val: "Please respect other guests' rest after 10:00 PM",
+        card_por_noite: " / night",
+        card_badge_desconto: "10% DIRECT OFF",
+        card_tarifa_oficial: "Official Rate",
+        lbl_checkin: "CHECK-IN",
+        lbl_checkout: "CHECKOUT",
+        lbl_hospedes: "GUESTS",
+        txt_inserir_data: "Add date",
+        opt_1_hospede: "1 guest",
+        opt_2_hospedes: "2 guests (Couple)",
+        cal_escolha_checkin: "Select check-in date",
+        cal_escolha_checkout: "Select checkout date",
+        cal_sub_instrucao: "1st tap: check-in · 2nd tap: checkout",
+        btn_limpar_datas: "Clear dates",
+        dia_dom: "Sun", dia_seg: "Mon", dia_ter: "Tue", dia_qua: "Wed", dia_qui: "Thu", dia_sex: "Fri", dia_sab: "Sat",
+        txt_sem_datas: "No dates selected",
+        btn_concluir: "Done",
+        btn_conferir_disp: "Check availability",
+        btn_verificar_datas_curto: "Check Dates",
+        txt_nao_cobrado: "You won't be charged yet",
+        vantagem_10_desc: "10% Direct Booking Discount",
+        txt_garantido: "Guaranteed",
+        vantagem_zero_taxas: "Zero third-party service fees",
+        txt_economia_real: "Real savings",
+        vantagem_tempo_real: "Real-time calendar availability",
+        diff_wifi_tit: "600 Mbps Wi-Fi", diff_wifi_sub: "Dedicated ultra-fast fiber",
+        diff_checkin_tit: "24/7 Self Check-in", diff_checkin_sub: "Electronic passcode lock",
+        diff_gru_tit: "10-15 Min to GRU", diff_gru_sub: "Quick access to terminals",
+        diff_cozinha_tit: "Equipped Kitchen", diff_cozinha_sub: "Microwave, fridge & coffee maker",
+        diff_desconto_tit: "10% Direct OFF", diff_desconto_sub: "Best rate with zero fees",
+        sec_studios_tag: "Our Accommodations", sec_studios_tit: "Explore our private studios",
+        sec_studios_sub: "All accommodations feature 24/7 digital door codes, 600 Mbps Wi-Fi, Smart TV, air conditioning/fan, compact kitchen, and private bathroom.",
+        btn_filtro_todos: "All Studios", btn_filtro_amplos: "Larger Studios (Curtains)", btn_filtro_compactos: "Standard Studios (Compact)",
+        badge_maior_studio: "LARGEST STUDIO", badge_executivo: "EXECUTIVE & SPACIOUS", badge_smart: "COMPACT & SMART", badge_cozy: "COMPACT & QUIET",
+        btn_ver_fotos: "View Photos", btn_verificar_datas: "Check Dates & Availability",
+        card_master_desc: "The largest studio in the complex. Ample natural light and maximum living space.",
+        card_master_esp: "🪟 Wide window with blackout curtains & extra circulation space.",
+        item_cama_queen: "Queen Size Bed & Hotel Linen", item_home_office: "Home Office Desk & 600MB Wi-Fi",
+        item_cozinha_cooktop: "Kitchenette with Cooktop & Fridge", item_fechadura_tv: "Smart TV & 24/7 Digital Lock",
+        card_executivo_desc: "Spacious, modern, and highly discreet. Perfect for business travelers and layovers.",
+        card_executivo_esp: "🪟 Window with elegant curtains & refined ambiance.",
+        item_cama_casal_premium: "Comfort Double Bed & Premium Linen", item_cozinha_cafeteira: "Equipped Kitchenette & Dolce Gusto",
+        card_smart_desc: "Compact, clever layout. Ideal for travelers seeking quiet comfort and quick GRU airport transit.",
+        card_smart_esp: "🚪 High transom window for complete privacy and quiet ventilation.",
+        item_cama_casal: "Comfortable Double Bed", item_frigobar_micro: "Private Fridge & Microwave", item_wifi_tv: "600MB Fiber Wi-Fi & Smart TV", item_fechadura_24h: "24/7 Keyless Entry",
+        card_cozy_desc: "Quiet, cozy, and practical. Outstanding value for an uninterrupted night of rest.",
+        card_cozy_esp: "🚪 High transom window for maximum quietness.",
+        item_cama_casal_travesseiro: "Double Bed & Quality Pillows", item_ducha_press: "High Pressure Shower & Private Bath", item_frigobar_cafe: "Fridge, Microwave & Coffee Maker",
+        comp_tag: "Total Transparency", comp_tit: "Why book directly with us on WhatsApp?",
+        th_beneficio: "Benefit", th_direto: "SNT Studios (Official Direct)", th_plataformas: "OTAs (Booking / Airbnb)",
+        td_tarifa: "Final Rate", td_tarifa_direto: "10% direct discount guaranteed", td_tarifa_plat: "Higher markup rates",
+        td_taxas: "Service Fees", td_taxas_direto: "R$ 0.00 (Zero platform fee)", td_taxas_plat: "Charge 15% to 21% extra",
+        td_atendimento: "Customer Support", td_atend_direto: "Direct WhatsApp with our local team", td_atend_plat: "Generic chatbots and app intermediaries",
+        td_pagamento: "Payment Methods", td_pag_direto: "PIX or Credit Card safely arranged", td_pag_plat: "Rigid international card rules",
+        td_flexibilidade: "Schedule Flexibility", td_flex_direto: "Early check-in option upon direct inquiry", td_flex_plat: "Automated, inflexible rules",
+        sec_infra_tag: "Full Amenities", sec_infra_tit: "Everything you need for a seamless stay",
+        infra_wifi_tit: "600 Mbps Fiber Wi-Fi", infra_wifi_desc: "High-speed dedicated Wi-Fi with strong coverage across all studios for streaming and business calls.",
+        infra_checkin_tit: "24/7 Digital Access", infra_checkin_desc: "Keyless door locks. Arrive anytime during the day or night without waiting for a receptionist.",
+        infra_cozinha_tit: "Private Kitchenette", infra_cozinha_desc: "Cook your own meals with ease using cooktop, microwave, fridge, and cookware.",
+        infra_ducha_tit: "High Pressure Shower", infra_ducha_desc: "Pressurized hot shower, fresh hotel-grade towels, and hair dryer provided.",
+        infra_lav_tit: "SNT Laundromat Partner", infra_lav_desc: "Convenient self-service laundry access nearby to wash and dry clothes in under 1 hour.",
+        infra_seg_tit: "Security & Monitoring", infra_seg_desc: "CCTV in common areas and smart lighting for peace of mind.",
+        loc_tag: "Strategic Location", loc_tit: "Close to GRU Airport and Greater São Paulo",
+        loc_desc: "Located in Cidade Seródio, Guarulhos, with direct unhindered access to São Paulo/Guarulhos International Airport (GRU).",
+        loc_endereco_oficial: "Official Address",
+        dist_gru_tit: "GRU Airport", dist_gru_val: "10-15 minutes",
+        dist_cptm_tit: "CPTM Train Line 13", dist_cptm_val: "8 minutes",
+        dist_comercio_tit: "Supermarket & Bakery", dist_comercio_val: "200 meters",
+        dist_shopping_tit: "Bosque Maia Mall", dist_shopping_val: "18 minutes",
+        faq_tag: "Got Questions?", faq_tit: "Frequently Asked Questions",
+        faq_q1: "How does check-in work if my flight lands late at night or early morning?",
+        faq_a1: "Seamlessly! Our property is 100% keyless with digital door codes. Once confirmed via WhatsApp, you receive your unique entry passcode to access the gate and your studio at any hour between 3:00 PM and the next morning.",
+        faq_q2: "How does the 10% direct discount work?",
+        faq_a2: "Third-party apps charge 15% to 21% commissions. By booking directly through our official WhatsApp, we pass that saving on to you with a guaranteed 10% lower price.",
+        faq_q3: "What is the difference between larger studios and standard studios?",
+        faq_a3: "Master King and Executive studios are larger, featuring full windows with blackout curtains. Standard studios (Smart & Cozy) have high transom windows, offering maximum quietness at a budget-friendly rate.",
+        faq_q4: "Is the Wi-Fi fast enough for remote work and video meetings?",
+        faq_a4: "Yes! We provide dedicated 600 Mbps fiber internet with low latency and strong coverage, extensively tested for Zoom, Google Meet, and 4K streaming.",
+        faq_q5: "Which payment methods are accepted?",
+        faq_a5: "You can pay securely via instant PIX or credit card. Everything is arranged transparently with a receipt on our official WhatsApp.",
+        faq_q6: "Are there restaurants and grocery stores nearby?",
+        faq_a6: "Yes, bakeries, pharmacies, grocery stores, and restaurants are within a 2 to 5-minute walk, with fast iFood delivery straight to our door.",
+        btn_faq_whatsapp: "Still have questions? Chat with us on WhatsApp",
+        footer_desc: "Smart and modern hospitality in Guarulhos. Full private studios designed for travelers seeking quiet rest and quick GRU Airport access.",
+        footer_nav_tit: "Navigation", footer_atend_tit: "Official Support",
+        footer_atend_desc: "Direct support for quotes, bookings, and guest assistance:",
+        footer_horarios: "Check-in: from 3:00 PM<br>Check-out: until 11:00 AM",
+        footer_sustentavel: "Engineered with sustainable technology and zero external CDNs in production."
+      },
+      es: {
+        badge_boutique: "ESTUDIOS BOUTIQUE",
+        nav_inicio: "Inicio",
+        nav_disponibilidade: "Disponibilidad",
+        nav_studios: "Alojamientos",
+        nav_comodidades: "Comodidades",
+        nav_localizacao: "Ubicación",
+        nav_faq: "Preguntas",
+        btn_nav_reserva: "Reservar por WhatsApp",
+        badge_topo_local: "Alojamiento Privado en Guarulhos · Aeropuerto GRU",
+        badge_topo_desconto: "🛡️ 10% OFF Reserva Directa Garantizada",
+        badge_topo_checkin: "🔑 Auto Check-in 24h",
+        hero_title: "SNT Studios · Estudios Privados a 10 min del Aeropuerto GRU",
+        sub_hospitalidade: "Hospitalidad Independiente",
+        sub_gru_dist: "A 10-15 minutos de las Terminales 1, 2 y 3",
+        btn_compartilhar: "Compartir",
+        tag_master_king: "ESTUDIO MASTER KING",
+        desc_master_king_curta: "Gran iluminación, cama Queen Size y cortinas elegantes",
+        tag_executivo_premium: "Ejecutivo Premium",
+        tag_cozinha_priv: "Cocina Compacta",
+        tag_standard_smart: "Standard Smart",
+        tag_standard_cozy: "Standard Cozy",
+        btn_todas_fotos: "Ver las 20 fotos",
+        detalhe_tipo_espaco: "Estudio privado completo · Alojamiento SNT",
+        detalhe_capacidade: "Hasta 2 huéspedes · 1 cama queen o matrimonial · Baño privado · Cocina compacta equipada",
+        feature_checkin_tit: "Auto check-in 24h con cerradura electrónica",
+        feature_checkin_desc: "Acceda al complejo y a su estudio con contraseña numérica individual a cualquier hora de la noche o madrugada, sin llaves físicas.",
+        feature_wifi_tit: "Wi-Fi fibra de 600 Mbps dedicado",
+        feature_wifi_desc: "Conexión de alta velocidad probada para videollamadas, trabajo remoto y streaming en 4K sin cortes.",
+        feature_cozinha_tit: "Cocina privada equipada",
+        feature_cozinha_desc: "Equipada con frigobar, microondas, anafe, cafetera Dolce Gusto, vajilla y cubiertos para su conveniencia.",
+        feature_gru_tit: "A 10-15 minutos del Aeropuerto de Guarulhos (GRU)",
+        feature_gru_desc: "Ruta rápida hacia las Terminales 1, 2 y 3 por Uber o taxi, ideal para escalas y viajes de negocios.",
+        sobre_espaco_tit: "Sobre el espacio",
+        sobre_espaco_p1: "SNT Studios brinda una propuesta moderna de hospitalidad autónoma: privacidad total, excelente confort y ubicación inmejorable junto a GRU. Todas las unidades son 100% privadas con baño propio y cocina equipada.",
+        tipologias_tit: "Dos Categorías Disponibles",
+        cat_ampla_tit: "Estudios Grandes con Cortinas (Master y Ejecutivo)",
+        cat_ampla_desc: "Ventanal amplio con cortinas elegantes, cama Queen/Matrimonial, mayor espacio y escritorio de trabajo.",
+        cat_compacta_tit: "Estudios Standard (Smart y Cozy)",
+        cat_compacta_desc: "Ventana superior basculante para máximo silencio y privacidad. Distribución compacta al mejor precio.",
+        tipologias_nota: "Seleccione sus fechas para verificar disponibilidad en tiempo real con el precio final consolidado.",
+        comodidades_grid_tit: "Qué ofrece este lugar",
+        comod_wifi: "Wi-Fi Fibra 600 Mbps",
+        comod_fechadura: "Cerradura digital 24h",
+        comod_tv: "Smart TV con Streaming",
+        comod_cooktop: "Cocina con Anafe",
+        comod_ar: "Aire acondicionado / Ventilador",
+        comod_cafe: "Cafetera Dolce Gusto",
+        comod_ducha: "Ducha de alta presión",
+        comod_enxoval: "Ropa de cama y toallas de hotel",
+        comod_bancada: "Escritorio para notebook",
+        comod_cameras: "Cámaras en áreas comunes",
+        comod_transporte: "Acceso fácil para Uber/99",
+        comod_frigobar: "Frigobar y Microondas",
+        regra_checkin_tit: "Check-in:",
+        regra_checkin_val: "A partir de las 15:00 (Acceso autónomo 24h con código)",
+        regra_checkout_tit: "Check-out:",
+        regra_checkout_val: "Hasta las 11:00",
+        regra_silencio_tit: "Política de Silencio:",
+        regra_silencio_val: "Respeto al descanso de los demás huéspedes a partir de las 22:00",
+        card_por_noite: " / noche",
+        card_badge_desconto: "10% OFF DIRECTO",
+        card_tarifa_oficial: "Tarifa Oficial",
+        lbl_checkin: "CHECK-IN",
+        lbl_checkout: "CHECKOUT",
+        lbl_hospedes: "HUÉSPEDES",
+        txt_inserir_data: "Añadir fecha",
+        opt_1_hospede: "1 huésped",
+        opt_2_hospedes: "2 huéspedes (Pareja)",
+        cal_escolha_checkin: "Seleccione fecha de check-in",
+        cal_escolha_checkout: "Seleccione fecha de checkout",
+        cal_sub_instrucao: "1º clic: entrada · 2º clic: salida",
+        btn_limpar_datas: "Borrar fechas",
+        dia_dom: "Dom", dia_seg: "Lun", dia_ter: "Mar", dia_qua: "Mié", dia_qui: "Jue", dia_sex: "Vie", dia_sab: "Sáb",
+        txt_sem_datas: "Ninguna fecha seleccionada",
+        btn_concluir: "Listo",
+        btn_conferir_disp: "Comprobar disponibilidad",
+        btn_verificar_datas_curto: "Verificar Fechas",
+        txt_nao_cobrado: "Aún no se te cobrará nada",
+        vantagem_10_desc: "10% de Descuento Directo",
+        txt_garantido: "Garantizado",
+        vantagem_zero_taxas: "Sin comisiones de intermediarios",
+        txt_economia_real: "Ahorro real",
+        vantagem_tempo_real: "Disponibilidad en tiempo real",
+        diff_wifi_tit: "Wi-Fi 600 Mbps", diff_wifi_sub: "Fibra óptica dedicada ultra rápida",
+        diff_checkin_tit: "Self Check-in 24h", diff_checkin_sub: "Cerradura electrónica con código personal",
+        diff_gru_tit: "10-15 Min de GRU", diff_gru_sub: "Acceso rápido a las terminales",
+        diff_cozinha_tit: "Cocina Equipada", diff_cozinha_sub: "Microondas, frigobar y cafetera",
+        diff_desconto_tit: "10% OFF Directo", diff_desconto_sub: "Mejor tarifa garantizada sin tasas extras",
+        sec_studios_tag: "Nuestros Alojamientos", sec_studios_tit: "Descubra nuestras opciones privadas",
+        sec_studios_sub: "Todos los alojamientos cuentan con cerradura digital 24h, Wi-Fi fibra 600 Mbps, Smart TV, aire acondicionado/ventilador, cocina compacta y baño privado.",
+        btn_filtro_todos: "Todos los Estudios", btn_filtro_amplos: "Estudios Grandes (Cortinas)", btn_filtro_compactos: "Estudios Standard (Compactos)",
+        badge_maior_studio: "EL ESTUDIO MÁS GRANDE", badge_executivo: "GRANDE Y EJECUTIVO", badge_smart: "COMPACTO Y PRÁCTICO", badge_cozy: "COMPACTO Y TRANQUILO",
+        btn_ver_fotos: "Ver Fotos", btn_verificar_datas: "Verificar Fechas y Disponibilidad",
+        card_master_desc: "El estudio más amplio del complejo. Gran iluminación natural y máximo confort.",
+        card_master_esp: "🪟 Ventanal amplio con cortinas elegantes y espacio extra.",
+        item_cama_queen: "Cama Queen Size y Ropa de Hotel", item_home_office: "Escritorio Home Office y Wi-Fi 600MB",
+        item_cozinha_cooktop: "Cocina con Anafe y Frigobar", item_fechadura_tv: "Smart TV y Cerradura Digital 24h",
+        card_executivo_desc: "Espacioso, elegante y reservado. Ideal para viajes de negocios y escalas aéreas.",
+        card_executivo_esp: "🪟 Ventana con cortinas elegantes y ambiente refinado.",
+        item_cama_casal_premium: "Cama Matrimonial Confort y Ropa Premium", item_cozinha_cafeteira: "Cocina Equipada y Cafetera Dolce Gusto",
+        card_smart_desc: "Distribución compacta e inteligente. Ideal para escalas y huéspedes que buscan silencio.",
+        card_smart_esp: "🚪 Ventana superior basculante para privacidad total y ventilación.",
+        item_cama_casal: "Cama Matrimonial Cómoda", item_frigobar_micro: "Frigobar y Microondas Privado", item_wifi_tv: "Wi-Fi Fibra 600MB y Smart TV", item_fechadura_24h: "Cerradura Digital 24h",
+        card_cozy_desc: "Compacto, silencioso y acogedor. Excelente relación calidad-precio para descansar.",
+        card_cozy_esp: "🚪 Ventana superior para máximo silencio y tranquilidad.",
+        item_cama_casal_travesseiro: "Cama Matrimonial y Almohadas Confort", item_ducha_press: "Ducha de Alta Presión y Baño Privado", item_frigobar_cafe: "Frigobar, Microondas y Cafetera",
+        comp_tag: "Total Transparencia", comp_tit: "¿Por qué reservar directo con nosotros por WhatsApp?",
+        th_beneficio: "Beneficio", th_direto: "SNT Studios (Directo Oficial)", th_plataformas: "Plataformas (Booking / Airbnb)",
+        td_tarifa: "Tarifa Final", td_tarifa_direto: "10% de descuento garantizado", td_tarifa_plat: "Tarifa completa con margen inflado",
+        td_taxas: "Comisiones", td_taxas_direto: "R$ 0,00 (Cero comisiones intermedias)", td_taxas_plat: "Cobran del 15% al 21% adicional",
+        td_atendimento: "Atención al Cliente", td_atend_direto: "WhatsApp directo con nuestro equipo local", td_atend_plat: "Chat de app con bots e intermediarios",
+        td_pagamento: "Medios de Pago", td_pag_direto: "PIX o Tarjeta acordado de forma segura", td_pag_plat: "Tarjeta con cargos internacionales y normas rígidas",
+        td_flexibilidade: "Flexibilidad Horaria", td_flex_direto: "Early check-in disponible bajo consulta directa", td_flex_plat: "Normas automáticas sin contacto humano",
+        sec_infra_tag: "Infraestructura Completa", sec_infra_tit: "Todo lo que necesita para una estancia impecable",
+        infra_wifi_tit: "Internet Fibra 600 Mbps", infra_wifi_desc: "Conexión dedicada de alta velocidad para videollamadas, trabajo y streaming 4K.",
+        infra_checkin_tit: "Acceso Electrónico 24h", infra_checkin_desc: "Cerraduras digitales. Llegue a cualquier hora de la noche con total autonomía sin depender de recepción.",
+        infra_cozinha_tit: "Cocina Compacta Privada", infra_cozinha_desc: "Equipada con frigobar, microondas, anafe, cafetera Dolce Gusto y utensilios para cocinar.",
+        infra_ducha_tit: "Ducha de Alta Presión", infra_ducha_desc: "Ducha caliente presurizada, toallas de calidad hotelera y secador de pelo disponible.",
+        infra_lav_tit: "Alianza SNT Lavandería", infra_lav_desc: "Acceso fácil a la red SNT Lavandería Self-Service para lavar y secar su ropa en menos de 1 hora.",
+        infra_seg_tit: "Seguridad y Monitoreo", infra_seg_desc: "Cámaras en áreas comunes e iluminación inteligente para su tranquilidad.",
+        loc_tag: "Ubicación Estratégica", loc_tit: "Cerca de todo en Guarulhos y Gran São Paulo",
+        loc_desc: "Ubicado en Cidade Seródio, Guarulhos, con ruta directa y ágil hacia las terminales del Aeropuerto Internacional de Guarulhos (GRU).",
+        loc_endereco_oficial: "Dirección Oficial",
+        dist_gru_tit: "Aeropuerto GRU", dist_gru_val: "10-15 minutos",
+        dist_cptm_tit: "Tren Línea 13-Jade CPTM", dist_cptm_val: "8 minutos",
+        dist_comercio_tit: "Comercio y Panadería", dist_comercio_val: "200 metros",
+        dist_shopping_tit: "Shopping Bosque Maia", dist_shopping_val: "18 minutos",
+        faq_tag: "Preguntas Frecuentes", faq_tit: "Dudas Habituales",
+        faq_q1: "¿Cómo funciona el check-in si mi vuelo llega de madrugada?",
+        faq_a1: "¡Completamente fácil! Nuestro sistema es 100% automatizado con cerraduras digitales en el portón y en su estudio. Tras confirmar por WhatsApp, recibe su clave personal para ingresar a cualquier hora entre las 15:00 y la mañana siguiente sin esperas.",
+        faq_q2: "¿Cómo funciona el 10% de descuento en la reserva directa?",
+        faq_a2: "Las plataformas cobran entre 15% y 21% de comisiones. Al reservar directo por WhatsApp oficial, eliminamos ese intermediario y le transferimos un 10% de ahorro garantizado.",
+        faq_q3: "¿Cuál es la diferencia entre los estudios con cortinas y los compactos?",
+        faq_a3: "Los estudios Master King y Ejecutivo son más amplios, con ventanal y cortinas elegantes. Los estudios Standard (Smart y Cozy) tienen ventana superior basculante, siendo ultra silenciosos y económicos.",
+        faq_q4: "¿El Wi-Fi es apto para videollamadas y trabajo remoto?",
+        faq_a4: "¡Sí! Disponemos de fibra óptica dedicada de 600 Mbps con baja latencia y excelente señal para Zoom, Google Meet y streaming 4K.",
+        faq_q5: "¿Qué formas de pago se aceptan?",
+        faq_a5: "Puede pagar con total seguridad mediante PIX o Tarjeta de Crédito, todo coordinado de forma transparente por WhatsApp.",
+        faq_q6: "¿Hay comercios o restaurantes cerca?",
+        faq_a6: "Sí, a 2-5 minutos a pie encontrará panadería, farmacia, supermercado y restaurantes, además de entrega rápida de iFood.",
+        btn_faq_whatsapp: "¿Tiene dudas? Escríbanos por WhatsApp",
+        footer_desc: "Hospitalidad moderna e inteligente en Guarulhos. Estudios privados completos para quienes valoran silencio, confort y cercanía a GRU.",
+        footer_nav_tit: "Navegación", footer_atend_tit: "Atención Oficial",
+        footer_atend_desc: "Atención directa para cotizaciones, reservas y soporte al huésped:",
+        footer_horarios: "Check-in: a partir de las 15:00<br>Check-out: hasta las 11:00",
+        footer_sustentavel: "Desarrollado con tecnología sustentable y sin CDNs externas en producción."
+      }
+    };
+
+    function trocarIdioma(lang) {
+      if (!I18N[lang]) return;
+      idiomaAtual = lang;
+      localStorage.setItem('snt_studios_lang', lang);
+
+      // Atualiza botões do seletor
+      ['pt', 'en', 'es'].forEach(l => {
+        const b = document.getElementById('btnLang' + l.charAt(0).toUpperCase() + l.slice(1));
+        if (b) {
+          if (l === lang) {
+            b.className = "px-2 py-1 rounded-lg font-bold transition bg-emerald-500 text-slate-950";
+          } else {
+            b.className = "px-2 py-1 rounded-lg font-bold transition text-slate-400 hover:text-white";
+          }
+        }
+      });
+
+      // Aplica traduções em todos os elementos com data-i18n
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const chave = el.getAttribute('data-i18n');
+        if (I18N[lang][chave]) {
+          el.innerHTML = I18N[lang][chave];
+        }
+      });
+
+      // Atualiza textos do calendário e cotação caso estejam visíveis
+      renderizarMesAtual();
+      atualizarDisplayDatas();
+      if (ultimaCotacao && Array.isArray(ultimaCotacao.studios)) {
+        renderizarCardDisponibilidade();
+      }
+    }
+
+    // ========================================================
+    // FORMATADORES E UTILITÁRIOS
+    // ========================================================
+    function formatarDataBr(isoStr) {
+      if (!isoStr) return "";
+      const [ano, mes, dia] = isoStr.split('-');
+      if (idiomaAtual === 'en') return `${mes}/${dia}/${ano}`;
+      return `${dia}/${mes}/${ano}`;
+    }
+
+    function formatarMoeda(valor) {
+      return new Intl.NumberFormat(idiomaAtual === 'en' ? 'en-US' : (idiomaAtual === 'es' ? 'es-ES' : 'pt-BR'), { 
+        style: 'currency', 
+        currency: 'BRL' 
+      }).format(Number(valor) || 0);
+    }
+
+    function escaparHtml(valor) {
+      return String(valor == null ? '' : valor)
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#039;');
+    }
+
+    const API_COTACAO = "https://snt-lavanderia-bot-production.up.railway.app/api/studios/public/cotacao";
+    let ultimaCotacao = null;
+
+    // ========================================================
+    // MAPEAMENTO DE NOMES COMERCIAIS (ZERO NÚMEROS DE STUDIOS)
+    // ========================================================
+    const STUDIOS_COMERCIAIS = {
+      '12': {
+        chave: 'master',
+        nome: 'Studio Master King',
+        categoria: 'amplos',
+        tituloExibicao: 'Studio Master King (O Maior Studio)',
+        destaque: 'O maior studio · Cama Queen Size & Cortinas elegantes',
+        subtitulo: 'Ampla circulação, bancada de trabalho e máxima amplitude'
+      },
+      '14': {
+        chave: 'executivo',
+        nome: 'Studio Executivo Premium',
+        categoria: 'amplos',
+        tituloExibicao: 'Studio Executivo Premium (Cortinas & Espaço)',
+        destaque: 'Grande executivo · Cortinas elegantes & Sofisticação',
+        subtitulo: 'Espaçoso, silencioso e ideal para negócios e escalas'
+      },
+      '11': {
+        chave: 'smart',
+        nome: 'Studio Standard Smart',
+        categoria: 'compactos',
+        tituloExibicao: 'Studio Standard Smart (Compacto)',
+        destaque: 'Compacto inteligente · Silêncio máximo e privacidade',
+        subtitulo: 'Janela superior para ventilação e isolamento acústico'
+      },
+      '13': {
+        chave: 'cozy',
+        nome: 'Studio Standard Cozy',
+        categoria: 'compactos',
+        tituloExibicao: 'Studio Standard Cozy (Compacto)',
+        destaque: 'Compacto acolhedor · Silencioso e econômico',
+        subtitulo: 'Janela superior para discrição e ótimo custo-benefício'
+      }
+    };
+
+    // ========================================================
+    // CALENDÁRIO RANGE AIRBNB (SELEÇÃO DE 2 CLIQUES)
+    // ========================================================
+    let dataCheckIn = "";
+    let dataCheckOut = "";
+    let dataHover = "";
+    let calAno = new Date().getFullYear();
+    let calMes = new Date().getMonth(); // 0-11
+
+    const NOMES_MESES = {
+      pt: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+      en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+      es: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+    };
+
+    function alternarCalendario() {
+      const el = document.getElementById('calendarioAirbnb');
+      if (!el) return;
+      if (el.classList.contains('hidden')) {
+        abrirCalendario();
+      } else {
+        fecharCalendario();
+      }
+    }
+
+    function abrirCalendario() {
+      const el = document.getElementById('calendarioAirbnb');
+      if (el) {
+        el.classList.remove('hidden');
+        renderizarMesAtual();
+      }
+    }
+
+    function fecharCalendario() {
+      const el = document.getElementById('calendarioAirbnb');
+      if (el) el.classList.add('hidden');
+    }
+
+    function mudarMes(delta) {
+      calMes += delta;
+      if (calMes < 0) {
+        calMes = 11;
+        calAno--;
+      } else if (calMes > 11) {
+        calMes = 0;
+        calAno++;
+      }
+      // Não permite voltar para meses anteriores ao mês atual
+      const agora = new Date();
+      if (calAno < agora.getFullYear() || (calAno === agora.getFullYear() && calMes < agora.getMonth())) {
+        calAno = agora.getFullYear();
+        calMes = agora.getMonth();
+      }
+      renderizarMesAtual();
+    }
+
+    function renderizarMesAtual() {
+      const mesEl = document.getElementById('calMesAno');
+      if (mesEl) {
+        const lista = NOMES_MESES[idiomaAtual] || NOMES_MESES['pt'];
+        mesEl.innerText = `${lista[calMes]} ${calAno}`;
+      }
+
+      const grid = document.getElementById('calDiasGrid');
+      if (!grid) return;
+      grid.innerHTML = '';
+
+      const agora = new Date();
+      const hojeIso = `${agora.getFullYear()}-${String(agora.getMonth() + 1).padStart(2, '0')}-${String(agora.getDate()).padStart(2, '0')}`;
+
+      // Primeiro dia do mês (0 = domingo)
+      const primeiroDiaSemana = new Date(calAno, calMes, 1).getDay();
+      // Total de dias no mês
+      const totalDiasMes = new Date(calAno, calMes + 1, 0).getDate();
+
+      // Células em branco antes do dia 1
+      for (let i = 0; i < primeiroDiaSemana; i++) {
+        const vazio = document.createElement('div');
+        vazio.className = "h-8";
+        grid.appendChild(vazio);
+      }
+
+      for (let dia = 1; dia <= totalDiasMes; dia++) {
+        const diaIso = `${calAno}-${String(calMes + 1).padStart(2, '0')}-${String(dia).padStart(2, '0')}`;
+        const ehPassado = diaIso < hojeIso;
+
+        const btn = document.createElement('button');
+        btn.type = "button";
+        btn.innerText = String(dia);
+
+        let classes = "h-9 w-full flex items-center justify-center rounded-xl text-xs font-semibold transition ";
+
+        if (ehPassado) {
+          classes += "text-slate-600 cursor-not-allowed opacity-35";
+          btn.disabled = true;
+        } else {
+          btn.onclick = () => selecionarDiaCalendario(diaIso);
+          btn.onmouseenter = () => hoverDiaCalendario(diaIso);
+
+          const ehCheckIn = dataCheckIn === diaIso;
+          const ehCheckOut = dataCheckOut === diaIso;
+          const emIntervalo = dataCheckIn && dataCheckOut && diaIso > dataCheckIn && diaIso < dataCheckOut;
+          const emHover = dataCheckIn && !dataCheckOut && dataHover && diaIso > dataCheckIn && diaIso <= dataHover;
+
+          if (ehCheckIn || ehCheckOut) {
+            classes += "bg-emerald-500 text-slate-950 font-black shadow-md shadow-emerald-500/30 scale-105 z-10";
+          } else if (emIntervalo || emHover) {
+            classes += "bg-emerald-500/20 text-emerald-300 rounded-none";
+          } else {
+            classes += "text-slate-200 hover:bg-slate-800 hover:text-white";
+          }
+        }
+
+        btn.className = classes;
+        grid.appendChild(btn);
+      }
+    }
+
+    function selecionarDiaCalendario(diaIso) {
+      if (!dataCheckIn || (dataCheckIn && dataCheckOut)) {
+        // 1º Clique: define data de entrada
+        dataCheckIn = diaIso;
+        dataCheckOut = "";
+        dataHover = "";
+        document.getElementById('inputCheckIn').value = diaIso;
+        document.getElementById('inputCheckOut').value = "";
+        
+        const instrucao = document.getElementById('calInstrucao');
+        if (instrucao) instrucao.innerText = I18N[idiomaAtual].cal_escolha_checkout || "Selecione a data de checkout";
+        
+        atualizarDisplayDatas();
+        renderizarMesAtual();
+      } else if (dataCheckIn && !dataCheckOut) {
+        // 2º Clique: define data de saída
+        if (diaIso > dataCheckIn) {
+          dataCheckOut = diaIso;
+          document.getElementById('inputCheckOut').value = diaIso;
+          
+          const instrucao = document.getElementById('calInstrucao');
+          if (instrucao) instrucao.innerText = I18N[idiomaAtual].cal_escolha_checkin || "Selecione a data de check-in";
+          
+          atualizarDisplayDatas();
+          renderizarMesAtual();
+          
+          // Fecha o calendário suavemente e já calcula em tempo real
+          setTimeout(() => {
+            fecharCalendario();
+            consultarDisponibilidade();
+          }, 250);
+        } else {
+          // Se clicou em data anterior ou igual, vira o novo check-in
+          dataCheckIn = diaIso;
+          dataCheckOut = "";
+          document.getElementById('inputCheckIn').value = diaIso;
+          document.getElementById('inputCheckOut').value = "";
+          atualizarDisplayDatas();
+          renderizarMesAtual();
+        }
+      }
+    }
+
+    function hoverDiaCalendario(diaIso) {
+      if (dataCheckIn && !dataCheckOut && diaIso > dataCheckIn) {
+        dataHover = diaIso;
+        renderizarMesAtual();
+        const diffDias = Math.round((new Date(diaIso + 'T12:00:00') - new Date(dataCheckIn + 'T12:00:00')) / 86400000);
+        const resumo = document.getElementById('calResumoNoites');
+        if (resumo) {
+          resumo.innerText = `${diffDias} ${diffDias > 1 ? 'noites' : 'noite'} selecionada${diffDias > 1 ? 's' : ''}`;
+        }
+      }
+    }
+
+    function limparDatas() {
+      dataCheckIn = "";
+      dataCheckOut = "";
+      dataHover = "";
+      document.getElementById('inputCheckIn').value = "";
+      document.getElementById('inputCheckOut').value = "";
+      atualizarDisplayDatas();
+      renderizarMesAtual();
+      const resultado = document.getElementById('resultadoCotacao');
+      if (resultado) resultado.classList.add('hidden');
+      const instrucao = document.getElementById('calInstrucao');
+      if (instrucao) instrucao.innerText = I18N[idiomaAtual].cal_escolha_checkin || "Selecione a data de check-in";
+    }
+
+    function atualizarDisplayDatas() {
+      const inEl = document.getElementById('displayCheckIn');
+      const outEl = document.getElementById('displayCheckOut');
+      const mob = document.getElementById('mobileBarDatas');
+      const placeholder = I18N[idiomaAtual].txt_inserir_data || "Adicionar data";
+
+      if (inEl) inEl.innerText = dataCheckIn ? formatarDataBr(dataCheckIn) : placeholder;
+      if (outEl) outEl.innerText = dataCheckOut ? formatarDataBr(dataCheckOut) : placeholder;
+      if (mob) {
+        if (dataCheckIn && dataCheckOut) {
+          const noites = Math.round((new Date(dataCheckOut + 'T12:00:00') - new Date(dataCheckIn + 'T12:00:00')) / 86400000);
+          mob.innerText = `${formatarDataBr(dataCheckIn)} - ${formatarDataBr(dataCheckOut)} (${noites}n)`;
+        } else {
+          mob.innerText = placeholder;
+        }
+      }
+
+      const resumo = document.getElementById('calResumoNoites');
+      if (resumo) {
+        if (dataCheckIn && dataCheckOut) {
+          const noites = Math.round((new Date(dataCheckOut + 'T12:00:00') - new Date(dataCheckIn + 'T12:00:00')) / 86400000);
+          resumo.innerText = `${noites} ${noites > 1 ? 'noites' : 'noite'} (${formatarDataBr(dataCheckIn)} a ${formatarDataBr(dataCheckOut)})`;
+        } else if (dataCheckIn) {
+          resumo.innerText = `Check-in: ${formatarDataBr(dataCheckIn)}`;
+        } else {
+          resumo.innerText = I18N[idiomaAtual].txt_sem_datas || "Nenhuma data selecionada";
+        }
+      }
+    }
+
+    function atualizarHospedes() {
+      if (ultimaCotacao && dataCheckIn && dataCheckOut) {
+        ultimaCotacao.hospedes = document.getElementById('selectGuests').value;
+        renderizarCardDisponibilidade();
+      }
+    }
+
+    // ========================================================
+    // FOCO E NAVEGAÇÃO
+    // ========================================================
+    function focarCotador() {
+      const el = document.getElementById('cotador');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        el.classList.add('card-pulse-highlight');
+        setTimeout(() => el.classList.remove('card-pulse-highlight'), 2500);
+      }
+      setTimeout(() => abrirCalendario(), 350);
+    }
+
+    function compartilharSite() {
+      const shareData = {
+        title: 'SNT Studios · Hospedagem ao Lado do Aeroporto GRU',
+        text: 'Studios privativos modernos com Wi-Fi 600MB, fechadura digital 24h e 10% de desconto na reserva direta.',
+        url: 'https://www.sntstudios.com/'
+      };
+      if (navigator.share) {
+        navigator.share(shareData).catch(() => {});
+      } else {
+        navigator.clipboard.writeText(shareData.url);
+        const btn = document.getElementById('btnShareText');
+        if (btn) {
+          btn.innerText = idiomaAtual === 'en' ? "Link copied!" : (idiomaAtual === 'es' ? "¡Copiado!" : "Link copiado!");
+          setTimeout(() => { btn.innerText = I18N[idiomaAtual].btn_compartilhar || "Compartilhar"; }, 2000);
+        }
+      }
+    }
+
+    // ========================================================
+    // ENVIO DE MENSAGEM LIMPA E PROFISSIONAL PARA O WHATSAPP
+    // (ADAPTA AO IDIOMA SELECIONADO SEM EMOJIS CORROMPIDOS)
+    // ========================================================
+    function abrirWhatsAppCotacao(studioChave) {
+      const dados = ultimaCotacao || {};
+      const inVal = dados.entrada || dataCheckIn;
+      const outVal = dados.saida || dataCheckOut;
+      const guests = dados.hospedes || document.getElementById('selectGuests').value;
+      
+      let studioInfo = null;
+      if (dados.studios) {
+        studioInfo = dados.studios.find(s => {
+          const com = STUDIOS_COMERCIAIS[String(s.numero)];
+          return com && com.chave === studioChave;
+        }) || dados.studios[0];
+      }
+
+      const nomeStudio = (studioInfo && STUDIOS_COMERCIAIS[String(studioInfo.numero)]) 
+        ? STUDIOS_COMERCIAIS[String(studioInfo.numero)].nome 
+        : "Studio Privativo";
+
+      const totalFormatado = studioInfo ? formatarMoeda(studioInfo.totalDireta) : "";
+      const economiaFormatada = studioInfo ? formatarMoeda(studioInfo.economia) : "";
+
+      let linhas = [];
+
+      if (idiomaAtual === 'en') {
+        linhas = [
+          "Hello! I checked the official SNT Studios website and would like to confirm a direct booking with 10% discount:",
+          "",
+          "- Check-in: " + formatarDataBr(inVal),
+          "- Check-out: " + formatarDataBr(outVal) + (dados.noites ? " (" + dados.noites + " nights)" : ""),
+          "- Guests: " + guests + " person" + (Number(guests) > 1 ? "s" : "")
+        ];
+        if (studioInfo) {
+          linhas.push("- Accommodation: " + nomeStudio + " (" + totalFormatado + " total bundled rate)");
+          linhas.push("- Direct savings vs online platforms: " + economiaFormatada);
+        }
+        linhas.push("");
+        linhas.push("Could you please confirm availability and provide payment details?");
+      } else if (idiomaAtual === 'es') {
+        linhas = [
+          "Hola! Consulte el sitio oficial de SNT Studios y me gustaria confirmar una reserva directa con 10% de descuento:",
+          "",
+          "- Check-in: " + formatarDataBr(inVal),
+          "- Check-out: " + formatarDataBr(outVal) + (dados.noites ? " (" + dados.noites + " noches)" : ""),
+          "- Huespedes: " + guests + " persona" + (Number(guests) > 1 ? "s" : "")
+        ];
+        if (studioInfo) {
+          linhas.push("- Alojamiento: " + nomeStudio + " (" + totalFormatado + " tarifa total consolidada)");
+          linhas.push("- Ahorro directo vs plataformas: " + economiaFormatada);
+        }
+        linhas.push("");
+        linhas.push("Podrian confirmar la disponibilidad y los pasos a seguir, por favor?");
+      } else {
+        linhas = [
+          "Ola! Consultei o site oficial do SNT Studios e gostaria de confirmar uma reserva direta com 10% de desconto:",
+          "",
+          "- Check-in: " + formatarDataBr(inVal),
+          "- Check-out: " + formatarDataBr(outVal) + (dados.noites ? " (" + dados.noites + " noites)" : ""),
+          "- Hospedes: " + guests + " pessoa" + (Number(guests) > 1 ? "s" : "")
+        ];
+        if (studioInfo) {
+          linhas.push("- Acomodacao: " + nomeStudio + " (" + totalFormatado + " total da estadia)");
+          linhas.push("- Economia direta vs plataformas: " + economiaFormatada);
+        }
+        linhas.push("");
+        linhas.push("Poderiam confirmar a disponibilidade e os proximos passos, por favor?");
+      }
+
+      window.open("https://api.whatsapp.com/send?phone=551154443110&text=" + encodeURIComponent(linhas.join(String.fromCharCode(10))), '_blank', 'noopener');
+    }
+
+    // ========================================================
+    // RENDERIZADOR DO RECIBO (VALOR TOTAL EMBUTIDO, NOMES COMERCIAIS)
+    // ========================================================
+    function renderizarCardDisponibilidade(studioChaveEscolhida) {
+      if (!ultimaCotacao || !Array.isArray(ultimaCotacao.studios)) return;
+      const dados = ultimaCotacao;
+      const resultado = document.getElementById('resultadoCotacao');
+      const ordemPreferencia = ['12', '14', '11', '13'];
+      
+      const livres = dados.studios
+        .filter(studio => studio && studio.disponivel && Number.isFinite(Number(studio.totalDireta)))
+        .sort((a, b) => ordemPreferencia.indexOf(String(a.numero)) - ordemPreferencia.indexOf(String(b.numero)));
+
+      if (!livres.length) {
+        resultado.classList.remove('hidden');
+        resultado.innerHTML = `
+          <div class="rounded-2xl border border-rose-500/40 bg-rose-500/10 p-4">
+            <h4 class="font-bold text-xs text-rose-200">${idiomaAtual === 'en' ? 'Dates not available on calendar' : (idiomaAtual === 'es' ? 'Fechas no disponibles en el calendario' : 'Datas indisponíveis no calendário')}</h4>
+            <p class="mt-1 text-[11px] leading-relaxed text-slate-300">
+              ${idiomaAtual === 'en' ? 'There are no accommodations free for the selected dates.' : (idiomaAtual === 'es' ? 'No hay estudios disponibles para el período seleccionado.' : 'Não há studios livres para todas as noites selecionadas.')} (${formatarDataBr(dados.entrada)} a ${formatarDataBr(dados.saida)}).
+            </p>
+            <button type="button" onclick="abrirWhatsAppCotacao('')" class="mt-3 w-full rounded-xl bg-emerald-500 py-3 text-xs font-black text-slate-950 hover:bg-emerald-400 transition shadow-lg shadow-emerald-500/20">
+              ${idiomaAtual === 'en' ? 'Inquire alternative dates on WhatsApp' : (idiomaAtual === 'es' ? 'Consultar alternativas por WhatsApp' : 'Consultar alternativas no WhatsApp')}
+            </button>
+          </div>`;
+        return;
+      }
+
+      // Se o usuário selecionou uma chave comercial específica, procura ela
+      let studio = livres[0];
+      if (studioChaveEscolhida) {
+        const achado = livres.find(s => {
+          const com = STUDIOS_COMERCIAIS[String(s.numero)];
+          return com && com.chave === studioChaveEscolhida;
+        });
+        if (achado) studio = achado;
+      }
+
+      const infoComercial = STUDIOS_COMERCIAIS[String(studio.numero)] || {
+        chave: 'master',
+        nome: 'Studio Master King',
+        categoria: 'amplos',
+        destaque: 'Acomodação privativa completa',
+        subtitulo: 'Conforto e privacidade'
+      };
+
+      // Atualiza o preço por noite no cabeçalho do card e na barra mobile
+      const diariaEfetiva = studio.totalDireta / dados.noites;
+      const precoCabecalho = document.getElementById('headerPrecoNoite');
+      if (precoCabecalho) precoCabecalho.innerText = formatarMoeda(diariaEfetiva);
+      const mobilePreco = document.getElementById('mobileBarPreco');
+      if (mobilePreco) mobilePreco.innerText = formatarMoeda(diariaEfetiva);
+
+      // Agrupa studios disponíveis por categoria comercial para oferecer escolha de preço
+      let cardsOpcoesPreco = '';
+      if (livres.length > 1) {
+        // Encontra opções distintas (por exemplo se tiver um Amplo e um Standard disponíveis)
+        const categoriasVistas = new Set();
+        const opcoesDistintas = [];
+        livres.forEach(s => {
+          const com = STUDIOS_COMERCIAIS[String(s.numero)];
+          if (com && !categoriasVistas.has(com.chave)) {
+            categoriasVistas.add(com.chave);
+            opcoesDistintas.push({ studio: s, info: com });
+          }
+        });
+
+        if (opcoesDistintas.length > 1) {
+          cardsOpcoesPreco = `
+            <div class="space-y-1.5 pt-2">
+              <span class="text-[11px] text-slate-400 font-bold uppercase tracking-wider block">
+                ${idiomaAtual === 'en' ? 'Available Category Options:' : (idiomaAtual === 'es' ? 'Opciones de categoría disponibles:' : 'Opções de categorias disponíveis:')}
+              </span>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                ${opcoesDistintas.map(item => `
+                  <button type="button" onclick="renderizarCardDisponibilidade('${item.info.chave}')" class="p-2.5 rounded-xl border text-left transition ${item.info.chave === infoComercial.chave ? 'border-emerald-500 bg-emerald-500/15' : 'border-slate-700 bg-slate-800/60 hover:border-slate-600'}">
+                    <div class="text-xs font-bold text-white">${item.info.nome}</div>
+                    <div class="text-[11px] text-emerald-400 font-extrabold mt-0.5">${formatarMoeda(item.studio.totalDireta)} <span class="text-[10px] text-slate-400 font-normal">total</span></div>
+                  </button>
+                `).join('')}
+              </div>
+            </div>`;
+        }
+      }
+
+      resultado.classList.remove('hidden');
+      resultado.innerHTML = `
+        <div class="space-y-3.5">
+          <!-- CARD DA ACOMODAÇÃO COMERCIALMENTE ALOCADA -->
+          <div class="rounded-xl border border-emerald-500/40 bg-emerald-500/10 p-3.5 flex items-center justify-between">
+            <div>
+              <div class="text-xs font-bold text-white">${escaparHtml(infoComercial.nome)}</div>
+              <div class="text-[10px] text-emerald-300 font-medium">${dados.noites} ${dados.noites > 1 ? (idiomaAtual === 'en' ? 'nights' : (idiomaAtual === 'es' ? 'noches' : 'noites')) : (idiomaAtual === 'en' ? 'night' : (idiomaAtual === 'es' ? 'noche' : 'noite'))} · ${dados.hospedes} ${Number(dados.hospedes) > 1 ? (idiomaAtual === 'en' ? 'guests' : (idiomaAtual === 'es' ? 'huéspedes' : 'hóspedes')) : (idiomaAtual === 'en' ? 'guest' : (idiomaAtual === 'es' ? 'huésped' : 'hóspede'))}</div>
+            </div>
+            <span class="rounded bg-emerald-500/20 px-2 py-0.5 text-[10px] font-bold text-emerald-300 uppercase tracking-wider">
+              ${idiomaAtual === 'en' ? 'CONFIRMED' : (idiomaAtual === 'es' ? 'DISPONIBLE' : 'CONFIRMADO')}
+            </span>
+          </div>
+
+          ${cardsOpcoesPreco}
+
+          <!-- RECIBO CONSOLIDADO (TOTAL EMBUTIDO, SEM TAXAS SEPARADAS) -->
+          <div class="space-y-2 text-xs text-slate-300 pt-1">
+            <div class="flex items-center justify-between">
+              <span>${dados.noites} ${dados.noites > 1 ? (idiomaAtual === 'en' ? 'nights' : (idiomaAtual === 'es' ? 'noches' : 'noites')) : (idiomaAtual === 'en' ? 'night' : (idiomaAtual === 'es' ? 'noche' : 'noite'))} (${idiomaAtual === 'en' ? 'average' : (idiomaAtual === 'es' ? 'promedio' : 'média')} ${formatarMoeda(diariaEfetiva)}/${idiomaAtual === 'en' ? 'night' : (idiomaAtual === 'es' ? 'noche' : 'noite')})</span>
+              <span class="font-medium text-white">${formatarMoeda(studio.totalDireta)}</span>
+            </div>
+            <div class="flex items-center justify-between text-emerald-400 font-semibold">
+              <span>${idiomaAtual === 'en' ? '10% Direct Booking Discount Applied' : (idiomaAtual === 'es' ? '10% Descuento Directo Aplicado' : 'Desconto Reserva Direta (10% OFF aplicado)')}</span>
+              <span>${idiomaAtual === 'en' ? 'Savings of' : (idiomaAtual === 'es' ? 'Ahorro de' : 'Economia de')} ${formatarMoeda(studio.economia)}</span>
+            </div>
+            <div class="pt-2.5 border-t border-slate-700/80 flex items-baseline justify-between text-white">
+              <div>
+                <span class="text-sm font-black">${idiomaAtual === 'en' ? 'Total Price' : (idiomaAtual === 'es' ? 'Precio Total Final' : 'Valor Total da Estadia')}</span>
+                <p class="text-[10px] text-slate-400">${idiomaAtual === 'en' ? 'Bundled price, zero extra fees' : (idiomaAtual === 'es' ? 'Precio final sin costos ocultos' : 'Valor final consolidado sem taxas ocultas')}</p>
+              </div>
+              <span class="text-xl font-black text-emerald-400">${formatarMoeda(studio.totalDireta)}</span>
+            </div>
+          </div>
+
+          <!-- BOTÃO DE AÇÃO WHATSAPP OFICIAL -->
+          <button type="button" onclick="abrirWhatsAppCotacao('${infoComercial.chave}')" class="w-full mt-2 bg-emerald-500 hover:bg-emerald-400 active:scale-[0.99] text-slate-950 font-black py-3.5 px-4 rounded-xl text-xs uppercase tracking-wider transition shadow-lg shadow-emerald-500/25 flex items-center justify-center gap-2">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.159.57 4.184 1.564 5.938l-1.664 6.086 6.257-1.64c1.706.924 3.659 1.45 5.743 1.45 6.627 0 12-5.373 12-12 0-6.627-5.373-12-12-12z"/></svg>
+            <span>${idiomaAtual === 'en' ? 'Reserve via WhatsApp (10% OFF)' : (idiomaAtual === 'es' ? 'Reservar por WhatsApp (10% OFF)' : 'Reservar no WhatsApp (10% OFF)')}</span>
+          </button>
+
+          <p class="text-[10px] text-center text-slate-400">
+            🔒 ${idiomaAtual === 'en' ? 'Your dates are locked directly with our team upon message confirmation.' : (idiomaAtual === 'es' ? 'Su reserva se bloquea directamente con nuestro equipo al confirmar.' : 'Sua reserva é bloqueada diretamente com nossa equipe no atendimento oficial.')}
+          </p>
+        </div>`;
+    }
+
+    // ========================================================
+    // CONSULTA DE DISPONIBILIDADE EM TEMPO REAL
+    // ========================================================
+    async function consultarDisponibilidade() {
+      const inVal = document.getElementById('inputCheckIn').value || dataCheckIn;
+      const outVal = document.getElementById('inputCheckOut').value || dataCheckOut;
+      const guests = document.getElementById('selectGuests').value;
+      const resultado = document.getElementById('resultadoCotacao');
+      const botao = document.getElementById('btnConsultar');
+
+      if (!inVal || !outVal) {
+        resultado.classList.remove('hidden');
+        resultado.innerHTML = `<div class="rounded-xl border border-amber-500/40 bg-amber-500/10 p-3.5 text-xs text-amber-200">${idiomaAtual === 'en' ? 'Please select check-in and checkout dates above.' : (idiomaAtual === 'es' ? 'Por favor, seleccione las fechas de entrada y salida arriba.' : 'Selecione as datas de check-in e checkout para ver o valor consolidado.')}</div>`;
+        abrirCalendario();
+        return;
+      }
+
+      const noites = Math.round((new Date(outVal + 'T12:00:00') - new Date(inVal + 'T12:00:00')) / 86400000);
+      if (noites < 1 || noites > 120) {
+        resultado.classList.remove('hidden');
+        resultado.innerHTML = `<div class="rounded-xl border border-rose-500/40 bg-rose-500/10 p-3.5 text-xs text-rose-200">${idiomaAtual === 'en' ? 'Checkout date must be after check-in.' : (idiomaAtual === 'es' ? 'La fecha de salida debe ser posterior a la de entrada.' : 'O checkout deve ser posterior ao check-in e a estadia pode ter no máximo 120 noites.')}</div>`;
+        return;
+      }
+
+      resultado.classList.remove('hidden');
+      resultado.innerHTML = `<div class="flex items-center justify-center gap-3 rounded-xl border border-slate-700 bg-slate-900/90 p-4 text-xs text-emerald-300"><span class="h-4 w-4 animate-spin rounded-full border-2 border-emerald-400 border-t-transparent"></span>${idiomaAtual === 'en' ? 'Checking real-time calendar availability...' : (idiomaAtual === 'es' ? 'Consultando disponibilidad en tiempo real...' : 'Consultando disponibilidade e tarifas em tempo real...')}</div>`;
+      if (botao) botao.disabled = true;
+
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 10000);
+
+      try {
+        const url = new URL(API_COTACAO);
+        url.searchParams.set('entrada', inVal);
+        url.searchParams.set('saida', outVal);
+        const resposta = await fetch(url.toString(), {
+          signal: controller.signal,
+          headers: { Accept: 'application/json' }
+        });
+        const dados = await resposta.json().catch(() => ({}));
+        if (!resposta.ok || !dados.ok || !Array.isArray(dados.studios)) {
+          throw new Error(dados.erro || 'Não foi possível consultar o calendário.');
+        }
+
+        ultimaCotacao = { ...dados, hospedes: guests };
+        renderizarCardDisponibilidade();
+      } catch (erro) {
+        ultimaCotacao = { entrada: inVal, saida: outVal, hospedes: guests, studios: [] };
+        resultado.innerHTML = `
+          <div class="rounded-xl border border-amber-500/40 bg-amber-500/10 p-4">
+            <h4 class="font-bold text-xs text-amber-200">${idiomaAtual === 'en' ? 'Direct inquiry available' : (idiomaAtual === 'es' ? 'Consulta directa disponible' : 'Consulta direta disponível')}</h4>
+            <p class="mt-1 text-[11px] leading-relaxed text-slate-300">${idiomaAtual === 'en' ? 'To verify instant dates and rates, continue directly on WhatsApp.' : (idiomaAtual === 'es' ? 'Para confirmar disponibilidad exacta, continúe directamente en WhatsApp.' : 'Para não mostrar valor desatualizado, a confirmação segue diretamente com nossa equipe.')}</p>
+            <button type="button" onclick="abrirWhatsAppCotacao('')" class="mt-3 w-full rounded-lg bg-emerald-500 py-2.5 text-xs font-black text-slate-950 hover:bg-emerald-400 transition">
+              ${idiomaAtual === 'en' ? 'Check on WhatsApp' : (idiomaAtual === 'es' ? 'Consultar en WhatsApp' : 'Consultar no WhatsApp')}
+            </button>
+          </div>`;
+      } finally {
+        clearTimeout(timeoutId);
+        if (botao) botao.disabled = false;
+      }
+    }
+
+    function copiarEndereco() {
+      const txt = "Avenida Aguanil, 51 - Cidade Seródio - Guarulhos/SP";
+      navigator.clipboard.writeText(txt);
+      const btn = document.getElementById('btnCopiarEnd');
+      btn.innerText = idiomaAtual === 'en' ? "✓ Copied!" : (idiomaAtual === 'es' ? "✓ ¡Copiado!" : "✓ Copiado!");
+      setTimeout(() => {
+        btn.innerText = idiomaAtual === 'en' ? "Copy" : (idiomaAtual === 'es' ? "Copiar" : "Copiar");
+      }, 2000);
+    }
+
+    // ========================================================
+    // FILTRAGEM DE CATEGORIAS
     // ========================================================
     function filtrarStudios(tipo) {
       const cards = document.querySelectorAll('.card-studio');
@@ -1091,366 +2223,53 @@
     }
 
     // ========================================================
-    // FORMATADORES E UTILITÁRIOS
-    // ========================================================
-    function formatarDataBr(isoStr) {
-      if (!isoStr) return "";
-      const [ano, mes, dia] = isoStr.split('-');
-      return `${dia}/${mes}/${ano}`;
-    }
-
-    function formatarMoeda(valor) {
-      return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(Number(valor) || 0);
-    }
-
-    function escaparHtml(valor) {
-      return String(valor == null ? '' : valor)
-        .replaceAll('&', '&amp;')
-        .replaceAll('<', '&lt;')
-        .replaceAll('>', '&gt;')
-        .replaceAll('"', '&quot;')
-        .replaceAll("'", '&#039;');
-    }
-
-    const API_COTACAO = "https://snt-lavanderia-bot-production.up.railway.app/api/studios/public/cotacao";
-    let ultimaCotacao = null;
-
-    // ========================================================
-    // FOCO E NAVEGAÇÃO PARA O WIDGET DE RESERVA AIRBNB
-    // ========================================================
-    function focarCotador() {
-      const el = document.getElementById('cotador');
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        el.classList.add('card-pulse-highlight');
-        setTimeout(() => el.classList.remove('card-pulse-highlight'), 2500);
-      }
-      const inEl = document.getElementById('inputCheckIn');
-      if (inEl) {
-        setTimeout(() => inEl.focus(), 350);
-      }
-    }
-
-    function focarCotadorStudio(studioNum) {
-      focarCotador();
-      if (ultimaCotacao && Array.isArray(ultimaCotacao.studios)) {
-        renderizarCardDisponibilidade(studioNum);
-      }
-    }
-
-    function compartilharSite() {
-      const shareData = {
-        title: 'SNT Studios · Hospedagem ao Lado do Aeroporto GRU',
-        text: 'Studios privativos modernos com Wi-Fi 600MB, fechadura digital 24h e 10% de desconto na reserva direta.',
-        url: 'https://www.sntstudios.com/'
-      };
-      if (navigator.share) {
-        navigator.share(shareData).catch(() => {});
-      } else {
-        navigator.clipboard.writeText(shareData.url);
-        const btn = document.getElementById('btnShareText');
-        if (btn) {
-          btn.innerText = "Link copiado!";
-          setTimeout(() => { btn.innerText = "Compartilhar"; }, 2000);
-        }
-      }
-    }
-
-    // ========================================================
-    // ENVIO DE MENSAGEM LIMPA E PROFISSIONAL PARA O WHATSAPP
-    // ========================================================
-    function abrirWhatsAppCotacao(studioNumero) {
-      const dados = ultimaCotacao || {};
-      const inVal = dados.entrada || document.getElementById('inputCheckIn').value;
-      const outVal = dados.saida || document.getElementById('inputCheckOut').value;
-      const guests = dados.hospedes || document.getElementById('selectGuests').value;
-      const studio = dados.studios && dados.studios.find(s => String(s.numero) === String(studioNumero));
-      
-      const linhas = [
-        "Ola! Consultei o site oficial do SNT Studios e gostaria de confirmar uma reserva direta com 10% de desconto:",
-        "",
-        "- Check-in: " + formatarDataBr(inVal),
-        "- Check-out: " + formatarDataBr(outVal) + (dados.noites ? " (" + dados.noites + " noites)" : ""),
-        "- Hospedes: " + guests + " pessoa" + (Number(guests) > 1 ? "s" : "")
-      ];
-
-      if (studio) {
-        linhas.push("- Studio recomendado: " + studio.nome + " (" + formatarMoeda(studio.totalDireta) + " total com limpeza)");
-        linhas.push("- Economia direta vs plataformas: " + formatarMoeda(studio.economia));
-      } else {
-        linhas.push("- Alocacao: melhor acomodacao disponivel para o periodo");
-      }
-
-      linhas.push("");
-      linhas.push("Poderiam confirmar a disponibilidade e os proximos passos, por favor?");
-      window.open("https://api.whatsapp.com/send?phone=551154443110&text=" + encodeURIComponent(linhas.join(String.fromCharCode(10))), '_blank', 'noopener');
-    }
-
-    // ========================================================
-    // RENDERIZADOR DO RECIBO ESTILO AIRBNB
-    // ========================================================
-    function renderizarCardDisponibilidade(studioNumEscolhido) {
-      if (!ultimaCotacao || !Array.isArray(ultimaCotacao.studios)) return;
-      const dados = ultimaCotacao;
-      const resultado = document.getElementById('resultadoCotacao');
-      const ordemPreferencia = ['12', '14', '11', '13'];
-      
-      const livres = dados.studios
-        .filter(studio => studio && studio.disponivel && Number.isFinite(Number(studio.totalDireta)))
-        .sort((a, b) => ordemPreferencia.indexOf(String(a.numero)) - ordemPreferencia.indexOf(String(b.numero)));
-
-      if (!livres.length) {
-        resultado.innerHTML = `
-          <div class="rounded-2xl border border-rose-500/40 bg-rose-500/10 p-4">
-            <h4 class="font-bold text-xs text-rose-200">Datas indisponíveis no calendário</h4>
-            <p class="mt-1 text-[11px] leading-relaxed text-slate-300">
-              Não há studios livres para todas as noites selecionadas (${formatarDataBr(dados.entrada)} a ${formatarDataBr(dados.saida)}).
-            </p>
-            <button type="button" onclick="abrirWhatsAppCotacao('')" class="mt-3 w-full rounded-xl bg-emerald-500 py-3 text-xs font-black text-slate-950 hover:bg-emerald-400 transition shadow-lg shadow-emerald-500/20">
-              Consultar alternativas no WhatsApp
-            </button>
-          </div>`;
-        return;
-      }
-
-      let studio = livres[0];
-      if (studioNumEscolhido) {
-        const achado = livres.find(s => String(s.numero) === String(studioNumEscolhido));
-        if (achado) studio = achado;
-      }
-
-      // Atualiza o preço por noite no cabeçalho do card e na barra mobile
-      const precoCabecalho = document.getElementById('headerPrecoNoite');
-      if (precoCabecalho) precoCabecalho.innerText = formatarMoeda(studio.porNoite);
-      const mobilePreco = document.getElementById('mobileBarPreco');
-      if (mobilePreco) mobilePreco.innerText = formatarMoeda(studio.porNoite);
-      const mobileDatas = document.getElementById('mobileBarDatas');
-      if (mobileDatas) mobileDatas.innerText = `${formatarDataBr(dados.entrada)} - ${formatarDataBr(dados.saida)} (${dados.noites}n)`;
-
-      // Monta as opções de troca de acomodação caso haja mais de 1 livre
-      let seletorOutrosStudios = '';
-      if (livres.length > 1) {
-        seletorOutrosStudios = `
-          <div class="pt-2 flex items-center justify-between text-[11px] text-slate-400">
-            <span>Outras opções disponíveis:</span>
-            <div class="flex gap-1.5">
-              ${livres.map(s => `
-                <button type="button" onclick="renderizarCardDisponibilidade('${s.numero}')" class="px-2 py-0.5 rounded font-bold transition ${String(s.numero) === String(studio.numero) ? 'bg-emerald-500 text-slate-950' : 'bg-slate-800 text-slate-300 hover:text-white'}">
-                  Studio ${s.numero}
-                </button>
-              `).join('')}
-            </div>
-          </div>`;
-      }
-
-      resultado.innerHTML = `
-        <div class="space-y-3.5">
-          <!-- CARD DA ACOMODAÇÃO ALOCADA -->
-          <div class="rounded-xl border border-emerald-500/40 bg-emerald-500/10 p-3.5 flex items-center justify-between">
-            <div class="flex items-center gap-2.5">
-              <span class="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-500 text-slate-950 font-black text-xs">
-                ${escaparHtml(studio.numero)}
-              </span>
-              <div>
-                <div class="text-xs font-bold text-white">${escaparHtml(studio.nome)}</div>
-                <div class="text-[10px] text-emerald-300 font-medium">${dados.noites} noite${dados.noites > 1 ? 's' : ''} para ${escaparHtml(dados.hospedes)} hóspede${Number(dados.hospedes) > 1 ? 's' : ''}</div>
-              </div>
-            </div>
-            <span class="rounded bg-emerald-500/20 px-2 py-0.5 text-[10px] font-bold text-emerald-300">
-              ALOCAÇÃO RECOMENDADA
-            </span>
-          </div>
-
-          ${seletorOutrosStudios}
-
-          <!-- RECIBO DETALHADO ESTILO AIRBNB -->
-          <div class="space-y-2 text-xs text-slate-300 pt-1">
-            <div class="flex items-center justify-between">
-              <span class="text-slate-300">${formatarMoeda(studio.porNoite)} × ${dados.noites} noite${dados.noites > 1 ? 's' : ''}</span>
-              <span class="font-medium text-white">${formatarMoeda(studio.diariasTotal)}</span>
-            </div>
-            <div class="flex items-center justify-between">
-              <span class="text-slate-300">Taxa de limpeza e higienização</span>
-              <span class="font-medium text-white">${formatarMoeda(studio.limpeza)}</span>
-            </div>
-            <div class="flex items-center justify-between text-emerald-400 font-semibold">
-              <span>Desconto Reserva Direta (10% OFF)</span>
-              <span>- ${formatarMoeda(studio.economia)}</span>
-            </div>
-            <div class="pt-2.5 border-t border-slate-700/80 flex items-baseline justify-between text-white">
-              <div>
-                <span class="text-sm font-black">Total da estadia</span>
-                <p class="text-[10px] text-slate-400">Sem taxas de serviço de terceiros</p>
-              </div>
-              <span class="text-xl font-black text-emerald-400">${formatarMoeda(studio.totalDireta)}</span>
-            </div>
-          </div>
-
-          <!-- BOTÃO DE AÇÃO WHATSAPP OFICIAL -->
-          <button type="button" onclick="abrirWhatsAppCotacao('${escaparHtml(studio.numero)}')" class="w-full mt-2 bg-emerald-500 hover:bg-emerald-400 active:scale-[0.99] text-slate-950 font-black py-3.5 px-4 rounded-xl text-xs uppercase tracking-wider transition shadow-lg shadow-emerald-500/25 flex items-center justify-center gap-2">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.159.57 4.184 1.564 5.938l-1.664 6.086 6.257-1.64c1.706.924 3.659 1.45 5.743 1.45 6.627 0 12-5.373 12-12 0-6.627-5.373-12-12-12z"/></svg>
-            <span>Reservar no WhatsApp (10% OFF)</span>
-          </button>
-
-          <p class="text-[10px] text-center text-slate-400">
-            🔒 Sua pré-reserva é confirmada com nossa equipe oficial para bloqueio imediato no Smoobu.
-          </p>
-        </div>`;
-    }
-
-    // ========================================================
-    // CONSULTA DE DISPONIBILIDADE EM TEMPO REAL NO SMOOBU
-    // ========================================================
-    async function consultarDisponibilidade() {
-      const inVal = document.getElementById('inputCheckIn').value;
-      const outVal = document.getElementById('inputCheckOut').value;
-      const guests = document.getElementById('selectGuests').value;
-      const resultado = document.getElementById('resultadoCotacao');
-      const botao = document.getElementById('btnConsultar');
-
-      if (!inVal || !outVal) {
-        resultado.classList.remove('hidden');
-        resultado.innerHTML = '<div class="rounded-xl border border-amber-500/40 bg-amber-500/10 p-3.5 text-xs text-amber-200">Selecione as datas de check-in e checkout para ver o valor exato.</div>';
-        return;
-      }
-
-      const noites = Math.round((new Date(outVal + 'T12:00:00') - new Date(inVal + 'T12:00:00')) / 86400000);
-      if (noites < 1 || noites > 120) {
-        resultado.classList.remove('hidden');
-        resultado.innerHTML = '<div class="rounded-xl border border-rose-500/40 bg-rose-500/10 p-3.5 text-xs text-rose-200">O checkout deve ser posterior ao check-in e a estadia pode ter no máximo 120 noites.</div>';
-        return;
-      }
-
-      resultado.classList.remove('hidden');
-      resultado.innerHTML = '<div class="flex items-center justify-center gap-3 rounded-xl border border-slate-700 bg-slate-900/90 p-4 text-xs text-emerald-300"><span class="h-4 w-4 animate-spin rounded-full border-2 border-emerald-400 border-t-transparent"></span>Consultando calendário e tarifas oficiais no Smoobu...</div>';
-      botao.disabled = true;
-
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 10000);
-
-      try {
-        const url = new URL(API_COTACAO);
-        url.searchParams.set('entrada', inVal);
-        url.searchParams.set('saida', outVal);
-        const resposta = await fetch(url.toString(), {
-          signal: controller.signal,
-          headers: { Accept: 'application/json' }
-        });
-        const dados = await resposta.json().catch(() => ({}));
-        if (!resposta.ok || !dados.ok || !Array.isArray(dados.studios)) {
-          throw new Error(dados.erro || 'Não foi possível consultar o calendário.');
-        }
-
-        ultimaCotacao = { ...dados, hospedes: guests };
-        renderizarCardDisponibilidade();
-      } catch (erro) {
-        ultimaCotacao = { entrada: inVal, saida: outVal, hospedes: guests, studios: [] };
-        resultado.innerHTML = `
-          <div class="rounded-xl border border-amber-500/40 bg-amber-500/10 p-4">
-            <h4 class="font-bold text-xs text-amber-200">O calendário não respondeu agora</h4>
-            <p class="mt-1 text-[11px] leading-relaxed text-slate-300">Para não mostrar preço incorreto, a consulta e confirmação seguirá com nossa equipe.</p>
-            <button type="button" onclick="abrirWhatsAppCotacao('')" class="mt-3 w-full rounded-lg bg-emerald-500 py-2.5 text-xs font-black text-slate-950 hover:bg-emerald-400 transition">
-              Consultar no WhatsApp
-            </button>
-          </div>`;
-      } finally {
-        clearTimeout(timeoutId);
-        botao.disabled = false;
-      }
-    }
-
-    function copiarEndereco() {
-      const txt = "Avenida Aguanil, 51 - Cidade Seródio - Guarulhos/SP";
-      navigator.clipboard.writeText(txt);
-      const btn = document.getElementById('btnCopiarEnd');
-      btn.innerText = "✓ Copiado!";
-      setTimeout(() => {
-        btn.innerText = "Copiar";
-      }, 2000);
-    }
-
-    // ========================================================
-    // INICIALIZAÇÃO DE DATAS E EVENTOS
-    // ========================================================
-    document.addEventListener('DOMContentLoaded', () => {
-      const inEl = document.getElementById('inputCheckIn');
-      const outEl = document.getElementById('inputCheckOut');
-      const guestsEl = document.getElementById('selectGuests');
-
-      // Define data mínima como hoje
-      const agora = new Date();
-      const ano = agora.getFullYear();
-      const mes = String(agora.getMonth() + 1).padStart(2, '0');
-      const dia = String(agora.getDate()).padStart(2, '0');
-      const hojeStr = `${ano}-${mes}-${dia}`;
-
-      if (inEl && outEl) {
-        inEl.min = hojeStr;
-        outEl.min = hojeStr;
-
-        inEl.addEventListener('change', () => {
-          if (inEl.value) {
-            const dIn = new Date(inEl.value + 'T12:00:00');
-            const dOutMin = new Date(dIn.getTime() + 86400000);
-            const y = dOutMin.getFullYear();
-            const m = String(dOutMin.getMonth() + 1).padStart(2, '0');
-            const d = String(dOutMin.getDate()).padStart(2, '0');
-            const minNext = `${y}-${m}-${d}`;
-            outEl.min = minNext;
-            if (!outEl.value || outEl.value <= inEl.value) {
-              outEl.value = minNext;
-            }
-            const mob = document.getElementById('mobileBarDatas');
-            if (mob) mob.innerText = `${formatarDataBr(inEl.value)} - ${formatarDataBr(outEl.value)}`;
-            consultarDisponibilidade();
-          }
-        });
-
-        outEl.addEventListener('change', () => {
-          if (inEl.value && outEl.value) {
-            const mob = document.getElementById('mobileBarDatas');
-            if (mob) mob.innerText = `${formatarDataBr(inEl.value)} - ${formatarDataBr(outEl.value)}`;
-            consultarDisponibilidade();
-          }
-        });
-      }
-
-      if (guestsEl) {
-        guestsEl.addEventListener('change', () => {
-          if (ultimaCotacao && inEl && outEl && inEl.value && outEl.value) {
-            ultimaCotacao.hospedes = guestsEl.value;
-            renderizarCardDisponibilidade();
-          }
-        });
-      }
-    });
-
-    // ========================================================
-    // MODAL DE GALERIA DE FOTOS (LIGHTBOX 20 FOTOS WEBP)
+    // MODAL DE GALERIA DE FOTOS (LIGHTBOX COM NOMES COMERCIAIS)
     // ========================================================
     const galeriaFotos = {
-      '12': [
+      'master': [
         'assets/fotos/20251030_162521(1).webp',
         'assets/fotos/20251030_162403.webp',
         'assets/fotos/20251030_162350.webp',
         'assets/fotos/20251030_162606(1).webp',
         'assets/fotos/20251030_163823.webp'
       ],
-      '14': [
+      'executivo': [
         'assets/fotos/20251030_164004.webp',
         'assets/fotos/20251030_162615(1).webp',
         'assets/fotos/20251030_164033.webp',
         'assets/fotos/20251030_164106.webp',
         'assets/fotos/20251030_163810.webp'
       ],
-      '11': [
+      'smart': [
         'assets/fotos/20251030_143554.webp',
         'assets/fotos/20251030_143603.webp',
         'assets/fotos/20251030_143653.webp',
         'assets/fotos/20251030_143812.webp',
         'assets/fotos/20251030_144426.webp'
       ],
-      '13': [
+      'cozy': [
+        'assets/fotos/20251030_144024.webp',
+        'assets/fotos/20251030_144035.webp',
+        'assets/fotos/20251030_144400.webp',
+        'assets/fotos/20251030_144616.webp',
+        'assets/fotos/20251030_144436.webp'
+      ],
+      'todas': [
+        'assets/fotos/20251030_162521(1).webp',
+        'assets/fotos/20251030_162403.webp',
+        'assets/fotos/20251030_162350.webp',
+        'assets/fotos/20251030_162606(1).webp',
+        'assets/fotos/20251030_163823.webp',
+        'assets/fotos/20251030_164004.webp',
+        'assets/fotos/20251030_162615(1).webp',
+        'assets/fotos/20251030_164033.webp',
+        'assets/fotos/20251030_164106.webp',
+        'assets/fotos/20251030_163810.webp',
+        'assets/fotos/20251030_143554.webp',
+        'assets/fotos/20251030_143603.webp',
+        'assets/fotos/20251030_143653.webp',
+        'assets/fotos/20251030_143812.webp',
+        'assets/fotos/20251030_144426.webp',
         'assets/fotos/20251030_144024.webp',
         'assets/fotos/20251030_144035.webp',
         'assets/fotos/20251030_144400.webp',
@@ -1462,19 +2281,20 @@
     let galeriaAtualLista = [];
     let galeriaFotoIdx = 0;
 
-    function abrirGaleria(studioKey) {
-      galeriaAtualLista = galeriaFotos[studioKey] || galeriaFotos['12'];
+    function abrirGaleria(categoriaChave) {
+      galeriaAtualLista = galeriaFotos[categoriaChave] || galeriaFotos['todas'] || galeriaFotos['master'];
       galeriaFotoIdx = 0;
       
       const titulos = {
-        '12': 'Studio 12 · Master King (O Maior Studio)',
-        '14': 'Studio 14 · Executivo (Janela com Cortinas)',
-        '11': 'Studio 11 · Standard Smart (Compacto)',
-        '13': 'Studio 13 · Standard Cozy (Compacto)'
+        'master': 'Studio Master King (O Maior Studio · Cama Queen & Cortinas)',
+        'executivo': 'Studio Executivo Premium (Grande & Sofisticado)',
+        'smart': 'Studio Standard Smart (Compacto & Silencioso)',
+        'cozy': 'Studio Standard Cozy (Compacto & Acolhedor)',
+        'todas': (idiomaAtual === 'en' ? 'SNT Studios · All 20 Authentic Photos' : (idiomaAtual === 'es' ? 'SNT Studios · Las 20 Fotos Reales' : 'SNT Studios · Todas as 20 Fotos Reais'))
       };
       
-      document.getElementById('modalGaleriaTitulo').innerText = titulos[studioKey] || 'Galeria de Fotos do Studio';
-      document.getElementById('modalGaleriaSubtitulo').innerText = `Visualizando fotos reais do Studio ${studioKey}`;
+      document.getElementById('modalGaleriaTitulo').innerText = titulos[categoriaChave] || 'Fotos Reais das Acomodações';
+      document.getElementById('modalGaleriaSubtitulo').innerText = "Fotos 100% autênticas do SNT Studios";
       
       atualizarFotoGaleria();
       renderizarMiniaturasGaleria();
@@ -1519,10 +2339,31 @@
       });
     }
 
-    // Atalho ESC para fechar galeria
+    // Atalho ESC para fechar galeria e calendário
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         fecharGaleria();
+        fecharCalendario();
+      }
+    });
+
+    // Fecha calendário ao clicar fora
+    document.addEventListener('click', (e) => {
+      const cal = document.getElementById('calendarioAirbnb');
+      const box = document.getElementById('airbnbDateBox');
+      if (cal && !cal.classList.contains('hidden')) {
+        if (!cal.contains(e.target) && !box.contains(e.target)) {
+          fecharCalendario();
+        }
+      }
+    });
+
+    // Inicialização ao carregar página
+    document.addEventListener('DOMContentLoaded', () => {
+      if (idiomaAtual !== 'pt') {
+        trocarIdioma(idiomaAtual);
+      } else {
+        atualizarDisplayDatas();
       }
     });
   </script>

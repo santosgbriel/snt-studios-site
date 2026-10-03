@@ -22,3 +22,4 @@ jobs:
       - run: npm ci
       - run: npm run verify:css
       - run: python validate_site.py
+      - run: python test_frontend.py
