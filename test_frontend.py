@@ -108,8 +108,79 @@ if 'calDiasGrid1' not in html or 'calDiasGrid2' not in html:
     erros.append("Estrutura do calendário dual-month (Airbnb) ausente no HTML.")
 if 'calMiniCheckIn' not in html or 'calMiniCheckOut' not in html:
     erros.append("Mini-box de Check-in/Checkout do calendário ausente.")
+if 'calBtnPrevMes' not in html:
+    erros.append("Botão de navegação calBtnPrevMes ausente no HTML.")
 if 'datasTotalmenteOcupadas' not in html or 'carregarDisponibilidadeGeral' not in html:
     erros.append("Lógica de detecção e strike-through de datas ocupadas ausente.")
+
+# 10. Validação Funcional das Regras de Seleção e Checkout do Calendário
+js_teste_calendario = """
+const datasTotalmenteOcupadas = new Set(['2026-10-06', '2026-10-08']);
+const hojeIso = '2026-10-01';
+
+function testarDisponibilidade(dataCheckIn, dataCheckOut, diaIso) {
+  let primeiroBloqueioAposCheckIn = null;
+  if (dataCheckIn && !dataCheckOut) {
+    const bloqueiosOrdenados = Array.from(datasTotalmenteOcupadas).sort();
+    for (const bloq of bloqueiosOrdenados) {
+      if (bloq > dataCheckIn) {
+        primeiroBloqueioAposCheckIn = bloq;
+        break;
+      }
+    }
+  }
+
+  const ehPassado = diaIso < hojeIso;
+  const ehTotalmenteOcupado = datasTotalmenteOcupadas.has(diaIso);
+  let ehIndisponivel = false;
+  if (ehPassado) {
+    ehIndisponivel = true;
+  } else if (dataCheckIn && !dataCheckOut) {
+    if (diaIso > dataCheckIn) {
+      if (primeiroBloqueioAposCheckIn && diaIso > primeiroBloqueioAposCheckIn) {
+        ehIndisponivel = true;
+      }
+    } else if (diaIso < dataCheckIn) {
+      if (ehTotalmenteOcupado) {
+        ehIndisponivel = true;
+      }
+    }
+  } else {
+    if (ehTotalmenteOcupado) {
+      ehIndisponivel = true;
+    }
+  }
+  return ehIndisponivel;
+}
+
+// 1. Data ocupada (2026-10-06) NÃO pode ser check-in
+if (testarDisponibilidade('', '', '2026-10-06') !== true) {
+  throw new Error("Data ocupada deve ser indisponível para check-in.");
+}
+// 2. Data livre (2026-10-05) PODE ser check-in
+if (testarDisponibilidade('', '', '2026-10-05') !== false) {
+  throw new Error("Data livre deve ser disponível para check-in.");
+}
+// 3. Com check-in em 2026-10-05, checkout em 2026-10-06 (primeiro bloqueio) DEVE SER PERMITIDO (saída matutina)
+if (testarDisponibilidade('2026-10-05', '', '2026-10-06') !== false) {
+  throw new Error("Checkout no primeiro dia ocupado deve ser permitido.");
+}
+// 4. Checkout em 2026-10-07 ou posterior DEVE SER BLOQUEADO (atravessa noite ocupada)
+if (testarDisponibilidade('2026-10-05', '', '2026-10-07') !== true) {
+  throw new Error("Checkout além do primeiro dia ocupado deve ser bloqueado.");
+}
+// 5. Data passada deve ser indisponível
+if (testarDisponibilidade('', '', '2026-09-30') !== true) {
+  throw new Error("Data no passado deve ser indisponível.");
+}
+"""
+temp_test = raiz / '_temp_test_cal.js'
+temp_test.write_text(js_teste_calendario, encoding='utf-8')
+res_cal = subprocess.run(['node', str(temp_test)], capture_output=True, text=True)
+if res_cal.returncode != 0:
+    erros.append(f"Falha na validação funcional do calendário: {res_cal.stderr.strip()}")
+if temp_test.exists():
+    temp_test.unlink()
 
 # Relatório Final
 if erros:

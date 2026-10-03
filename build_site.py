@@ -430,7 +430,7 @@ site_code = '''<!DOCTYPE html>
                     <!-- MÊS 1 -->
                     <div class="space-y-2">
                       <div class="flex items-center justify-between px-1 h-8">
-                        <button type="button" onclick="mudarMes(-1)" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-white flex items-center justify-center font-bold text-base transition shadow-sm" aria-label="Mês anterior">‹</button>
+                        <button type="button" id="calBtnPrevMes" onclick="mudarMes(-1)" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-white flex items-center justify-center font-bold text-base transition shadow-sm" aria-label="Mês anterior">‹</button>
                         <span id="calMesAno1" class="text-xs sm:text-sm font-black text-white capitalize"></span>
                         <div class="w-8 h-8 sm:hidden flex items-center justify-center">
                           <button type="button" onclick="mudarMes(1)" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-white flex items-center justify-center font-bold text-base transition shadow-sm" aria-label="Próximo mês">›</button>
@@ -1848,16 +1848,33 @@ site_code = '''<!DOCTYPE html>
         const diaIso = `${ano}-${String(mes + 1).padStart(2, '0')}-${String(dia).padStart(2, '0')}`;
         const ehPassado = diaIso < hojeIso;
         const ehTotalmenteOcupado = datasTotalmenteOcupadas.has(diaIso);
-        
-        // Bloqueia checkout se ultrapassar o primeiro dia ocupado
-        const ehBloqueadoParaCheckout = (primeiroBloqueioAposCheckIn && diaIso > primeiroBloqueioAposCheckIn);
+        let ehIndisponivel = false;
+        if (ehPassado) {
+          ehIndisponivel = true;
+        } else if (dataCheckIn && !dataCheckOut) {
+          // Fase 2: Seleção de checkout
+          if (diaIso > dataCheckIn) {
+            // Checkout válido até o primeiro dia de bloqueio (inclusive, manhã da saída)
+            if (primeiroBloqueioAposCheckIn && diaIso > primeiroBloqueioAposCheckIn) {
+              ehIndisponivel = true;
+            }
+          } else if (diaIso < dataCheckIn) {
+            // Se clicar antes do check-in atual, vira novo check-in (logo a noite deve estar livre)
+            if (ehTotalmenteOcupado) {
+              ehIndisponivel = true;
+            }
+          }
+        } else {
+          // Fase 1: Seleção de check-in (ou reinício após seleção completa)
+          if (ehTotalmenteOcupado) {
+            ehIndisponivel = true;
+          }
+        }
 
         const btn = document.createElement('button');
         btn.type = "button";
         btn.innerText = String(dia);
         btn.setAttribute('data-date', diaIso);
-
-        const ehIndisponivel = ehPassado || ehTotalmenteOcupado || ehBloqueadoParaCheckout;
 
         if (ehIndisponivel) {
           btn.className = "h-9 w-full flex items-center justify-center rounded-full text-xs font-normal text-slate-600 line-through cursor-not-allowed opacity-35";
@@ -1906,6 +1923,19 @@ site_code = '''<!DOCTYPE html>
       if (tit2) tit2.innerText = formatarTituloMes(ano2, mes2);
       renderizarCabecalhoSemana(document.getElementById('calDiasSemana2'));
       renderizarGradeDiasMes(ano2, mes2, document.getElementById('calDiasGrid2'));
+
+      // Desabilita navegação para meses passados
+      const agora = new Date();
+      const ehMesAtual = (calAno === agora.getFullYear() && calMes === agora.getMonth());
+      const btnPrev = document.getElementById('calBtnPrevMes');
+      if (btnPrev) {
+        btnPrev.disabled = ehMesAtual;
+        if (ehMesAtual) {
+          btnPrev.className = "w-8 h-8 rounded-full bg-slate-800/40 text-slate-600 flex items-center justify-center font-bold text-base cursor-not-allowed";
+        } else {
+          btnPrev.className = "w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-white flex items-center justify-center font-bold text-base transition shadow-sm cursor-pointer";
+        }
+      }
 
       atualizarDisplayDatas();
     }
@@ -2014,10 +2044,12 @@ site_code = '''<!DOCTYPE html>
       const mob = document.getElementById('mobileBarDatas');
       const placeholder = I18N[idiomaAtual].txt_inserir_data || "Adicionar data";
 
+      const placeholderDataIn = idiomaAtual === 'en' ? "MM/DD/YYYY" : "DD/MM/AAAA";
+
       if (inEl) inEl.innerText = dataCheckIn ? formatarDataBr(dataCheckIn) : placeholder;
       if (outEl) outEl.innerText = dataCheckOut ? formatarDataBr(dataCheckOut) : placeholder;
       
-      if (miniIn) miniIn.innerText = dataCheckIn ? formatarDataBr(dataCheckIn) : "DD/MM/AAAA";
+      if (miniIn) miniIn.innerText = dataCheckIn ? formatarDataBr(dataCheckIn) : placeholderDataIn;
       if (miniOut) miniOut.innerText = dataCheckOut ? formatarDataBr(dataCheckOut) : placeholder;
 
       // Realce visual da mini-caixa ativa
@@ -2035,6 +2067,8 @@ site_code = '''<!DOCTYPE html>
         if (dataCheckIn && dataCheckOut) {
           const noites = Math.round((new Date(dataCheckOut + 'T12:00:00') - new Date(dataCheckIn + 'T12:00:00')) / 86400000);
           mob.innerText = `${formatarDataBr(dataCheckIn)} - ${formatarDataBr(dataCheckOut)} (${noites}n)`;
+        } else if (dataCheckIn) {
+          mob.innerText = `${formatarDataBr(dataCheckIn)} - ...`;
         } else {
           mob.innerText = placeholder;
         }
