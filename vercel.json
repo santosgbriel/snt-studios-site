@@ -1,0 +1,21 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "sntstudios.com.br" }],
+      "destination": "https://www.sntstudios.com/$1",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "www.sntstudios.com.br" }],
+      "destination": "https://www.sntstudios.com/$1",
+      "permanent": true
+    },
+    {
+      "source": "/privacidade",
+      "destination": "/privacidade.html",
+      "permanent": true
+    }
+  ]
+}

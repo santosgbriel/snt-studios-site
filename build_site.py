@@ -16,10 +16,10 @@ site_code = '''<!DOCTYPE html>
   <title>SNT Studios · Hospitalidade & Hospedagem Próximo ao Aeroporto de Guarulhos (GRU)</title>
   
   <!-- SEO & Social Sharing -->
-  <meta name="description" content="Studios privativos modernos e confortáveis em Guarulhos, a apenas 10-15 min do Aeroporto GRU. Internet fibra 600MB, fechadura eletrônica 24h, cozinha compacta e reserva direta com 10% de desconto.">
+  <meta name="description" content="Studios privativos modernos e confortáveis em Guarulhos, a cerca de 20 minutos de carro do Aeroporto GRU. Internet fibra 600MB, fechadura eletrônica 24h, cozinha compacta e reserva direta com 10% de desconto.">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <link rel="canonical" href="https://www.sntstudios.com/">
-  <meta property="og:title" content="SNT Studios · Hospedagem Moderna ao Lado do Aeroporto GRU">
+  <meta property="og:title" content="SNT Studios · Hospedagem Moderna perto do Aeroporto GRU">
   <meta property="og:description" content="Reserve direto com 10% de desconto no WhatsApp oficial. Studios privativos com Wi-Fi 600MB, fechadura digital 24h e cozinha completa.">
   <meta property="og:image" content="https://www.sntstudios.com/assets/og-cover.jpg">
   <meta property="og:url" content="https://www.sntstudios.com/">
@@ -170,16 +170,14 @@ site_code = '''<!DOCTYPE html>
           </span>
         </div>
 
-        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight" data-i18n="hero_title">
-          SNT Studios · Studios Privativos a 10 min do Aeroporto GRU
-        </h1>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight" data-i18n="hero_title">SNT Studios · Studios Privativos em Guarulhos, perto do Aeroporto GRU</h1>
 
         <!-- BARRA SUB-HEADER -->
         <div class="flex flex-wrap items-center justify-between gap-3 text-xs sm:text-sm text-slate-300 pt-1 pb-4 border-b border-slate-800/80">
           <div class="flex flex-wrap items-center gap-2">
             <span class="text-slate-300 font-semibold" data-i18n="sub_hospitalidade">Hospitalidade Independente</span>
             <span class="text-slate-500">·</span>
-            <span class="text-slate-400" data-i18n="sub_gru_dist">A 10-15 minutos dos Terminais 1, 2 e 3</span>
+            <span class="text-slate-400" data-i18n="sub_gru_dist">Cerca de 20 minutos de carro dos Terminais 1, 2 e 3</span>
             <span class="text-slate-500">·</span>
             <a href="#localizacao" class="underline underline-offset-4 hover:text-emerald-400 text-slate-400">Avenida Aguanil, 51 · Seródio, Guarulhos - SP</a>
           </div>
@@ -197,17 +195,17 @@ site_code = '''<!DOCTYPE html>
         <div class="grid grid-cols-1 md:grid-cols-4 gap-2 h-[340px] sm:h-[420px] lg:h-[480px]">
           <!-- Foto Principal Grande (Esquerda: 2 colunas no desktop) -->
           <div class="md:col-span-2 relative overflow-hidden bg-slate-950 cursor-pointer" onclick="abrirGaleria('master')">
-            <img src="assets/fotos/20251030_162521(1).webp" alt="Studio Master King" class="w-full h-full object-cover group-hover:scale-[1.02] transition duration-500">
+            <img src="assets/fotos/20251030_162521(1).webp" alt="Studio Amplo A" class="w-full h-full object-cover group-hover:scale-[1.02] transition duration-500">
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex flex-col justify-end p-5">
-              <span class="bg-emerald-500 text-slate-950 text-[10px] font-black px-2.5 py-0.5 rounded shadow w-max mb-1 uppercase tracking-wider" data-i18n="tag_master_king">STUDIO MASTER KING</span>
-              <span class="text-white text-sm font-bold" data-i18n="desc_master_king_curta">Ampla iluminação, cama Queen Size e cortinas elegantes</span>
+              <span class="bg-emerald-500 text-slate-950 text-[10px] font-black px-2.5 py-0.5 rounded shadow w-max mb-1 uppercase tracking-wider" data-i18n="tag_master_king">STUDIO AMPLO</span>
+              <span class="text-white text-sm font-bold" data-i18n="desc_master_king_curta">Cama queen, bancada de trabalho e cortinas blackout</span>
             </div>
           </div>
           <!-- Coluna 2 (2 fotos empilhadas) -->
           <div class="hidden md:grid grid-rows-2 gap-2">
             <div class="relative overflow-hidden bg-slate-950 cursor-pointer" onclick="abrirGaleria('executivo')">
-              <img src="assets/fotos/20251030_164004.webp" alt="Studio Executivo Premium" class="w-full h-full object-cover hover:scale-105 transition duration-500">
-              <div class="absolute bottom-2 left-2 bg-slate-950/80 backdrop-blur px-2 py-0.5 rounded text-[10px] font-bold text-teal-300 border border-slate-700" data-i18n="tag_executivo_premium">Executivo Premium</div>
+              <img src="assets/fotos/20251030_164004.webp" alt="Studio Amplo B" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+              <div class="absolute bottom-2 left-2 bg-slate-950/80 backdrop-blur px-2 py-0.5 rounded text-[10px] font-bold text-teal-300 border border-slate-700" data-i18n="tag_executivo_premium">Studio Amplo</div>
             </div>
             <div class="relative overflow-hidden bg-slate-950 cursor-pointer" onclick="abrirGaleria('master')">
               <img src="assets/fotos/20251030_144616.webp" alt="Cozinha Compacta Completa" class="w-full h-full object-cover hover:scale-105 transition duration-500">
@@ -217,12 +215,12 @@ site_code = '''<!DOCTYPE html>
           <!-- Coluna 3 (2 fotos empilhadas) -->
           <div class="hidden md:grid grid-rows-2 gap-2">
             <div class="relative overflow-hidden bg-slate-950 cursor-pointer" onclick="abrirGaleria('smart')">
-              <img src="assets/fotos/20251030_143554.webp" alt="Studio Standard Smart" class="w-full h-full object-cover hover:scale-105 transition duration-500">
-              <div class="absolute bottom-2 left-2 bg-slate-950/80 backdrop-blur px-2 py-0.5 rounded text-[10px] font-bold text-slate-300 border border-slate-700" data-i18n="tag_standard_smart">Standard Smart</div>
+              <img src="assets/fotos/20251030_143554.webp" alt="Studio Compacto A" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+              <div class="absolute bottom-2 left-2 bg-slate-950/80 backdrop-blur px-2 py-0.5 rounded text-[10px] font-bold text-slate-300 border border-slate-700" data-i18n="tag_standard_smart">Studio Compacto</div>
             </div>
             <div class="relative overflow-hidden bg-slate-950 cursor-pointer" onclick="abrirGaleria('cozy')">
-              <img src="assets/fotos/20251030_144024.webp" alt="Studio Standard Cozy" class="w-full h-full object-cover hover:scale-105 transition duration-500">
-              <div class="absolute bottom-2 left-2 bg-slate-950/80 backdrop-blur px-2 py-0.5 rounded text-[10px] font-bold text-slate-300 border border-slate-700" data-i18n="tag_standard_cozy">Standard Cozy</div>
+              <img src="assets/fotos/20251030_144024.webp" alt="Studio Compacto B" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+              <div class="absolute bottom-2 left-2 bg-slate-950/80 backdrop-blur px-2 py-0.5 rounded text-[10px] font-bold text-slate-300 border border-slate-700" data-i18n="tag_standard_cozy">Studio Compacto</div>
             </div>
           </div>
         </div>
@@ -243,7 +241,7 @@ site_code = '''<!DOCTYPE html>
           <div class="flex items-start justify-between pb-6 border-b border-slate-800">
             <div>
               <h2 class="text-xl sm:text-2xl font-bold text-white" data-i18n="detalhe_tipo_espaco">Studio privativo inteiro · Hospedagem SNT</h2>
-              <p class="text-xs sm:text-sm text-slate-400 mt-1" data-i18n="detalhe_capacidade">Até 2 hóspedes · 1 cama queen ou casal · 1 banheiro privativo · Cozinha privativa equipada</p>
+              <p class="text-xs sm:text-sm text-slate-400 mt-1" data-i18n="detalhe_capacidade">Até 2 hóspedes · 1 cama queen · 1 banheiro privativo · Cozinha compacta equipada</p>
             </div>
             <div class="w-12 h-12 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-extrabold text-sm shrink-0">
               SNT
@@ -256,7 +254,7 @@ site_code = '''<!DOCTYPE html>
               <div class="w-6 text-xl text-emerald-400 shrink-0">🔑</div>
               <div>
                 <h3 class="text-sm font-bold text-white" data-i18n="feature_checkin_tit">Auto check-in 24h via fechadura digital</h3>
-                <p class="text-xs text-slate-400 mt-0.5" data-i18n="feature_checkin_desc">Acesse o complexo e seu studio com senha individual a qualquer hora da noite ou madrugada, sem precisar de chaves físicas.</p>
+                <p class="text-xs text-slate-400 mt-0.5" data-i18n="feature_checkin_desc">O portão abre por QR code e a porta do studio por uma senha só sua: chegue a qualquer hora da noite ou madrugada, sem chave física.</p>
               </div>
             </div>
 
@@ -272,15 +270,15 @@ site_code = '''<!DOCTYPE html>
               <div class="w-6 text-xl text-emerald-400 shrink-0">🍳</div>
               <div>
                 <h3 class="text-sm font-bold text-white" data-i18n="feature_cozinha_tit">Cozinha privativa equipada</h3>
-                <p class="text-xs text-slate-400 mt-0.5" data-i18n="feature_cozinha_desc">Equipada com frigobar, micro-ondas, cooktop, cafeteira Dolce Gusto, louças e talheres para sua conveniência.</p>
+                <p class="text-xs text-slate-400 mt-0.5" data-i18n="feature_cozinha_desc">Geladeira com freezer, micro-ondas, cooktop, cafeteira elétrica, sanduicheira, panelas, louças e talheres.</p>
               </div>
             </div>
 
             <div class="flex items-start gap-4">
               <div class="w-6 text-xl text-emerald-400 shrink-0">✈️</div>
               <div>
-                <h3 class="text-sm font-bold text-white" data-i18n="feature_gru_tit">10 a 15 minutos do Aeroporto de Guarulhos (GRU)</h3>
-                <p class="text-xs text-slate-400 mt-0.5" data-i18n="feature_gru_desc">Localização estratégica com rota rápida para os Terminais 1, 2 e 3 por aplicativo, ideal para conexões e escalas.</p>
+                <h3 class="text-sm font-bold text-white" data-i18n="feature_gru_tit">Cerca de 20 min de carro do Aeroporto de Guarulhos (GRU)</h3>
+                <p class="text-xs text-slate-400 mt-0.5" data-i18n="feature_gru_desc">São 12 a 14 km até os terminais, uns 21 a 22 minutos de carro ou aplicativo sem trânsito. A pé não dá: o caminho contorna o aeroporto.</p>
               </div>
             </div>
           </div>
@@ -293,15 +291,15 @@ site_code = '''<!DOCTYPE html>
             </p>
             
             <div class="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-3">
-              <h4 class="text-xs font-bold uppercase tracking-wider text-emerald-400" data-i18n="tipologias_tit">Duas Categorias Disponíveis</h4>
+              <h4 class="text-xs font-bold uppercase tracking-wider text-emerald-400" data-i18n="tipologias_tit">Dois tamanhos, os mesmos itens</h4>
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                 <div class="p-3.5 rounded-xl bg-slate-800/60 border border-slate-700/60">
-                  <span class="font-bold text-white block mb-1" data-i18n="cat_ampla_tit">Studios Maiores com Cortinas (Master & Executivo)</span>
-                  <p class="text-slate-400 text-[11px]" data-i18n="cat_ampla_desc">Janela ampla com cortinas elegantes, cama Queen/Casal, maior circulação e bancada espaçosa de trabalho.</p>
+                  <span class="font-bold text-white block mb-1" data-i18n="cat_ampla_tit">Studios Amplos (2 unidades)</span>
+                  <p class="text-slate-400 text-[11px]" data-i18n="cat_ampla_desc">Os dois maiores: mais área livre para circular e organizar a bagagem.</p>
                 </div>
                 <div class="p-3.5 rounded-xl bg-slate-800/60 border border-slate-700/60">
-                  <span class="font-bold text-white block mb-1" data-i18n="cat_compacta_tit">Studios Standard (Smart & Cozy)</span>
-                  <p class="text-slate-400 text-[11px]" data-i18n="cat_compacta_desc">Janelinha superior voltada para silêncio e discrição máxima. Planta inteligente, compacta e excelente custo-benefício.</p>
+                  <span class="font-bold text-white block mb-1" data-i18n="cat_compacta_tit">Studios Compactos (2 unidades)</span>
+                  <p class="text-slate-400 text-[11px]" data-i18n="cat_compacta_desc">Os dois menores: a mesma cama queen, cozinha e comodidades, numa planta mais enxuta.</p>
                 </div>
               </div>
               <p class="text-[11px] text-slate-400" data-i18n="tipologias_nota">
@@ -318,14 +316,14 @@ site_code = '''<!DOCTYPE html>
               <div class="flex items-center gap-2.5"><span>🔑</span><span data-i18n="comod_fechadura">Fechadura digital 24h</span></div>
               <div class="flex items-center gap-2.5"><span>📺</span><span data-i18n="comod_tv">Smart TV com Streaming</span></div>
               <div class="flex items-center gap-2.5"><span>🍳</span><span data-i18n="comod_cooktop">Cozinha com Cooktop</span></div>
-              <div class="flex items-center gap-2.5"><span>❄️</span><span data-i18n="comod_ar">Ar-condicionado / Ventilador</span></div>
-              <div class="flex items-center gap-2.5"><span>☕</span><span data-i18n="comod_cafe">Cafeteira Dolce Gusto</span></div>
-              <div class="flex items-center gap-2.5"><span>🚿</span><span data-i18n="comod_ducha">Banho quente pressurizado</span></div>
+              <div class="flex items-center gap-2.5"><span>❄️</span><span data-i18n="comod_ar">Ar-condicionado split e aquecedor</span></div>
+              <div class="flex items-center gap-2.5"><span>☕</span><span data-i18n="comod_cafe">Cafeteira elétrica</span></div>
+              <div class="flex items-center gap-2.5"><span>🚿</span><span data-i18n="comod_ducha">Ducha quente</span></div>
               <div class="flex items-center gap-2.5"><span>🧺</span><span data-i18n="comod_enxoval">Enxoval higienizado</span></div>
               <div class="flex items-center gap-2.5"><span>💻</span><span data-i18n="comod_bancada">Bancada para notebook</span></div>
               <div class="flex items-center gap-2.5"><span>🛡️</span><span data-i18n="comod_cameras">Câmeras nas áreas comuns</span></div>
               <div class="flex items-center gap-2.5"><span>🚗</span><span data-i18n="comod_transporte">Fácil acesso para Uber/99</span></div>
-              <div class="flex items-center gap-2.5"><span>🧊</span><span data-i18n="comod_frigobar">Frigobar e Micro-ondas</span></div>
+              <div class="flex items-center gap-2.5"><span>🧊</span><span data-i18n="comod_frigobar">Geladeira e micro-ondas</span></div>
             </div>
           </div>
 
@@ -537,14 +535,14 @@ site_code = '''<!DOCTYPE html>
 
         <div class="glass-card p-3.5 rounded-xl text-center space-y-1">
           <div class="text-xl">✈️</div>
-          <h4 class="text-xs font-bold text-white" data-i18n="diff_gru_tit">10-15 Min de GRU</h4>
-          <p class="text-[11px] text-slate-400" data-i18n="diff_gru_sub">Acesso descomplicado aos terminais</p>
+          <h4 class="text-xs font-bold text-white" data-i18n="diff_gru_tit">~20 min de GRU</h4>
+          <p class="text-[11px] text-slate-400" data-i18n="diff_gru_sub">12 a 14 km de carro até os terminais</p>
         </div>
 
         <div class="glass-card p-3.5 rounded-xl text-center space-y-1">
           <div class="text-xl">🍳</div>
           <h4 class="text-xs font-bold text-white" data-i18n="diff_cozinha_tit">Cozinha Equipada</h4>
-          <p class="text-[11px] text-slate-400" data-i18n="diff_cozinha_sub">Micro-ondas, frigobar & cafeteira</p>
+          <p class="text-[11px] text-slate-400" data-i18n="diff_cozinha_sub">Geladeira, micro-ondas & cafeteira</p>
         </div>
 
         <div class="glass-card p-3.5 rounded-xl text-center space-y-1 col-span-2 sm:col-span-1">
@@ -565,16 +563,14 @@ site_code = '''<!DOCTYPE html>
       <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
         <h2 class="text-xs font-bold uppercase tracking-wider text-emerald-400" data-i18n="sec_studios_tag">Nossas Acomodações</h2>
         <p class="text-3xl sm:text-4xl font-extrabold text-white" data-i18n="sec_studios_tit">Conheça nossas opções privativas</p>
-        <p class="text-slate-400 text-sm" data-i18n="sec_studios_sub">
-          Todas as acomodações contam com fechadura digital 24h com senha pessoal, Wi-Fi fibra de 600 Mbps, Smart TV, ar-condicionado/ventilador, cozinha compacta completa e banheiro privativo.
-        </p>
+        <p class="text-slate-400 text-sm" data-i18n="sec_studios_sub">Os quatro studios têm os mesmos itens — muda só o tamanho: fechadura eletrônica com senha da estadia, Wi-Fi fibra de 600 Mbps, Smart TV, ar-condicionado split, cozinha compacta e banheiro privativo.</p>
       </div>
 
       <!-- FILTRO DE CATEGORIA -->
       <div class="flex items-center justify-center gap-2 mb-10">
         <button onclick="filtrarStudios('todos')" id="btnFiltroTodos" class="px-4 py-2 rounded-xl text-xs font-bold bg-emerald-500 text-slate-950 transition" data-i18n="btn_filtro_todos">Todos os Studios</button>
-        <button onclick="filtrarStudios('amplos')" id="btnFiltroAmplos" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:text-white transition" data-i18n="btn_filtro_amplos">Studios Maiores (Cortinas)</button>
-        <button onclick="filtrarStudios('compactos')" id="btnFiltroCompactos" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:text-white transition" data-i18n="btn_filtro_compactos">Studios Standard (Compactos)</button>
+        <button onclick="filtrarStudios('amplos')" id="btnFiltroAmplos" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:text-white transition" data-i18n="btn_filtro_amplos">Studios Amplos</button>
+        <button onclick="filtrarStudios('compactos')" id="btnFiltroCompactos" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:text-white transition" data-i18n="btn_filtro_compactos">Studios Compactos</button>
       </div>
 
       <!-- GRID DOS STUDIOS COM NOMES COMERCIAIS -->
@@ -583,10 +579,10 @@ site_code = '''<!DOCTYPE html>
         <!-- STUDIO MASTER KING -->
         <div class="card-studio glass-card rounded-2xl overflow-hidden flex flex-col group hover:border-emerald-500/40 transition duration-300" data-tipo="amplos">
           <div class="relative h-60 overflow-hidden bg-slate-950">
-            <img src="assets/fotos/20251030_162521(1).webp" alt="Studio Master King" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="abrirGaleria('master')">
+            <img src="assets/fotos/20251030_162521(1).webp" alt="Studio Amplo A" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="abrirGaleria('master')">
             <div class="absolute top-3 left-3 flex flex-col gap-1.5">
-              <span class="bg-amber-400 text-slate-950 text-[10px] font-black px-2.5 py-0.5 rounded shadow" data-i18n="badge_maior_studio">O MAIOR STUDIO</span>
-              <span class="bg-slate-950/80 backdrop-blur text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded border border-slate-700">Master King</span>
+              <span class="bg-amber-400 text-slate-950 text-[10px] font-black px-2.5 py-0.5 rounded shadow" data-i18n="badge_maior_studio">AMPLO</span>
+              <span class="bg-slate-950/80 backdrop-blur text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded border border-slate-700">Amplo A</span>
             </div>
             <button onclick="abrirGaleria('master')" class="absolute bottom-3 right-3 bg-slate-950/80 hover:bg-emerald-500 hover:text-slate-950 backdrop-blur text-slate-200 text-[11px] font-bold px-2.5 py-1 rounded-lg border border-slate-700 transition flex items-center gap-1.5">
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
@@ -596,20 +592,18 @@ site_code = '''<!DOCTYPE html>
           <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
             <div>
               <div class="flex items-center justify-between mb-1">
-                <h3 class="font-extrabold text-lg text-white">Studio Master King</h3>
+                <h3 class="font-extrabold text-lg text-white">Studio Amplo A</h3>
                 <span class="text-xs font-extrabold text-emerald-400">10% OFF</span>
               </div>
-              <p class="text-xs text-slate-400" data-i18n="card_master_desc">O maior e mais espaçoso studio do complexo. Ampla iluminação e máxima amplitude.</p>
+              <p class="text-xs text-slate-400" data-i18n="card_master_desc">Um dos dois studios maiores: mais espaço para circular e para a bagagem.</p>
               
-              <div class="my-3 p-2.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-[11px] text-emerald-300 font-medium" data-i18n="card_master_esp">
-                🪟 <strong>Janela ampla com cortinas elegantes</strong> & espaço extra para circulação.
-              </div>
+              <div class="my-3 p-2.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-[11px] text-emerald-300 font-medium" data-i18n="card_master_esp">📐 Mesmos itens de todos os studios, com mais área livre.</div>
 
               <ul class="space-y-1.5 text-xs text-slate-300">
-                <li class="flex items-center gap-2">✓ <span data-i18n="item_cama_queen">Cama Queen Size & Enxoval Hotelaria</span></li>
-                <li class="flex items-center gap-2">✓ <span data-i18n="item_home_office">Bancada Home Office & Wi-Fi 600MB</span></li>
-                <li class="flex items-center gap-2">✓ <span data-i18n="item_cozinha_cooktop">Cozinha Compacta com Cooktop & Frigobar</span></li>
-                <li class="flex items-center gap-2">✓ <span data-i18n="item_fechadura_tv">Smart TV & Fechadura Digital 24h</span></li>
+                <li class="flex items-center gap-2">✓ <span data-i18n="item_cama_queen">Cama queen com enxoval</span></li>
+                <li class="flex items-center gap-2">✓ <span data-i18n="item_home_office">Bancada de trabalho & Wi-Fi 600 Mbps</span></li>
+                <li class="flex items-center gap-2">✓ <span data-i18n="item_cozinha_cooktop">Cozinha: geladeira, micro-ondas, cooktop e cafeteira</span></li>
+                <li class="flex items-center gap-2">✓ <span data-i18n="item_fechadura_tv">Smart TV, ar-condicionado & fechadura eletrônica</span></li>
               </ul>
             </div>
             
@@ -624,10 +618,10 @@ site_code = '''<!DOCTYPE html>
         <!-- STUDIO EXECUTIVO PREMIUM -->
         <div class="card-studio glass-card rounded-2xl overflow-hidden flex flex-col group hover:border-emerald-500/40 transition duration-300" data-tipo="amplos">
           <div class="relative h-60 overflow-hidden bg-slate-950">
-            <img src="assets/fotos/20251030_164004.webp" alt="Studio Executivo Premium" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="abrirGaleria('executivo')">
+            <img src="assets/fotos/20251030_164004.webp" alt="Studio Amplo B" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="abrirGaleria('executivo')">
             <div class="absolute top-3 left-3 flex flex-col gap-1.5">
-              <span class="bg-teal-400 text-slate-950 text-[10px] font-black px-2.5 py-0.5 rounded shadow" data-i18n="badge_executivo">GRANDE & EXECUTIVO</span>
-              <span class="bg-slate-950/80 backdrop-blur text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded border border-slate-700">Executivo Premium</span>
+              <span class="bg-teal-400 text-slate-950 text-[10px] font-black px-2.5 py-0.5 rounded shadow" data-i18n="badge_executivo">AMPLO</span>
+              <span class="bg-slate-950/80 backdrop-blur text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded border border-slate-700">Amplo B</span>
             </div>
             <button onclick="abrirGaleria('executivo')" class="absolute bottom-3 right-3 bg-slate-950/80 hover:bg-emerald-500 hover:text-slate-950 backdrop-blur text-slate-200 text-[11px] font-bold px-2.5 py-1 rounded-lg border border-slate-700 transition flex items-center gap-1.5">
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
@@ -637,20 +631,18 @@ site_code = '''<!DOCTYPE html>
           <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
             <div>
               <div class="flex items-center justify-between mb-1">
-                <h3 class="font-extrabold text-lg text-white">Studio Executivo Premium</h3>
+                <h3 class="font-extrabold text-lg text-white">Studio Amplo B</h3>
                 <span class="text-xs font-extrabold text-emerald-400">10% OFF</span>
               </div>
-              <p class="text-xs text-slate-400" data-i18n="card_executivo_desc">Amplo, elegante e altamente reservado. Ambiente perfeito para estadias de negócios e escalas.</p>
+              <p class="text-xs text-slate-400" data-i18n="card_executivo_desc">Um dos dois studios maiores: bom para estadias longas e a trabalho.</p>
               
-              <div class="my-3 p-2.5 rounded-lg bg-teal-500/10 border border-teal-500/20 text-[11px] text-teal-300 font-medium" data-i18n="card_executivo_esp">
-                🪟 <strong>Janela com cortinas elegantes</strong> & ambiente sofisticado.
-              </div>
+              <div class="my-3 p-2.5 rounded-lg bg-teal-500/10 border border-teal-500/20 text-[11px] text-teal-300 font-medium" data-i18n="card_executivo_esp">📐 Mesmos itens de todos os studios, com mais área livre.</div>
 
               <ul class="space-y-1.5 text-xs text-slate-300">
-                <li class="flex items-center gap-2">✓ <span data-i18n="item_cama_casal_premium">Cama de Casal Confort & Enxoval Premium</span></li>
-                <li class="flex items-center gap-2">✓ <span data-i18n="item_home_office">Bancada Home Office & Wi-Fi 600MB</span></li>
-                <li class="flex items-center gap-2">✓ <span data-i18n="item_cozinha_cafeteira">Cozinha Equipada & Cafeteira Dolce Gusto</span></li>
-                <li class="flex items-center gap-2">✓ <span data-i18n="item_fechadura_tv">Smart TV & Fechadura Digital 24h</span></li>
+                <li class="flex items-center gap-2">✓ <span data-i18n="item_cama_casal_premium">Cama queen com enxoval</span></li>
+                <li class="flex items-center gap-2">✓ <span data-i18n="item_home_office">Bancada de trabalho & Wi-Fi 600 Mbps</span></li>
+                <li class="flex items-center gap-2">✓ <span data-i18n="item_cozinha_cafeteira">Cozinha: geladeira, micro-ondas, cooktop e cafeteira</span></li>
+                <li class="flex items-center gap-2">✓ <span data-i18n="item_fechadura_tv">Smart TV, ar-condicionado & fechadura eletrônica</span></li>
               </ul>
             </div>
             
@@ -665,10 +657,10 @@ site_code = '''<!DOCTYPE html>
         <!-- STUDIO STANDARD SMART -->
         <div class="card-studio glass-card rounded-2xl overflow-hidden flex flex-col group hover:border-emerald-500/40 transition duration-300" data-tipo="compactos">
           <div class="relative h-60 overflow-hidden bg-slate-950">
-            <img src="assets/fotos/20251030_143554.webp" alt="Studio Standard Smart" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="abrirGaleria('smart')">
+            <img src="assets/fotos/20251030_143554.webp" alt="Studio Compacto A" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="abrirGaleria('smart')">
             <div class="absolute top-3 left-3 flex flex-col gap-1.5">
-              <span class="bg-slate-800 text-slate-200 text-[10px] font-bold px-2.5 py-0.5 rounded shadow border border-slate-700" data-i18n="badge_smart">COMPACTO & PRÁTICO</span>
-              <span class="bg-slate-950/80 backdrop-blur text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded border border-slate-700">Standard Smart</span>
+              <span class="bg-slate-800 text-slate-200 text-[10px] font-bold px-2.5 py-0.5 rounded shadow border border-slate-700" data-i18n="badge_smart">COMPACTO</span>
+              <span class="bg-slate-950/80 backdrop-blur text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded border border-slate-700">Compacto A</span>
             </div>
             <button onclick="abrirGaleria('smart')" class="absolute bottom-3 right-3 bg-slate-950/80 hover:bg-emerald-500 hover:text-slate-950 backdrop-blur text-slate-200 text-[11px] font-bold px-2.5 py-1 rounded-lg border border-slate-700 transition flex items-center gap-1.5">
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
@@ -678,20 +670,18 @@ site_code = '''<!DOCTYPE html>
           <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
             <div>
               <div class="flex items-center justify-between mb-1">
-                <h3 class="font-extrabold text-lg text-white">Studio Standard Smart</h3>
+                <h3 class="font-extrabold text-lg text-white">Studio Compacto A</h3>
                 <span class="text-xs font-extrabold text-emerald-400">10% OFF</span>
               </div>
-              <p class="text-xs text-slate-400" data-i18n="card_smart_desc">Planta compacta e inteligente. Ideal para escalas e viajantes que buscam silêncio e praticidade.</p>
+              <p class="text-xs text-slate-400" data-i18n="card_smart_desc">Um dos dois studios compactos: prático para escalas e estadias curtas.</p>
               
-              <div class="my-3 p-2.5 rounded-lg bg-slate-800/80 border border-slate-700 text-[11px] text-slate-300 font-medium" data-i18n="card_smart_esp">
-                🚪 <strong>Janelinha pequena superior</strong> para total privacidade e ventilação.
-              </div>
+              <div class="my-3 p-2.5 rounded-lg bg-slate-800/80 border border-slate-700 text-[11px] text-slate-300 font-medium" data-i18n="card_smart_esp">📐 Mesmos itens de todos os studios, numa planta compacta.</div>
 
               <ul class="space-y-1.5 text-xs text-slate-300">
-                <li class="flex items-center gap-2">✓ <span data-i18n="item_cama_casal">Cama de Casal Confortável</span></li>
-                <li class="flex items-center gap-2">✓ <span data-i18n="item_frigobar_micro">Frigobar & Micro-ondas Privativo</span></li>
-                <li class="flex items-center gap-2">✓ <span data-i18n="item_wifi_tv">Wi-Fi Fibra 600MB & Smart TV</span></li>
-                <li class="flex items-center gap-2">✓ <span data-i18n="item_fechadura_24h">Fechadura Eletrônica 24h</span></li>
+                <li class="flex items-center gap-2">✓ <span data-i18n="item_cama_casal">Cama queen com enxoval</span></li>
+                <li class="flex items-center gap-2">✓ <span data-i18n="item_frigobar_micro">Cozinha: geladeira, micro-ondas, cooktop e cafeteira</span></li>
+                <li class="flex items-center gap-2">✓ <span data-i18n="item_wifi_tv">Wi-Fi 600 Mbps & Smart TV</span></li>
+                <li class="flex items-center gap-2">✓ <span data-i18n="item_fechadura_24h">Ar-condicionado & fechadura eletrônica</span></li>
               </ul>
             </div>
             
@@ -706,10 +696,10 @@ site_code = '''<!DOCTYPE html>
         <!-- STUDIO STANDARD COZY -->
         <div class="card-studio glass-card rounded-2xl overflow-hidden flex flex-col group hover:border-emerald-500/40 transition duration-300" data-tipo="compactos">
           <div class="relative h-60 overflow-hidden bg-slate-950">
-            <img src="assets/fotos/20251030_144024.webp" alt="Studio Standard Cozy" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="abrirGaleria('cozy')">
+            <img src="assets/fotos/20251030_144024.webp" alt="Studio Compacto B" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="abrirGaleria('cozy')">
             <div class="absolute top-3 left-3 flex flex-col gap-1.5">
-              <span class="bg-slate-800 text-slate-200 text-[10px] font-bold px-2.5 py-0.5 rounded shadow border border-slate-700" data-i18n="badge_cozy">COMPACTO & SILENCIOSO</span>
-              <span class="bg-slate-950/80 backdrop-blur text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded border border-slate-700">Standard Cozy</span>
+              <span class="bg-slate-800 text-slate-200 text-[10px] font-bold px-2.5 py-0.5 rounded shadow border border-slate-700" data-i18n="badge_cozy">COMPACTO</span>
+              <span class="bg-slate-950/80 backdrop-blur text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded border border-slate-700">Compacto B</span>
             </div>
             <button onclick="abrirGaleria('cozy')" class="absolute bottom-3 right-3 bg-slate-950/80 hover:bg-emerald-500 hover:text-slate-950 backdrop-blur text-slate-200 text-[11px] font-bold px-2.5 py-1 rounded-lg border border-slate-700 transition flex items-center gap-1.5">
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
@@ -719,20 +709,18 @@ site_code = '''<!DOCTYPE html>
           <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
             <div>
               <div class="flex items-center justify-between mb-1">
-                <h3 class="font-extrabold text-lg text-white">Studio Standard Cozy</h3>
+                <h3 class="font-extrabold text-lg text-white">Studio Compacto B</h3>
                 <span class="text-xs font-extrabold text-emerald-400">10% OFF</span>
               </div>
-              <p class="text-xs text-slate-400" data-i18n="card_cozy_desc">Compacto, silencioso e acolhedor. Excelente custo-benefício com foco em uma noite reparadora de descanso.</p>
+              <p class="text-xs text-slate-400" data-i18n="card_cozy_desc">Um dos dois studios compactos: tudo o que os maiores têm, com melhor custo-benefício.</p>
               
-              <div class="my-3 p-2.5 rounded-lg bg-slate-800/80 border border-slate-700 text-[11px] text-slate-300 font-medium" data-i18n="card_cozy_esp">
-                🚪 <strong>Janelinha pequena superior</strong> para máximo silêncio e discrição.
-              </div>
+              <div class="my-3 p-2.5 rounded-lg bg-slate-800/80 border border-slate-700 text-[11px] text-slate-300 font-medium" data-i18n="card_cozy_esp">📐 Mesmos itens de todos os studios, numa planta compacta.</div>
 
               <ul class="space-y-1.5 text-xs text-slate-300">
-                <li class="flex items-center gap-2">✓ <span data-i18n="item_cama_casal_travesseiro">Cama Casal & Travesseiros Confort</span></li>
-                <li class="flex items-center gap-2">✓ <span data-i18n="item_ducha_press">Ducha de Alta Pressão & Banheiro Privativo</span></li>
-                <li class="flex items-center gap-2">✓ <span data-i18n="item_frigobar_cafe">Frigobar, Micro-ondas & Cafeteira</span></li>
-                <li class="flex items-center gap-2">✓ <span data-i18n="item_wifi_tv">Wi-Fi Fibra 600MB & Smart TV</span></li>
+                <li class="flex items-center gap-2">✓ <span data-i18n="item_cama_casal_travesseiro">Cama queen com enxoval</span></li>
+                <li class="flex items-center gap-2">✓ <span data-i18n="item_ducha_press">Banheiro privativo com ducha e secador</span></li>
+                <li class="flex items-center gap-2">✓ <span data-i18n="item_frigobar_cafe">Cozinha: geladeira, micro-ondas, cooktop e cafeteira</span></li>
+                <li class="flex items-center gap-2">✓ <span data-i18n="item_wifi_tv">Wi-Fi 600 Mbps & Smart TV</span></li>
               </ul>
             </div>
             
@@ -776,7 +764,7 @@ site_code = '''<!DOCTYPE html>
             <tr>
               <td class="p-4 sm:p-5 font-semibold text-white" data-i18n="td_taxas">Taxas de Serviço</td>
               <td class="p-4 sm:p-5 font-bold text-emerald-400 bg-emerald-500/5" data-i18n="td_taxas_direto">R$ 0,00 (Zero taxa de intermediação)</td>
-              <td class="p-4 sm:p-5 text-slate-400" data-i18n="td_taxas_plat">Cobram de 15% a 21% a mais</td>
+              <td class="p-4 sm:p-5 text-slate-400" data-i18n="td_taxas_plat">Comissão de 15% a 21% embutida no preço</td>
             </tr>
             <tr>
               <td class="p-4 sm:p-5 font-semibold text-white" data-i18n="td_atendimento">Atendimento & Suporte</td>
@@ -786,7 +774,7 @@ site_code = '''<!DOCTYPE html>
             <tr>
               <td class="p-4 sm:p-5 font-semibold text-white" data-i18n="td_pagamento">Formas de Pagamento</td>
               <td class="p-4 sm:p-5 font-bold text-emerald-400 bg-emerald-500/5" data-i18n="td_pag_direto">PIX ou Cartão combinado direto e com segurança</td>
-              <td class="p-4 sm:p-5 text-slate-400" data-i18n="td_pag_plat">Cartão com cobrança internacional ou regras rígidas</td>
+              <td class="p-4 sm:p-5 text-slate-400" data-i18n="td_pag_plat">Pagamento pelas regras de cada plataforma</td>
             </tr>
             <tr>
               <td class="p-4 sm:p-5 font-semibold text-white" data-i18n="td_flexibilidade">Flexibilidade de Horários</td>
@@ -822,33 +810,25 @@ site_code = '''<!DOCTYPE html>
         <div class="glass-card p-6 rounded-2xl space-y-3">
           <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-xl font-bold">🔑</div>
           <h3 class="text-base font-bold text-white" data-i18n="infra_checkin_tit">Acesso Eletrônico 24h</h3>
-          <p class="text-xs text-slate-400 leading-relaxed" data-i18n="infra_checkin_desc">
-            Fechaduras digitais na entrada e nos quartos. Você recebe sua senha pessoal pelo WhatsApp e pode chegar a qualquer hora da noite ou madrugada com total autonomia.
-          </p>
+          <p class="text-xs text-slate-400 leading-relaxed" data-i18n="infra_checkin_desc">O portão abre por QR code e a porta do studio por uma senha exclusiva da sua estadia. As instruções chegam automaticamente minutos depois de você preencher o formulário de check-in online — dá para chegar a qualquer hora, sem recepção.</p>
         </div>
 
         <div class="glass-card p-6 rounded-2xl space-y-3">
           <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-xl font-bold">🍳</div>
           <h3 class="text-base font-bold text-white" data-i18n="infra_cozinha_tit">Cozinha Compacta Privativa</h3>
-          <p class="text-xs text-slate-400 leading-relaxed" data-i18n="infra_cozinha_desc">
-            Equipada com frigobar, micro-ondas, cooktop, cafeteira Dolce Gusto, louças, copos e panelas. Prepare suas próprias refeições com praticidade e economia.
-          </p>
+          <p class="text-xs text-slate-400 leading-relaxed" data-i18n="infra_cozinha_desc">Geladeira com freezer, micro-ondas, cooktop, cafeteira elétrica, sanduicheira, panelas, louças e talheres. Prepare suas refeições com praticidade.</p>
         </div>
 
         <div class="glass-card p-6 rounded-2xl space-y-3">
           <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-xl font-bold">🚿</div>
-          <h3 class="text-base font-bold text-white" data-i18n="infra_ducha_tit">Ducha de Alta Pressão</h3>
-          <p class="text-xs text-slate-400 leading-relaxed" data-i18n="infra_ducha_desc">
-            Banheiros privativos impecáveis com banho quente pressurizado, toalhas de corpo e rosto de hotelaria higienizadas e secador de cabelo disponível.
-          </p>
+          <h3 class="text-base font-bold text-white" data-i18n="infra_ducha_tit">Banheiro Privativo</h3>
+          <p class="text-xs text-slate-400 leading-relaxed" data-i18n="infra_ducha_desc">Box de vidro, ducha quente, bidê, secador de cabelo e toalhas para a estadia.</p>
         </div>
 
         <div class="glass-card p-6 rounded-2xl space-y-3">
           <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-xl font-bold">🧺</div>
-          <h3 class="text-base font-bold text-white" data-i18n="infra_lav_tit">Parceria SNT Lavanderia</h3>
-          <p class="text-xs text-slate-400 leading-relaxed" data-i18n="infra_lav_desc">
-            Acesso facilitado à rede parceira SNT Lavanderia Self-Service para lavar e secar suas roupas em menos de 1 hora com sabão e amaciante OMO/Comfort dosados.
-          </p>
+          <h3 class="text-base font-bold text-white" data-i18n="infra_lav_tit">SNT Lavanderia no prédio</h3>
+          <p class="text-xs text-slate-400 leading-relaxed" data-i18n="infra_lav_desc">A SNT Lavanderia Self-Service funciona no andar de baixo, 24 horas, para lavar e secar suas roupas. É um serviço à parte, pago direto no totem.</p>
         </div>
 
         <div class="glass-card p-6 rounded-2xl space-y-3">
@@ -875,9 +855,7 @@ site_code = '''<!DOCTYPE html>
           <h2 class="text-3xl sm:text-4xl font-extrabold text-white leading-tight" data-i18n="loc_tit">
             Perto de tudo em Guarulhos e na Grande São Paulo
           </h2>
-          <p class="text-sm text-slate-300 leading-relaxed" data-i18n="loc_desc">
-            Localizado no bairro Cidade Seródio em Guarulhos, com rota rápida e desimpedida para os terminais do <strong>Aeroporto Internacional de Guarulhos (GRU)</strong>, Rodovia Pres. Dutra e Rodovia Ayrton Senna.
-          </p>
+          <p class="text-sm text-slate-300 leading-relaxed" data-i18n="loc_desc">No bairro Cidade Seródio, em Guarulhos, com acesso de carro ou aplicativo aos terminais do Aeroporto Internacional de Guarulhos (GRU), à Rodovia Presidente Dutra e à Rodovia Ayrton Senna.</p>
 
           <!-- ENDEREÇO OFICIAL COM BOTÃO DE COPIAR -->
           <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between gap-4">
@@ -909,15 +887,15 @@ site_code = '''<!DOCTYPE html>
           <div class="grid grid-cols-2 gap-3 pt-2">
             <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
               <span class="text-xs text-slate-400 block" data-i18n="dist_gru_tit">Aeroporto GRU</span>
-              <span class="text-sm font-bold text-emerald-400" data-i18n="dist_gru_val">10-15 minutos</span>
+              <span class="text-sm font-bold text-emerald-400" data-i18n="dist_gru_val">21-22 min de carro</span>
             </div>
             <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
-              <span class="text-xs text-slate-400 block" data-i18n="dist_cptm_tit">Linha 13-Jade CPTM</span>
-              <span class="text-sm font-bold text-white" data-i18n="dist_cptm_val">8 minutos</span>
+              <span class="text-xs text-slate-400 block" data-i18n="dist_cptm_tit">Estação Aeroporto-Guarulhos (CPTM)</span>
+              <span class="text-sm font-bold text-white" data-i18n="dist_cptm_val">20 min de carro</span>
             </div>
             <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
               <span class="text-xs text-slate-400 block" data-i18n="dist_comercio_tit">Comércio & Padaria</span>
-              <span class="text-sm font-bold text-white" data-i18n="dist_comercio_val">200 metros</span>
+              <span class="text-sm font-bold text-white" data-i18n="dist_comercio_val">Logo ao lado</span>
             </div>
             <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
               <span class="text-xs text-slate-400 block" data-i18n="dist_shopping_tit">Shopping Bosque Maia</span>
@@ -929,7 +907,7 @@ site_code = '''<!DOCTYPE html>
         <!-- GOOGLE MAPS EMBED OFICIAL COM PIN -->
         <div class="lg:col-span-6 h-[400px] rounded-2xl overflow-hidden border border-slate-800 shadow-2xl relative">
           <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3661.1273934371465!2d-46.46747202391039!3d-23.42065845648834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce8b9a1ebc86ad%3A0x6b631d8ce4a7e780!2sAv.%20Aguanil%2C%2051%20-%20Cidade%20Ser%C3%B3dio%2C%20Guarulhos%20-%20SP%2C%2007150-130!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3661.1273934371465!2d-46.46747202391039!3d-23.42065845648834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce8b9a1ebc86ad%3A0x6b631d8ce4a7e780!2sAv.%20Aguanil%2C%2051%20-%20Cidade%20Ser%C3%B3dio%2C%20Guarulhos%20-%20SP%2C%2007150-060!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" 
             width="100%" 
             height="100%" 
             style="border:0; filter: invert(90%) hue-rotate(180deg);" 
@@ -961,9 +939,7 @@ site_code = '''<!DOCTYPE html>
             <span data-i18n="faq_q1">Como funciona o check-in se meu voo chegar de madrugada?</span>
             <span class="text-emerald-400 transition group-open:rotate-180">▼</span>
           </summary>
-          <p class="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed" data-i18n="faq_a1">
-            Totalmente tranquilo! Nosso sistema é 100% automatizado através de fechaduras eletrônicas digitais tanto no portão de pedestres quanto na porta do seu studio. Após a confirmação no WhatsApp, você recebe sua senha individual e pode chegar em qualquer horário entre 15:00 e a manhã seguinte sem depender de recepção ou espera.
-          </p>
+          <p class="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed" data-i18n="faq_a1">Tranquilo: o portão abre por QR code e a porta do studio por uma senha só sua, então você entra sozinho a qualquer hora a partir das 15h, inclusive de madrugada. As instruções chegam uns 5 minutos depois que você preenche o formulário de check-in online.</p>
         </details>
 
         <details class="glass-card rounded-xl p-5 group cursor-pointer">
@@ -978,12 +954,10 @@ site_code = '''<!DOCTYPE html>
 
         <details class="glass-card rounded-xl p-5 group cursor-pointer">
           <summary class="font-bold text-sm sm:text-base text-white flex items-center justify-between">
-            <span data-i18n="faq_q3">Qual a diferença entre os studios com cortinas e os compactos?</span>
+            <span data-i18n="faq_q3">Qual a diferença entre os studios?</span>
             <span class="text-emerald-400 transition group-open:rotate-180">▼</span>
           </summary>
-          <p class="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed" data-i18n="faq_a3">
-            Os studios <strong>Master King e Executivo</strong> são os maiores da propriedade, contam com janelas amplas com cortinas elegantes e ampla circulação. Os studios <strong>Standard (Smart & Cozy)</strong> são mais compactos e possuem uma janelinha superior basculante de ventilação, sendo extremamente silenciosos e com custo mais acessível.
-          </p>
+          <p class="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed" data-i18n="faq_a3">Só o tamanho: dois são maiores e dois mais compactos. Cama queen, cozinha, ar-condicionado, Smart TV, Wi-Fi de 600 Mbps e banheiro privativo são iguais em todos.</p>
         </details>
 
         <details class="glass-card rounded-xl p-5 group cursor-pointer">
@@ -1044,7 +1018,7 @@ site_code = '''<!DOCTYPE html>
           <div class="pt-2 text-[11px] text-slate-400 space-y-1">
             <p><strong>Razão Social:</strong> SNT Empreendimentos Imobiliários LTDA</p>
             <p><strong>CNPJ:</strong> 63.223.844/0001-11</p>
-            <p><strong>Endereço:</strong> Avenida Aguanil, 51 - Cidade Seródio - Guarulhos/SP - CEP 07150-130</p>
+            <p><strong>Endereço:</strong> Avenida Aguanil, 51 - Cidade Seródio - Guarulhos/SP - CEP 07150-060</p>
           </div>
         </div>
 
@@ -1074,7 +1048,7 @@ site_code = '''<!DOCTYPE html>
       </div>
 
       <div class="pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-400">
-        <p>© 2026 SNT Studios (SNT Empreendimentos Imobiliários LTDA). Todos os direitos reservados.</p>
+        <p>© 2026 SNT Studios (SNT Empreendimentos Imobiliários LTDA). Todos os direitos reservados. · <a href="/privacidade.html" class="text-emerald-400 hover:text-emerald-300 underline underline-offset-2">Política de Privacidade</a></p>
         <p class="text-slate-400" data-i18n="footer_sustentavel">Desenvolvido com tecnologia sustentável e zero CDNs externas em produção.</p>
       </div>
 
@@ -1162,48 +1136,48 @@ site_code = '''<!DOCTYPE html>
         badge_topo_local: "Hospedagem Privativa em Guarulhos · Aeroporto GRU",
         badge_topo_desconto: "🛡️ 10% OFF Reserva Direta Garantida",
         badge_topo_checkin: "🔑 Auto Check-in 24h",
-        hero_title: "SNT Studios · Studios Privativos a 10 min do Aeroporto GRU",
+        hero_title: "SNT Studios · Studios Privativos em Guarulhos, perto do Aeroporto GRU",
         sub_hospitalidade: "Hospitalidade Independente",
-        sub_gru_dist: "A 10-15 minutos dos Terminais 1, 2 e 3",
+        sub_gru_dist: "Cerca de 20 minutos de carro dos Terminais 1, 2 e 3",
         btn_compartilhar: "Compartilhar",
-        tag_master_king: "STUDIO MASTER KING",
-        desc_master_king_curta: "Ampla iluminação, cama Queen Size e cortinas elegantes",
-        tag_executivo_premium: "Executivo Premium",
+        tag_master_king: "STUDIO AMPLO",
+        desc_master_king_curta: "Cama queen, bancada de trabalho e cortinas blackout",
+        tag_executivo_premium: "Studio Amplo",
         tag_cozinha_priv: "Cozinha Compacta",
-        tag_standard_smart: "Standard Smart",
-        tag_standard_cozy: "Standard Cozy",
+        tag_standard_smart: "Studio Compacto",
+        tag_standard_cozy: "Studio Compacto",
         btn_todas_fotos: "Mostrar todas as 20 fotos",
         detalhe_tipo_espaco: "Studio privativo inteiro · Hospedagem SNT",
-        detalhe_capacidade: "Até 2 hóspedes · 1 cama queen ou casal · 1 banheiro privativo · Cozinha privativa equipada",
+        detalhe_capacidade: "Até 2 hóspedes · 1 cama queen · 1 banheiro privativo · Cozinha compacta equipada",
         feature_checkin_tit: "Auto check-in 24h via fechadura digital",
-        feature_checkin_desc: "Acesse o complexo e seu studio com senha individual a qualquer hora da noite ou madrugada, sem precisar de chaves físicas.",
+        feature_checkin_desc: "O portão abre por QR code e a porta do studio por uma senha só sua: chegue a qualquer hora da noite ou madrugada, sem chave física.",
         feature_wifi_tit: "Wi-Fi fibra de 600 Mbps dedicado",
         feature_wifi_desc: "Internet ultra-veloz testada para chamadas de vídeo, reuniões executivas e streaming 4K sem interrupções.",
         feature_cozinha_tit: "Cozinha privativa equipada",
-        feature_cozinha_desc: "Equipada com frigobar, micro-ondas, cooktop, cafeteira Dolce Gusto, louças e talheres para sua conveniência.",
-        feature_gru_tit: "10 a 15 minutos do Aeroporto de Guarulhos (GRU)",
-        feature_gru_desc: "Localização estratégica com rota rápida para os Terminais 1, 2 e 3 por aplicativo, ideal para conexões e escalas.",
+        feature_cozinha_desc: "Geladeira com freezer, micro-ondas, cooktop, cafeteira elétrica, sanduicheira, panelas, louças e talheres.",
+        feature_gru_tit: "Cerca de 20 min de carro do Aeroporto de Guarulhos (GRU)",
+        feature_gru_desc: "São 12 a 14 km até os terminais, uns 21 a 22 minutos de carro ou aplicativo sem trânsito. A pé não dá: o caminho contorna o aeroporto.",
         sobre_espaco_tit: "Sobre o espaço",
         sobre_espaco_p1: "O SNT Studios oferece uma proposta inteligente de hospitalidade autônoma: privacidade completa, acabamento refinado e excelente localização próxima ao Aeroporto GRU. Todas as acomodações são 100% privativas com banheiro exclusivo, bancada e ambiente climatizado.",
-        tipologias_tit: "Duas Categorias Disponíveis",
-        cat_ampla_tit: "Studios Maiores com Cortinas (Master & Executivo)",
-        cat_ampla_desc: "Janela ampla com cortinas elegantes, cama Queen/Casal, maior circulação e bancada espaçosa de trabalho.",
-        cat_compacta_tit: "Studios Standard (Smart & Cozy)",
-        cat_compacta_desc: "Janelinha superior voltada para silêncio e discrição máxima. Planta inteligente, compacta e excelente custo-benefício.",
+        tipologias_tit: "Dois tamanhos, os mesmos itens",
+        cat_ampla_tit: "Studios Amplos (2 unidades)",
+        cat_ampla_desc: "Os dois maiores: mais área livre para circular e organizar a bagagem.",
+        cat_compacta_tit: "Studios Compactos (2 unidades)",
+        cat_compacta_desc: "Os dois menores: a mesma cama queen, cozinha e comodidades, numa planta mais enxuta.",
         tipologias_nota: "Ao selecionar suas datas ao lado, o sistema verifica a disponibilidade em tempo real e calcula o valor total consolidado.",
         comodidades_grid_tit: "O que esse lugar oferece",
         comod_wifi: "Wi-Fi Fibra 600 Mbps",
         comod_fechadura: "Fechadura digital 24h",
         comod_tv: "Smart TV com Streaming",
         comod_cooktop: "Cozinha com Cooktop",
-        comod_ar: "Ar-condicionado / Ventilador",
-        comod_cafe: "Cafeteira Dolce Gusto",
-        comod_ducha: "Banho quente pressurizado",
+        comod_ar: "Ar-condicionado split e aquecedor",
+        comod_cafe: "Cafeteira elétrica",
+        comod_ducha: "Ducha quente",
         comod_enxoval: "Enxoval higienizado",
         comod_bancada: "Bancada para notebook",
         comod_cameras: "Câmeras nas áreas comuns",
         comod_transporte: "Fácil acesso para Uber/99",
-        comod_frigobar: "Frigobar e Micro-ondas",
+        comod_frigobar: "Geladeira e micro-ondas",
         regra_checkin_tit: "Check-in:",
         regra_checkin_val: "A partir das 15:00 (Acesso autônomo 24h via código)",
         regra_checkout_tit: "Check-out:",
@@ -1241,55 +1215,55 @@ site_code = '''<!DOCTYPE html>
         vantagem_tempo_real: "Disponibilidade em tempo real",
         diff_wifi_tit: "Wi-Fi 600 Mbps", diff_wifi_sub: "Fibra óptica dedicada ultra-rápida",
         diff_checkin_tit: "Self Check-in 24h", diff_checkin_sub: "Fechadura eletrônica por código individual",
-        diff_gru_tit: "10-15 Min de GRU", diff_gru_sub: "Acesso descomplicado aos terminais",
-        diff_cozinha_tit: "Cozinha Equipada", diff_cozinha_sub: "Micro-ondas, frigobar & cafeteira",
+        diff_gru_tit: "~20 min de GRU", diff_gru_sub: "12 a 14 km de carro até os terminais",
+        diff_cozinha_tit: "Cozinha Equipada", diff_cozinha_sub: "Geladeira, micro-ondas & cafeteira",
         diff_desconto_tit: "10% OFF Direto", diff_desconto_sub: "Melhor tarifa garantida sem taxas",
         sec_studios_tag: "Nossas Acomodações", sec_studios_tit: "Conheça nossas opções privativas",
-        sec_studios_sub: "Todas as acomodações contam com fechadura digital 24h com senha pessoal, Wi-Fi fibra de 600 Mbps, Smart TV, ar-condicionado/ventilador, cozinha compacta completa e banheiro privativo.",
-        btn_filtro_todos: "Todos os Studios", btn_filtro_amplos: "Studios Maiores (Cortinas)", btn_filtro_compactos: "Studios Standard (Compactos)",
-        badge_maior_studio: "O MAIOR STUDIO", badge_executivo: "GRANDE & EXECUTIVO", badge_smart: "COMPACTO & PRÁTICO", badge_cozy: "COMPACTO & SILENCIOSO",
+        sec_studios_sub: "Os quatro studios têm os mesmos itens — muda só o tamanho: fechadura eletrônica com senha da estadia, Wi-Fi fibra de 600 Mbps, Smart TV, ar-condicionado split, cozinha compacta e banheiro privativo.",
+        btn_filtro_todos: "Todos os Studios", btn_filtro_amplos: "Studios Amplos", btn_filtro_compactos: "Studios Compactos",
+        badge_maior_studio: "AMPLO", badge_executivo: "AMPLO", badge_smart: "COMPACTO", badge_cozy: "COMPACTO",
         btn_ver_fotos: "Ver Fotos", btn_verificar_datas: "Verificar Datas & Disponibilidade",
-        card_master_desc: "O maior e mais espaçoso studio do complexo. Ampla iluminação e máxima amplitude.",
-        card_master_esp: "🪟 Janela ampla com cortinas elegantes & espaço extra para circulação.",
-        item_cama_queen: "Cama Queen Size & Enxoval Hotelaria", item_home_office: "Bancada Home Office & Wi-Fi 600MB",
-        item_cozinha_cooktop: "Cozinha Compacta com Cooktop & Frigobar", item_fechadura_tv: "Smart TV & Fechadura Digital 24h",
-        card_executivo_desc: "Amplo, elegante e altamente reservado. Ambiente perfeito para estadias de negócios e escalas.",
-        card_executivo_esp: "🪟 Janela com cortinas elegantes & ambiente sofisticado.",
-        item_cama_casal_premium: "Cama de Casal Confort & Enxoval Premium", item_cozinha_cafeteira: "Cozinha Equipada & Cafeteira Dolce Gusto",
-        card_smart_desc: "Planta compacta e inteligente. Ideal para escalas e viajantes que buscam silêncio e praticidade.",
-        card_smart_esp: "🚪 Janelinha pequena superior para total privacidade e ventilação.",
-        item_cama_casal: "Cama de Casal Confortável", item_frigobar_micro: "Frigobar & Micro-ondas Privativo", item_wifi_tv: "Wi-Fi Fibra 600MB & Smart TV", item_fechadura_24h: "Fechadura Eletrônica 24h",
-        card_cozy_desc: "Compacto, silencioso e acolhedor. Excelente custo-benefício com foco em uma noite reparadora de descanso.",
-        card_cozy_esp: "🚪 Janelinha pequena superior para máximo silêncio e discrição.",
-        item_cama_casal_travesseiro: "Cama Casal & Travesseiros Confort", item_ducha_press: "Ducha de Alta Pressão & Banheiro Privativo", item_frigobar_cafe: "Frigobar, Micro-ondas & Cafeteira",
+        card_master_desc: "Um dos dois studios maiores: mais espaço para circular e para a bagagem.",
+        card_master_esp: "📐 Mesmos itens de todos os studios, com mais área livre.",
+        item_cama_queen: "Cama queen com enxoval", item_home_office: "Bancada de trabalho & Wi-Fi 600 Mbps",
+        item_cozinha_cooktop: "Cozinha: geladeira, micro-ondas, cooktop e cafeteira", item_fechadura_tv: "Smart TV, ar-condicionado & fechadura eletrônica",
+        card_executivo_desc: "Um dos dois studios maiores: bom para estadias longas e a trabalho.",
+        card_executivo_esp: "📐 Mesmos itens de todos os studios, com mais área livre.",
+        item_cama_casal_premium: "Cama queen com enxoval", item_cozinha_cafeteira: "Cozinha: geladeira, micro-ondas, cooktop e cafeteira",
+        card_smart_desc: "Um dos dois studios compactos: prático para escalas e estadias curtas.",
+        card_smart_esp: "📐 Mesmos itens de todos os studios, numa planta compacta.",
+        item_cama_casal: "Cama queen com enxoval", item_frigobar_micro: "Cozinha: geladeira, micro-ondas, cooktop e cafeteira", item_wifi_tv: "Wi-Fi 600 Mbps & Smart TV", item_fechadura_24h: "Ar-condicionado & fechadura eletrônica",
+        card_cozy_desc: "Um dos dois studios compactos: tudo o que os maiores têm, com melhor custo-benefício.",
+        card_cozy_esp: "📐 Mesmos itens de todos os studios, numa planta compacta.",
+        item_cama_casal_travesseiro: "Cama queen com enxoval", item_ducha_press: "Banheiro privativo com ducha e secador", item_frigobar_cafe: "Cozinha: geladeira, micro-ondas, cooktop e cafeteira",
         comp_tag: "Transparência Total", comp_tit: "Por que reservar direto conosco pelo WhatsApp?",
         th_beneficio: "Benefício", th_direto: "SNT Studios (Direto Oficial)", th_plataformas: "Plataformas (Booking / Airbnb)",
         td_tarifa: "Tarifa Final", td_tarifa_direto: "10% de desconto garantido", td_tarifa_plat: "Preço cheio com margem embutida",
-        td_taxas: "Taxas de Serviço", td_taxas_direto: "R$ 0,00 (Zero taxa de intermediação)", td_taxas_plat: "Cobram de 15% a 21% a mais",
+        td_taxas: "Taxas de Serviço", td_taxas_direto: "R$ 0,00 (Zero taxa de intermediação)", td_taxas_plat: "Comissão de 15% a 21% embutida no preço",
         td_atendimento: "Atendimento & Suporte", td_atend_direto: "WhatsApp direto com nossa equipe local", td_atend_plat: "Chat do app com intermediários e bots genéricos",
-        td_pagamento: "Formas de Pagamento", td_pag_direto: "PIX ou Cartão combinado direto e com segurança", td_pag_plat: "Cartão com cobrança internacional ou regras rígidas",
+        td_pagamento: "Formas de Pagamento", td_pag_direto: "PIX ou Cartão combinado direto e com segurança", td_pag_plat: "Pagamento pelas regras de cada plataforma",
         td_flexibilidade: "Flexibilidade de Horários", td_flex_direto: "Possibilidade de Early Check-in sob consulta direta", td_flex_plat: "Regras automáticas sem contato direto",
         sec_infra_tag: "Infraestrutura Completa", sec_infra_tit: "Tudo o que você precisa para uma estadia impecável",
         infra_wifi_tit: "Internet Fibra 600 Mbps", infra_wifi_desc: "Conexão dedicada de ultra-alta velocidade com roteador potente. Perfeito para chamadas de vídeo, reuniões executivas e streaming em 4K sem qualquer oscilação.",
-        infra_checkin_tit: "Acesso Eletrônico 24h", infra_checkin_desc: "Fechaduras digitais na entrada e nos quartos. Você recebe sua senha pessoal pelo WhatsApp e pode chegar a qualquer hora da noite ou madrugada com total autonomia.",
-        infra_cozinha_tit: "Cozinha Compacta Privativa", infra_cozinha_desc: "Equipada com frigobar, micro-ondas, cooktop, cafeteira Dolce Gusto, louças, copos e panelas. Prepare suas próprias refeições com praticidade e economia.",
-        infra_ducha_tit: "Ducha de Alta Pressão", infra_ducha_desc: "Banheiros privativos impecáveis com banho quente pressurizado, toalhas de corpo e rosto de hotelaria higienizadas e secador de cabelo disponível.",
-        infra_lav_tit: "Parceria SNT Lavanderia", infra_lav_desc: "Acesso facilitado à rede parceira SNT Lavanderia Self-Service para lavar e secar suas roupas em menos de 1 hora com sabão e amaciante OMO/Comfort dosados.",
+        infra_checkin_tit: "Acesso Eletrônico 24h", infra_checkin_desc: "O portão abre por QR code e a porta do studio por uma senha exclusiva da sua estadia. As instruções chegam automaticamente minutos depois de você preencher o formulário de check-in online — dá para chegar a qualquer hora, sem recepção.",
+        infra_cozinha_tit: "Cozinha Compacta Privativa", infra_cozinha_desc: "Geladeira com freezer, micro-ondas, cooktop, cafeteira elétrica, sanduicheira, panelas, louças e talheres. Prepare suas refeições com praticidade.",
+        infra_ducha_tit: "Banheiro Privativo", infra_ducha_desc: "Box de vidro, ducha quente, bidê, secador de cabelo e toalhas para a estadia.",
+        infra_lav_tit: "SNT Lavanderia no prédio", infra_lav_desc: "A SNT Lavanderia Self-Service funciona no andar de baixo, 24 horas, para lavar e secar suas roupas. É um serviço à parte, pago direto no totem.",
         infra_seg_tit: "Segurança & Monitoramento", infra_seg_desc: "Circuito interno de câmeras nas áreas comuns e iluminação inteligente para garantir a máxima tranquilidade para você e suas bagagens.",
         loc_tag: "Localização Privilegiada", loc_tit: "Perto de tudo em Guarulhos e na Grande São Paulo",
-        loc_desc: "Localizado no bairro Cidade Seródio em Guarulhos, com rota rápida e desimpedida para os terminais do Aeroporto Internacional de Guarulhos (GRU), Rodovia Pres. Dutra e Rodovia Ayrton Senna.",
+        loc_desc: "No bairro Cidade Seródio, em Guarulhos, com acesso de carro ou aplicativo aos terminais do Aeroporto Internacional de Guarulhos (GRU), à Rodovia Presidente Dutra e à Rodovia Ayrton Senna.",
         loc_endereco_oficial: "Endereço Oficial",
-        dist_gru_tit: "Aeroporto GRU", dist_gru_val: "10-15 minutos",
-        dist_cptm_tit: "Linha 13-Jade CPTM", dist_cptm_val: "8 minutos",
-        dist_comercio_tit: "Comércio & Padaria", dist_comercio_val: "200 metros",
+        dist_gru_tit: "Aeroporto GRU", dist_gru_val: "21-22 min de carro",
+        dist_cptm_tit: "Estação Aeroporto-Guarulhos (CPTM)", dist_cptm_val: "20 min de carro",
+        dist_comercio_tit: "Comércio & Padaria", dist_comercio_val: "Logo ao lado",
         dist_shopping_tit: "Shopping Bosque Maia", dist_shopping_val: "18 minutos",
         faq_tag: "Tire Suas Dúvidas", faq_tit: "Perguntas Frequentes",
         faq_q1: "Como funciona o check-in se meu voo chegar de madrugada?",
-        faq_a1: "Totalmente tranquilo! Nosso sistema é 100% automatizado através de fechaduras eletrônicas digitais tanto no portão de pedestres quanto na porta do seu studio. Após a confirmação no WhatsApp, você recebe sua senha individual e pode chegar em qualquer horário entre 15:00 e a manhã seguinte sem depender de recepção ou espera.",
+        faq_a1: "Tranquilo: o portão abre por QR code e a porta do studio por uma senha só sua, então você entra sozinho a qualquer hora a partir das 15h, inclusive de madrugada. As instruções chegam uns 5 minutos depois que você preenche o formulário de check-in online.",
         faq_q2: "Como funciona o desconto de 10% na reserva direta?",
         faq_a2: "Plataformas como Booking e Airbnb cobram de 15% a 21% de comissão sobre a estadia. Reservando direto conosco pelo WhatsApp oficial, eliminamos essa taxa e repassamos 10% de economia garantida para você no valor final da hospedagem.",
-        faq_q3: "Qual a diferença entre os studios com cortinas e os compactos?",
-        faq_a3: "Os studios Master King e Executivo são os maiores da propriedade, contam com janelas amplas com cortinas elegantes e ampla circulação. Os studios Standard (Smart & Cozy) são mais compactos e possuem uma janelinha superior basculante de ventilação, sendo extremamente silenciosos e com custo mais acessível.",
+        faq_q3: "Qual a diferença entre os studios?",
+        faq_a3: "Só o tamanho: dois são maiores e dois mais compactos. Cama queen, cozinha, ar-condicionado, Smart TV, Wi-Fi de 600 Mbps e banheiro privativo são iguais em todos.",
         faq_q4: "A internet suporta reuniões em vídeo e trabalho remoto?",
         faq_a4: "Sim! Temos fibra óptica dedicada de 600 Mbps com baixa latência e sinal forte em todos os studios. Nossos hóspedes executivos utilizam regularmente para chamadas no Teams, Zoom, Google Meet e streaming.",
         faq_q5: "Quais as formas de pagamento aceitas para a reserva direta?",
@@ -1315,48 +1289,48 @@ site_code = '''<!DOCTYPE html>
         badge_topo_local: "Private Stay in Guarulhos · GRU Airport",
         badge_topo_desconto: "🛡️ 10% OFF Direct Booking Guaranteed",
         badge_topo_checkin: "🔑 24/7 Digital Self Check-in",
-        hero_title: "SNT Studios · Private Studios 10 min from GRU Airport",
+        hero_title: "SNT Studios · Private Studios in Guarulhos, near GRU Airport",
         sub_hospitalidade: "Independent Hospitality",
-        sub_gru_dist: "10-15 minutes from Terminals 1, 2, and 3",
+        sub_gru_dist: "About 20 minutes by car from Terminals 1, 2 and 3",
         btn_compartilhar: "Share",
-        tag_master_king: "MASTER KING STUDIO",
-        desc_master_king_curta: "Bright windows, Queen Size bed, and elegant drapes",
-        tag_executivo_premium: "Executive Premium",
+        tag_master_king: "LARGER STUDIO",
+        desc_master_king_curta: "Queen bed, work desk and blackout curtains",
+        tag_executivo_premium: "Larger Studio",
         tag_cozinha_priv: "Compact Kitchen",
-        tag_standard_smart: "Standard Smart",
-        tag_standard_cozy: "Standard Cozy",
+        tag_standard_smart: "Compact Studio",
+        tag_standard_cozy: "Compact Studio",
         btn_todas_fotos: "Show all 20 photos",
         detalhe_tipo_espaco: "Entire private studio · Hosted by SNT Studios",
-        detalhe_capacidade: "Up to 2 guests · 1 queen or double bed · 1 private bathroom · Fully equipped kitchenette",
+        detalhe_capacidade: "Up to 2 guests · 1 queen bed · 1 private bathroom · Equipped kitchenette",
         feature_checkin_tit: "24/7 self check-in via electronic lock",
-        feature_checkin_desc: "Access the complex and your studio with a personal passcode at any time of day or night, no physical keys needed.",
+        feature_checkin_desc: "The building gate opens with a QR code and your studio door with your own passcode: arrive any time of night, no physical keys.",
         feature_wifi_tit: "Dedicated 600 Mbps fiber Wi-Fi",
         feature_wifi_desc: "Ultra-fast, reliable internet tested for video calls, remote work, and uninterrupted 4K streaming.",
         feature_cozinha_tit: "Fully equipped private kitchenette",
-        feature_cozinha_desc: "Equipped with mini-fridge, microwave, stovetop, Dolce Gusto coffee maker, cookware, and tableware.",
-        feature_gru_tit: "10 to 15 minutes from Guarulhos Airport (GRU)",
-        feature_gru_desc: "Quick, uncomplicated route to Terminals 1, 2, and 3 via Uber/taxi, ideal for layovers and business trips.",
+        feature_cozinha_desc: "Fridge with freezer, microwave, stovetop, electric coffee maker, sandwich maker, cookware and tableware.",
+        feature_gru_tit: "About 20 min by car from Guarulhos Airport (GRU)",
+        feature_gru_desc: "It is 12 to 14 km to the terminals, about 21 to 22 minutes by car or ride app without traffic. Not walkable: the road goes around the airport.",
         sobre_espaco_tit: "About the space",
         sobre_espaco_p1: "SNT Studios offers an autonomous hospitality concept: full privacy, modern finish, and unbeatable proximity to GRU Airport. Every unit is completely private with dedicated bathroom, workspace, and air conditioning/fan.",
-        tipologias_tit: "Two Available Categories",
-        cat_ampla_tit: "Larger Studios with Window Curtains (Master & Executive)",
-        cat_ampla_desc: "Wide windows with blackout curtains, Queen/Double bed, generous space, and a wide workstation desk.",
-        cat_compacta_tit: "Standard Studios (Smart & Cozy)",
-        cat_compacta_desc: "High top transom window for maximum quietness and discretion. Smart, compact layout at an exceptional value.",
+        tipologias_tit: "Two sizes, the same amenities",
+        cat_ampla_tit: "Larger Studios (2 units)",
+        cat_ampla_desc: "The two larger ones: more free space to move around and unpack.",
+        cat_compacta_tit: "Compact Studios (2 units)",
+        cat_compacta_desc: "The two smaller ones: the same queen bed, kitchenette and amenities in a tighter layout.",
         tipologias_nota: "Select your dates to verify live availability and calculate the final bundled rate.",
         comodidades_grid_tit: "What this place offers",
         comod_wifi: "600 Mbps Fiber Wi-Fi",
         comod_fechadura: "24/7 Keyless digital entry",
         comod_tv: "Smart TV with Streaming",
         comod_cooktop: "Kitchenette with Cooktop",
-        comod_ar: "Air Conditioning / Fan",
-        comod_cafe: "Dolce Gusto Coffee Maker",
-        comod_ducha: "Pressurized hot shower",
+        comod_ar: "Split air conditioning and heater",
+        comod_cafe: "Electric coffee maker",
+        comod_ducha: "Hot shower",
         comod_enxoval: "Sanitized hotel linen",
         comod_bancada: "Laptop work desk",
         comod_cameras: "Security cameras in common areas",
         comod_transporte: "Easy pickup for Uber/99",
-        comod_frigobar: "Mini-fridge & Microwave",
+        comod_frigobar: "Fridge and microwave",
         regra_checkin_tit: "Check-in:",
         regra_checkin_val: "From 3:00 PM (24/7 autonomous digital access)",
         regra_checkout_tit: "Check-out:",
@@ -1394,55 +1368,55 @@ site_code = '''<!DOCTYPE html>
         vantagem_tempo_real: "Real-time calendar availability",
         diff_wifi_tit: "600 Mbps Wi-Fi", diff_wifi_sub: "Dedicated ultra-fast fiber",
         diff_checkin_tit: "24/7 Self Check-in", diff_checkin_sub: "Electronic passcode lock",
-        diff_gru_tit: "10-15 Min to GRU", diff_gru_sub: "Quick access to terminals",
-        diff_cozinha_tit: "Equipped Kitchen", diff_cozinha_sub: "Microwave, fridge & coffee maker",
+        diff_gru_tit: "~20 min to GRU", diff_gru_sub: "12 to 14 km by car to the terminals",
+        diff_cozinha_tit: "Equipped Kitchen", diff_cozinha_sub: "Fridge, microwave & coffee maker",
         diff_desconto_tit: "10% Direct OFF", diff_desconto_sub: "Best rate with zero fees",
         sec_studios_tag: "Our Accommodations", sec_studios_tit: "Explore our private studios",
-        sec_studios_sub: "All accommodations feature 24/7 digital door codes, 600 Mbps Wi-Fi, Smart TV, air conditioning/fan, compact kitchen, and private bathroom.",
-        btn_filtro_todos: "All Studios", btn_filtro_amplos: "Larger Studios (Curtains)", btn_filtro_compactos: "Standard Studios (Compact)",
-        badge_maior_studio: "LARGEST STUDIO", badge_executivo: "EXECUTIVE & SPACIOUS", badge_smart: "COMPACT & SMART", badge_cozy: "COMPACT & QUIET",
+        sec_studios_sub: "All four studios have the same amenities — only the size changes: electronic lock with a stay passcode, 600 Mbps fiber Wi-Fi, Smart TV, split air conditioning, kitchenette and private bathroom.",
+        btn_filtro_todos: "All Studios", btn_filtro_amplos: "Larger Studios", btn_filtro_compactos: "Compact Studios",
+        badge_maior_studio: "LARGER", badge_executivo: "LARGER", badge_smart: "COMPACT", badge_cozy: "COMPACT",
         btn_ver_fotos: "View Photos", btn_verificar_datas: "Check Dates & Availability",
-        card_master_desc: "The largest studio in the complex. Ample natural light and maximum living space.",
-        card_master_esp: "🪟 Wide window with blackout curtains & extra circulation space.",
-        item_cama_queen: "Queen Size Bed & Hotel Linen", item_home_office: "Home Office Desk & 600MB Wi-Fi",
-        item_cozinha_cooktop: "Kitchenette with Cooktop & Fridge", item_fechadura_tv: "Smart TV & 24/7 Digital Lock",
-        card_executivo_desc: "Spacious, modern, and highly discreet. Perfect for business travelers and layovers.",
-        card_executivo_esp: "🪟 Window with elegant curtains & refined ambiance.",
-        item_cama_casal_premium: "Comfort Double Bed & Premium Linen", item_cozinha_cafeteira: "Equipped Kitchenette & Dolce Gusto",
-        card_smart_desc: "Compact, clever layout. Ideal for travelers seeking quiet comfort and quick GRU airport transit.",
-        card_smart_esp: "🚪 High transom window for complete privacy and quiet ventilation.",
-        item_cama_casal: "Comfortable Double Bed", item_frigobar_micro: "Private Fridge & Microwave", item_wifi_tv: "600MB Fiber Wi-Fi & Smart TV", item_fechadura_24h: "24/7 Keyless Entry",
-        card_cozy_desc: "Quiet, cozy, and practical. Outstanding value for an uninterrupted night of rest.",
-        card_cozy_esp: "🚪 High transom window for maximum quietness.",
-        item_cama_casal_travesseiro: "Double Bed & Quality Pillows", item_ducha_press: "High Pressure Shower & Private Bath", item_frigobar_cafe: "Fridge, Microwave & Coffee Maker",
+        card_master_desc: "One of the two larger studios: more room to move around and for luggage.",
+        card_master_esp: "📐 Same amenities as every studio, with more free space.",
+        item_cama_queen: "Queen bed with linens", item_home_office: "Work desk & 600 Mbps Wi-Fi",
+        item_cozinha_cooktop: "Kitchenette: fridge, microwave, stovetop, coffee maker", item_fechadura_tv: "Smart TV, air conditioning & electronic lock",
+        card_executivo_desc: "One of the two larger studios: good for longer and business stays.",
+        card_executivo_esp: "📐 Same amenities as every studio, with more free space.",
+        item_cama_casal_premium: "Queen bed with linens", item_cozinha_cafeteira: "Kitchenette: fridge, microwave, stovetop, coffee maker",
+        card_smart_desc: "One of the two compact studios: practical for layovers and short stays.",
+        card_smart_esp: "📐 Same amenities as every studio, in a compact layout.",
+        item_cama_casal: "Queen bed with linens", item_frigobar_micro: "Kitchenette: fridge, microwave, stovetop, coffee maker", item_wifi_tv: "600 Mbps Wi-Fi & Smart TV", item_fechadura_24h: "Air conditioning & electronic lock",
+        card_cozy_desc: "One of the two compact studios: everything the larger ones have, at better value.",
+        card_cozy_esp: "📐 Same amenities as every studio, in a compact layout.",
+        item_cama_casal_travesseiro: "Queen bed with linens", item_ducha_press: "Private bathroom with shower and hair dryer", item_frigobar_cafe: "Kitchenette: fridge, microwave, stovetop, coffee maker",
         comp_tag: "Total Transparency", comp_tit: "Why book directly with us on WhatsApp?",
         th_beneficio: "Benefit", th_direto: "SNT Studios (Official Direct)", th_plataformas: "OTAs (Booking / Airbnb)",
         td_tarifa: "Final Rate", td_tarifa_direto: "10% direct discount guaranteed", td_tarifa_plat: "Higher markup rates",
-        td_taxas: "Service Fees", td_taxas_direto: "R$ 0.00 (Zero platform fee)", td_taxas_plat: "Charge 15% to 21% extra",
+        td_taxas: "Service Fees", td_taxas_direto: "R$ 0.00 (Zero platform fee)", td_taxas_plat: "15% to 21% commission built into the price",
         td_atendimento: "Customer Support", td_atend_direto: "Direct WhatsApp with our local team", td_atend_plat: "Generic chatbots and app intermediaries",
-        td_pagamento: "Payment Methods", td_pag_direto: "PIX or Credit Card safely arranged", td_pag_plat: "Rigid international card rules",
+        td_pagamento: "Payment Methods", td_pag_direto: "PIX or Credit Card safely arranged", td_pag_plat: "Payment under each platform's rules",
         td_flexibilidade: "Schedule Flexibility", td_flex_direto: "Early check-in option upon direct inquiry", td_flex_plat: "Automated, inflexible rules",
         sec_infra_tag: "Full Amenities", sec_infra_tit: "Everything you need for a seamless stay",
         infra_wifi_tit: "600 Mbps Fiber Wi-Fi", infra_wifi_desc: "High-speed dedicated Wi-Fi with strong coverage across all studios for streaming and business calls.",
-        infra_checkin_tit: "24/7 Digital Access", infra_checkin_desc: "Keyless door locks. Arrive anytime during the day or night without waiting for a receptionist.",
-        infra_cozinha_tit: "Private Kitchenette", infra_cozinha_desc: "Cook your own meals with ease using cooktop, microwave, fridge, and cookware.",
-        infra_ducha_tit: "High Pressure Shower", infra_ducha_desc: "Pressurized hot shower, fresh hotel-grade towels, and hair dryer provided.",
-        infra_lav_tit: "SNT Laundromat Partner", infra_lav_desc: "Convenient self-service laundry access nearby to wash and dry clothes in under 1 hour.",
+        infra_checkin_tit: "24/7 Digital Access", infra_checkin_desc: "The gate opens with a QR code and your studio door with a passcode unique to your stay. Instructions arrive automatically minutes after you fill in the online check-in form — arrive any time, no front desk.",
+        infra_cozinha_tit: "Private Kitchenette", infra_cozinha_desc: "Fridge with freezer, microwave, stovetop, electric coffee maker, sandwich maker, cookware and tableware. Cook your own meals with ease.",
+        infra_ducha_tit: "Private Bathroom", infra_ducha_desc: "Glass shower, hot shower, bidet, hair dryer and towels for your stay.",
+        infra_lav_tit: "SNT Laundromat in the building", infra_lav_desc: "SNT self-service laundromat runs downstairs, 24 hours, to wash and dry your clothes. It is a separate service, paid at the kiosk.",
         infra_seg_tit: "Security & Monitoring", infra_seg_desc: "CCTV in common areas and smart lighting for peace of mind.",
         loc_tag: "Strategic Location", loc_tit: "Close to GRU Airport and Greater São Paulo",
-        loc_desc: "Located in Cidade Seródio, Guarulhos, with direct unhindered access to São Paulo/Guarulhos International Airport (GRU).",
+        loc_desc: "In Cidade Seródio, Guarulhos, with car or ride-app access to the Guarulhos International Airport (GRU) terminals and the Dutra and Ayrton Senna highways.",
         loc_endereco_oficial: "Official Address",
-        dist_gru_tit: "GRU Airport", dist_gru_val: "10-15 minutes",
-        dist_cptm_tit: "CPTM Train Line 13", dist_cptm_val: "8 minutes",
-        dist_comercio_tit: "Supermarket & Bakery", dist_comercio_val: "200 meters",
+        dist_gru_tit: "GRU Airport", dist_gru_val: "21-22 min by car",
+        dist_cptm_tit: "Aeroporto-Guarulhos train station (CPTM)", dist_cptm_val: "20 min by car",
+        dist_comercio_tit: "Supermarket & Bakery", dist_comercio_val: "Right next door",
         dist_shopping_tit: "Bosque Maia Mall", dist_shopping_val: "18 minutes",
         faq_tag: "Got Questions?", faq_tit: "Frequently Asked Questions",
         faq_q1: "How does check-in work if my flight lands late at night or early morning?",
-        faq_a1: "Seamlessly! Our property is 100% keyless with digital door codes. Once confirmed via WhatsApp, you receive your unique entry passcode to access the gate and your studio at any hour between 3:00 PM and the next morning.",
+        faq_a1: "No problem: the gate opens with a QR code and your studio door with your own passcode, so you can let yourself in any time from 3 PM, even in the middle of the night. Instructions arrive about 5 minutes after you fill in the online check-in form.",
         faq_q2: "How does the 10% direct discount work?",
         faq_a2: "Third-party apps charge 15% to 21% commissions. By booking directly through our official WhatsApp, we pass that saving on to you with a guaranteed 10% lower price.",
-        faq_q3: "What is the difference between larger studios and standard studios?",
-        faq_a3: "Master King and Executive studios are larger, featuring full windows with blackout curtains. Standard studios (Smart & Cozy) have high transom windows, offering maximum quietness at a budget-friendly rate.",
+        faq_q3: "What is the difference between the studios?",
+        faq_a3: "Only the size: two are larger and two are more compact. Queen bed, kitchenette, air conditioning, Smart TV, 600 Mbps Wi-Fi and private bathroom are the same in all of them.",
         faq_q4: "Is the Wi-Fi fast enough for remote work and video meetings?",
         faq_a4: "Yes! We provide dedicated 600 Mbps fiber internet with low latency and strong coverage, extensively tested for Zoom, Google Meet, and 4K streaming.",
         faq_q5: "Which payment methods are accepted?",
@@ -1468,48 +1442,48 @@ site_code = '''<!DOCTYPE html>
         badge_topo_local: "Alojamiento Privado en Guarulhos · Aeropuerto GRU",
         badge_topo_desconto: "🛡️ 10% OFF Reserva Directa Garantizada",
         badge_topo_checkin: "🔑 Auto Check-in 24h",
-        hero_title: "SNT Studios · Estudios Privados a 10 min del Aeropuerto GRU",
+        hero_title: "SNT Studios · Estudios Privados en Guarulhos, cerca del Aeropuerto GRU",
         sub_hospitalidade: "Hospitalidad Independiente",
-        sub_gru_dist: "A 10-15 minutos de las Terminales 1, 2 y 3",
+        sub_gru_dist: "A unos 20 minutos en auto de las Terminales 1, 2 y 3",
         btn_compartilhar: "Compartir",
-        tag_master_king: "ESTUDIO MASTER KING",
-        desc_master_king_curta: "Gran iluminación, cama Queen Size y cortinas elegantes",
-        tag_executivo_premium: "Ejecutivo Premium",
+        tag_master_king: "ESTUDIO AMPLIO",
+        desc_master_king_curta: "Cama queen, escritorio y cortinas blackout",
+        tag_executivo_premium: "Estudio Amplio",
         tag_cozinha_priv: "Cocina Compacta",
-        tag_standard_smart: "Standard Smart",
-        tag_standard_cozy: "Standard Cozy",
+        tag_standard_smart: "Estudio Compacto",
+        tag_standard_cozy: "Estudio Compacto",
         btn_todas_fotos: "Ver las 20 fotos",
         detalhe_tipo_espaco: "Estudio privado completo · Alojamiento SNT",
-        detalhe_capacidade: "Hasta 2 huéspedes · 1 cama queen o matrimonial · Baño privado · Cocina compacta equipada",
+        detalhe_capacidade: "Hasta 2 huéspedes · 1 cama queen · 1 baño privado · Cocina compacta equipada",
         feature_checkin_tit: "Auto check-in 24h con cerradura electrónica",
-        feature_checkin_desc: "Acceda al complejo y a su estudio con contraseña numérica individual a cualquier hora de la noche o madrugada, sin llaves físicas.",
+        feature_checkin_desc: "El portón abre con código QR y la puerta del estudio con una clave solo suya: llegue a cualquier hora de la noche, sin llaves físicas.",
         feature_wifi_tit: "Wi-Fi fibra de 600 Mbps dedicado",
         feature_wifi_desc: "Conexión de alta velocidad probada para videollamadas, trabajo remoto y streaming en 4K sin cortes.",
         feature_cozinha_tit: "Cocina privada equipada",
-        feature_cozinha_desc: "Equipada con frigobar, microondas, anafe, cafetera Dolce Gusto, vajilla y cubiertos para su conveniencia.",
-        feature_gru_tit: "A 10-15 minutos del Aeropuerto de Guarulhos (GRU)",
-        feature_gru_desc: "Ruta rápida hacia las Terminales 1, 2 y 3 por Uber o taxi, ideal para escalas y viajes de negocios.",
+        feature_cozinha_desc: "Heladera con freezer, microondas, anafe, cafetera eléctrica, sandwichera, ollas, vajilla y cubiertos.",
+        feature_gru_tit: "A unos 20 min en auto del Aeropuerto de Guarulhos (GRU)",
+        feature_gru_desc: "Son 12 a 14 km hasta las terminales, unos 21 a 22 minutos en auto o aplicación sin tráfico. No se puede ir a pie: el camino rodea el aeropuerto.",
         sobre_espaco_tit: "Sobre el espacio",
         sobre_espaco_p1: "SNT Studios brinda una propuesta moderna de hospitalidad autónoma: privacidad total, excelente confort y ubicación inmejorable junto a GRU. Todas las unidades son 100% privadas con baño propio y cocina equipada.",
-        tipologias_tit: "Dos Categorías Disponibles",
-        cat_ampla_tit: "Estudios Grandes con Cortinas (Master y Ejecutivo)",
-        cat_ampla_desc: "Ventanal amplio con cortinas elegantes, cama Queen/Matrimonial, mayor espacio y escritorio de trabajo.",
-        cat_compacta_tit: "Estudios Standard (Smart y Cozy)",
-        cat_compacta_desc: "Ventana superior basculante para máximo silencio y privacidad. Distribución compacta al mejor precio.",
+        tipologias_tit: "Dos tamaños, el mismo equipamiento",
+        cat_ampla_tit: "Estudios Amplios (2 unidades)",
+        cat_ampla_desc: "Los dos más grandes: más espacio libre para circular y acomodar el equipaje.",
+        cat_compacta_tit: "Estudios Compactos (2 unidades)",
+        cat_compacta_desc: "Los dos más pequeños: la misma cama queen, cocina y comodidades, en una planta más compacta.",
         tipologias_nota: "Seleccione sus fechas para verificar disponibilidad en tiempo real con el precio final consolidado.",
         comodidades_grid_tit: "Qué ofrece este lugar",
         comod_wifi: "Wi-Fi Fibra 600 Mbps",
         comod_fechadura: "Cerradura digital 24h",
         comod_tv: "Smart TV con Streaming",
         comod_cooktop: "Cocina con Anafe",
-        comod_ar: "Aire acondicionado / Ventilador",
-        comod_cafe: "Cafetera Dolce Gusto",
-        comod_ducha: "Ducha de alta presión",
+        comod_ar: "Aire acondicionado split y calefactor",
+        comod_cafe: "Cafetera eléctrica",
+        comod_ducha: "Ducha caliente",
         comod_enxoval: "Ropa de cama y toallas de hotel",
         comod_bancada: "Escritorio para notebook",
         comod_cameras: "Cámaras en áreas comunes",
         comod_transporte: "Acceso fácil para Uber/99",
-        comod_frigobar: "Frigobar y Microondas",
+        comod_frigobar: "Heladera y microondas",
         regra_checkin_tit: "Check-in:",
         regra_checkin_val: "A partir de las 15:00 (Acceso autónomo 24h con código)",
         regra_checkout_tit: "Check-out:",
@@ -1547,55 +1521,55 @@ site_code = '''<!DOCTYPE html>
         vantagem_tempo_real: "Disponibilidad en tiempo real",
         diff_wifi_tit: "Wi-Fi 600 Mbps", diff_wifi_sub: "Fibra óptica dedicada ultra rápida",
         diff_checkin_tit: "Self Check-in 24h", diff_checkin_sub: "Cerradura electrónica con código personal",
-        diff_gru_tit: "10-15 Min de GRU", diff_gru_sub: "Acceso rápido a las terminales",
-        diff_cozinha_tit: "Cocina Equipada", diff_cozinha_sub: "Microondas, frigobar y cafetera",
+        diff_gru_tit: "~20 min de GRU", diff_gru_sub: "12 a 14 km en auto hasta las terminales",
+        diff_cozinha_tit: "Cocina Equipada", diff_cozinha_sub: "Heladera, microondas y cafetera",
         diff_desconto_tit: "10% OFF Directo", diff_desconto_sub: "Mejor tarifa garantizada sin tasas extras",
         sec_studios_tag: "Nuestros Alojamientos", sec_studios_tit: "Descubra nuestras opciones privadas",
-        sec_studios_sub: "Todos los alojamientos cuentan con cerradura digital 24h, Wi-Fi fibra 600 Mbps, Smart TV, aire acondicionado/ventilador, cocina compacta y baño privado.",
-        btn_filtro_todos: "Todos los Estudios", btn_filtro_amplos: "Estudios Grandes (Cortinas)", btn_filtro_compactos: "Estudios Standard (Compactos)",
-        badge_maior_studio: "EL ESTUDIO MÁS GRANDE", badge_executivo: "GRANDE Y EJECUTIVO", badge_smart: "COMPACTO Y PRÁCTICO", badge_cozy: "COMPACTO Y TRANQUILO",
+        sec_studios_sub: "Los cuatro estudios tienen el mismo equipamiento — solo cambia el tamaño: cerradura electrónica con clave de la estadía, Wi-Fi de fibra 600 Mbps, Smart TV, aire split, cocina compacta y baño privado.",
+        btn_filtro_todos: "Todos los Estudios", btn_filtro_amplos: "Estudios Amplios", btn_filtro_compactos: "Estudios Compactos",
+        badge_maior_studio: "AMPLIO", badge_executivo: "AMPLIO", badge_smart: "COMPACTO", badge_cozy: "COMPACTO",
         btn_ver_fotos: "Ver Fotos", btn_verificar_datas: "Verificar Fechas y Disponibilidad",
-        card_master_desc: "El estudio más amplio del complejo. Gran iluminación natural y máximo confort.",
-        card_master_esp: "🪟 Ventanal amplio con cortinas elegantes y espacio extra.",
-        item_cama_queen: "Cama Queen Size y Ropa de Hotel", item_home_office: "Escritorio Home Office y Wi-Fi 600MB",
-        item_cozinha_cooktop: "Cocina con Anafe y Frigobar", item_fechadura_tv: "Smart TV y Cerradura Digital 24h",
-        card_executivo_desc: "Espacioso, elegante y reservado. Ideal para viajes de negocios y escalas aéreas.",
-        card_executivo_esp: "🪟 Ventana con cortinas elegantes y ambiente refinado.",
-        item_cama_casal_premium: "Cama Matrimonial Confort y Ropa Premium", item_cozinha_cafeteira: "Cocina Equipada y Cafetera Dolce Gusto",
-        card_smart_desc: "Distribución compacta e inteligente. Ideal para escalas y huéspedes que buscan silencio.",
-        card_smart_esp: "🚪 Ventana superior basculante para privacidad total y ventilación.",
-        item_cama_casal: "Cama Matrimonial Cómoda", item_frigobar_micro: "Frigobar y Microondas Privado", item_wifi_tv: "Wi-Fi Fibra 600MB y Smart TV", item_fechadura_24h: "Cerradura Digital 24h",
-        card_cozy_desc: "Compacto, silencioso y acogedor. Excelente relación calidad-precio para descansar.",
-        card_cozy_esp: "🚪 Ventana superior para máximo silencio y tranquilidad.",
-        item_cama_casal_travesseiro: "Cama Matrimonial y Almohadas Confort", item_ducha_press: "Ducha de Alta Presión y Baño Privado", item_frigobar_cafe: "Frigobar, Microondas y Cafetera",
+        card_master_desc: "Uno de los dos estudios más grandes: más espacio para circular y para el equipaje.",
+        card_master_esp: "📐 El mismo equipamiento de todos los estudios, con más espacio libre.",
+        item_cama_queen: "Cama queen con ropa de cama", item_home_office: "Escritorio y Wi-Fi 600 Mbps",
+        item_cozinha_cooktop: "Cocina: heladera, microondas, anafe y cafetera", item_fechadura_tv: "Smart TV, aire acondicionado y cerradura electrónica",
+        card_executivo_desc: "Uno de los dos estudios más grandes: ideal para estadías largas y de trabajo.",
+        card_executivo_esp: "📐 El mismo equipamiento de todos los estudios, con más espacio libre.",
+        item_cama_casal_premium: "Cama queen con ropa de cama", item_cozinha_cafeteira: "Cocina: heladera, microondas, anafe y cafetera",
+        card_smart_desc: "Uno de los dos estudios compactos: práctico para escalas y estadías cortas.",
+        card_smart_esp: "📐 El mismo equipamiento de todos los estudios, en una planta compacta.",
+        item_cama_casal: "Cama queen con ropa de cama", item_frigobar_micro: "Cocina: heladera, microondas, anafe y cafetera", item_wifi_tv: "Wi-Fi 600 Mbps y Smart TV", item_fechadura_24h: "Aire acondicionado y cerradura electrónica",
+        card_cozy_desc: "Uno de los dos estudios compactos: todo lo que tienen los grandes, con mejor precio.",
+        card_cozy_esp: "📐 El mismo equipamiento de todos los estudios, en una planta compacta.",
+        item_cama_casal_travesseiro: "Cama queen con ropa de cama", item_ducha_press: "Baño privado con ducha y secador", item_frigobar_cafe: "Cocina: heladera, microondas, anafe y cafetera",
         comp_tag: "Total Transparencia", comp_tit: "¿Por qué reservar directo con nosotros por WhatsApp?",
         th_beneficio: "Beneficio", th_direto: "SNT Studios (Directo Oficial)", th_plataformas: "Plataformas (Booking / Airbnb)",
         td_tarifa: "Tarifa Final", td_tarifa_direto: "10% de descuento garantizado", td_tarifa_plat: "Tarifa completa con margen inflado",
-        td_taxas: "Comisiones", td_taxas_direto: "R$ 0,00 (Cero comisiones intermedias)", td_taxas_plat: "Cobran del 15% al 21% adicional",
+        td_taxas: "Comisiones", td_taxas_direto: "R$ 0,00 (Cero comisiones intermedias)", td_taxas_plat: "Comisión del 15% al 21% incluida en el precio",
         td_atendimento: "Atención al Cliente", td_atend_direto: "WhatsApp directo con nuestro equipo local", td_atend_plat: "Chat de app con bots e intermediarios",
-        td_pagamento: "Medios de Pago", td_pag_direto: "PIX o Tarjeta acordado de forma segura", td_pag_plat: "Tarjeta con cargos internacionales y normas rígidas",
+        td_pagamento: "Medios de Pago", td_pag_direto: "PIX o Tarjeta acordado de forma segura", td_pag_plat: "Pago según las reglas de cada plataforma",
         td_flexibilidade: "Flexibilidad Horaria", td_flex_direto: "Early check-in disponible bajo consulta directa", td_flex_plat: "Normas automáticas sin contacto humano",
         sec_infra_tag: "Infraestructura Completa", sec_infra_tit: "Todo lo que necesita para una estancia impecable",
         infra_wifi_tit: "Internet Fibra 600 Mbps", infra_wifi_desc: "Conexión dedicada de alta velocidad para videollamadas, trabajo y streaming 4K.",
-        infra_checkin_tit: "Acceso Electrónico 24h", infra_checkin_desc: "Cerraduras digitales. Llegue a cualquier hora de la noche con total autonomía sin depender de recepción.",
-        infra_cozinha_tit: "Cocina Compacta Privada", infra_cozinha_desc: "Equipada con frigobar, microondas, anafe, cafetera Dolce Gusto y utensilios para cocinar.",
-        infra_ducha_tit: "Ducha de Alta Presión", infra_ducha_desc: "Ducha caliente presurizada, toallas de calidad hotelera y secador de pelo disponible.",
-        infra_lav_tit: "Alianza SNT Lavandería", infra_lav_desc: "Acceso fácil a la red SNT Lavandería Self-Service para lavar y secar su ropa en menos de 1 hora.",
+        infra_checkin_tit: "Acceso Electrónico 24h", infra_checkin_desc: "El portón abre con código QR y la puerta del estudio con una clave exclusiva de su estadía. Las instrucciones llegan automáticamente minutos después de completar el formulario de check-in online — llegue a cualquier hora, sin recepción.",
+        infra_cozinha_tit: "Cocina Compacta Privada", infra_cozinha_desc: "Heladera con freezer, microondas, anafe, cafetera eléctrica, sandwichera, ollas, vajilla y cubiertos. Prepare sus comidas con practicidad.",
+        infra_ducha_tit: "Baño Privado", infra_ducha_desc: "Box de vidrio, ducha caliente, bidé, secador de pelo y toallas para la estadía.",
+        infra_lav_tit: "SNT Lavandería en el edificio", infra_lav_desc: "La SNT Lavandería Self-Service funciona en la planta baja, las 24 horas, para lavar y secar su ropa. Es un servicio aparte, pagado en el tótem.",
         infra_seg_tit: "Seguridad y Monitoreo", infra_seg_desc: "Cámaras en áreas comunes e iluminación inteligente para su tranquilidad.",
         loc_tag: "Ubicación Estratégica", loc_tit: "Cerca de todo en Guarulhos y Gran São Paulo",
-        loc_desc: "Ubicado en Cidade Seródio, Guarulhos, con ruta directa y ágil hacia las terminales del Aeropuerto Internacional de Guarulhos (GRU).",
+        loc_desc: "En el barrio Cidade Seródio, Guarulhos, con acceso en auto o aplicación a las terminales del Aeropuerto Internacional de Guarulhos (GRU) y a las autopistas Dutra y Ayrton Senna.",
         loc_endereco_oficial: "Dirección Oficial",
-        dist_gru_tit: "Aeropuerto GRU", dist_gru_val: "10-15 minutos",
-        dist_cptm_tit: "Tren Línea 13-Jade CPTM", dist_cptm_val: "8 minutos",
-        dist_comercio_tit: "Comercio y Panadería", dist_comercio_val: "200 metros",
+        dist_gru_tit: "Aeropuerto GRU", dist_gru_val: "21-22 min en auto",
+        dist_cptm_tit: "Estación Aeroporto-Guarulhos (CPTM)", dist_cptm_val: "20 min en auto",
+        dist_comercio_tit: "Comercio y Panadería", dist_comercio_val: "Al lado",
         dist_shopping_tit: "Shopping Bosque Maia", dist_shopping_val: "18 minutos",
         faq_tag: "Preguntas Frecuentes", faq_tit: "Dudas Habituales",
         faq_q1: "¿Cómo funciona el check-in si mi vuelo llega de madrugada?",
-        faq_a1: "¡Completamente fácil! Nuestro sistema es 100% automatizado con cerraduras digitales en el portón y en su estudio. Tras confirmar por WhatsApp, recibe su clave personal para ingresar a cualquier hora entre las 15:00 y la mañana siguiente sin esperas.",
+        faq_a1: "Sin problema: el portón abre con código QR y la puerta del estudio con una clave solo suya, así que entra solo a cualquier hora desde las 15:00, incluso de madrugada. Las instrucciones llegan unos 5 minutos después de completar el formulario de check-in online.",
         faq_q2: "¿Cómo funciona el 10% de descuento en la reserva directa?",
         faq_a2: "Las plataformas cobran entre 15% y 21% de comisiones. Al reservar directo por WhatsApp oficial, eliminamos ese intermediario y le transferimos un 10% de ahorro garantizado.",
-        faq_q3: "¿Cuál es la diferencia entre los estudios con cortinas y los compactos?",
-        faq_a3: "Los estudios Master King y Ejecutivo son más amplios, con ventanal y cortinas elegantes. Los estudios Standard (Smart y Cozy) tienen ventana superior basculante, siendo ultra silenciosos y económicos.",
+        faq_q3: "¿Cuál es la diferencia entre los estudios?",
+        faq_a3: "Solo el tamaño: dos son más grandes y dos más compactos. Cama queen, cocina, aire acondicionado, Smart TV, Wi-Fi de 600 Mbps y baño privado son iguales en todos.",
         faq_q4: "¿El Wi-Fi es apto para videollamadas y trabajo remoto?",
         faq_a4: "¡Sí! Disponemos de fibra óptica dedicada de 600 Mbps con baja latencia y excelente señal para Zoom, Google Meet y streaming 4K.",
         faq_q5: "¿Qué formas de pago se aceptan?",
@@ -1680,35 +1654,35 @@ site_code = '''<!DOCTYPE html>
     const STUDIOS_COMERCIAIS = {
       '12': {
         chave: 'master',
-        nome: 'Studio Master King',
+        nome: 'Studio Amplo A',
         categoria: 'amplos',
-        tituloExibicao: 'Studio Master King (O Maior Studio)',
-        destaque: 'O maior studio · Cama Queen Size & Cortinas elegantes',
-        subtitulo: 'Ampla circulação, bancada de trabalho e máxima amplitude'
+        tituloExibicao: 'Studio Amplo A',
+        destaque: 'Um dos dois studios maiores · Cama queen',
+        subtitulo: 'Mais área livre, os mesmos itens de todos os studios'
       },
       '14': {
         chave: 'executivo',
-        nome: 'Studio Executivo Premium',
+        nome: 'Studio Amplo B',
         categoria: 'amplos',
-        tituloExibicao: 'Studio Executivo Premium (Cortinas & Espaço)',
-        destaque: 'Grande executivo · Cortinas elegantes & Sofisticação',
-        subtitulo: 'Espaçoso, silencioso e ideal para negócios e escalas'
+        tituloExibicao: 'Studio Amplo B',
+        destaque: 'Um dos dois studios maiores · Cama queen',
+        subtitulo: 'Mais área livre, os mesmos itens de todos os studios'
       },
       '11': {
         chave: 'smart',
-        nome: 'Studio Standard Smart',
+        nome: 'Studio Compacto A',
         categoria: 'compactos',
-        tituloExibicao: 'Studio Standard Smart (Compacto)',
-        destaque: 'Compacto inteligente · Silêncio máximo e privacidade',
-        subtitulo: 'Janela superior para ventilação e isolamento acústico'
+        tituloExibicao: 'Studio Compacto A',
+        destaque: 'Um dos dois studios compactos · Cama queen',
+        subtitulo: 'Planta compacta, os mesmos itens de todos os studios'
       },
       '13': {
         chave: 'cozy',
-        nome: 'Studio Standard Cozy',
+        nome: 'Studio Compacto B',
         categoria: 'compactos',
-        tituloExibicao: 'Studio Standard Cozy (Compacto)',
-        destaque: 'Compacto acolhedor · Silencioso e econômico',
-        subtitulo: 'Janela superior para discrição e ótimo custo-benefício'
+        tituloExibicao: 'Studio Compacto B',
+        destaque: 'Um dos dois studios compactos · Cama queen',
+        subtitulo: 'Planta compacta, os mesmos itens de todos os studios'
       }
     };
 
@@ -2200,7 +2174,7 @@ site_code = '''<!DOCTYPE html>
 
     function compartilharSite() {
       const shareData = {
-        title: 'SNT Studios · Hospedagem ao Lado do Aeroporto GRU',
+        title: 'SNT Studios · Hospedagem perto do Aeroporto GRU',
         text: 'Studios privativos modernos com Wi-Fi 600MB, fechadura digital 24h e 10% de desconto na reserva direta.',
         url: 'https://www.sntstudios.com/'
       };
@@ -2330,7 +2304,7 @@ site_code = '''<!DOCTYPE html>
 
       const infoComercial = STUDIOS_COMERCIAIS[String(studio.numero)] || {
         chave: 'master',
-        nome: 'Studio Master King',
+        nome: 'Studio Amplo A',
         categoria: 'amplos',
         destaque: 'Acomodação privativa completa',
         subtitulo: 'Conforto e privacidade'
@@ -2596,10 +2570,10 @@ site_code = '''<!DOCTYPE html>
       galeriaFotoIdx = 0;
       
       const titulos = {
-        'master': 'Studio Master King (O Maior Studio · Cama Queen & Cortinas)',
-        'executivo': 'Studio Executivo Premium (Grande & Sofisticado)',
-        'smart': 'Studio Standard Smart (Compacto & Silencioso)',
-        'cozy': 'Studio Standard Cozy (Compacto & Acolhedor)',
+        'master': 'Studio Amplo A (O Maior Studio · Cama Queen & Cortinas)',
+        'executivo': 'Studio Amplo B (Grande & Sofisticado)',
+        'smart': 'Studio Compacto A (Compacto & Silencioso)',
+        'cozy': 'Studio Compacto B (Compacto & Acolhedor)',
         'todas': (idiomaAtual === 'en' ? 'SNT Studios · All 20 Authentic Photos' : (idiomaAtual === 'es' ? 'SNT Studios · Las 20 Fotos Reales' : 'SNT Studios · Todas as 20 Fotos Reais'))
       };
       
