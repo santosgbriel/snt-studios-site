@@ -23,3 +23,8 @@ jobs:
       - run: npm run verify:css
       - run: python validate_site.py
       - run: python test_frontend.py
+      # O calendário e a cotação num navegador de verdade, desktop e celular
+      # (fila do bot, item 160): os testes estáticos passavam com o seletor
+      # abrindo fora da tela e fechando depois da primeira data.
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:navegador

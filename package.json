@@ -3,9 +3,11 @@
   "private": true,
   "scripts": {
     "build:css": "tailwindcss -i ./src/tailwind.css -o ./assets/site.css --minify",
-    "verify:css": "npm run build:css && git diff --exit-code -- assets/site.css"
+    "verify:css": "npm run build:css && git diff --exit-code -- assets/site.css",
+    "test:navegador": "playwright test"
   },
   "devDependencies": {
+    "@playwright/test": "1.56.1",
     "tailwindcss": "3.4.17"
   }
 }

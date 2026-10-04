@@ -1,2 +1,6 @@
 assets/fotos/*.jpg
 __pycache__/
+tests/
+playwright.config.js
+test-results/
+playwright-report/
