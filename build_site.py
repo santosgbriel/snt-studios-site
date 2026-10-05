@@ -142,7 +142,7 @@ site_code = '''<!DOCTYPE html>
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
           <span>(11) 5444-3110</span>
         </a>
-        <a href="https://api.whatsapp.com/send?phone=551154443110&text=Ola%21%20Gostaria%20de%20consultar%20uma%20reserva%20direta%20no%20SNT%20Studios%20com%2010%25%20de%20desconto." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-3.5 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm shadow-lg shadow-emerald-500/20 transition transform hover:-translate-y-0.5">
+        <a href="https://api.whatsapp.com/send?phone=551154443110&text=Ola%21%20Gostaria%20de%20consultar%20uma%20reserva%20direta%20no%20SNT%20Studios." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-3.5 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm shadow-lg shadow-emerald-500/20 transition transform hover:-translate-y-0.5">
           <span data-i18n="btn_nav_reserva">Reservar no WhatsApp</span>
           <span class="bg-slate-950/20 text-slate-950 text-[10px] px-1.5 py-0.5 rounded font-black">-10%</span>
         </a>
@@ -1111,7 +1111,7 @@ site_code = '''<!DOCTYPE html>
   </div>
 
   <!-- BOTAO FLUTUANTE WHATSAPP (POSICIONADO ACIMA DA BARRA NO MOBILE) -->
-  <a href="https://api.whatsapp.com/send?phone=551154443110&text=Ola%21%20Gostaria%20de%20consultar%20uma%20reserva%20direta%20no%20SNT%20Studios%20com%2010%25%20de%20desconto." target="_blank" rel="noopener noreferrer" class="fixed bottom-20 lg:bottom-6 right-4 lg:right-6 z-50 flex items-center gap-2.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold p-3.5 sm:px-5 sm:py-3.5 rounded-full shadow-2xl shadow-emerald-500/30 transition transform hover:scale-105" title="Falar no WhatsApp Oficial">
+  <a href="https://api.whatsapp.com/send?phone=551154443110&text=Ola%21%20Gostaria%20de%20consultar%20uma%20reserva%20direta%20no%20SNT%20Studios." target="_blank" rel="noopener noreferrer" class="fixed bottom-20 lg:bottom-6 right-4 lg:right-6 z-50 flex items-center gap-2.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold p-3.5 sm:px-5 sm:py-3.5 rounded-full shadow-2xl shadow-emerald-500/30 transition transform hover:scale-105" title="Falar no WhatsApp Oficial">
     <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.159.57 4.184 1.564 5.938l-1.664 6.086 6.257-1.64c1.706.924 3.659 1.45 5.743 1.45 6.627 0 12-5.373 12-12 0-6.627-5.373-12-12-12z"/></svg>
     <span class="hidden sm:inline text-xs tracking-wide">Falar no WhatsApp</span>
   </a>
@@ -2213,13 +2213,12 @@ site_code = '''<!DOCTYPE html>
         : "Studio Privativo";
 
       const totalFormatado = studioInfo ? formatarMoeda(studioInfo.totalDireta) : "";
-      const economiaFormatada = studioInfo ? formatarMoeda(studioInfo.economia) : "";
 
       let linhas = [];
 
       if (idiomaAtual === 'en') {
         linhas = [
-          "Hello! I checked the official SNT Studios website and would like to confirm a direct booking with 10% discount:",
+          "Hello! I checked the official SNT Studios website and would like to confirm a direct booking:",
           "",
           "- Check-in: " + formatarDataBr(inVal),
           "- Check-out: " + formatarDataBr(outVal) + (dados.noites ? " (" + dados.noites + " nights)" : ""),
@@ -2227,13 +2226,12 @@ site_code = '''<!DOCTYPE html>
         ];
         if (studioInfo) {
           linhas.push("- Accommodation: " + nomeStudio + " (" + totalFormatado + " total bundled rate)");
-          linhas.push("- Direct savings vs online platforms: " + economiaFormatada);
         }
         linhas.push("");
         linhas.push("Could you please confirm availability and provide payment details?");
       } else if (idiomaAtual === 'es') {
         linhas = [
-          "Hola! Consulte el sitio oficial de SNT Studios y me gustaria confirmar una reserva directa con 10% de descuento:",
+          "Hola! Consulte el sitio oficial de SNT Studios y me gustaria confirmar una reserva directa:",
           "",
           "- Check-in: " + formatarDataBr(inVal),
           "- Check-out: " + formatarDataBr(outVal) + (dados.noites ? " (" + dados.noites + " noches)" : ""),
@@ -2241,13 +2239,12 @@ site_code = '''<!DOCTYPE html>
         ];
         if (studioInfo) {
           linhas.push("- Alojamiento: " + nomeStudio + " (" + totalFormatado + " tarifa total consolidada)");
-          linhas.push("- Ahorro directo vs plataformas: " + economiaFormatada);
         }
         linhas.push("");
         linhas.push("Podrian confirmar la disponibilidad y los pasos a seguir, por favor?");
       } else {
         linhas = [
-          "Ola! Consultei o site oficial do SNT Studios e gostaria de confirmar uma reserva direta com 10% de desconto:",
+          "Ola! Consultei o site oficial do SNT Studios e gostaria de confirmar uma reserva direta:",
           "",
           "- Check-in: " + formatarDataBr(inVal),
           "- Check-out: " + formatarDataBr(outVal) + (dados.noites ? " (" + dados.noites + " noites)" : ""),
@@ -2255,7 +2252,6 @@ site_code = '''<!DOCTYPE html>
         ];
         if (studioInfo) {
           linhas.push("- Acomodacao: " + nomeStudio + " (" + totalFormatado + " total da estadia)");
-          linhas.push("- Economia direta vs plataformas: " + economiaFormatada);
         }
         linhas.push("");
         linhas.push("Poderiam confirmar a disponibilidade e os proximos passos, por favor?");

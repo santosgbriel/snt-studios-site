@@ -93,6 +93,8 @@ test("o botão do WhatsApp leva as datas e o studio da cotação", async ({ page
   expect(texto).toContain("Studio Amplo A");
   const br = (iso) => iso.split("-").reverse().join("/");
   expect(texto.includes(br(entrada)) || texto.includes(entrada)).toBe(true);
+  // 05/10/2026: a mensagem leva só o valor, sem desconto nem comparação com as plataformas.
+  expect(texto).not.toMatch(/desconto|economia|plataformas/i);
 });
 
 test("trocar o idioma traduz o calendário e fica guardado", async ({ page }) => {
