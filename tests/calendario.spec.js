@@ -106,3 +106,13 @@ test("trocar o idioma traduz o calendário e fica guardado", async ({ page }) =>
   await page.reload();
   expect(await page.evaluate(() => localStorage.getItem("snt_studios_lang"))).toBe("en");
 });
+
+test("o site não fala em 10% de desconto em nenhum idioma (05/10/2026)", async ({ page }) => {
+  for (const idioma of ["pt", "en", "es"]) {
+    await page.evaluate((i) => window.trocarIdioma(i), idioma);
+    const texto = await page.locator("body").innerText();
+    expect(texto, idioma).not.toMatch(/10\s?%/);
+  }
+  const html = await page.content();
+  expect(html).not.toMatch(/10\s?%|10%25/);
+});

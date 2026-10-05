@@ -16,11 +16,11 @@ site_code = '''<!DOCTYPE html>
   <title>SNT Studios · Hospitalidade & Hospedagem Próximo ao Aeroporto de Guarulhos (GRU)</title>
   
   <!-- SEO & Social Sharing -->
-  <meta name="description" content="Studios privativos modernos e confortáveis em Guarulhos, a cerca de 20 minutos de carro do Aeroporto GRU. Internet fibra 600MB, fechadura eletrônica 24h, cozinha compacta e reserva direta com 10% de desconto.">
+  <meta name="description" content="Studios privativos modernos e confortáveis em Guarulhos, a cerca de 20 minutos de carro do Aeroporto GRU. Internet fibra 600MB, fechadura eletrônica 24h, cozinha compacta e reserva direta pelo WhatsApp oficial.">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <link rel="canonical" href="https://www.sntstudios.com/">
   <meta property="og:title" content="SNT Studios · Hospedagem Moderna perto do Aeroporto GRU">
-  <meta property="og:description" content="Reserve direto com 10% de desconto no WhatsApp oficial. Studios privativos com Wi-Fi 600MB, fechadura digital 24h e cozinha completa.">
+  <meta property="og:description" content="Reserve direto no WhatsApp oficial. Studios privativos com Wi-Fi 600MB, fechadura digital 24h e cozinha completa.">
   <meta property="og:image" content="https://www.sntstudios.com/assets/og-cover.jpg">
   <meta property="og:url" content="https://www.sntstudios.com/">
   <meta property="og:type" content="website">
@@ -144,7 +144,6 @@ site_code = '''<!DOCTYPE html>
         </a>
         <a href="https://api.whatsapp.com/send?phone=551154443110&text=Ola%21%20Gostaria%20de%20consultar%20uma%20reserva%20direta%20no%20SNT%20Studios." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-3.5 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm shadow-lg shadow-emerald-500/20 transition transform hover:-translate-y-0.5">
           <span data-i18n="btn_nav_reserva">Reservar no WhatsApp</span>
-          <span class="bg-slate-950/20 text-slate-950 text-[10px] px-1.5 py-0.5 rounded font-black">-10%</span>
         </a>
       </div>
 
@@ -163,7 +162,7 @@ site_code = '''<!DOCTYPE html>
             Hospedagem Privativa em Guarulhos · Aeroporto GRU
           </span>
           <span class="inline-flex items-center gap-1 rounded-full bg-slate-800 border border-slate-700 px-3 py-1 text-xs font-semibold text-slate-300" data-i18n="badge_topo_desconto">
-            🛡️ 10% OFF Reserva Direta Garantida
+            🛡️ Reserva direta pelo WhatsApp oficial
           </span>
           <span class="inline-flex items-center gap-1 rounded-full bg-slate-800 border border-slate-700 px-3 py-1 text-xs font-semibold text-slate-300" data-i18n="badge_topo_checkin">
             🔑 Auto Check-in 24h
@@ -355,7 +354,6 @@ site_code = '''<!DOCTYPE html>
                 <div>
                   <span class="text-2xl sm:text-3xl font-black text-white" id="headerPrecoNoite" data-i18n="card_ver_valor">Ver valor</span>
                   <span id="headerPrecoSufixo" class="hidden text-xs sm:text-sm text-slate-400 font-medium" data-i18n="card_por_noite"> / noite</span>
-                  <span class="ml-2 inline-flex items-center gap-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 text-[10px] font-bold text-emerald-400" data-i18n="card_badge_desconto">10% OFF DIRETO</span>
                 </div>
                 <div class="text-xs text-slate-400 font-medium" data-i18n="card_tarifa_oficial">
                   Tarifa Oficial
@@ -489,19 +487,12 @@ site_code = '''<!DOCTYPE html>
 
               <!-- DIFERENCIAIS DA RESERVA DIRETA NO CARD -->
               <div class="mt-5 pt-4 border-t border-slate-800/80 space-y-2 text-xs text-slate-400">
-                <div class="flex items-center justify-between text-emerald-400 font-medium">
-                  <span class="flex items-center gap-1.5">
-                    <svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                    <span data-i18n="vantagem_10_desc">Desconto Direto de 10%</span>
-                  </span>
-                  <span class="font-bold" data-i18n="txt_garantido">Garantido</span>
-                </div>
                 <div class="flex items-center justify-between">
                   <span class="flex items-center gap-1.5">
                     <svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                     <span data-i18n="vantagem_zero_taxas">Sem taxas de serviço de terceiros</span>
                   </span>
-                  <span class="text-slate-300" data-i18n="txt_economia_real">Economia real</span>
+                  <span class="text-slate-300" data-i18n="txt_economia_real">Sem surpresas</span>
                 </div>
                 <div class="flex items-center justify-between">
                   <span class="flex items-center gap-1.5">
@@ -547,8 +538,8 @@ site_code = '''<!DOCTYPE html>
 
         <div class="glass-card p-3.5 rounded-xl text-center space-y-1 col-span-2 sm:col-span-1">
           <div class="text-xl">🛡️</div>
-          <h4 class="text-xs font-bold text-white" data-i18n="diff_desconto_tit">10% OFF Direto</h4>
-          <p class="text-[11px] text-slate-400" data-i18n="diff_desconto_sub">Melhor tarifa garantida sem taxas</p>
+          <h4 class="text-xs font-bold text-white" data-i18n="diff_desconto_tit">Reserva Direta</h4>
+          <p class="text-[11px] text-slate-400" data-i18n="diff_desconto_sub">WhatsApp oficial, Pix ou cartão</p>
         </div>
 
       </div>
@@ -593,7 +584,6 @@ site_code = '''<!DOCTYPE html>
             <div>
               <div class="flex items-center justify-between mb-1">
                 <h3 class="font-extrabold text-lg text-white">Studio Amplo A</h3>
-                <span class="text-xs font-extrabold text-emerald-400">10% OFF</span>
               </div>
               <p class="text-xs text-slate-400" data-i18n="card_master_desc">Um dos dois studios maiores: mais espaço para circular e para a bagagem.</p>
               
@@ -632,7 +622,6 @@ site_code = '''<!DOCTYPE html>
             <div>
               <div class="flex items-center justify-between mb-1">
                 <h3 class="font-extrabold text-lg text-white">Studio Amplo B</h3>
-                <span class="text-xs font-extrabold text-emerald-400">10% OFF</span>
               </div>
               <p class="text-xs text-slate-400" data-i18n="card_executivo_desc">Um dos dois studios maiores: bom para estadias longas e a trabalho.</p>
               
@@ -671,7 +660,6 @@ site_code = '''<!DOCTYPE html>
             <div>
               <div class="flex items-center justify-between mb-1">
                 <h3 class="font-extrabold text-lg text-white">Studio Compacto A</h3>
-                <span class="text-xs font-extrabold text-emerald-400">10% OFF</span>
               </div>
               <p class="text-xs text-slate-400" data-i18n="card_smart_desc">Um dos dois studios compactos: prático para escalas e estadias curtas.</p>
               
@@ -710,7 +698,6 @@ site_code = '''<!DOCTYPE html>
             <div>
               <div class="flex items-center justify-between mb-1">
                 <h3 class="font-extrabold text-lg text-white">Studio Compacto B</h3>
-                <span class="text-xs font-extrabold text-emerald-400">10% OFF</span>
               </div>
               <p class="text-xs text-slate-400" data-i18n="card_cozy_desc">Um dos dois studios compactos: tudo o que os maiores têm, com melhor custo-benefício.</p>
               
@@ -756,16 +743,6 @@ site_code = '''<!DOCTYPE html>
             </tr>
           </thead>
           <tbody class="divide-y divide-slate-800/60 text-slate-300">
-            <tr>
-              <td class="p-4 sm:p-5 font-semibold text-white" data-i18n="td_tarifa">Tarifa Final</td>
-              <td class="p-4 sm:p-5 font-bold text-emerald-400 bg-emerald-500/5" data-i18n="td_tarifa_direto">10% de desconto garantido</td>
-              <td class="p-4 sm:p-5 text-slate-400" data-i18n="td_tarifa_plat">Preço cheio com margem embutida</td>
-            </tr>
-            <tr>
-              <td class="p-4 sm:p-5 font-semibold text-white" data-i18n="td_taxas">Taxas de Serviço</td>
-              <td class="p-4 sm:p-5 font-bold text-emerald-400 bg-emerald-500/5" data-i18n="td_taxas_direto">R$ 0,00 (Zero taxa de intermediação)</td>
-              <td class="p-4 sm:p-5 text-slate-400" data-i18n="td_taxas_plat">Comissão de 15% a 21% embutida no preço</td>
-            </tr>
             <tr>
               <td class="p-4 sm:p-5 font-semibold text-white" data-i18n="td_atendimento">Atendimento & Suporte</td>
               <td class="p-4 sm:p-5 font-bold text-emerald-400 bg-emerald-500/5" data-i18n="td_atend_direto">WhatsApp direto com nossa equipe local</td>
@@ -942,15 +919,6 @@ site_code = '''<!DOCTYPE html>
           <p class="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed" data-i18n="faq_a1">Tranquilo: o portão abre por QR code e a porta do studio por uma senha só sua, então você entra sozinho a qualquer hora a partir das 15h, inclusive de madrugada. As instruções chegam uns 5 minutos depois que você preenche o formulário de check-in online.</p>
         </details>
 
-        <details class="glass-card rounded-xl p-5 group cursor-pointer">
-          <summary class="font-bold text-sm sm:text-base text-white flex items-center justify-between">
-            <span data-i18n="faq_q2">Como funciona o desconto de 10% na reserva direta?</span>
-            <span class="text-emerald-400 transition group-open:rotate-180">▼</span>
-          </summary>
-          <p class="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed" data-i18n="faq_a2">
-            Plataformas como Booking e Airbnb cobram de 15% a 21% de comissão sobre a estadia. Reservando direto conosco pelo WhatsApp oficial, eliminamos essa taxa e repassamos 10% de economia garantida para você no valor final da hospedagem.
-          </p>
-        </details>
 
         <details class="glass-card rounded-xl p-5 group cursor-pointer">
           <summary class="font-bold text-sm sm:text-base text-white flex items-center justify-between">
@@ -1134,7 +1102,7 @@ site_code = '''<!DOCTYPE html>
         nav_faq: "Dúvidas",
         btn_nav_reserva: "Reservar no WhatsApp",
         badge_topo_local: "Hospedagem Privativa em Guarulhos · Aeroporto GRU",
-        badge_topo_desconto: "🛡️ 10% OFF Reserva Direta Garantida",
+        badge_topo_desconto: "🛡️ Reserva direta pelo WhatsApp oficial",
         badge_topo_checkin: "🔑 Auto Check-in 24h",
         hero_title: "SNT Studios · Studios Privativos em Guarulhos, perto do Aeroporto GRU",
         sub_hospitalidade: "Hospitalidade Independente",
@@ -1185,7 +1153,6 @@ site_code = '''<!DOCTYPE html>
         regra_silencio_tit: "Política de Silêncio:",
         regra_silencio_val: "Respeito ao descanso dos demais hóspedes a partir das 22h",
         card_por_noite: " / noite", card_ver_valor: "Ver valor",
-        card_badge_desconto: "10% OFF DIRETO",
         card_tarifa_oficial: "Tarifa Oficial",
         lbl_checkin: "CHECK-IN",
         lbl_checkout: "CHECKOUT",
@@ -1208,16 +1175,15 @@ site_code = '''<!DOCTYPE html>
         btn_conferir_disp: "Conferir disponibilidade",
         btn_verificar_datas_curto: "Verificar Datas",
         txt_nao_cobrado: "Você ainda não será cobrado",
-        vantagem_10_desc: "Desconto Direto de 10%",
         txt_garantido: "Garantido",
         vantagem_zero_taxas: "Sem taxas de serviço de terceiros",
-        txt_economia_real: "Economia real",
+        txt_economia_real: "Sem surpresas",
         vantagem_tempo_real: "Disponibilidade em tempo real",
         diff_wifi_tit: "Wi-Fi 600 Mbps", diff_wifi_sub: "Fibra óptica dedicada ultra-rápida",
         diff_checkin_tit: "Self Check-in 24h", diff_checkin_sub: "Fechadura eletrônica por código individual",
         diff_gru_tit: "~20 min de GRU", diff_gru_sub: "12 a 14 km de carro até os terminais",
         diff_cozinha_tit: "Cozinha Equipada", diff_cozinha_sub: "Geladeira, micro-ondas & cafeteira",
-        diff_desconto_tit: "10% OFF Direto", diff_desconto_sub: "Melhor tarifa garantida sem taxas",
+        diff_desconto_tit: "Reserva Direta", diff_desconto_sub: "WhatsApp oficial, Pix ou cartão",
         sec_studios_tag: "Nossas Acomodações", sec_studios_tit: "Conheça nossas opções privativas",
         sec_studios_sub: "Os quatro studios têm os mesmos itens — muda só o tamanho: fechadura eletrônica com senha da estadia, Wi-Fi fibra de 600 Mbps, Smart TV, ar-condicionado split, cozinha compacta e banheiro privativo.",
         btn_filtro_todos: "Todos os Studios", btn_filtro_amplos: "Studios Amplos", btn_filtro_compactos: "Studios Compactos",
@@ -1238,8 +1204,6 @@ site_code = '''<!DOCTYPE html>
         item_cama_casal_travesseiro: "Cama queen com enxoval", item_ducha_press: "Banheiro privativo com ducha e secador", item_frigobar_cafe: "Cozinha: geladeira, micro-ondas, cooktop e cafeteira",
         comp_tag: "Transparência Total", comp_tit: "Por que reservar direto conosco pelo WhatsApp?",
         th_beneficio: "Benefício", th_direto: "SNT Studios (Direto Oficial)", th_plataformas: "Plataformas (Booking / Airbnb)",
-        td_tarifa: "Tarifa Final", td_tarifa_direto: "10% de desconto garantido", td_tarifa_plat: "Preço cheio com margem embutida",
-        td_taxas: "Taxas de Serviço", td_taxas_direto: "R$ 0,00 (Zero taxa de intermediação)", td_taxas_plat: "Comissão de 15% a 21% embutida no preço",
         td_atendimento: "Atendimento & Suporte", td_atend_direto: "WhatsApp direto com nossa equipe local", td_atend_plat: "Chat do app com intermediários e bots genéricos",
         td_pagamento: "Formas de Pagamento", td_pag_direto: "PIX ou Cartão combinado direto e com segurança", td_pag_plat: "Pagamento pelas regras de cada plataforma",
         td_flexibilidade: "Flexibilidade de Horários", td_flex_direto: "Possibilidade de Early Check-in sob consulta direta", td_flex_plat: "Regras automáticas sem contato direto",
@@ -1260,8 +1224,6 @@ site_code = '''<!DOCTYPE html>
         faq_tag: "Tire Suas Dúvidas", faq_tit: "Perguntas Frequentes",
         faq_q1: "Como funciona o check-in se meu voo chegar de madrugada?",
         faq_a1: "Tranquilo: o portão abre por QR code e a porta do studio por uma senha só sua, então você entra sozinho a qualquer hora a partir das 15h, inclusive de madrugada. As instruções chegam uns 5 minutos depois que você preenche o formulário de check-in online.",
-        faq_q2: "Como funciona o desconto de 10% na reserva direta?",
-        faq_a2: "Plataformas como Booking e Airbnb cobram de 15% a 21% de comissão sobre a estadia. Reservando direto conosco pelo WhatsApp oficial, eliminamos essa taxa e repassamos 10% de economia garantida para você no valor final da hospedagem.",
         faq_q3: "Qual a diferença entre os studios?",
         faq_a3: "Só o tamanho: dois são maiores e dois mais compactos. Cama queen, cozinha, ar-condicionado, Smart TV, Wi-Fi de 600 Mbps e banheiro privativo são iguais em todos.",
         faq_q4: "A internet suporta reuniões em vídeo e trabalho remoto?",
@@ -1287,7 +1249,7 @@ site_code = '''<!DOCTYPE html>
         nav_faq: "FAQ",
         btn_nav_reserva: "Book on WhatsApp",
         badge_topo_local: "Private Stay in Guarulhos · GRU Airport",
-        badge_topo_desconto: "🛡️ 10% OFF Direct Booking Guaranteed",
+        badge_topo_desconto: "🛡️ Book direct on our official WhatsApp",
         badge_topo_checkin: "🔑 24/7 Digital Self Check-in",
         hero_title: "SNT Studios · Private Studios in Guarulhos, near GRU Airport",
         sub_hospitalidade: "Independent Hospitality",
@@ -1338,7 +1300,6 @@ site_code = '''<!DOCTYPE html>
         regra_silencio_tit: "Quiet Hours:",
         regra_silencio_val: "Please respect other guests' rest after 10:00 PM",
         card_por_noite: " / night", card_ver_valor: "See price",
-        card_badge_desconto: "10% DIRECT OFF",
         card_tarifa_oficial: "Official Rate",
         lbl_checkin: "CHECK-IN",
         lbl_checkout: "CHECKOUT",
@@ -1361,16 +1322,15 @@ site_code = '''<!DOCTYPE html>
         btn_conferir_disp: "Check availability",
         btn_verificar_datas_curto: "Check Dates",
         txt_nao_cobrado: "You won't be charged yet",
-        vantagem_10_desc: "10% Direct Booking Discount",
         txt_garantido: "Guaranteed",
         vantagem_zero_taxas: "Zero third-party service fees",
-        txt_economia_real: "Real savings",
+        txt_economia_real: "No surprises",
         vantagem_tempo_real: "Real-time calendar availability",
         diff_wifi_tit: "600 Mbps Wi-Fi", diff_wifi_sub: "Dedicated ultra-fast fiber",
         diff_checkin_tit: "24/7 Self Check-in", diff_checkin_sub: "Electronic passcode lock",
         diff_gru_tit: "~20 min to GRU", diff_gru_sub: "12 to 14 km by car to the terminals",
         diff_cozinha_tit: "Equipped Kitchen", diff_cozinha_sub: "Fridge, microwave & coffee maker",
-        diff_desconto_tit: "10% Direct OFF", diff_desconto_sub: "Best rate with zero fees",
+        diff_desconto_tit: "Direct Booking", diff_desconto_sub: "Official WhatsApp, Pix or card",
         sec_studios_tag: "Our Accommodations", sec_studios_tit: "Explore our private studios",
         sec_studios_sub: "All four studios have the same amenities — only the size changes: electronic lock with a stay passcode, 600 Mbps fiber Wi-Fi, Smart TV, split air conditioning, kitchenette and private bathroom.",
         btn_filtro_todos: "All Studios", btn_filtro_amplos: "Larger Studios", btn_filtro_compactos: "Compact Studios",
@@ -1391,8 +1351,6 @@ site_code = '''<!DOCTYPE html>
         item_cama_casal_travesseiro: "Queen bed with linens", item_ducha_press: "Private bathroom with shower and hair dryer", item_frigobar_cafe: "Kitchenette: fridge, microwave, stovetop, coffee maker",
         comp_tag: "Total Transparency", comp_tit: "Why book directly with us on WhatsApp?",
         th_beneficio: "Benefit", th_direto: "SNT Studios (Official Direct)", th_plataformas: "OTAs (Booking / Airbnb)",
-        td_tarifa: "Final Rate", td_tarifa_direto: "10% direct discount guaranteed", td_tarifa_plat: "Higher markup rates",
-        td_taxas: "Service Fees", td_taxas_direto: "R$ 0.00 (Zero platform fee)", td_taxas_plat: "15% to 21% commission built into the price",
         td_atendimento: "Customer Support", td_atend_direto: "Direct WhatsApp with our local team", td_atend_plat: "Generic chatbots and app intermediaries",
         td_pagamento: "Payment Methods", td_pag_direto: "PIX or Credit Card safely arranged", td_pag_plat: "Payment under each platform's rules",
         td_flexibilidade: "Schedule Flexibility", td_flex_direto: "Early check-in option upon direct inquiry", td_flex_plat: "Automated, inflexible rules",
@@ -1413,8 +1371,6 @@ site_code = '''<!DOCTYPE html>
         faq_tag: "Got Questions?", faq_tit: "Frequently Asked Questions",
         faq_q1: "How does check-in work if my flight lands late at night or early morning?",
         faq_a1: "No problem: the gate opens with a QR code and your studio door with your own passcode, so you can let yourself in any time from 3 PM, even in the middle of the night. Instructions arrive about 5 minutes after you fill in the online check-in form.",
-        faq_q2: "How does the 10% direct discount work?",
-        faq_a2: "Third-party apps charge 15% to 21% commissions. By booking directly through our official WhatsApp, we pass that saving on to you with a guaranteed 10% lower price.",
         faq_q3: "What is the difference between the studios?",
         faq_a3: "Only the size: two are larger and two are more compact. Queen bed, kitchenette, air conditioning, Smart TV, 600 Mbps Wi-Fi and private bathroom are the same in all of them.",
         faq_q4: "Is the Wi-Fi fast enough for remote work and video meetings?",
@@ -1440,7 +1396,7 @@ site_code = '''<!DOCTYPE html>
         nav_faq: "Preguntas",
         btn_nav_reserva: "Reservar por WhatsApp",
         badge_topo_local: "Alojamiento Privado en Guarulhos · Aeropuerto GRU",
-        badge_topo_desconto: "🛡️ 10% OFF Reserva Directa Garantizada",
+        badge_topo_desconto: "🛡️ Reserva directa por WhatsApp oficial",
         badge_topo_checkin: "🔑 Auto Check-in 24h",
         hero_title: "SNT Studios · Estudios Privados en Guarulhos, cerca del Aeropuerto GRU",
         sub_hospitalidade: "Hospitalidad Independiente",
@@ -1491,7 +1447,6 @@ site_code = '''<!DOCTYPE html>
         regra_silencio_tit: "Política de Silencio:",
         regra_silencio_val: "Respeto al descanso de los demás huéspedes a partir de las 22:00",
         card_por_noite: " / noche", card_ver_valor: "Ver precio",
-        card_badge_desconto: "10% OFF DIRECTO",
         card_tarifa_oficial: "Tarifa Oficial",
         lbl_checkin: "CHECK-IN",
         lbl_checkout: "CHECKOUT",
@@ -1514,16 +1469,15 @@ site_code = '''<!DOCTYPE html>
         btn_conferir_disp: "Comprobar disponibilidad",
         btn_verificar_datas_curto: "Verificar Fechas",
         txt_nao_cobrado: "Aún no se te cobrará nada",
-        vantagem_10_desc: "10% de Descuento Directo",
         txt_garantido: "Garantizado",
         vantagem_zero_taxas: "Sin comisiones de intermediarios",
-        txt_economia_real: "Ahorro real",
+        txt_economia_real: "Sin sorpresas",
         vantagem_tempo_real: "Disponibilidad en tiempo real",
         diff_wifi_tit: "Wi-Fi 600 Mbps", diff_wifi_sub: "Fibra óptica dedicada ultra rápida",
         diff_checkin_tit: "Self Check-in 24h", diff_checkin_sub: "Cerradura electrónica con código personal",
         diff_gru_tit: "~20 min de GRU", diff_gru_sub: "12 a 14 km en auto hasta las terminales",
         diff_cozinha_tit: "Cocina Equipada", diff_cozinha_sub: "Heladera, microondas y cafetera",
-        diff_desconto_tit: "10% OFF Directo", diff_desconto_sub: "Mejor tarifa garantizada sin tasas extras",
+        diff_desconto_tit: "Reserva Directa", diff_desconto_sub: "WhatsApp oficial, Pix o tarjeta",
         sec_studios_tag: "Nuestros Alojamientos", sec_studios_tit: "Descubra nuestras opciones privadas",
         sec_studios_sub: "Los cuatro estudios tienen el mismo equipamiento — solo cambia el tamaño: cerradura electrónica con clave de la estadía, Wi-Fi de fibra 600 Mbps, Smart TV, aire split, cocina compacta y baño privado.",
         btn_filtro_todos: "Todos los Estudios", btn_filtro_amplos: "Estudios Amplios", btn_filtro_compactos: "Estudios Compactos",
@@ -1544,8 +1498,6 @@ site_code = '''<!DOCTYPE html>
         item_cama_casal_travesseiro: "Cama queen con ropa de cama", item_ducha_press: "Baño privado con ducha y secador", item_frigobar_cafe: "Cocina: heladera, microondas, anafe y cafetera",
         comp_tag: "Total Transparencia", comp_tit: "¿Por qué reservar directo con nosotros por WhatsApp?",
         th_beneficio: "Beneficio", th_direto: "SNT Studios (Directo Oficial)", th_plataformas: "Plataformas (Booking / Airbnb)",
-        td_tarifa: "Tarifa Final", td_tarifa_direto: "10% de descuento garantizado", td_tarifa_plat: "Tarifa completa con margen inflado",
-        td_taxas: "Comisiones", td_taxas_direto: "R$ 0,00 (Cero comisiones intermedias)", td_taxas_plat: "Comisión del 15% al 21% incluida en el precio",
         td_atendimento: "Atención al Cliente", td_atend_direto: "WhatsApp directo con nuestro equipo local", td_atend_plat: "Chat de app con bots e intermediarios",
         td_pagamento: "Medios de Pago", td_pag_direto: "PIX o Tarjeta acordado de forma segura", td_pag_plat: "Pago según las reglas de cada plataforma",
         td_flexibilidade: "Flexibilidad Horaria", td_flex_direto: "Early check-in disponible bajo consulta directa", td_flex_plat: "Normas automáticas sin contacto humano",
@@ -1566,8 +1518,6 @@ site_code = '''<!DOCTYPE html>
         faq_tag: "Preguntas Frecuentes", faq_tit: "Dudas Habituales",
         faq_q1: "¿Cómo funciona el check-in si mi vuelo llega de madrugada?",
         faq_a1: "Sin problema: el portón abre con código QR y la puerta del estudio con una clave solo suya, así que entra solo a cualquier hora desde las 15:00, incluso de madrugada. Las instrucciones llegan unos 5 minutos después de completar el formulario de check-in online.",
-        faq_q2: "¿Cómo funciona el 10% de descuento en la reserva directa?",
-        faq_a2: "Las plataformas cobran entre 15% y 21% de comisiones. Al reservar directo por WhatsApp oficial, eliminamos ese intermediario y le transferimos un 10% de ahorro garantizado.",
         faq_q3: "¿Cuál es la diferencia entre los estudios?",
         faq_a3: "Solo el tamaño: dos son más grandes y dos más compactos. Cama queen, cocina, aire acondicionado, Smart TV, Wi-Fi de 600 Mbps y baño privado son iguales en todos.",
         faq_q4: "¿El Wi-Fi es apto para videollamadas y trabajo remoto?",
@@ -2175,7 +2125,7 @@ site_code = '''<!DOCTYPE html>
     function compartilharSite() {
       const shareData = {
         title: 'SNT Studios · Hospedagem perto do Aeroporto GRU',
-        text: 'Studios privativos modernos com Wi-Fi 600MB, fechadura digital 24h e 10% de desconto na reserva direta.',
+        text: 'Studios privativos modernos com Wi-Fi 600MB, fechadura digital 24h e reserva direta pelo WhatsApp oficial.',
         url: 'https://www.sntstudios.com/'
       };
       if (navigator.share) {
@@ -2375,10 +2325,6 @@ site_code = '''<!DOCTYPE html>
               <span>${dados.noites} ${dados.noites > 1 ? (idiomaAtual === 'en' ? 'nights' : (idiomaAtual === 'es' ? 'noches' : 'noites')) : (idiomaAtual === 'en' ? 'night' : (idiomaAtual === 'es' ? 'noche' : 'noite'))} (${idiomaAtual === 'en' ? 'average' : (idiomaAtual === 'es' ? 'promedio' : 'média')} ${formatarMoeda(diariaEfetiva)}/${idiomaAtual === 'en' ? 'night' : (idiomaAtual === 'es' ? 'noche' : 'noite')})</span>
               <span class="font-medium text-white">${formatarMoeda(studio.totalDireta)}</span>
             </div>
-            <div class="flex items-center justify-between text-emerald-400 font-semibold">
-              <span>${idiomaAtual === 'en' ? '10% Direct Booking Discount Applied' : (idiomaAtual === 'es' ? '10% Descuento Directo Aplicado' : 'Desconto Reserva Direta (10% OFF aplicado)')}</span>
-              <span>${idiomaAtual === 'en' ? 'Savings of' : (idiomaAtual === 'es' ? 'Ahorro de' : 'Economia de')} ${formatarMoeda(studio.economia)}</span>
-            </div>
             <div class="pt-2.5 border-t border-slate-700/80 flex items-baseline justify-between text-white">
               <div>
                 <span class="text-sm font-black">${idiomaAtual === 'en' ? 'Total Price' : (idiomaAtual === 'es' ? 'Precio Total Final' : 'Valor Total da Estadia')}</span>
@@ -2391,7 +2337,7 @@ site_code = '''<!DOCTYPE html>
           <!-- BOTÃO DE AÇÃO WHATSAPP OFICIAL -->
           <button type="button" onclick="abrirWhatsAppCotacao('${infoComercial.chave}')" class="w-full mt-2 bg-emerald-500 hover:bg-emerald-400 active:scale-[0.99] text-slate-950 font-black py-3.5 px-4 rounded-xl text-xs uppercase tracking-wider transition shadow-lg shadow-emerald-500/25 flex items-center justify-center gap-2">
             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.159.57 4.184 1.564 5.938l-1.664 6.086 6.257-1.64c1.706.924 3.659 1.45 5.743 1.45 6.627 0 12-5.373 12-12 0-6.627-5.373-12-12-12z"/></svg>
-            <span>${idiomaAtual === 'en' ? 'Reserve via WhatsApp (10% OFF)' : (idiomaAtual === 'es' ? 'Reservar por WhatsApp (10% OFF)' : 'Reservar no WhatsApp (10% OFF)')}</span>
+            <span>${idiomaAtual === 'en' ? 'Reserve via WhatsApp' : (idiomaAtual === 'es' ? 'Reservar por WhatsApp' : 'Reservar no WhatsApp')}</span>
           </button>
 
           <p class="text-[10px] text-center text-slate-400">
