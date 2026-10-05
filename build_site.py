@@ -105,15 +105,18 @@ site_code = '''<!DOCTYPE html>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
       <!-- LOGO SNT STUDIOS -->
-      <a href="#" class="flex items-center gap-3 group">
-        <img src="assets/snt-empreendimentos-horizontal-branco.png" alt="SNT Studios" class="h-9 sm:h-11 w-auto object-contain transition transform group-hover:scale-[1.02]">
-        <span class="hidden md:inline-block bg-emerald-500/10 text-emerald-400 text-[11px] font-bold px-2.5 py-0.5 rounded-full border border-emerald-500/20" data-i18n="badge_boutique">
-          STUDIOS BOUTIQUE
+      <!-- Os prédios da SNT em vetor, no verde do site, colados ao nome (05/10/2026):
+           o PNG da SNT Empreendimentos tinha fundo branco e parecia colado no cabeçalho. -->
+      <a href="#" class="flex items-center gap-2 group shrink-0 whitespace-nowrap" aria-label="SNT Studios">
+        <svg class="h-8 w-[23px] sm:h-10 sm:w-[29px] shrink-0 text-emerald-500 transition group-hover:text-emerald-400" viewBox="240 135 545 755" fill="none" stroke="currentColor" stroke-width="34" aria-hidden="true" focusable="false"><path d="M384.5 458V318L547 171V287L630 345V528"/><path d="M247 869H384.5V520"/><path d="M298 869V566L462 416V881"/><path d="M555 881V510L719 617V869"/><path d="M631 592V869H776"/></svg>
+        <span class="flex flex-col leading-none">
+          <span class="text-lg sm:text-xl font-extrabold tracking-tight text-white">SNT <span class="font-bold text-emerald-400">Studios</span></span>
+          <span class="hidden sm:block mt-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-400">Guarulhos · GRU</span>
         </span>
       </a>
 
       <!-- MENU DESKTOP -->
-      <div class="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-300">
+      <div class="hidden lg:flex items-center gap-5 xl:gap-7 text-sm font-medium text-slate-300 whitespace-nowrap">
         <a href="#inicio" class="hover:text-emerald-400 transition" data-i18n="nav_inicio">Início</a>
         <a href="#cotador" class="hover:text-emerald-400 transition" data-i18n="nav_disponibilidade">Disponibilidade</a>
         <a href="#studios" class="hover:text-emerald-400 transition" data-i18n="nav_studios">Acomodações</a>
@@ -126,23 +129,23 @@ site_code = '''<!DOCTYPE html>
       <div class="flex items-center gap-3">
         
         <!-- SELETOR MULTILÍNGUE (PT / EN / ES) -->
-        <div class="flex items-center bg-slate-900 border border-slate-700/80 rounded-xl p-1 text-xs">
+        <div class="flex items-center bg-slate-900 border border-slate-700/80 rounded-xl p-1 text-xs whitespace-nowrap shrink-0">
           <button type="button" onclick="trocarIdioma('pt')" id="btnLangPt" class="px-2 py-1 rounded-lg font-bold transition bg-emerald-500 text-slate-950" title="Português">
-            🇧🇷 PT
+            PT
           </button>
           <button type="button" onclick="trocarIdioma('en')" id="btnLangEn" class="px-2 py-1 rounded-lg font-bold transition text-slate-400 hover:text-white" title="English">
-            🇺🇸 EN
+            EN
           </button>
           <button type="button" onclick="trocarIdioma('es')" id="btnLangEs" class="px-2 py-1 rounded-lg font-bold transition text-slate-400 hover:text-white" title="Español">
-            🇪🇸 ES
+            ES
           </button>
         </div>
 
-        <a href="https://api.whatsapp.com/send?phone=551154443110" target="_blank" rel="noopener noreferrer" class="hidden xl:inline-flex items-center gap-2 text-xs font-semibold text-slate-300 hover:text-emerald-400 transition px-3 py-2 rounded-lg bg-slate-900 border border-slate-800">
+        <a href="https://api.whatsapp.com/send?phone=551154443110" target="_blank" rel="noopener noreferrer" class="hidden 2xl:inline-flex items-center gap-2 text-xs font-semibold text-slate-300 hover:text-emerald-400 transition px-3 py-2 rounded-lg bg-slate-900 border border-slate-800 whitespace-nowrap">
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
           <span>(11) 5444-3110</span>
         </a>
-        <a href="https://api.whatsapp.com/send?phone=551154443110&text=Ola%21%20Gostaria%20de%20consultar%20uma%20reserva%20direta%20no%20SNT%20Studios." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-3.5 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm shadow-lg shadow-emerald-500/20 transition transform hover:-translate-y-0.5">
+        <a href="https://api.whatsapp.com/send?phone=551154443110&text=Ola%21%20Gostaria%20de%20consultar%20uma%20reserva%20direta%20no%20SNT%20Studios." target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-5 py-2.5 rounded-xl text-sm shadow-lg shadow-emerald-500/20 transition transform hover:-translate-y-0.5 whitespace-nowrap shrink-0">
           <span data-i18n="btn_nav_reserva">Reservar no WhatsApp</span>
         </a>
       </div>
@@ -173,11 +176,11 @@ site_code = '''<!DOCTYPE html>
 
         <!-- BARRA SUB-HEADER -->
         <div class="flex flex-wrap items-center justify-between gap-3 text-xs sm:text-sm text-slate-300 pt-1 pb-4 border-b border-slate-800/80">
-          <div class="flex flex-wrap items-center gap-2">
+          <div class="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-1 sm:gap-2">
             <span class="text-slate-300 font-semibold" data-i18n="sub_hospitalidade">Hospitalidade Independente</span>
-            <span class="text-slate-500">·</span>
+            <span class="hidden sm:inline text-slate-500">·</span>
             <span class="text-slate-400" data-i18n="sub_gru_dist">Cerca de 20 minutos de carro dos Terminais 1, 2 e 3</span>
-            <span class="text-slate-500">·</span>
+            <span class="hidden sm:inline text-slate-500">·</span>
             <a href="#localizacao" class="underline underline-offset-4 hover:text-emerald-400 text-slate-400">Avenida Aguanil, 51 · Seródio, Guarulhos - SP</a>
           </div>
           <div class="flex items-center gap-3">
@@ -224,7 +227,7 @@ site_code = '''<!DOCTYPE html>
           </div>
         </div>
         <!-- Botão no Canto Inferior Direito: Mostrar todas as fotos -->
-        <button type="button" onclick="abrirGaleria('todas')" class="absolute bottom-4 right-4 bg-slate-950/90 hover:bg-white hover:text-slate-950 backdrop-blur text-white text-xs font-extrabold px-4 py-2.5 rounded-xl border border-slate-700 transition flex items-center gap-2 shadow-2xl">
+        <button type="button" onclick="abrirGaleria('todas')" class="absolute top-4 md:top-auto md:bottom-4 right-4 bg-slate-950/90 hover:bg-white hover:text-slate-950 backdrop-blur text-white text-xs font-extrabold px-4 py-2.5 rounded-xl border border-slate-700 transition flex items-center gap-2 shadow-2xl">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
           <span data-i18n="btn_todas_fotos">Mostrar todas as 20 fotos</span>
         </button>
@@ -979,7 +982,13 @@ site_code = '''<!DOCTYPE html>
         
         <!-- COLUNA 1: MARCA & IDENTIDADE -->
         <div class="space-y-3 md:col-span-2">
-          <img src="assets/snt-empreendimentos-horizontal-branco.png" alt="SNT Studios" class="h-10 w-auto object-contain">
+          <div class="flex items-center gap-2.5" aria-label="SNT Studios">
+            <svg class="h-11 w-[32px] shrink-0 text-emerald-500" viewBox="240 135 545 755" fill="none" stroke="currentColor" stroke-width="34" aria-hidden="true" focusable="false"><path d="M384.5 458V318L547 171V287L630 345V528"/><path d="M247 869H384.5V520"/><path d="M298 869V566L462 416V881"/><path d="M555 881V510L719 617V869"/><path d="M631 592V869H776"/></svg>
+            <span class="flex flex-col leading-none">
+              <span class="text-xl font-extrabold tracking-tight text-white">SNT <span class="font-bold text-emerald-400">Studios</span></span>
+              <span class="mt-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-400">uma empresa SNT Empreendimentos</span>
+            </span>
+          </div>
           <p class="text-slate-400 max-w-sm leading-relaxed text-[11px]" data-i18n="footer_desc">
             Hospitalidade inteligente e moderna em Guarulhos. Studios privativos completos para quem valoriza silêncio, conforto, tecnologia e proximidade com o Aeroporto GRU.
           </p>
@@ -1093,7 +1102,6 @@ site_code = '''<!DOCTYPE html>
 
     const I18N = {
       pt: {
-        badge_boutique: "STUDIOS BOUTIQUE",
         nav_inicio: "Início",
         nav_disponibilidade: "Disponibilidade",
         nav_studios: "Acomodações",
@@ -1240,7 +1248,6 @@ site_code = '''<!DOCTYPE html>
         footer_sustentavel: "Desenvolvido com tecnologia sustentável e zero CDNs externas em produção."
       },
       en: {
-        badge_boutique: "BOUTIQUE STUDIOS",
         nav_inicio: "Home",
         nav_disponibilidade: "Availability",
         nav_studios: "Accommodations",
@@ -1387,7 +1394,6 @@ site_code = '''<!DOCTYPE html>
         footer_sustentavel: "Engineered with sustainable technology and zero external CDNs in production."
       },
       es: {
-        badge_boutique: "ESTUDIOS BOUTIQUE",
         nav_inicio: "Inicio",
         nav_disponibilidade: "Disponibilidad",
         nav_studios: "Alojamientos",
