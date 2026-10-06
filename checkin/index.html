@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Check-in online · SNT Studios</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <style>
+    /* Check-in online próprio (item 166, 06/10/2026). Página isolada do site:
+       sem CDN, sem fonte externa, mesmas cores. Recebe ?r=<reserva>&d=<chegada>
+       pelo link que o Smoobu manda; a API confere os dois e nunca devolve o
+       nome do hóspede. */
+    :root { --fundo:#020617; --cartao:#0f172a; --linha:#1e293b; --tinta:#e2e8f0; --suave:#94a3b8; --verde:#10b981; --verde-esc:#059669; --erro:#f87171; }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--fundo); color:var(--tinta); font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
+    main { max-width:640px; margin:0 auto; padding:28px 16px 64px; }
+    header { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:22px; }
+    .marca { display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:-.01em; }
+    .marca img { width:30px; height:30px; }
+    .idiomas { display:flex; gap:4px; }
+    .idiomas button { background:transparent; border:1px solid var(--linha); color:var(--suave); border-radius:8px; padding:4px 9px; font:600 12px system-ui; cursor:pointer; }
+    .idiomas button[aria-pressed="true"] { background:var(--verde); border-color:var(--verde); color:#03140e; }
+    h1 { font-size:26px; line-height:1.2; margin:0 0 6px; }
+    .sub { color:var(--suave); margin:0 0 18px; }
+    .reserva { background:var(--cartao); border:1px solid var(--linha); border-radius:14px; padding:14px 16px; display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:22px; }
+    .reserva div span { display:block; color:var(--suave); font-size:12px; text-transform:uppercase; letter-spacing:.06em; }
+    .reserva div b { font-size:15px; }
+    fieldset { border:1px solid var(--linha); border-radius:14px; padding:16px; margin:0 0 16px; background:var(--cartao); }
+    legend { padding:0 6px; font-weight:700; }
+    .grade { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .grade .largo { grid-column:1/-1; }
+    label { display:flex; flex-direction:column; gap:5px; font-size:14px; color:var(--suave); }
+    input, select { background:#020617; border:1px solid #334155; border-radius:10px; color:var(--tinta); padding:10px 12px; font:inherit; font-size:16px; width:100%; }
+    input:focus-visible, select:focus-visible, button:focus-visible { outline:2px solid var(--verde); outline-offset:2px; }
+    .invalido input, .invalido select { border-color:var(--erro); }
+    .msg-erro { color:var(--erro); font-size:13px; min-height:0; }
+    .acomp { border-top:1px dashed var(--linha); padding-top:12px; margin-top:12px; }
+    .acomp-cab { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; color:var(--tinta); font-weight:600; font-size:14px; }
+    .link { background:none; border:0; color:var(--verde); font:600 14px system-ui; cursor:pointer; padding:4px 0; }
+    .regras { margin:0 0 10px; padding-left:18px; color:var(--suave); font-size:14px; }
+    .aceite { flex-direction:row; align-items:flex-start; gap:10px; color:var(--tinta); }
+    .aceite input { width:20px; height:20px; margin-top:2px; flex:none; }
+    .enviar { width:100%; background:var(--verde); color:#03140e; border:0; border-radius:12px; padding:14px; font:800 16px system-ui; cursor:pointer; }
+    .enviar:disabled { opacity:.6; cursor:wait; }
+    .nota { color:var(--suave); font-size:13px; margin-top:12px; }
+    .nota a { color:var(--verde); }
+    .estado { background:var(--cartao); border:1px solid var(--linha); border-radius:14px; padding:22px 18px; text-align:center; }
+    .estado h2 { margin:6px 0 8px; font-size:22px; }
+    .estado p { color:var(--suave); margin:0; }
+    .ok { color:var(--verde); font-size:40px; line-height:1; }
+    [hidden] { display:none !important; }
+    @media (max-width:520px) { .grade { grid-template-columns:1fr; } .reserva { grid-template-columns:1fr 1fr; } }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="marca"><img src="/assets/favicon.svg" alt=""><span>SNT Studios</span></div>
+    <div class="idiomas" role="group" aria-label="Idioma">
+      <button type="button" data-lang="pt">PT</button><button type="button" data-lang="en">EN</button><button type="button" data-lang="es">ES</button>
+    </div>
+  </header>
+
+  <section id="carregando" class="estado"><p data-t="carregando"></p></section>
+  <section id="problema" class="estado" hidden><h2 id="problema-tit"></h2><p id="problema-txt"></p></section>
+  <section id="pronto" class="estado" hidden><div class="ok">✓</div><h2 data-t="pronto_tit"></h2><p id="pronto-txt"></p></section>
+
+  <form id="form" novalidate hidden>
+    <h1 data-t="titulo"></h1>
+    <p class="sub" data-t="subtitulo"></p>
+    <div class="reserva">
+      <div><span data-t="studio"></span><b id="r-studio">—</b></div>
+      <div><span data-t="entrada"></span><b id="r-entrada">—</b></div>
+      <div><span data-t="saida"></span><b id="r-saida">—</b></div>
+    </div>
+
+    <fieldset>
+      <legend data-t="titular"></legend>
+      <div class="grade">
+        <label class="largo" data-campo="nome"><span data-t="nome"></span><input name="nome" autocomplete="name" required><small class="msg-erro"></small></label>
+        <label data-campo="genero"><span data-t="genero"></span>
+          <select name="genero" required><option value="" data-t="escolha"></option><option value="feminino" data-t="feminino"></option><option value="masculino" data-t="masculino"></option><option value="outro" data-t="outro"></option></select><small class="msg-erro"></small></label>
+        <label data-campo="nascimento"><span data-t="nascimento"></span><input name="nascimento" type="date" required><small class="msg-erro"></small></label>
+        <label class="largo" data-campo="documento"><span data-t="documento"></span><input name="documento" required><small class="msg-erro"></small></label>
+      </div>
+      <div id="acompanhantes"></div>
+      <button type="button" class="link" id="mais-acomp" data-t="mais_acomp"></button>
+    </fieldset>
+
+    <fieldset>
+      <legend data-t="contato"></legend>
+      <div class="grade">
+        <label class="largo" data-campo="email"><span data-t="email"></span><input name="email" type="email" autocomplete="email" required><small class="msg-erro"></small></label>
+        <label data-campo="whatsapp"><span data-t="whatsapp"></span><input name="whatsapp" type="tel" autocomplete="tel" placeholder="+55 11 91234-5678" required><small class="msg-erro"></small></label>
+        <label data-campo="chegada"><span data-t="chegada"></span><input name="chegada" type="time" required><small class="msg-erro"></small></label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend data-t="regras_tit"></legend>
+      <ul class="regras" id="regras"></ul>
+      <label class="aceite" data-campo="aceite"><input type="checkbox" name="aceite"><span data-t="aceito"></span></label>
+      <small class="msg-erro" id="erro-aceite"></small>
+    </fieldset>
+
+    <button class="enviar" type="submit" data-t="enviar"></button>
+    <p class="nota"><span data-t="lgpd"></span> <a href="/privacidade.html" data-t="privacidade"></a></p>
+  </form>
+</main>
+
+<script>
+  const API = "https://snt-lavanderia-bot-production.up.railway.app/api/studios/public/checkin";
+  const T = {
+    pt: {
+      carregando: "Carregando sua reserva…", titulo: "Check-in online", subtitulo: "Leva 2 minutos. As instruções de acesso chegam no dia da entrada, a partir das {h}, pelo chat onde você reservou.",
+      studio: "Studio", entrada: "Entrada", saida: "Saída", titular: "Hóspede responsável", nome: "Nome completo", genero: "Gênero", escolha: "Escolha", feminino: "Feminino", masculino: "Masculino", outro: "Outro",
+      nascimento: "Data de nascimento", documento: "Documento (CPF, RG ou passaporte)", mais_acomp: "+ Adicionar acompanhante", acomp: "Acompanhante", remover: "remover",
+      contato: "Contato e chegada", email: "E-mail", whatsapp: "WhatsApp (com DDD)", chegada: "Horário previsto de chegada",
+      regras_tit: "Regras da casa", aceito: "Li e aceito as regras da casa.", enviar: "Enviar check-in",
+      lgpd: "Usamos estes dados só para o registro da hospedagem e para enviar o seu acesso. Ficam guardados por 12 meses após a saída.", privacidade: "Política de Privacidade",
+      regras: ["Check-in a partir das 15h e check-out até as 11h.", "Proibido fumar nos studios e nas áreas comuns.", "Sem festas, eventos ou visitas que não estejam na reserva.", "Silêncio das 22h às 8h.", "Não aceitamos animais de estimação.", "Idade mínima para o check-in: 18 anos."],
+      erros: { nome: "Escreva nome e sobrenome.", genero: "Escolha uma opção.", nascimento: "Confira a data.", documento: "Confira o documento.", email: "Confira o e-mail.", whatsapp: "Número com DDD (e código do país, se não for do Brasil).", chegada: "Informe um horário.", aceite: "É preciso aceitar as regras.", acompanhante_nome: "Nome e sobrenome do acompanhante.", acompanhante_genero: "Gênero do acompanhante.", acompanhante_nascimento: "Data de nascimento do acompanhante." },
+      pronto_tit: "Check-in recebido!", pronto_txt: "As instruções de acesso chegam no dia {d}, a partir das {h}, pelo chat onde você reservou. Boa viagem!", pronto_ja: "Seu acesso já foi enviado pelo chat onde você reservou.",
+      link_invalido: ["Link não encontrado", "Confira se abriu o link completo da mensagem da reserva. Se continuar, fale com a gente pelo chat da plataforma."],
+      reserva_encerrada: ["Estadia encerrada", "Esta reserva já terminou."], acesso_ja_enviado: ["Acesso já enviado", "O acesso desta reserva já foi enviado. Para mudar algum dado, fale com a gente pelo chat da plataforma."],
+      falha: ["Não conseguimos carregar", "Tente de novo em alguns minutos."]
+    },
+    en: {
+      carregando: "Loading your booking…", titulo: "Online check-in", subtitulo: "It takes 2 minutes. Access instructions arrive on your check-in day, from {h}, in the chat where you booked.",
+      studio: "Studio", entrada: "Check-in", saida: "Check-out", titular: "Main guest", nome: "Full name", genero: "Gender", escolha: "Choose", feminino: "Female", masculino: "Male", outro: "Other",
+      nascimento: "Date of birth", documento: "ID document (passport or national ID)", mais_acomp: "+ Add a guest", acomp: "Guest", remover: "remove",
+      contato: "Contact and arrival", email: "E-mail", whatsapp: "WhatsApp (with country code)", chegada: "Expected arrival time",
+      regras_tit: "House rules", aceito: "I have read and accept the house rules.", enviar: "Send check-in",
+      lgpd: "We use this data only for the guest registration and to send your access. It is kept for 12 months after check-out.", privacidade: "Privacy Policy",
+      regras: ["Check-in from 3 PM, check-out by 11 AM.", "No smoking in the studios or common areas.", "No parties, events or visitors not on the booking.", "Quiet hours from 10 PM to 8 AM.", "No pets.", "Minimum check-in age: 18."],
+      erros: { nome: "Write your first and last name.", genero: "Choose an option.", nascimento: "Check the date.", documento: "Check the document.", email: "Check the e-mail.", whatsapp: "Number with country code.", chegada: "Enter a time.", aceite: "You must accept the rules.", acompanhante_nome: "Guest's first and last name.", acompanhante_genero: "Guest's gender.", acompanhante_nascimento: "Guest's date of birth." },
+      pronto_tit: "Check-in received!", pronto_txt: "Access instructions arrive on {d}, from {h}, in the chat where you booked. Have a good trip!", pronto_ja: "Your access has already been sent in the chat where you booked.",
+      link_invalido: ["Link not found", "Make sure you opened the full link from the booking message. If it persists, write to us in the platform chat."],
+      reserva_encerrada: ["Stay ended", "This booking has already ended."], acesso_ja_enviado: ["Access already sent", "The access for this booking was already sent. To change any data, write to us in the platform chat."],
+      falha: ["We couldn't load it", "Please try again in a few minutes."]
+    },
+    es: {
+      carregando: "Cargando su reserva…", titulo: "Check-in online", subtitulo: "Toma 2 minutos. Las instrucciones de acceso llegan el día de su entrada, desde las {h}, por el chat donde reservó.",
+      studio: "Estudio", entrada: "Entrada", saida: "Salida", titular: "Huésped responsable", nome: "Nombre completo", genero: "Género", escolha: "Elija", feminino: "Femenino", masculino: "Masculino", outro: "Otro",
+      nascimento: "Fecha de nacimiento", documento: "Documento (pasaporte o DNI)", mais_acomp: "+ Agregar acompañante", acomp: "Acompañante", remover: "quitar",
+      contato: "Contacto y llegada", email: "E-mail", whatsapp: "WhatsApp (con código de país)", chegada: "Hora prevista de llegada",
+      regras_tit: "Reglas de la casa", aceito: "Leí y acepto las reglas de la casa.", enviar: "Enviar check-in",
+      lgpd: "Usamos estos datos solo para el registro del hospedaje y para enviar su acceso. Se guardan 12 meses después de la salida.", privacidade: "Política de Privacidad",
+      regras: ["Check-in desde las 15:00 y check-out hasta las 11:00.", "Prohibido fumar en los estudios y áreas comunes.", "Sin fiestas, eventos ni visitas que no estén en la reserva.", "Silencio de 22:00 a 8:00.", "No se aceptan mascotas.", "Edad mínima para el check-in: 18 años."],
+      erros: { nome: "Escriba nombre y apellido.", genero: "Elija una opción.", nascimento: "Revise la fecha.", documento: "Revise el documento.", email: "Revise el e-mail.", whatsapp: "Número con código de país.", chegada: "Indique una hora.", aceite: "Debe aceptar las reglas.", acompanhante_nome: "Nombre y apellido del acompañante.", acompanhante_genero: "Género del acompañante.", acompanhante_nascimento: "Fecha de nacimiento del acompañante." },
+      pronto_tit: "¡Check-in recibido!", pronto_txt: "Las instrucciones de acceso llegan el {d}, desde las {h}, por el chat donde reservó. ¡Buen viaje!", pronto_ja: "Su acceso ya fue enviado por el chat donde reservó.",
+      link_invalido: ["Enlace no encontrado", "Verifique que abrió el enlace completo del mensaje de la reserva. Si continúa, escríbanos por el chat de la plataforma."],
+      reserva_encerrada: ["Estadía terminada", "Esta reserva ya terminó."], acesso_ja_enviado: ["Acceso ya enviado", "El acceso de esta reserva ya fue enviado. Para cambiar algún dato, escríbanos por el chat de la plataforma."],
+      falha: ["No pudimos cargar", "Intente de nuevo en unos minutos."]
+    }
+  };
+  const params = new URLSearchParams(location.search);
+  const R = params.get("r") || "", D = params.get("d") || "";
+  let idioma = ["pt", "en", "es"].includes(params.get("lang")) ? params.get("lang") : ((navigator.language || "pt").slice(0, 2) === "es" ? "es" : (navigator.language || "pt").slice(0, 2) === "en" ? "en" : "pt");
+  let reserva = null, nAcomp = 0;
+  const $ = (s, el) => (el || document).querySelector(s);
+  const t = (k) => T[idioma][k];
+  const horaDoIdioma = (h) => { const [hh, mm] = String(h || "14:00").split(":").map(Number); if (idioma === "en") return (hh % 12 || 12) + (mm ? ":" + String(mm).padStart(2, "0") : "") + (hh < 12 ? " AM" : " PM"); if (idioma === "es") return String(hh).padStart(2, "0") + ":" + String(mm).padStart(2, "0"); return hh + "h" + (mm ? String(mm).padStart(2, "0") : ""); };
+  const dataBr = (iso) => (iso ? iso.slice(8, 10) + "/" + iso.slice(5, 7) + "/" + iso.slice(0, 4) : "—");
+
+  function aplicarIdioma() {
+    document.documentElement.lang = idioma === "pt" ? "pt-BR" : idioma;
+    document.querySelectorAll("[data-lang]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.lang === idioma)));
+    document.querySelectorAll("[data-t]").forEach((el) => {
+      const v = T[idioma][el.dataset.t];
+      if (typeof v === "string") el.textContent = v.split("{h}").join(horaDoIdioma(reserva && reserva.horario));
+    });
+    $("#regras").innerHTML = "";
+    t("regras").forEach((r) => { const li = document.createElement("li"); li.textContent = r; $("#regras").appendChild(li); });
+    document.querySelectorAll(".acomp").forEach((bloco, i) => { $(".acomp-tit", bloco).textContent = t("acomp") + " " + (i + 1); $(".remover", bloco).textContent = t("remover"); });
+  }
+  document.querySelectorAll("[data-lang]").forEach((b) => b.onclick = () => { idioma = b.dataset.lang; aplicarIdioma(); });
+
+  function mostrar(id) { ["carregando", "problema", "pronto", "form"].forEach((x) => { $("#" + x).hidden = x !== id; }); }
+  function problema(codigo) {
+    const [tit, txt] = T[idioma][codigo] || T[idioma].falha;
+    $("#problema-tit").textContent = tit; $("#problema-txt").textContent = txt; mostrar("problema");
+  }
+  function pronto(ja) {
+    $("#pronto-txt").textContent = ja ? t("pronto_ja") : t("pronto_txt").split("{d}").join(dataBr(reserva.entrada)).split("{h}").join(horaDoIdioma(reserva.horario));
+    mostrar("pronto");
+  }
+
+  function acompanhante() {
+    nAcomp += 1;
+    const bloco = document.createElement("div");
+    bloco.className = "acomp";
+    bloco.innerHTML = '<div class="acomp-cab"><span class="acomp-tit"></span><button type="button" class="link remover"></button></div>' +
+      '<div class="grade"><label class="largo" data-campo="acompanhante_nome"><span data-t="nome"></span><input data-a="nome"><small class="msg-erro"></small></label>' +
+      '<label data-campo="acompanhante_genero"><span data-t="genero"></span><select data-a="genero"><option value="" data-t="escolha"></option><option value="feminino" data-t="feminino"></option><option value="masculino" data-t="masculino"></option><option value="outro" data-t="outro"></option></select><small class="msg-erro"></small></label>' +
+      '<label data-campo="acompanhante_nascimento"><span data-t="nascimento"></span><input type="date" data-a="nascimento"><small class="msg-erro"></small></label></div>';
+    $(".remover", bloco).onclick = () => { bloco.remove(); aplicarIdioma(); };
+    $("#acompanhantes").appendChild(bloco);
+    aplicarIdioma();
+  }
+  $("#mais-acomp").onclick = acompanhante;
+
+  function marcarErros(erros) {
+    document.querySelectorAll("[data-campo]").forEach((l) => { l.classList.remove("invalido"); const m = $(".msg-erro", l); if (m) m.textContent = ""; });
+    $("#erro-aceite").textContent = "";
+    let primeiro = null;
+    (erros || []).forEach((e) => {
+      if (e === "aceite") { $("#erro-aceite").textContent = t("erros").aceite; primeiro = primeiro || $("[name=aceite]"); return; }
+      const alvos = document.querySelectorAll('[data-campo="' + e + '"]');
+      alvos.forEach((l) => {
+        const vazio = !($("input,select", l).value || "").trim();
+        if (e.startsWith("acompanhante") && !vazio && alvos.length > 1) return;
+        l.classList.add("invalido"); const m = $(".msg-erro", l); if (m) m.textContent = t("erros")[e] || "";
+        primeiro = primeiro || $("input,select", l);
+      });
+    });
+    if (primeiro) primeiro.focus();
+  }
+
+  $("#form").onsubmit = async (ev) => {
+    ev.preventDefault();
+    const f = ev.target;
+    const corpo = {
+      r: R, d: D, idioma,
+      titular: { nome: f.nome.value, genero: f.genero.value, nascimento: f.nascimento.value, documento: f.documento.value },
+      acompanhantes: [...document.querySelectorAll(".acomp")].map((b) => ({ nome: $("[data-a=nome]", b).value, genero: $("[data-a=genero]", b).value, nascimento: $("[data-a=nascimento]", b).value })),
+      email: f.email.value, whatsapp: f.whatsapp.value, chegada: f.chegada.value, aceite: f.aceite.checked
+    };
+    const botao = $(".enviar"); botao.disabled = true;
+    try {
+      const r = await fetch(API, { method: "POST", headers: { "Content-Type": "text/plain" }, body: JSON.stringify(corpo) });
+      const j = await r.json().catch(() => ({}));
+      if (r.status === 422) { marcarErros(j.erros); return; }
+      if (!r.ok || !j.ok) { problema(j.erro || "falha"); return; }
+      pronto(j.acessoEnviado);
+    } catch (e) { problema("falha"); }
+    finally { botao.disabled = false; }
+  };
+
+  (async function iniciar() {
+    aplicarIdioma();
+    if (!R || !D) return problema("link_invalido");
+    try {
+      const r = await fetch(API + "?r=" + encodeURIComponent(R) + "&d=" + encodeURIComponent(D));
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok || !j.ok) return problema(j.erro || "falha");
+      reserva = j;
+      if (j.acessoEnviado) return pronto(true);
+      $("#r-studio").textContent = (j.studio || "").replace(/ - Guarulhos$/, "");
+      $("#r-entrada").textContent = dataBr(j.entrada);
+      $("#r-saida").textContent = dataBr(j.saida);
+      for (let i = 1; i < (j.hospedes || 1); i++) acompanhante();
+      aplicarIdioma();
+      mostrar("form");
+    } catch (e) { problema("falha"); }
+  })();
+</script>
+</body>
+</html>
