@@ -260,7 +260,7 @@ site_code = '''<!DOCTYPE html>
               <div class="w-6 text-xl text-emerald-400 shrink-0">🔑</div>
               <div>
                 <h3 class="text-sm font-bold text-white" data-i18n="feature_checkin_tit">Auto check-in 24h via fechadura digital</h3>
-                <p class="text-xs text-slate-400 mt-0.5" data-i18n="feature_checkin_desc">O portão abre por QR code e a porta do studio por uma senha só sua: chegue a qualquer hora da noite ou madrugada, sem chave física.</p>
+                <p class="text-xs text-slate-400 mt-0.5" data-i18n="feature_checkin_desc">O portão abre por QR code e a porta com uma tag: chegue a qualquer hora da noite ou madrugada.</p>
               </div>
             </div>
 
@@ -528,7 +528,7 @@ site_code = '''<!DOCTYPE html>
         <div class="glass-card p-3.5 rounded-xl text-center space-y-1">
           <div class="text-xl">🔑</div>
           <h4 class="text-xs font-bold text-white" data-i18n="diff_checkin_tit">Self Check-in 24h</h4>
-          <p class="text-[11px] text-slate-400" data-i18n="diff_checkin_sub">Fechadura eletrônica por código individual</p>
+          <p class="text-[11px] text-slate-400" data-i18n="diff_checkin_sub">Fechadura eletrônica com tag</p>
         </div>
 
         <div class="glass-card p-3.5 rounded-xl text-center space-y-1">
@@ -561,7 +561,7 @@ site_code = '''<!DOCTYPE html>
       <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
         <h2 class="text-xs font-bold uppercase tracking-wider text-emerald-400" data-i18n="sec_studios_tag">Nossas Acomodações</h2>
         <p class="text-3xl sm:text-4xl font-extrabold text-white" data-i18n="sec_studios_tit">Conheça nossas opções privativas</p>
-        <p class="text-slate-400 text-sm" data-i18n="sec_studios_sub">Os quatro studios têm os mesmos itens — muda só o tamanho: fechadura eletrônica com senha da estadia, Wi-Fi fibra de 600 Mbps, Smart TV, ar-condicionado split, cozinha compacta e banheiro privativo.</p>
+        <p class="text-slate-400 text-sm" data-i18n="sec_studios_sub">Os quatro studios têm os mesmos itens — muda só o tamanho: fechadura eletrônica com tag, Wi-Fi fibra de 600 Mbps, Smart TV, ar-condicionado split, cozinha compacta e banheiro privativo.</p>
       </div>
 
       <!-- FILTRO DE CATEGORIA -->
@@ -794,7 +794,7 @@ site_code = '''<!DOCTYPE html>
         <div class="glass-card p-6 rounded-2xl space-y-3">
           <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-xl font-bold">🔑</div>
           <h3 class="text-base font-bold text-white" data-i18n="infra_checkin_tit">Acesso Eletrônico 24h</h3>
-          <p class="text-xs text-slate-400 leading-relaxed" data-i18n="infra_checkin_desc">O portão abre por QR code e a porta do studio por uma senha exclusiva da sua estadia. As instruções chegam automaticamente minutos depois de você preencher o formulário de check-in online — dá para chegar a qualquer hora, sem recepção.</p>
+          <p class="text-xs text-slate-400 leading-relaxed" data-i18n="infra_checkin_desc">O portão abre por QR code e a porta com uma tag. As instruções chegam no dia da entrada, entre 14h e 15h — dá para chegar a qualquer hora, sem recepção.</p>
         </div>
 
         <div class="glass-card p-6 rounded-2xl space-y-3">
@@ -923,7 +923,7 @@ site_code = '''<!DOCTYPE html>
             <span data-i18n="faq_q1">Como funciona o check-in se meu voo chegar de madrugada?</span>
             <span class="text-emerald-400 transition group-open:rotate-180">▼</span>
           </summary>
-          <p class="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed" data-i18n="faq_a1">Tranquilo: o portão abre por QR code e a porta do studio por uma senha só sua, então você entra sozinho a qualquer hora a partir das 15h, inclusive de madrugada. As instruções chegam uns 5 minutos depois que você preenche o formulário de check-in online.</p>
+          <p class="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed" data-i18n="faq_a1">Tranquilo: o portão abre por QR code e a porta com uma tag, então você entra sozinho a qualquer hora a partir das 15h, inclusive de madrugada. As instruções chegam no dia da entrada, entre 14h e 15h.</p>
         </details>
 
 
@@ -1130,7 +1130,7 @@ site_code = '''<!DOCTYPE html>
         detalhe_tipo_espaco: "Studio privativo inteiro · Hospedagem SNT",
         detalhe_capacidade: "Até 2 hóspedes · 1 cama queen · 1 banheiro privativo · Cozinha compacta equipada",
         feature_checkin_tit: "Auto check-in 24h via fechadura digital",
-        feature_checkin_desc: "O portão abre por QR code e a porta do studio por uma senha só sua: chegue a qualquer hora da noite ou madrugada, sem chave física.",
+        feature_checkin_desc: "O portão abre por QR code e a porta com uma tag: chegue a qualquer hora da noite ou madrugada.",
         feature_wifi_tit: "Wi-Fi fibra de 600 Mbps dedicado",
         feature_wifi_desc: "Internet ultra-veloz testada para chamadas de vídeo, reuniões executivas e streaming 4K sem interrupções.",
         feature_cozinha_tit: "Cozinha privativa equipada",
@@ -1192,12 +1192,12 @@ site_code = '''<!DOCTYPE html>
         txt_economia_real: "Sem surpresas",
         vantagem_tempo_real: "Disponibilidade em tempo real",
         diff_wifi_tit: "Wi-Fi 600 Mbps", diff_wifi_sub: "Fibra óptica dedicada ultra-rápida",
-        diff_checkin_tit: "Self Check-in 24h", diff_checkin_sub: "Fechadura eletrônica por código individual",
+        diff_checkin_tit: "Self Check-in 24h", diff_checkin_sub: "Fechadura eletrônica com tag",
         diff_gru_tit: "~20 min de GRU", diff_gru_sub: "12 a 14 km de carro até os terminais",
         diff_cozinha_tit: "Cozinha Equipada", diff_cozinha_sub: "Geladeira, micro-ondas & cafeteira",
         diff_desconto_tit: "Reserva Direta", diff_desconto_sub: "WhatsApp oficial, Pix ou cartão",
         sec_studios_tag: "Nossas Acomodações", sec_studios_tit: "Conheça nossas opções privativas",
-        sec_studios_sub: "Os quatro studios têm os mesmos itens — muda só o tamanho: fechadura eletrônica com senha da estadia, Wi-Fi fibra de 600 Mbps, Smart TV, ar-condicionado split, cozinha compacta e banheiro privativo.",
+        sec_studios_sub: "Os quatro studios têm os mesmos itens — muda só o tamanho: fechadura eletrônica com tag, Wi-Fi fibra de 600 Mbps, Smart TV, ar-condicionado split, cozinha compacta e banheiro privativo.",
         btn_filtro_todos: "Todos os Studios", btn_filtro_amplos: "Studios Amplos", btn_filtro_compactos: "Studios Compactos",
         badge_maior_studio: "AMPLO", badge_executivo: "AMPLO", badge_smart: "COMPACTO", badge_cozy: "COMPACTO",
         btn_ver_fotos: "Ver Fotos", btn_verificar_datas: "Verificar Datas & Disponibilidade",
@@ -1221,7 +1221,7 @@ site_code = '''<!DOCTYPE html>
         td_flexibilidade: "Flexibilidade de Horários", td_flex_direto: "Possibilidade de Early Check-in sob consulta direta", td_flex_plat: "Regras automáticas sem contato direto",
         sec_infra_tag: "Infraestrutura Completa", sec_infra_tit: "Tudo o que você precisa para uma estadia impecável",
         infra_wifi_tit: "Internet Fibra 600 Mbps", infra_wifi_desc: "Conexão dedicada de ultra-alta velocidade com roteador potente. Perfeito para chamadas de vídeo, reuniões executivas e streaming em 4K sem qualquer oscilação.",
-        infra_checkin_tit: "Acesso Eletrônico 24h", infra_checkin_desc: "O portão abre por QR code e a porta do studio por uma senha exclusiva da sua estadia. As instruções chegam automaticamente minutos depois de você preencher o formulário de check-in online — dá para chegar a qualquer hora, sem recepção.",
+        infra_checkin_tit: "Acesso Eletrônico 24h", infra_checkin_desc: "O portão abre por QR code e a porta com uma tag. As instruções chegam no dia da entrada, entre 14h e 15h — dá para chegar a qualquer hora, sem recepção.",
         infra_cozinha_tit: "Cozinha Compacta Privativa", infra_cozinha_desc: "Geladeira com freezer, micro-ondas, cooktop, cafeteira elétrica, sanduicheira, panelas, louças e talheres. Prepare suas refeições com praticidade.",
         infra_ducha_tit: "Banheiro Privativo", infra_ducha_desc: "Box de vidro, ducha quente, bidê, secador de cabelo e toalhas para a estadia.",
         infra_lav_tit: "SNT Lavanderia no prédio", infra_lav_desc: "A SNT Lavanderia Self-Service funciona no andar de baixo, 24 horas, para lavar e secar suas roupas. É um serviço à parte, pago direto no totem.",
@@ -1235,7 +1235,7 @@ site_code = '''<!DOCTYPE html>
         dist_shopping_tit: "Shopping Bosque Maia", dist_shopping_val: "18 minutos",
         faq_tag: "Tire Suas Dúvidas", faq_tit: "Perguntas Frequentes",
         faq_q1: "Como funciona o check-in se meu voo chegar de madrugada?",
-        faq_a1: "Tranquilo: o portão abre por QR code e a porta do studio por uma senha só sua, então você entra sozinho a qualquer hora a partir das 15h, inclusive de madrugada. As instruções chegam uns 5 minutos depois que você preenche o formulário de check-in online.",
+        faq_a1: "Tranquilo: o portão abre por QR code e a porta com uma tag, então você entra sozinho a qualquer hora a partir das 15h, inclusive de madrugada. As instruções chegam no dia da entrada, entre 14h e 15h.",
         faq_q3: "Qual a diferença entre os studios?",
         faq_a3: "Só o tamanho: dois são maiores e dois mais compactos. Cama queen, cozinha, ar-condicionado, Smart TV, Wi-Fi de 600 Mbps e banheiro privativo são iguais em todos.",
         faq_q4: "A internet suporta reuniões em vídeo e trabalho remoto?",
@@ -1276,7 +1276,7 @@ site_code = '''<!DOCTYPE html>
         detalhe_tipo_espaco: "Entire private studio · Hosted by SNT Studios",
         detalhe_capacidade: "Up to 2 guests · 1 queen bed · 1 private bathroom · Equipped kitchenette",
         feature_checkin_tit: "24/7 self check-in via electronic lock",
-        feature_checkin_desc: "The building gate opens with a QR code and your studio door with your own passcode: arrive any time of night, no physical keys.",
+        feature_checkin_desc: "The building gate opens with a QR code and your studio door with a tag: arrive any time of night.",
         feature_wifi_tit: "Dedicated 600 Mbps fiber Wi-Fi",
         feature_wifi_desc: "Ultra-fast, reliable internet tested for video calls, remote work, and uninterrupted 4K streaming.",
         feature_cozinha_tit: "Fully equipped private kitchenette",
@@ -1338,12 +1338,12 @@ site_code = '''<!DOCTYPE html>
         txt_economia_real: "No surprises",
         vantagem_tempo_real: "Real-time calendar availability",
         diff_wifi_tit: "600 Mbps Wi-Fi", diff_wifi_sub: "Dedicated ultra-fast fiber",
-        diff_checkin_tit: "24/7 Self Check-in", diff_checkin_sub: "Electronic passcode lock",
+        diff_checkin_tit: "24/7 Self Check-in", diff_checkin_sub: "Electronic lock with tag",
         diff_gru_tit: "~20 min to GRU", diff_gru_sub: "12 to 14 km by car to the terminals",
         diff_cozinha_tit: "Equipped Kitchen", diff_cozinha_sub: "Fridge, microwave & coffee maker",
         diff_desconto_tit: "Direct Booking", diff_desconto_sub: "Official WhatsApp, Pix or card",
         sec_studios_tag: "Our Accommodations", sec_studios_tit: "Explore our private studios",
-        sec_studios_sub: "All four studios have the same amenities — only the size changes: electronic lock with a stay passcode, 600 Mbps fiber Wi-Fi, Smart TV, split air conditioning, kitchenette and private bathroom.",
+        sec_studios_sub: "All four studios have the same amenities — only the size changes: electronic lock with tag, 600 Mbps fiber Wi-Fi, Smart TV, split air conditioning, kitchenette and private bathroom.",
         btn_filtro_todos: "All Studios", btn_filtro_amplos: "Larger Studios", btn_filtro_compactos: "Compact Studios",
         badge_maior_studio: "LARGER", badge_executivo: "LARGER", badge_smart: "COMPACT", badge_cozy: "COMPACT",
         btn_ver_fotos: "View Photos", btn_verificar_datas: "Check Dates & Availability",
@@ -1367,7 +1367,7 @@ site_code = '''<!DOCTYPE html>
         td_flexibilidade: "Schedule Flexibility", td_flex_direto: "Early check-in option upon direct inquiry", td_flex_plat: "Automated, inflexible rules",
         sec_infra_tag: "Full Amenities", sec_infra_tit: "Everything you need for a seamless stay",
         infra_wifi_tit: "600 Mbps Fiber Wi-Fi", infra_wifi_desc: "High-speed dedicated Wi-Fi with strong coverage across all studios for streaming and business calls.",
-        infra_checkin_tit: "24/7 Digital Access", infra_checkin_desc: "The gate opens with a QR code and your studio door with a passcode unique to your stay. Instructions arrive automatically minutes after you fill in the online check-in form — arrive any time, no front desk.",
+        infra_checkin_tit: "24/7 Digital Access", infra_checkin_desc: "The gate opens with a QR code and your studio door with a tag. Instructions arrive on your check-in day, between 2 and 3 PM — arrive any time, no front desk.",
         infra_cozinha_tit: "Private Kitchenette", infra_cozinha_desc: "Fridge with freezer, microwave, stovetop, electric coffee maker, sandwich maker, cookware and tableware. Cook your own meals with ease.",
         infra_ducha_tit: "Private Bathroom", infra_ducha_desc: "Glass shower, hot shower, bidet, hair dryer and towels for your stay.",
         infra_lav_tit: "SNT Laundromat in the building", infra_lav_desc: "SNT self-service laundromat runs downstairs, 24 hours, to wash and dry your clothes. It is a separate service, paid at the kiosk.",
@@ -1381,7 +1381,7 @@ site_code = '''<!DOCTYPE html>
         dist_shopping_tit: "Bosque Maia Mall", dist_shopping_val: "18 minutes",
         faq_tag: "Got Questions?", faq_tit: "Frequently Asked Questions",
         faq_q1: "How does check-in work if my flight lands late at night or early morning?",
-        faq_a1: "No problem: the gate opens with a QR code and your studio door with your own passcode, so you can let yourself in any time from 3 PM, even in the middle of the night. Instructions arrive about 5 minutes after you fill in the online check-in form.",
+        faq_a1: "No problem: the gate opens with a QR code and your studio door with a tag, so you can let yourself in any time from 3 PM, even in the middle of the night. Instructions arrive on your check-in day, between 2 and 3 PM.",
         faq_q3: "What is the difference between the studios?",
         faq_a3: "Only the size: two are larger and two are more compact. Queen bed, kitchenette, air conditioning, Smart TV, 600 Mbps Wi-Fi and private bathroom are the same in all of them.",
         faq_q4: "Is the Wi-Fi fast enough for remote work and video meetings?",
@@ -1422,7 +1422,7 @@ site_code = '''<!DOCTYPE html>
         detalhe_tipo_espaco: "Estudio privado completo · Alojamiento SNT",
         detalhe_capacidade: "Hasta 2 huéspedes · 1 cama queen · 1 baño privado · Cocina compacta equipada",
         feature_checkin_tit: "Auto check-in 24h con cerradura electrónica",
-        feature_checkin_desc: "El portón abre con código QR y la puerta del estudio con una clave solo suya: llegue a cualquier hora de la noche, sin llaves físicas.",
+        feature_checkin_desc: "El portón abre con código QR y la puerta con una tag: llegue a cualquier hora de la noche.",
         feature_wifi_tit: "Wi-Fi fibra de 600 Mbps dedicado",
         feature_wifi_desc: "Conexión de alta velocidad probada para videollamadas, trabajo remoto y streaming en 4K sin cortes.",
         feature_cozinha_tit: "Cocina privada equipada",
@@ -1484,12 +1484,12 @@ site_code = '''<!DOCTYPE html>
         txt_economia_real: "Sin sorpresas",
         vantagem_tempo_real: "Disponibilidad en tiempo real",
         diff_wifi_tit: "Wi-Fi 600 Mbps", diff_wifi_sub: "Fibra óptica dedicada ultra rápida",
-        diff_checkin_tit: "Self Check-in 24h", diff_checkin_sub: "Cerradura electrónica con código personal",
+        diff_checkin_tit: "Self Check-in 24h", diff_checkin_sub: "Cerradura electrónica con tag",
         diff_gru_tit: "~20 min de GRU", diff_gru_sub: "12 a 14 km en auto hasta las terminales",
         diff_cozinha_tit: "Cocina Equipada", diff_cozinha_sub: "Heladera, microondas y cafetera",
         diff_desconto_tit: "Reserva Directa", diff_desconto_sub: "WhatsApp oficial, Pix o tarjeta",
         sec_studios_tag: "Nuestros Alojamientos", sec_studios_tit: "Descubra nuestras opciones privadas",
-        sec_studios_sub: "Los cuatro estudios tienen el mismo equipamiento — solo cambia el tamaño: cerradura electrónica con clave de la estadía, Wi-Fi de fibra 600 Mbps, Smart TV, aire split, cocina compacta y baño privado.",
+        sec_studios_sub: "Los cuatro estudios tienen el mismo equipamiento — solo cambia el tamaño: cerradura electrónica con tag, Wi-Fi de fibra 600 Mbps, Smart TV, aire split, cocina compacta y baño privado.",
         btn_filtro_todos: "Todos los Estudios", btn_filtro_amplos: "Estudios Amplios", btn_filtro_compactos: "Estudios Compactos",
         badge_maior_studio: "AMPLIO", badge_executivo: "AMPLIO", badge_smart: "COMPACTO", badge_cozy: "COMPACTO",
         btn_ver_fotos: "Ver Fotos", btn_verificar_datas: "Verificar Fechas y Disponibilidad",
@@ -1513,7 +1513,7 @@ site_code = '''<!DOCTYPE html>
         td_flexibilidade: "Flexibilidad Horaria", td_flex_direto: "Early check-in disponible bajo consulta directa", td_flex_plat: "Normas automáticas sin contacto humano",
         sec_infra_tag: "Infraestructura Completa", sec_infra_tit: "Todo lo que necesita para una estancia impecable",
         infra_wifi_tit: "Internet Fibra 600 Mbps", infra_wifi_desc: "Conexión dedicada de alta velocidad para videollamadas, trabajo y streaming 4K.",
-        infra_checkin_tit: "Acceso Electrónico 24h", infra_checkin_desc: "El portón abre con código QR y la puerta del estudio con una clave exclusiva de su estadía. Las instrucciones llegan automáticamente minutos después de completar el formulario de check-in online — llegue a cualquier hora, sin recepción.",
+        infra_checkin_tit: "Acceso Electrónico 24h", infra_checkin_desc: "El portón abre con código QR y la puerta con una tag. Las instrucciones llegan el día de su entrada, entre las 14:00 y las 15:00 — llegue a cualquier hora, sin recepción.",
         infra_cozinha_tit: "Cocina Compacta Privada", infra_cozinha_desc: "Heladera con freezer, microondas, anafe, cafetera eléctrica, sandwichera, ollas, vajilla y cubiertos. Prepare sus comidas con practicidad.",
         infra_ducha_tit: "Baño Privado", infra_ducha_desc: "Box de vidrio, ducha caliente, bidé, secador de pelo y toallas para la estadía.",
         infra_lav_tit: "SNT Lavandería en el edificio", infra_lav_desc: "La SNT Lavandería Self-Service funciona en la planta baja, las 24 horas, para lavar y secar su ropa. Es un servicio aparte, pagado en el tótem.",
@@ -1527,7 +1527,7 @@ site_code = '''<!DOCTYPE html>
         dist_shopping_tit: "Shopping Bosque Maia", dist_shopping_val: "18 minutos",
         faq_tag: "Preguntas Frecuentes", faq_tit: "Dudas Habituales",
         faq_q1: "¿Cómo funciona el check-in si mi vuelo llega de madrugada?",
-        faq_a1: "Sin problema: el portón abre con código QR y la puerta del estudio con una clave solo suya, así que entra solo a cualquier hora desde las 15:00, incluso de madrugada. Las instrucciones llegan unos 5 minutos después de completar el formulario de check-in online.",
+        faq_a1: "Sin problema: el portón abre con código QR y la puerta con una tag, así que entra solo a cualquier hora desde las 15:00, incluso de madrugada. Las instrucciones llegan el día de su entrada, entre las 14:00 y las 15:00.",
         faq_q3: "¿Cuál es la diferencia entre los estudios?",
         faq_a3: "Solo el tamaño: dos son más grandes y dos más compactos. Cama queen, cocina, aire acondicionado, Smart TV, Wi-Fi de 600 Mbps y baño privado son iguales en todos.",
         faq_q4: "¿El Wi-Fi es apto para videollamadas y trabajo remoto?",
