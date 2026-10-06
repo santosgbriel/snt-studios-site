@@ -1,24 +1,14 @@
-# -*- coding: utf-8 -*-
-from pathlib import Path
-
-"""
-Site oficial do SNT Studios com experiência Airbnb (Listing Reserve Widget).
-Totalmente multilíngue (PT / EN / ES), com calendário interativo de seleção de datas por dois cliques,
-nomes comerciais exclusivos (sem números internos), total com diárias e limpeza embutidas (sem taxas extras),
-e zero menções a ferramentas internas.
-"""
-
-site_code = '''<!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth" data-idioma-fixo="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SNT Studios · Hospitalidade & Hospedagem Próximo ao Aeroporto de Guarulhos (GRU)</title>
+  <title>SNT Studios · Estudios privados cerca del Aeropuerto de Guarulhos (GRU)</title>
   
   <!-- SEO & Social Sharing -->
-  <meta name="description" content="Studios privativos modernos e confortáveis em Guarulhos, a cerca de 20 minutos de carro do Aeroporto GRU. Internet fibra 600MB, fechadura eletrônica 24h, cozinha compacta e reserva direta pelo WhatsApp oficial.">
+  <meta name="description" content="Estudios privados y modernos en Guarulhos, a unos 20 minutos en coche del Aeropuerto GRU. Internet de fibra 600 Mb, cerradura electrónica 24 h, cocina compacta y reserva directa por el WhatsApp oficial.">
   <meta name="robots" content="index,follow,max-image-preview:large">
-  <link rel="canonical" href="https://www.sntstudios.com/">
+  <link rel="canonical" href="https://www.sntstudios.com/es/">
   <link rel="alternate" hreflang="pt-BR" href="https://www.sntstudios.com/">
   <link rel="alternate" hreflang="en" href="https://www.sntstudios.com/en/">
   <link rel="alternate" hreflang="es" href="https://www.sntstudios.com/es/">
@@ -26,9 +16,9 @@ site_code = '''<!DOCTYPE html>
   <meta property="og:title" content="SNT Studios · Hospedagem Moderna perto do Aeroporto GRU">
   <meta property="og:description" content="Reserve direto no WhatsApp oficial. Studios privativos com Wi-Fi 600MB, fechadura digital 24h e cozinha completa.">
   <meta property="og:image" content="https://www.sntstudios.com/assets/og-cover.jpg">
-  <meta property="og:url" content="https://www.sntstudios.com/">
+  <meta property="og:url" content="https://www.sntstudios.com/es/">
   <meta property="og:type" content="website">
-  <meta property="og:locale" content="pt_BR">
+  <meta property="og:locale" content="es_ES">
   <meta property="og:site_name" content="SNT Studios">
   <meta name="twitter:card" content="summary_large_image">
 
@@ -2666,66 +2656,3 @@ site_code = '''<!DOCTYPE html>
 
 </body>
 </html>
-'''
-
-raiz = Path(__file__).resolve().parent
-(raiz / 'index.html').write_text(site_code, encoding='utf-8')
-
-# Versões em inglês e espanhol (item 163): o mesmo site com o idioma fixo na
-# URL, cada uma com o próprio canonical, para o Google ligar as três pelo
-# hreflang. O texto troca pelo mesmo I18N do script.
-import re
-
-VARIANTES = {
-    'en': {
-        'lang': 'en',
-        'locale': 'en_US',
-        'title': 'SNT Studios · Private Studios near Guarulhos Airport (GRU)',
-        'description': 'Modern private studios in Guarulhos, about 20 minutes by car from GRU Airport. 600 Mb fiber internet, 24h smart lock, kitchenette and direct booking on our official WhatsApp.',
-    },
-    'es': {
-        'lang': 'es',
-        'locale': 'es_ES',
-        'title': 'SNT Studios · Estudios privados cerca del Aeropuerto de Guarulhos (GRU)',
-        'description': 'Estudios privados y modernos en Guarulhos, a unos 20 minutos en coche del Aeropuerto GRU. Internet de fibra 600 Mb, cerradura electrónica 24 h, cocina compacta y reserva directa por el WhatsApp oficial.',
-    },
-}
-
-
-def trocar(texto, antes, depois):
-    assert antes in texto, 'build_site.py: não achei ' + antes
-    return texto.replace(antes, depois, 1)
-
-
-for codigo, v in VARIANTES.items():
-    pagina = site_code
-    pagina = trocar(pagina, '<html lang="pt-BR" class="scroll-smooth">', f'<html lang="{v["lang"]}" class="scroll-smooth" data-idioma-fixo="{codigo}">')
-    pagina = trocar(pagina, '<link rel="canonical" href="https://www.sntstudios.com/">', f'<link rel="canonical" href="https://www.sntstudios.com/{codigo}/">')
-    pagina = trocar(pagina, '<meta property="og:url" content="https://www.sntstudios.com/">', f'<meta property="og:url" content="https://www.sntstudios.com/{codigo}/">')
-    pagina = trocar(pagina, '<meta property="og:locale" content="pt_BR">', f'<meta property="og:locale" content="{v["locale"]}">')
-    pagina = re.sub(r'<title>[^<]*</title>', '<title>' + v['title'] + '</title>', pagina, count=1)
-    pagina = re.sub(r'<meta name="description" content="[^"]*">', '<meta name="description" content="' + v['description'] + '">', pagina, count=1)
-    (raiz / codigo).mkdir(exist_ok=True)
-    (raiz / codigo / 'index.html').write_text(pagina, encoding='utf-8')
-
-ALTERNATIVAS = ''.join(
-    f'    <xhtml:link rel="alternate" hreflang="{h}" href="https://www.sntstudios.com/{c}"/>' + chr(10)
-    for h, c in (('pt-BR', ''), ('en', 'en/'), ('es', 'es/'), ('x-default', ''))
-)
-(raiz / 'sitemap.xml').write_text(
-    '<?xml version="1.0" encoding="UTF-8"?>' + chr(10)
-    + '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">' + chr(10)
-    + ''.join(
-        '  <url>' + chr(10) + f'    <loc>https://www.sntstudios.com/{c}</loc>' + chr(10) + ALTERNATIVAS + '  </url>' + chr(10)
-        for c in ('', 'en/', 'es/')
-    )
-    + '  <url>' + chr(10) + '    <loc>https://www.sntstudios.com/privacidade.html</loc>' + chr(10) + '  </url>' + chr(10)
-    + '</urlset>' + chr(10),
-    encoding='utf-8',
-)
-(raiz / 'robots.txt').write_text(
-    'User-agent: *' + chr(10) + 'Allow: /' + chr(10) + chr(10) + 'Sitemap: https://www.sntstudios.com/sitemap.xml' + chr(10),
-    encoding='utf-8',
-)
-
-print("Generated index.html with Airbnb 2-tap range picker, commercial studio names, bundled rates, and multi-language support (PT/EN/ES).")

@@ -18,6 +18,9 @@ test.beforeEach(async ({ page }) => {
   await page.addInitScript(() => {
     window.__abertos = [];
     window.open = (url) => { window.__abertos.push(String(url)); return null; };
+    // O funil (item 163) vira registro: nada sai para a produção no teste.
+    window.__eventos = [];
+    navigator.sendBeacon = (url, corpo) => { corpo.text().then((x) => window.__eventos.push(JSON.parse(x))); return true; };
   });
   // O navegador do teste roda no fuso desta máquina, o mesmo do Node.
   const d = new Date(); d.setDate(d.getDate() + 12);
@@ -115,4 +118,43 @@ test("o site não fala em 10% de desconto em nenhum idioma (05/10/2026)", async 
   }
   const html = await page.content();
   expect(html).not.toMatch(/10\s?%|10%25/);
+});
+test("o funil registra cada etapa sem dado pessoal, e a cotação vai ao WhatsApp com código (item 163)", async ({ page }) => {
+  const entrada = await hojeMais(page, 5);
+  const saida = await hojeMais(page, 8);
+  await page.locator("#airbnbDateBox button").first().click();
+  await page.locator(`#calendarioAirbnb button[data-date="${entrada}"]`).first().click();
+  await page.locator(`#calendarioAirbnb button[data-date="${saida}"]`).first().click();
+  await expect(page.locator("#resultadoCotacao")).toContainText("Studio Amplo A");
+  await page.locator("#resultadoCotacao button[onclick*='abrirWhatsAppCotacao']").first().click();
+  await page.waitForTimeout(200);
+
+  const eventos = await page.evaluate(() => window.__eventos);
+  const nomes = eventos.map((e) => e.evento);
+  for (const etapa of ["visita", "calendario", "primeira_data", "datas", "cotacao", "whatsapp_cotacao"]) expect(nomes).toContain(etapa);
+  // Uma sessão só, com id aleatório, e nenhum campo além dos conhecidos.
+  expect(new Set(eventos.map((e) => e.sessao)).size).toBe(1);
+  expect(eventos[0].sessao).toMatch(/^[a-z0-9]{8,24}$/);
+  const permitidos = new Set(["evento", "sessao", "idioma", "origem", "studio", "codigo", "entrada", "saida", "noites", "hospedes", "total"]);
+  for (const e of eventos) for (const k of Object.keys(e)) expect(permitidos.has(k)).toBe(true);
+
+  const cot = eventos.find((e) => e.evento === "whatsapp_cotacao");
+  expect(cot.codigo).toMatch(/^SNT-[A-HJ-NP-Z2-9]{5}$/);
+  expect(cot.entrada).toBe(entrada);
+  expect(cot.total).toBe(870);
+  const texto = new URL((await page.evaluate(() => window.__abertos))[0]).searchParams.get("text");
+  expect(texto).toContain(cot.codigo);
+});
+
+test("as versões /en/ e /es/ abrem no idioma da URL e apontam umas para as outras", async ({ page }) => {
+  await page.goto("/en/");
+  await expect(page.locator("html")).toHaveAttribute("lang", "en");
+  expect(await page.evaluate(() => idiomaAtual)).toBe("en");
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", "https://www.sntstudios.com/en/");
+  await expect(page.locator('link[hreflang="es"]')).toHaveAttribute("href", "https://www.sntstudios.com/es/");
+  // As imagens e o CSS vêm da raiz, não de /en/assets.
+  const css = await page.evaluate(() => getComputedStyle(document.body).backgroundColor);
+  expect(css).not.toBe("rgba(0, 0, 0, 0)");
+  await page.goto("/es/");
+  expect(await page.evaluate(() => idiomaAtual)).toBe("es");
 });
