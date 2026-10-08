@@ -2207,6 +2207,9 @@ site_code = '''<!DOCTYPE html>
         : "Studio Privativo";
 
       const totalFormatado = studioInfo ? formatarMoeda(studioInfo.totalDireta) : "";
+      // 08/10/2026: o total é o do Pix; no cartão, +5%, em até 3x.
+      const cartaoFormatado = studioInfo && Number.isFinite(Number(studioInfo.totalCartao)) ? formatarMoeda(studioInfo.totalCartao) : "";
+      const parcelasCartao = studioInfo && studioInfo.parcelasCartao ? studioInfo.parcelasCartao : 3;
 
       let linhas = [];
 
@@ -2219,7 +2222,7 @@ site_code = '''<!DOCTYPE html>
           "- Guests: " + guests + " person" + (Number(guests) > 1 ? "s" : "")
         ];
         if (studioInfo) {
-          linhas.push("- Accommodation: " + nomeStudio + " (" + totalFormatado + " total bundled rate)");
+          linhas.push("- Accommodation: " + nomeStudio + " (" + totalFormatado + " total via Pix" + (cartaoFormatado ? " or " + cartaoFormatado + " by credit card, up to " + parcelasCartao + " installments" : "") + ")");
         }
         linhas.push("");
         linhas.push("Could you please confirm availability and provide payment details?");
@@ -2232,7 +2235,7 @@ site_code = '''<!DOCTYPE html>
           "- Huespedes: " + guests + " persona" + (Number(guests) > 1 ? "s" : "")
         ];
         if (studioInfo) {
-          linhas.push("- Alojamiento: " + nomeStudio + " (" + totalFormatado + " tarifa total consolidada)");
+          linhas.push("- Alojamiento: " + nomeStudio + " (" + totalFormatado + " total por Pix" + (cartaoFormatado ? " o " + cartaoFormatado + " con tarjeta, hasta " + parcelasCartao + " cuotas" : "") + ")");
         }
         linhas.push("");
         linhas.push("Podrian confirmar la disponibilidad y los pasos a seguir, por favor?");
@@ -2245,7 +2248,7 @@ site_code = '''<!DOCTYPE html>
           "- Hospedes: " + guests + " pessoa" + (Number(guests) > 1 ? "s" : "")
         ];
         if (studioInfo) {
-          linhas.push("- Acomodacao: " + nomeStudio + " (" + totalFormatado + " total da estadia)");
+          linhas.push("- Acomodacao: " + nomeStudio + " (" + totalFormatado + " no Pix" + (cartaoFormatado ? " ou " + cartaoFormatado + " no cartao, em ate " + parcelasCartao + "x" : "") + ")");
         }
         linhas.push("");
         linhas.push("Poderiam confirmar a disponibilidade e os proximos passos, por favor?");
@@ -2392,6 +2395,10 @@ site_code = '''<!DOCTYPE html>
               </div>
               <span class="text-xl font-black text-emerald-400">${formatarMoeda(studio.totalDireta)}</span>
             </div>
+            ${Number.isFinite(Number(studio.totalCartao)) ? `<div class="flex items-center justify-between text-[11px] text-slate-300" data-pagamento="cartao">
+              <span>${idiomaAtual === 'en' ? 'Price above via Pix · by credit card' : (idiomaAtual === 'es' ? 'Precio arriba por Pix · con tarjeta' : 'Valor acima no Pix · no cartão')}</span>
+              <span class="font-semibold text-white">${formatarMoeda(studio.totalCartao)} <span class="font-normal text-slate-400">${idiomaAtual === 'en' ? 'up to' : (idiomaAtual === 'es' ? 'hasta' : 'em até')} ${studio.parcelasCartao || 3}x ${idiomaAtual === 'en' ? 'of' : 'de'} ${formatarMoeda(studio.valorParcela)}</span></span>
+            </div>` : ''}
           </div>
 
           <!-- BOTÃO DE AÇÃO WHATSAPP OFICIAL -->

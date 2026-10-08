@@ -33,7 +33,7 @@ test.beforeEach(async ({ page }) => {
       json: {
         ok: true, entrada: u.searchParams.get("entrada"), saida: u.searchParams.get("saida"),
         studios: [
-          { numero: 12, disponivel: true, totalDireta: 870, economia: 97, noites: 3, porNoite: 290 },
+          { numero: 12, disponivel: true, totalDireta: 870, economia: 97, noites: 3, porNoite: 290, totalCartao: 913.5, parcelasCartao: 3, valorParcela: 304.5 },
           { numero: 11, disponivel: false },
         ],
       },
@@ -144,6 +144,11 @@ test("o funil registra cada etapa sem dado pessoal, e a cotação vai ao WhatsAp
   expect(cot.total).toBe(870);
   const texto = new URL((await page.evaluate(() => window.__abertos))[0]).searchParams.get("text");
   expect(texto).toContain(cot.codigo);
+  // 08/10/2026: o total é o do Pix; o cartão sai +5%, em até 3x, na tela e na mensagem.
+  await expect(page.locator("#resultadoCotacao [data-pagamento='cartao']").first()).toContainText("913,50");
+  await expect(page.locator("#resultadoCotacao [data-pagamento='cartao']").first()).toContainText("3x");
+  expect(texto).toContain("no Pix ou R$");
+  expect(texto).toContain("no cartao, em ate 3x");
 });
 
 test("as versões /en/ e /es/ abrem no idioma da URL e apontam umas para as outras", async ({ page }) => {
