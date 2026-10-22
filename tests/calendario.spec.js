@@ -25,8 +25,10 @@ test.beforeEach(async ({ page }) => {
   // O navegador do teste roda no fuso desta máquina, o mesmo do Node.
   const d = new Date(); d.setDate(d.getDate() + 12);
   const ocupada = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+  const b = new Date(); b.setDate(b.getDate() + 9);
+  const semCheckout = `${b.getFullYear()}-${String(b.getMonth() + 1).padStart(2, "0")}-${String(b.getDate()).padStart(2, "0")}`;
   await page.route("**/api/studios/public/ocupacao**", (route) =>
-    route.fulfill({ json: { ok: true, totalmenteOcupadas: [ocupada] } }));
+    route.fulfill({ json: { ok: true, totalmenteOcupadas: [ocupada], diasSemCheckout: [semCheckout] } }));
   await page.route("**/api/studios/public/cotacao**", async (route) => {
     const u = new URL(route.request().url());
     await route.fulfill({
@@ -76,6 +78,42 @@ test("abre como sobreposição na tela, fica aberto na primeira data, fecha na s
   const resultado = page.locator("#resultadoCotacao");
   await expect(resultado).toContainText("Studio Amplo A");
   await expect(resultado).toContainText("870");
+});
+
+test("explica check-out bloqueado e oferece a próxima saída permitida sem apagar a entrada", async ({ page }) => {
+  const entrada = await hojeMais(page, 5);
+  const bloqueada = await hojeMais(page, 9);
+  const sugerida = await hojeMais(page, 10);
+
+  await page.locator("#airbnbDateBox button").first().click();
+  await page.locator(`#calendarioAirbnb button[data-date="${entrada}"]`).first().click();
+  const diaBloqueado = page.locator(`#calendarioAirbnb button[data-date="${bloqueada}"]`).first();
+  await expect(diaBloqueado).toHaveAttribute("data-checkout-bloqueado", "true");
+  await diaBloqueado.click();
+
+  await expect(page.locator("#calendarioAirbnb")).toBeVisible();
+  await expect(page.locator("#inputCheckIn")).toHaveValue(entrada);
+  await expect(page.locator("#inputCheckOut")).toHaveValue("");
+  await expect(page.locator("#calAvisoRestricao")).toBeVisible();
+  await expect(page.locator("#calAvisoRestricaoTexto")).toContainText("Não é possível fazer check-out");
+  await expect(page.locator("#calAvisoRestricaoAcao")).toContainText(sugerida.split("-").reverse().join("/"));
+
+  await page.locator("#calAvisoRestricaoAcao").click();
+  await expect(page.locator("#inputCheckOut")).toHaveValue(sugerida);
+  await expect(page.locator("#calendarioAirbnb")).toBeHidden();
+});
+
+test("impede estadia acima de 87 noites mesmo fora da grade visível", async ({ page }) => {
+  const entrada = await hojeMais(page, 1);
+  const saidaLonga = await hojeMais(page, 89);
+
+  await page.locator("#airbnbDateBox button").first().click();
+  await page.evaluate((data) => window.selecionarDiaCalendario(data), entrada);
+  await page.evaluate((data) => window.selecionarDiaCalendario(data), saidaLonga);
+
+  await expect(page.locator("#inputCheckIn")).toHaveValue(entrada);
+  await expect(page.locator("#inputCheckOut")).toHaveValue("");
+  await expect(page.locator("#calAvisoRestricaoTexto")).toContainText("no máximo 87 noites");
 });
 
 test("o botão do WhatsApp leva as datas e o studio da cotação", async ({ page }) => {
