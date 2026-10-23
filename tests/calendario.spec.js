@@ -87,7 +87,14 @@ test("explica check-out bloqueado e oferece a próxima saída permitida sem apag
 
   await page.locator("#airbnbDateBox button").first().click();
   await page.locator(`#calendarioAirbnb button[data-date="${entrada}"]`).first().click();
-  const diaBloqueado = page.locator(`#calendarioAirbnb button[data-date="${bloqueada}"]`).first();
+  // A data pode aparecer também como dia adjacente no outro mês da grade.
+  // No celular só um mês fica visível; avance como o hóspede faria quando a
+  // saída cai no mês seguinte. No desktop, onde os dois meses aparecem, não
+  // há navegação desnecessária.
+  if (await page.locator(`#calendarioAirbnb button[data-date="${bloqueada}"]:visible`).count() === 0) {
+    await page.locator('#calendarioAirbnb button[aria-label="Próximo mês"]:visible').click();
+  }
+  const diaBloqueado = page.locator(`#calendarioAirbnb button[data-date="${bloqueada}"]:visible`).first();
   await expect(diaBloqueado).toHaveAttribute("data-checkout-bloqueado", "true");
   await diaBloqueado.click();
 
