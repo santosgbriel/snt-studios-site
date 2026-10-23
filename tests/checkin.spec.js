@@ -27,6 +27,7 @@ test("mostra studio e datas, e um acompanhante para reserva de 2 pessoas", async
 });
 
 test("envia a ficha com o link e mostra quando o acesso chega", async ({ page }) => {
+  await page.clock.setFixedTime(new Date("2026-10-08T12:00:00-03:00"));
   const enviados = await simular(page);
   await page.goto("/checkin/?r=158000001&d=2026-10-10");
   await page.fill("[name=nome]", "Fulana Exemplo");
@@ -88,4 +89,26 @@ test("o horário do acesso sai no formato de cada idioma", async ({ page }) => {
   await expect(page.locator(".sub")).toContainText("from 2 PM");
   await page.click("[data-lang=es]");
   await expect(page.locator(".sub")).toContainText("desde las 14:00");
+});
+
+test("check-in feito depois de a estadia começar diz que o acesso chega em minutos (22/10/2026)", async ({ page }) => {
+  // Perdeu a noite de 10/10 e preencheu de madrugada no dia 11.
+  await page.clock.setFixedTime(new Date("2026-10-11T05:50:00-03:00"));
+  await simular(page);
+  await page.goto("/checkin/?r=158000001&d=2026-10-10");
+  await page.fill("[name=nome]", "Fulana Exemplo");
+  await page.selectOption("[name=genero]", "feminino");
+  await page.fill("[name=nascimento]", "1990-05-20");
+  await page.fill("[name=documento]", "12345678900");
+  await page.fill(".acomp [data-a=nome]", "Beltrano Exemplo");
+  await page.selectOption(".acomp [data-a=genero]", "masculino");
+  await page.fill(".acomp [data-a=nascimento]", "1988-01-02");
+  await page.fill("[name=email]", "fulana@exemplo.com");
+  await page.fill("[name=whatsapp]", "+55 11 91234-5678");
+  await page.fill("[name=chegada]", "07:00");
+  await page.check("[name=aceite]");
+  await page.click(".enviar");
+  await expect(page.locator("#pronto")).toBeVisible();
+  await expect(page.locator("#pronto-txt")).toContainText(/poucos minutos|few minutes|pocos minutos/);
+  await expect(page.locator("#pronto-txt")).not.toContainText("10/10/2026");
 });

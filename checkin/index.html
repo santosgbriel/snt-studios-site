@@ -121,7 +121,7 @@
       lgpd: "Usamos estes dados só para o registro da hospedagem e para enviar o seu acesso. Ficam guardados por 12 meses após a saída.", privacidade: "Política de Privacidade",
       regras: ["Check-in a partir das 15h e check-out até as 11h.", "Proibido fumar nos studios e nas áreas comuns.", "Sem festas, eventos ou visitas que não estejam na reserva.", "Silêncio das 22h às 8h.", "Não aceitamos animais de estimação.", "Idade mínima para o check-in: 18 anos."],
       erros: { nome: "Escreva nome e sobrenome.", genero: "Escolha uma opção.", nascimento: "Confira a data.", documento: "Confira o documento.", email: "Confira o e-mail.", whatsapp: "Número com DDD (e código do país, se não for do Brasil).", chegada: "Informe um horário.", aceite: "É preciso aceitar as regras.", acompanhante_nome: "Nome e sobrenome do acompanhante.", acompanhante_genero: "Gênero do acompanhante.", acompanhante_nascimento: "Data de nascimento do acompanhante." },
-      pronto_tit: "Check-in recebido!", pronto_txt: "As instruções de acesso chegam no dia {d}, a partir das {h}, pelo chat onde você reservou. Boa viagem!", pronto_ja: "Seu acesso já foi enviado pelo chat onde você reservou.",
+      pronto_tit: "Check-in recebido!", pronto_txt: "As instruções de acesso chegam no dia {d}, a partir das {h}, pelo chat onde você reservou. Boa viagem!", pronto_ja: "Seu acesso já foi enviado pelo chat onde você reservou.", pronto_agora: "Como a sua estadia já começou, as instruções de acesso chegam em poucos minutos pelo chat onde você reservou (e no WhatsApp, se você já falou com a gente por lá).",
       link_invalido: ["Link não encontrado", "Confira se abriu o link completo da mensagem da reserva. Se continuar, fale com a gente pelo chat da plataforma."],
       reserva_encerrada: ["Estadia encerrada", "Esta reserva já terminou."], acesso_ja_enviado: ["Acesso já enviado", "O acesso desta reserva já foi enviado. Para mudar algum dado, fale com a gente pelo chat da plataforma."],
       falha: ["Não conseguimos carregar", "Tente de novo em alguns minutos."]
@@ -135,7 +135,7 @@
       lgpd: "We use this data only for the guest registration and to send your access. It is kept for 12 months after check-out.", privacidade: "Privacy Policy",
       regras: ["Check-in from 3 PM, check-out by 11 AM.", "No smoking in the studios or common areas.", "No parties, events or visitors not on the booking.", "Quiet hours from 10 PM to 8 AM.", "No pets.", "Minimum check-in age: 18."],
       erros: { nome: "Write your first and last name.", genero: "Choose an option.", nascimento: "Check the date.", documento: "Check the document.", email: "Check the e-mail.", whatsapp: "Number with country code.", chegada: "Enter a time.", aceite: "You must accept the rules.", acompanhante_nome: "Guest's first and last name.", acompanhante_genero: "Guest's gender.", acompanhante_nascimento: "Guest's date of birth." },
-      pronto_tit: "Check-in received!", pronto_txt: "Access instructions arrive on {d}, from {h}, in the chat where you booked. Have a good trip!", pronto_ja: "Your access has already been sent in the chat where you booked.",
+      pronto_tit: "Check-in received!", pronto_txt: "Access instructions arrive on {d}, from {h}, in the chat where you booked. Have a good trip!", pronto_ja: "Your access has already been sent in the chat where you booked.", pronto_agora: "Your stay has already started, so the access instructions arrive in a few minutes in the chat where you booked (and on WhatsApp, if you have written to us there).",
       link_invalido: ["Link not found", "Make sure you opened the full link from the booking message. If it persists, write to us in the platform chat."],
       reserva_encerrada: ["Stay ended", "This booking has already ended."], acesso_ja_enviado: ["Access already sent", "The access for this booking was already sent. To change any data, write to us in the platform chat."],
       falha: ["We couldn't load it", "Please try again in a few minutes."]
@@ -149,7 +149,7 @@
       lgpd: "Usamos estos datos solo para el registro del hospedaje y para enviar su acceso. Se guardan 12 meses después de la salida.", privacidade: "Política de Privacidad",
       regras: ["Check-in desde las 15:00 y check-out hasta las 11:00.", "Prohibido fumar en los estudios y áreas comunes.", "Sin fiestas, eventos ni visitas que no estén en la reserva.", "Silencio de 22:00 a 8:00.", "No se aceptan mascotas.", "Edad mínima para el check-in: 18 años."],
       erros: { nome: "Escriba nombre y apellido.", genero: "Elija una opción.", nascimento: "Revise la fecha.", documento: "Revise el documento.", email: "Revise el e-mail.", whatsapp: "Número con código de país.", chegada: "Indique una hora.", aceite: "Debe aceptar las reglas.", acompanhante_nome: "Nombre y apellido del acompañante.", acompanhante_genero: "Género del acompañante.", acompanhante_nascimento: "Fecha de nacimiento del acompañante." },
-      pronto_tit: "¡Check-in recibido!", pronto_txt: "Las instrucciones de acceso llegan el {d}, desde las {h}, por el chat donde reservó. ¡Buen viaje!", pronto_ja: "Su acceso ya fue enviado por el chat donde reservó.",
+      pronto_tit: "¡Check-in recibido!", pronto_txt: "Las instrucciones de acceso llegan el {d}, desde las {h}, por el chat donde reservó. ¡Buen viaje!", pronto_ja: "Su acceso ya fue enviado por el chat donde reservó.", pronto_agora: "Como su estadía ya comenzó, las instrucciones de acceso llegan en pocos minutos por el chat donde reservó (y por WhatsApp, si ya nos escribió por allí).",
       link_invalido: ["Enlace no encontrado", "Verifique que abrió el enlace completo del mensaje de la reserva. Si continúa, escríbanos por el chat de la plataforma."],
       reserva_encerrada: ["Estadía terminada", "Esta reserva ya terminó."], acesso_ja_enviado: ["Acceso ya enviado", "El acceso de esta reserva ya fue enviado. Para cambiar algún dato, escríbanos por el chat de la plataforma."],
       falha: ["No pudimos cargar", "Intente de nuevo en unos minutos."]
@@ -182,8 +182,15 @@
     const [tit, txt] = T[idioma][codigo] || T[idioma].falha;
     $("#problema-tit").textContent = tit; $("#problema-txt").textContent = txt; mostrar("problema");
   }
+  // Já passou da entrada (ou é o dia e já deu o horário do envio): quem perdeu a
+  // noite e faz o check-in de madrugada não pode ler "chegam no dia de ontem".
+  function estadiaComecou() {
+    const agora = new Intl.DateTimeFormat("sv-SE", { timeZone: "America/Sao_Paulo", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hour12: false }).format(new Date());
+    const [dia, hora] = agora.split(" ");
+    return dia > reserva.entrada || (dia === reserva.entrada && hora >= String(reserva.horario || "14:00"));
+  }
   function pronto(ja) {
-    $("#pronto-txt").textContent = ja ? t("pronto_ja") : t("pronto_txt").split("{d}").join(dataBr(reserva.entrada)).split("{h}").join(horaDoIdioma(reserva.horario));
+    $("#pronto-txt").textContent = ja ? t("pronto_ja") : estadiaComecou() ? t("pronto_agora") : t("pronto_txt").split("{d}").join(dataBr(reserva.entrada)).split("{h}").join(horaDoIdioma(reserva.horario));
     mostrar("pronto");
   }
 
