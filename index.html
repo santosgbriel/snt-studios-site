@@ -448,6 +448,11 @@
 
                   </div>
 
+                  <div id="calAvisoRestricao" role="status" aria-live="polite" class="hidden mt-4 rounded-2xl border border-amber-400/40 bg-amber-400/10 p-3 text-amber-100">
+                    <p id="calAvisoRestricaoTexto" class="text-[11px] leading-relaxed"></p>
+                    <button type="button" id="calAvisoRestricaoAcao" class="hidden mt-2 rounded-xl bg-amber-300 px-3 py-2 text-[11px] font-black text-slate-950 transition hover:bg-amber-200"></button>
+                  </div>
+
                   <!-- RODAPÉ DO CALENDÁRIO: RESUMO, LIMPAR DATAS E BOTÃO FECHAR -->
                   <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
                     <div class="flex items-center gap-2">
@@ -1168,6 +1173,11 @@
         cal_titulo: "Selecionar datas",
         cal_subtitulo: "Adicione suas datas de viagem para ver os preços exatos",
         cal_btn_fechar: "Fechar",
+        cal_checkout_bloqueado: "Não é possível fazer check-out em {data}. A próxima saída permitida é {sugestao}.",
+        cal_checkout_sem_alternativa: "Não é possível fazer check-out em {data}. Escolha outra entrada ou um período menor.",
+        cal_checkout_indisponivel_curto: "Check-out indisponível nesta data",
+        cal_usar_saida_sugerida: "Usar saída em {data}",
+        cal_limite_estadia: "A estadia pode ter no máximo 87 noites. Escolha uma saída até {data}.",
         txt_noite_sing: "noite",
         txt_noites_plur: "noites",
         btn_limpar_datas: "Limpar datas",
@@ -1314,6 +1324,11 @@
         cal_titulo: "Select dates",
         cal_subtitulo: "Add your travel dates for exact pricing",
         cal_btn_fechar: "Close",
+        cal_checkout_bloqueado: "Checkout is not available on {data}. The next allowed departure is {sugestao}.",
+        cal_checkout_sem_alternativa: "Checkout is not available on {data}. Choose another arrival date or a shorter stay.",
+        cal_checkout_indisponivel_curto: "Checkout is not available on this date",
+        cal_usar_saida_sugerida: "Use {data} as checkout",
+        cal_limite_estadia: "Stays may have at most 87 nights. Choose a checkout date by {data}.",
         txt_noite_sing: "night",
         txt_noites_plur: "nights",
         btn_limpar_datas: "Clear dates",
@@ -1460,6 +1475,11 @@
         cal_titulo: "Seleccionar fechas",
         cal_subtitulo: "Agregue las fechas de su viaje para ver los precios exactos",
         cal_btn_fechar: "Cerrar",
+        cal_checkout_bloqueado: "No es posible hacer check-out el {data}. La próxima salida permitida es {sugestao}.",
+        cal_checkout_sem_alternativa: "No es posible hacer check-out el {data}. Elija otra entrada o una estancia más corta.",
+        cal_checkout_indisponivel_curto: "Check-out no disponible en esta fecha",
+        cal_usar_saida_sugerida: "Usar salida el {data}",
+        cal_limite_estadia: "La estancia puede tener como máximo 87 noches. Elija una salida hasta {data}.",
         txt_noite_sing: "noche",
         txt_noites_plur: "noches",
         btn_limpar_datas: "Borrar fechas",
@@ -1676,9 +1696,12 @@
     let calAno = new Date().getFullYear();
     let calMes = new Date().getMonth(); // 0-11
     let datasTotalmenteOcupadas = new Set();
-    let carregandoDisponibilidadeGeral = false;
+    let datasSemCheckout = new Set();
+    let janelasDisponibilidadeCarregadas = new Map();
+    let janelasDisponibilidadeEmCurso = new Set();
     let overflowAntesDoCalendario = "";
     let calendarioBloqueouRolagem = false;
+    const MAX_NOITES = 87;
 
     const NOMES_MESES = {
       pt: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
@@ -1694,6 +1717,7 @@
 
     function clicarBoxCheckIn() {
       abrirCalendario();
+      ocultarAvisoRestricao();
       dataCheckIn = "";
       dataCheckOut = "";
       dataHover = "";
@@ -1705,6 +1729,7 @@
 
     function clicarBoxCheckOut() {
       abrirCalendario();
+      ocultarAvisoRestricao();
       if (dataCheckIn) {
         dataCheckOut = "";
         dataHover = "";
@@ -1745,9 +1770,7 @@
           calendarioBloqueouRolagem = true;
         }
         renderizarMeses();
-        if (datasTotalmenteOcupadas.size === 0) {
-          carregarDisponibilidadeGeral();
-        }
+        carregarDisponibilidadeGeral();
       }
     }
 
@@ -1781,6 +1804,7 @@
         calMes = agora.getMonth();
       }
       renderizarMeses();
+      carregarDisponibilidadeGeral();
     }
 
     function formatarTituloMes(ano, mes) {
@@ -1796,6 +1820,76 @@
       if (!elContainer) return;
       const siglas = DIAS_SEMANA_SIGLAS[idiomaAtual] || DIAS_SEMANA_SIGLAS['pt'];
       elContainer.innerHTML = siglas.map(s => `<span>${s}</span>`).join('');
+    }
+
+    function adicionarDiasIso(dataIso, dias) {
+      const data = new Date(dataIso + 'T12:00:00');
+      data.setDate(data.getDate() + dias);
+      return `${data.getFullYear()}-${String(data.getMonth() + 1).padStart(2, '0')}-${String(data.getDate()).padStart(2, '0')}`;
+    }
+
+    function noitesEntre(entrada, saida) {
+      return Math.round((new Date(saida + 'T12:00:00') - new Date(entrada + 'T12:00:00')) / 86400000);
+    }
+
+    function ocultarAvisoRestricao() {
+      document.getElementById('calAvisoRestricao')?.classList.add('hidden');
+      const acao = document.getElementById('calAvisoRestricaoAcao');
+      if (acao) {
+        acao.classList.add('hidden');
+        acao.onclick = null;
+      }
+    }
+
+    function primeiroBloqueioApos(entrada) {
+      return Array.from(datasTotalmenteOcupadas).sort().find((dia) => dia > entrada) || '';
+    }
+
+    function proximoCheckoutPermitido(dataBloqueada) {
+      if (!dataCheckIn) return '';
+      const limite = adicionarDiasIso(dataCheckIn, MAX_NOITES);
+      const primeiroOcupado = primeiroBloqueioApos(dataCheckIn);
+      for (let passo = 1; passo <= MAX_NOITES; passo++) {
+        const candidato = adicionarDiasIso(dataBloqueada, passo);
+        if (candidato > limite || (primeiroOcupado && candidato > primeiroOcupado)) return '';
+        if (candidato > dataCheckIn && !datasSemCheckout.has(candidato)) return candidato;
+      }
+      return '';
+    }
+
+    function mostrarAvisoCheckoutBloqueado(dataBloqueada) {
+      const caixa = document.getElementById('calAvisoRestricao');
+      const texto = document.getElementById('calAvisoRestricaoTexto');
+      const acao = document.getElementById('calAvisoRestricaoAcao');
+      if (!caixa || !texto || !acao) return;
+      const sugestao = proximoCheckoutPermitido(dataBloqueada);
+      const chave = sugestao ? 'cal_checkout_bloqueado' : 'cal_checkout_sem_alternativa';
+      texto.textContent = (I18N[idiomaAtual][chave] || I18N.pt[chave])
+        .replace('{data}', formatarDataBr(dataBloqueada))
+        .replace('{sugestao}', sugestao ? formatarDataBr(sugestao) : '');
+      if (sugestao) {
+        acao.textContent = (I18N[idiomaAtual].cal_usar_saida_sugerida || I18N.pt.cal_usar_saida_sugerida)
+          .replace('{data}', formatarDataBr(sugestao));
+        acao.classList.remove('hidden');
+        acao.onclick = () => selecionarDiaCalendario(sugestao);
+      } else {
+        acao.classList.add('hidden');
+        acao.onclick = null;
+      }
+      caixa.classList.remove('hidden');
+    }
+
+    function mostrarAvisoLimiteEstadia() {
+      const caixa = document.getElementById('calAvisoRestricao');
+      const texto = document.getElementById('calAvisoRestricaoTexto');
+      const acao = document.getElementById('calAvisoRestricaoAcao');
+      if (!caixa || !texto || !acao || !dataCheckIn) return;
+      const limite = adicionarDiasIso(dataCheckIn, MAX_NOITES);
+      texto.textContent = (I18N[idiomaAtual].cal_limite_estadia || I18N.pt.cal_limite_estadia)
+        .replace('{data}', formatarDataBr(limite));
+      acao.classList.add('hidden');
+      acao.onclick = null;
+      caixa.classList.remove('hidden');
     }
 
     function renderizarGradeDiasMes(ano, mes, elGrid) {
@@ -1832,6 +1926,8 @@
         const diaIso = `${ano}-${String(mes + 1).padStart(2, '0')}-${String(dia).padStart(2, '0')}`;
         const ehPassado = diaIso < hojeIso;
         const ehTotalmenteOcupado = datasTotalmenteOcupadas.has(diaIso);
+        const ehCheckoutBloqueado = Boolean(dataCheckIn && !dataCheckOut && diaIso > dataCheckIn && datasSemCheckout.has(diaIso));
+        const excedeMaximo = Boolean(dataCheckIn && !dataCheckOut && diaIso > dataCheckIn && noitesEntre(dataCheckIn, diaIso) > MAX_NOITES);
         let ehIndisponivel = false;
         if (ehPassado) {
           ehIndisponivel = true;
@@ -1842,6 +1938,7 @@
             if (primeiroBloqueioAposCheckIn && diaIso > primeiroBloqueioAposCheckIn) {
               ehIndisponivel = true;
             }
+            if (excedeMaximo) ehIndisponivel = true;
           } else if (diaIso < dataCheckIn) {
             // Se clicar antes do check-in atual, vira novo check-in (logo a noite deve estar livre)
             if (ehTotalmenteOcupado) {
@@ -1864,6 +1961,13 @@
           weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
         }).format(new Date(diaIso + 'T12:00:00')));
 
+        if (ehCheckoutBloqueado) {
+          const avisoCurto = I18N[idiomaAtual].cal_checkout_indisponivel_curto || I18N.pt.cal_checkout_indisponivel_curto;
+          btn.setAttribute('aria-label', `${btn.getAttribute('aria-label')} — ${avisoCurto}`);
+          btn.setAttribute('data-checkout-bloqueado', 'true');
+          btn.title = avisoCurto;
+        }
+
         if (ehIndisponivel) {
           btn.className = "h-9 w-full flex items-center justify-center rounded-full text-xs font-normal text-slate-600 line-through cursor-not-allowed opacity-35";
           btn.disabled = true;
@@ -1881,6 +1985,8 @@
             classes += "bg-emerald-500 text-slate-950 font-black shadow-md shadow-emerald-500/30 scale-105 rounded-full z-10";
           } else if (emIntervalo) {
             classes += "bg-emerald-500/20 text-emerald-300 rounded-none";
+          } else if (ehCheckoutBloqueado) {
+            classes += "text-amber-300 font-black line-through decoration-2 decoration-amber-400 hover:bg-amber-400/10 rounded-full";
           } else {
             classes += "text-white font-bold hover:bg-slate-800 rounded-full";
           }
@@ -1986,6 +2092,15 @@
       } else if (dataCheckIn && !dataCheckOut) {
         // 2º Clique: define data de saída
         if (diaIso > dataCheckIn) {
+          if (datasSemCheckout.has(diaIso)) {
+            mostrarAvisoCheckoutBloqueado(diaIso);
+            return;
+          }
+          if (noitesEntre(dataCheckIn, diaIso) > MAX_NOITES) {
+            mostrarAvisoLimiteEstadia();
+            return;
+          }
+          ocultarAvisoRestricao();
           dataCheckOut = diaIso;
           dataHover = "";
           document.getElementById('inputCheckOut').value = diaIso;
@@ -2018,6 +2133,7 @@
       dataHover = "";
       document.getElementById('inputCheckIn').value = "";
       document.getElementById('inputCheckOut').value = "";
+      ocultarAvisoRestricao();
       atualizarDisplayDatas();
       renderizarMeses();
       const resultado = document.getElementById('resultadoCotacao');
@@ -2091,18 +2207,19 @@
     }
 
     async function carregarDisponibilidadeGeral() {
-      if (carregandoDisponibilidadeGeral) return;
-      carregandoDisponibilidadeGeral = true;
+      const agora = new Date();
+      const hojeIso = `${agora.getFullYear()}-${String(agora.getMonth() + 1).padStart(2, '0')}-${String(agora.getDate()).padStart(2, '0')}`;
+      const inicioMesVisivel = `${calAno}-${String(calMes + 1).padStart(2, '0')}-01`;
+      const de = inicioMesVisivel < hojeIso ? hojeIso : inicioMesVisivel;
+      const dias = 62;
+      const chaveJanela = `${de}|${dias}`;
+      const carregadaEm = janelasDisponibilidadeCarregadas.get(chaveJanela) || 0;
+      if (janelasDisponibilidadeEmCurso.has(chaveJanela) || Date.now() - carregadaEm < 60000) return;
+      janelasDisponibilidadeEmCurso.add(chaveJanela);
       try {
-        const agora = new Date();
-        const ano = agora.getFullYear();
-        const mes = String(agora.getMonth() + 1).padStart(2, '0');
-        const dia = String(agora.getDate()).padStart(2, '0');
-        const hojeIso = `${ano}-${mes}-${dia}`;
-
         const url = new URL(API_OCUPACAO);
-        url.searchParams.set('de', hojeIso);
-        url.searchParams.set('dias', '120');
+        url.searchParams.set('de', de);
+        url.searchParams.set('dias', String(dias));
 
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 8000);
@@ -2125,14 +2242,26 @@
               listas.forEach(lista => lista.forEach(d => { contagem[d] = (contagem[d] || 0) + 1; }));
               totalmenteOcupadas = Object.keys(contagem).filter(d => contagem[d] >= listas.length);
             }
-            datasTotalmenteOcupadas = new Set(totalmenteOcupadas);
+            const diasSemCheckout = Array.isArray(dados.diasSemCheckout)
+              ? dados.diasSemCheckout.filter((dia) => /^\d{4}-\d{2}-\d{2}$/.test(String(dia)))
+              : [];
+            const ate = adicionarDiasIso(de, dias);
+            datasTotalmenteOcupadas = new Set([
+              ...Array.from(datasTotalmenteOcupadas).filter((dia) => dia < de || dia > ate),
+              ...totalmenteOcupadas,
+            ]);
+            datasSemCheckout = new Set([
+              ...Array.from(datasSemCheckout).filter((dia) => dia < de || dia > ate),
+              ...diasSemCheckout,
+            ]);
+            janelasDisponibilidadeCarregadas.set(chaveJanela, Date.now());
             renderizarMeses();
           }
         }
       } catch (e) {
         // Falha tolerante: calendário continua navegável
       } finally {
-        carregandoDisponibilidadeGeral = false;
+        janelasDisponibilidadeEmCurso.delete(chaveJanela);
       }
     }
 
@@ -2420,10 +2549,18 @@
         return;
       }
 
-      const noites = Math.round((new Date(outVal + 'T12:00:00') - new Date(inVal + 'T12:00:00')) / 86400000);
-      if (noites < 1 || noites > 120) {
+      const noites = noitesEntre(inVal, outVal);
+      if (noites < 1 || noites > MAX_NOITES) {
         resultado.classList.remove('hidden');
-        resultado.innerHTML = `<div class="rounded-xl border border-rose-500/40 bg-rose-500/10 p-3.5 text-xs text-rose-200">${idiomaAtual === 'en' ? 'Checkout date must be after check-in.' : (idiomaAtual === 'es' ? 'La fecha de salida debe ser posterior a la de entrada.' : 'O checkout deve ser posterior ao check-in e a estadia pode ter no máximo 120 noites.')}</div>`;
+        resultado.innerHTML = `<div class="rounded-xl border border-rose-500/40 bg-rose-500/10 p-3.5 text-xs text-rose-200">${idiomaAtual === 'en' ? 'Checkout must be after check-in and the stay may have at most 87 nights.' : (idiomaAtual === 'es' ? 'La salida debe ser posterior a la entrada y la estancia puede tener como máximo 87 noches.' : 'O checkout deve ser posterior ao check-in e a estadia pode ter no máximo 87 noites.')}</div>`;
+        return;
+      }
+
+      if (datasSemCheckout.has(outVal)) {
+        dataCheckOut = '';
+        document.getElementById('inputCheckOut').value = '';
+        abrirCalendario();
+        mostrarAvisoCheckoutBloqueado(outVal);
         return;
       }
 
@@ -2443,6 +2580,14 @@
           headers: { Accept: 'application/json' }
         });
         const dados = await resposta.json().catch(() => ({}));
+        if (!resposta.ok && dados && /^\d{4}-\d{2}-\d{2}$/.test(String(dados.dataBloqueada || ''))) {
+          datasSemCheckout.add(dados.dataBloqueada);
+          dataCheckOut = '';
+          document.getElementById('inputCheckOut').value = '';
+          abrirCalendario();
+          mostrarAvisoCheckoutBloqueado(dados.dataBloqueada);
+          return;
+        }
         if (!resposta.ok || !dados.ok || !Array.isArray(dados.studios)) {
           throw new Error(dados.erro || 'Não foi possível consultar o calendário.');
         }
