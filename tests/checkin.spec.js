@@ -121,3 +121,12 @@ test("check-in feito depois de a estadia começar diz que o acesso chega em minu
   await expect(page.locator("#pronto-txt")).toContainText(/poucos minutos|few minutes|pocos minutos/);
   await expect(page.locator("#pronto-txt")).not.toContainText("10/10/2026");
 });
+
+test("link antigo de reserva nova avisa que o link novo foi para o chat (STU-067)", async ({ page }) => {
+  await simular(page, { get: { ok: false, erro: "link_renovado" } });
+  await page.goto("/checkin/?r=95157198&d=2026-10-24&lang=pt");
+  await expect(page.locator("#problema")).toBeVisible();
+  await expect(page.locator("#problema-tit")).toHaveText("Mandamos um link novo");
+  await expect(page.locator("#problema-txt")).toContainText("chat onde você fez a reserva");
+  await expect(page.locator("#form")).toBeHidden();
+});
