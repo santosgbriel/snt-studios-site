@@ -13,6 +13,15 @@ async function hojeMais(page, dias) {
   }, dias);
 }
 
+async function diaVisivel(page, data) {
+  let dia = page.locator(`#calendarioAirbnb button[data-date="${data}"]:visible`).first();
+  if (await dia.count() === 0) {
+    await page.locator('#calendarioAirbnb button[aria-label="Próximo mês"]:visible').click();
+    dia = page.locator(`#calendarioAirbnb button[data-date="${data}"]:visible`).first();
+  }
+  return dia;
+}
+
 test.beforeEach(async ({ page }) => {
   // window.open do WhatsApp vira registro, sem abrir nada.
   await page.addInitScript(() => {
@@ -66,13 +75,13 @@ test("abre como sobreposição na tela, fica aberto na primeira data, fecha na s
   await expect(page.locator(`#calendarioAirbnb button[data-date="${ocupada}"]`).first()).toBeDisabled();
 
   // Primeira data: o calendário continua aberto (o outro defeito de 03/10).
-  await page.locator(`#calendarioAirbnb button[data-date="${entrada}"]`).first().click();
+  await (await diaVisivel(page, entrada)).click();
   await page.waitForTimeout(400);
   await expect(cal).toBeVisible();
   await expect(page.locator("#inputCheckIn")).toHaveValue(entrada);
 
   // Segunda data: fecha e cota sozinho.
-  await page.locator(`#calendarioAirbnb button[data-date="${saida}"]`).first().click();
+  await (await diaVisivel(page, saida)).click();
   await expect(cal).toBeHidden();
   await expect(page.locator("#inputCheckOut")).toHaveValue(saida);
   const resultado = page.locator("#resultadoCotacao");
@@ -86,7 +95,7 @@ test("explica check-out bloqueado e oferece a próxima saída permitida sem apag
   const sugerida = await hojeMais(page, 10);
 
   await page.locator("#airbnbDateBox button").first().click();
-  await page.locator(`#calendarioAirbnb button[data-date="${entrada}"]`).first().click();
+  await (await diaVisivel(page, entrada)).click();
   // A data pode aparecer também como dia adjacente no outro mês da grade.
   // No celular só um mês fica visível; avance como o hóspede faria quando a
   // saída cai no mês seguinte. No desktop, onde os dois meses aparecem, não
@@ -127,8 +136,8 @@ test("o botão do WhatsApp leva as datas e o studio da cotação", async ({ page
   const entrada = await hojeMais(page, 5);
   const saida = await hojeMais(page, 8);
   await page.locator("#airbnbDateBox button").first().click();
-  await page.locator(`#calendarioAirbnb button[data-date="${entrada}"]`).first().click();
-  await page.locator(`#calendarioAirbnb button[data-date="${saida}"]`).first().click();
+  await (await diaVisivel(page, entrada)).click();
+  await (await diaVisivel(page, saida)).click();
   await expect(page.locator("#resultadoCotacao")).toContainText("Studio Amplo A");
 
   await page.locator("#resultadoCotacao button[onclick*='abrirWhatsAppCotacao']").first().click();
@@ -168,8 +177,8 @@ test("o funil registra cada etapa sem dado pessoal, e a cotação vai ao WhatsAp
   const entrada = await hojeMais(page, 5);
   const saida = await hojeMais(page, 8);
   await page.locator("#airbnbDateBox button").first().click();
-  await page.locator(`#calendarioAirbnb button[data-date="${entrada}"]`).first().click();
-  await page.locator(`#calendarioAirbnb button[data-date="${saida}"]`).first().click();
+  await (await diaVisivel(page, entrada)).click();
+  await (await diaVisivel(page, saida)).click();
   await expect(page.locator("#resultadoCotacao")).toContainText("Studio Amplo A");
   await page.locator("#resultadoCotacao button[onclick*='abrirWhatsAppCotacao']").first().click();
   await page.waitForTimeout(200);
