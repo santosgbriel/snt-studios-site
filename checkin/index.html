@@ -8,9 +8,8 @@
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <style>
     /* Check-in online próprio (item 166, 06/10/2026). Página isolada do site:
-       sem CDN, sem fonte externa, mesmas cores. Recebe ?r=<reserva>&d=<chegada>
-       pelo link que o Smoobu manda; a API confere os dois e nunca devolve o
-       nome do hóspede. */
+       sem CDN, sem fonte externa, mesmas cores. Recebe ?t=<token opaco>;
+       r/d existe só durante a migração. A API nunca devolve o nome do hóspede. */
     :root { --fundo:#020617; --cartao:#0f172a; --linha:#1e293b; --tinta:#e2e8f0; --suave:#94a3b8; --verde:#10b981; --verde-esc:#059669; --erro:#f87171; }
     * { box-sizing: border-box; }
     body { margin:0; background:var(--fundo); color:var(--tinta); font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
@@ -123,6 +122,7 @@
       erros: { nome: "Escreva nome e sobrenome.", genero: "Escolha uma opção.", nascimento: "Confira a data.", documento: "Confira o documento.", email: "Confira o e-mail.", whatsapp: "Número com DDD (e código do país, se não for do Brasil).", chegada: "Informe um horário.", aceite: "É preciso aceitar as regras.", acompanhante_nome: "Nome e sobrenome do acompanhante.", acompanhante_genero: "Gênero do acompanhante.", acompanhante_nascimento: "Data de nascimento do acompanhante." },
       pronto_tit: "Check-in recebido!", pronto_txt: "As instruções de acesso chegam no dia {d}, a partir das {h}, pelo chat onde você reservou. Boa viagem!", pronto_ja: "Seu acesso já foi enviado pelo chat onde você reservou.", pronto_agora: "Como a sua estadia já começou, as instruções de acesso chegam em poucos minutos pelo chat onde você reservou (e no WhatsApp, se você já falou com a gente por lá).",
       link_invalido: ["Link não encontrado", "Confira se abriu o link completo da mensagem da reserva. Se continuar, fale com a gente pelo chat da plataforma."],
+      link_expirado: ["Link expirado", "Peça um novo link pelo chat onde você fez a reserva."],
       reserva_encerrada: ["Estadia encerrada", "Esta reserva já terminou."], acesso_ja_enviado: ["Acesso já enviado", "O acesso desta reserva já foi enviado. Para mudar algum dado, fale com a gente pelo chat da plataforma."],
       falha: ["Não conseguimos carregar", "Tente de novo em alguns minutos."]
     },
@@ -137,6 +137,7 @@
       erros: { nome: "Write your first and last name.", genero: "Choose an option.", nascimento: "Check the date.", documento: "Check the document.", email: "Check the e-mail.", whatsapp: "Number with country code.", chegada: "Enter a time.", aceite: "You must accept the rules.", acompanhante_nome: "Guest's first and last name.", acompanhante_genero: "Guest's gender.", acompanhante_nascimento: "Guest's date of birth." },
       pronto_tit: "Check-in received!", pronto_txt: "Access instructions arrive on {d}, from {h}, in the chat where you booked. Have a good trip!", pronto_ja: "Your access has already been sent in the chat where you booked.", pronto_agora: "Your stay has already started, so the access instructions arrive in a few minutes in the chat where you booked (and on WhatsApp, if you have written to us there).",
       link_invalido: ["Link not found", "Make sure you opened the full link from the booking message. If it persists, write to us in the platform chat."],
+      link_expirado: ["Link expired", "Ask for a new link in the chat where you made the booking."],
       reserva_encerrada: ["Stay ended", "This booking has already ended."], acesso_ja_enviado: ["Access already sent", "The access for this booking was already sent. To change any data, write to us in the platform chat."],
       falha: ["We couldn't load it", "Please try again in a few minutes."]
     },
@@ -151,12 +152,13 @@
       erros: { nome: "Escriba nombre y apellido.", genero: "Elija una opción.", nascimento: "Revise la fecha.", documento: "Revise el documento.", email: "Revise el e-mail.", whatsapp: "Número con código de país.", chegada: "Indique una hora.", aceite: "Debe aceptar las reglas.", acompanhante_nome: "Nombre y apellido del acompañante.", acompanhante_genero: "Género del acompañante.", acompanhante_nascimento: "Fecha de nacimiento del acompañante." },
       pronto_tit: "¡Check-in recibido!", pronto_txt: "Las instrucciones de acceso llegan el {d}, desde las {h}, por el chat donde reservó. ¡Buen viaje!", pronto_ja: "Su acceso ya fue enviado por el chat donde reservó.", pronto_agora: "Como su estadía ya comenzó, las instrucciones de acceso llegan en pocos minutos por el chat donde reservó (y por WhatsApp, si ya nos escribió por allí).",
       link_invalido: ["Enlace no encontrado", "Verifique que abrió el enlace completo del mensaje de la reserva. Si continúa, escríbanos por el chat de la plataforma."],
+      link_expirado: ["Enlace vencido", "Solicite un nuevo enlace por el chat donde hizo la reserva."],
       reserva_encerrada: ["Estadía terminada", "Esta reserva ya terminó."], acesso_ja_enviado: ["Acceso ya enviado", "El acceso de esta reserva ya fue enviado. Para cambiar algún dato, escríbanos por el chat de la plataforma."],
       falha: ["No pudimos cargar", "Intente de nuevo en unos minutos."]
     }
   };
   const params = new URLSearchParams(location.search);
-  const R = params.get("r") || "", D = params.get("d") || "";
+  const TOKEN = params.get("t") || "", R = params.get("r") || "", D = params.get("d") || "";
   let idioma = ["pt", "en", "es"].includes(params.get("lang")) ? params.get("lang") : ((navigator.language || "pt").slice(0, 2) === "es" ? "es" : (navigator.language || "pt").slice(0, 2) === "en" ? "en" : "pt");
   let reserva = null, nAcomp = 0;
   const $ = (s, el) => (el || document).querySelector(s);
@@ -229,7 +231,7 @@
     ev.preventDefault();
     const f = ev.target;
     const corpo = {
-      r: R, d: D, idioma,
+      ...(TOKEN ? { t: TOKEN } : { r: R, d: D }), idioma,
       titular: { nome: f.nome.value, genero: f.genero.value, nascimento: f.nascimento.value, documento: f.documento.value },
       acompanhantes: [...document.querySelectorAll(".acomp")].map((b) => ({ nome: $("[data-a=nome]", b).value, genero: $("[data-a=genero]", b).value, nascimento: $("[data-a=nascimento]", b).value })),
       email: f.email.value, whatsapp: f.whatsapp.value, chegada: f.chegada.value, aceite: f.aceite.checked
@@ -247,9 +249,10 @@
 
   (async function iniciar() {
     aplicarIdioma();
-    if (!R || !D) return problema("link_invalido");
+    if (!TOKEN && (!R || !D)) return problema("link_invalido");
     try {
-      const r = await fetch(API + "?r=" + encodeURIComponent(R) + "&d=" + encodeURIComponent(D));
+      const consulta = TOKEN ? "?t=" + encodeURIComponent(TOKEN) : "?r=" + encodeURIComponent(R) + "&d=" + encodeURIComponent(D);
+      const r = await fetch(API + consulta);
       const j = await r.json().catch(() => ({}));
       if (!r.ok || !j.ok) return problema(j.erro || "falha");
       reserva = j;
