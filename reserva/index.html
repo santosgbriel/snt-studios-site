@@ -292,7 +292,8 @@
     if (venda.teste) { r.pix = venda.valorTeste; r.cartao = venda.valorTeste; r.parcelas = 1; }
     else { r.pix = cotacao.totalDireta; r.cartao = cotacao.totalCartao; r.parcelas = cotacao.parcelasCartao || 3; }
     resumo($("#f-resumo"), r);
-    $("#politica").textContent = venda.politica || t("politica_teste");
+    // A política no idioma escolhido; sem tradução, a em português.
+    $("#politica").textContent = (venda.politicas && venda.politicas[idioma]) || venda.politica || t("politica_teste");
   }
 
   function pintarSituacao() {

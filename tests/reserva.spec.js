@@ -59,6 +59,16 @@ test("formulário mostra a estadia com Pix e cartão, cobra campos e segue para 
   expect(ultimo.preco).toBeUndefined();
 });
 
+test("política no idioma escolhido, e a em português quando falta a tradução", async ({ page }) => {
+  await simular(page, { venda: { ...VENDA_LIGADA, politica: "Grátis até 7 dias.", politicas: { pt: "Grátis até 7 dias.", en: "Free up to 7 days.", es: "" } } });
+  await page.goto(FORM);
+  await expect(page.locator("#politica")).toHaveText("Grátis até 7 dias.");
+  await page.click('[data-lang="en"]');
+  await expect(page.locator("#politica")).toHaveText("Free up to 7 days.");
+  await page.click('[data-lang="es"]');
+  await expect(page.locator("#politica")).toHaveText("Grátis até 7 dias.");
+});
+
 test("venda desligada: não mostra formulário e leva ao WhatsApp", async ({ page }) => {
   await simular(page, { venda: { ok: true, disponivel: false } });
   await page.goto(FORM);
