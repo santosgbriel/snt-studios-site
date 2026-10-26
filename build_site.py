@@ -1627,6 +1627,41 @@ site_code = '''<!DOCTYPE html>
     const API_COTACAO = "https://snt-lavanderia-bot-production.up.railway.app/api/studios/public/cotacao";
     const API_OCUPACAO = "https://snt-lavanderia-bot-production.up.railway.app/api/studios/public/ocupacao";
     const API_EVENTO = "https://snt-lavanderia-bot-production.up.railway.app/api/studios/public/evento";
+    // Venda direta pelo site (STU-021/022, 26/10/2026): o bot diz se o botão
+    // "Reservar e pagar" aparece (ligada para todos, ou modo teste com a chave
+    // do link ?venda=). Os dados e o pagamento ficam na página /reserva/, com
+    // o checkout da Pagar.me; o preço é sempre recalculado no servidor.
+    const API_VENDA = "https://snt-lavanderia-bot-production.up.railway.app/api/studios/public/venda";
+    let vendaSite = null;
+    let studioEscolhidoNoCard = '';
+    function chaveDeVenda() {
+      try {
+        const k = new URLSearchParams(window.location.search).get('venda');
+        if (k) sessionStorage.setItem('sntVenda', k);
+        return k || sessionStorage.getItem('sntVenda') || '';
+      } catch (e) { return ''; }
+    }
+    async function carregarVendaSite() {
+      try {
+        const u = new URL(API_VENDA);
+        const k = chaveDeVenda();
+        if (k) u.searchParams.set('k', k);
+        const r = await fetch(u.toString(), { headers: { Accept: 'application/json' } });
+        const j = await r.json();
+        vendaSite = j && j.ok && j.disponivel ? j : null;
+      } catch (e) { vendaSite = null; }
+      if (vendaSite && ultimaCotacao) renderizarCardDisponibilidade(studioEscolhidoNoCard);
+    }
+    function irParaPagamento(chave) {
+      if (!ultimaCotacao) return;
+      const u = new URL('/reserva/', window.location.origin);
+      u.searchParams.set('studio', String(chave));
+      u.searchParams.set('entrada', ultimaCotacao.entrada);
+      u.searchParams.set('saida', ultimaCotacao.saida);
+      u.searchParams.set('hospedes', String(document.getElementById('selectGuests').value || ultimaCotacao.hospedes || 2));
+      u.searchParams.set('lang', idiomaAtual);
+      window.location.href = u.toString();
+    }
 
     // ========================================================
     // FUNIL ANÔNIMO: só a etapa alcançada, nunca nome, telefone ou texto.
@@ -2407,6 +2442,7 @@ site_code = '''<!DOCTYPE html>
     function renderizarCardDisponibilidade(studioChaveEscolhida) {
       if (!ultimaCotacao || !Array.isArray(ultimaCotacao.studios)) return;
       if (studioChaveEscolhida) registrarEvento('studio', { studio: studioChaveEscolhida }, true);
+      studioEscolhidoNoCard = studioChaveEscolhida || '';
       const dados = ultimaCotacao;
       const resultado = document.getElementById('resultadoCotacao');
       const ordemPreferencia = ['12', '14', '11', '13'];
@@ -2530,8 +2566,16 @@ site_code = '''<!DOCTYPE html>
             </div>` : ''}
           </div>
 
+          ${vendaSite ? `
+          <!-- RESERVAR E PAGAR: VENDA DIRETA PELO SITE -->
+          ${vendaSite.teste ? `<p class="rounded-lg border border-amber-500/40 bg-amber-500/10 px-3 py-2 text-[11px] font-bold text-amber-200">MODO TESTE · ${idiomaAtual === 'en' ? 'charges' : (idiomaAtual === 'es' ? 'cobra' : 'cobra')} ${formatarMoeda(vendaSite.valorTeste)}</p>` : ''}
+          <button type="button" data-acao="pagar" onclick="irParaPagamento('${infoComercial.chave}')" class="w-full mt-2 bg-emerald-500 hover:bg-emerald-400 active:scale-[0.99] text-slate-950 font-black py-3.5 px-4 rounded-xl text-xs uppercase tracking-wider transition shadow-lg shadow-emerald-500/25 flex items-center justify-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+            <span>${idiomaAtual === 'en' ? 'Book and pay now' : (idiomaAtual === 'es' ? 'Reservar y pagar ahora' : 'Reservar e pagar agora')}</span>
+          </button>
+          <p class="text-[10px] text-center text-slate-400">${idiomaAtual === 'en' ? 'Pix (instant) or credit card in up to 3 installments · secure checkout by Pagar.me' : (idiomaAtual === 'es' ? 'Pix al instante o tarjeta en hasta 3 cuotas · pago seguro con Pagar.me' : 'Pix na hora ou cartão em até 3x · pagamento seguro pela Pagar.me')}</p>` : ''}
           <!-- BOTÃO DE AÇÃO WHATSAPP OFICIAL -->
-          <button type="button" onclick="abrirWhatsAppCotacao('${infoComercial.chave}')" class="w-full mt-2 bg-emerald-500 hover:bg-emerald-400 active:scale-[0.99] text-slate-950 font-black py-3.5 px-4 rounded-xl text-xs uppercase tracking-wider transition shadow-lg shadow-emerald-500/25 flex items-center justify-center gap-2">
+          <button type="button" onclick="abrirWhatsAppCotacao('${infoComercial.chave}')" class="${vendaSite ? 'w-full mt-1 border border-slate-700 bg-slate-800/60 hover:border-slate-600 text-white font-bold py-3 px-4 rounded-xl text-xs uppercase tracking-wider transition flex items-center justify-center gap-2' : 'w-full mt-2 bg-emerald-500 hover:bg-emerald-400 active:scale-[0.99] text-slate-950 font-black py-3.5 px-4 rounded-xl text-xs uppercase tracking-wider transition shadow-lg shadow-emerald-500/25 flex items-center justify-center gap-2'}">
             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.159.57 4.184 1.564 5.938l-1.664 6.086 6.257-1.64c1.706.924 3.659 1.45 5.743 1.45 6.627 0 12-5.373 12-12 0-6.627-5.373-12-12-12z"/></svg>
             <span>${idiomaAtual === 'en' ? 'Reserve via WhatsApp' : (idiomaAtual === 'es' ? 'Reservar por WhatsApp' : 'Reservar no WhatsApp')}</span>
           </button>
@@ -2807,6 +2851,7 @@ site_code = '''<!DOCTYPE html>
         if (a) registrarEvento('whatsapp', { origem: a.dataset.origem || 'outro' }, true);
       });
       carregarDisponibilidadeGeral();
+      carregarVendaSite();
       if (idiomaAtual !== 'pt') {
         trocarIdioma(idiomaAtual);
       } else {

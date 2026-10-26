@@ -36,6 +36,8 @@ test.beforeEach(async ({ page }) => {
   const ocupada = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
   const b = new Date(); b.setDate(b.getDate() + 9);
   const semCheckout = `${b.getFullYear()}-${String(b.getMonth() + 1).padStart(2, "0")}-${String(b.getDate()).padStart(2, "0")}`;
+  // A venda pelo site (STU-021/022) desligada: aqui só o WhatsApp.
+  await page.route("**/api/studios/public/venda**", (route) => route.fulfill({ json: { ok: true, disponivel: false } }));
   await page.route("**/api/studios/public/ocupacao**", (route) =>
     route.fulfill({ json: { ok: true, totalmenteOcupadas: [ocupada], diasSemCheckout: [semCheckout] } }));
   await page.route("**/api/studios/public/cotacao**", async (route) => {
