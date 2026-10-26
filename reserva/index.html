@@ -155,13 +155,13 @@
       p_nao_encontrada: ["Reserva não encontrada", "Confira se abriu o link completo. Se você já pagou, fale com a gente no WhatsApp."],
       s_confirmada: ["Reserva confirmada!", "Pagamento recebido e reserva feita. Guarde o número da reserva."],
       s_confirmada_teste: ["Reserva de teste confirmada", "Pagamento de teste recebido e reserva criada (marcada como TESTE)."],
-      s_aguardando: ["Aguardando o pagamento", "Se você já pagou, aguarde um instante: esta página se atualiza sozinha. Os dias ficam guardados para você até {h}."],
+      s_aguardando: ["Aguardando o pagamento", "Pague na página da Pagar.me (abrimos em outra aba). Assim que o pagamento cair, esta página confirma sozinha. Os dias ficam guardados para você até {h}."],
+      abrindo: "Abrindo o pagamento seguro…", abrir_pagamento: "Abrir o pagamento",
       s_processando: ["Pagamento recebido", "Estamos confirmando a sua reserva. Esta página se atualiza sozinha."],
       s_expirada: ["O prazo para pagar acabou", "As datas foram liberadas. Você pode fazer uma nova cotação; se pagou agora há pouco, fale com a gente."],
       s_cancelada: ["Reserva cancelada", "O pagamento foi estornado."],
       s_erro: ["Não conseguimos abrir o pagamento", "Nada foi cobrado. Tente de novo ou fale com a gente no WhatsApp."],
       checkin: "Fazer o check-in online", checkin_dica: "Faça o check-in antes de chegar: as instruções de acesso saem no dia da entrada.",
-      voltar_pagar: "Voltar para o pagamento",
       whats_msg: "Olá! Fiz uma reserva pelo site (código {c}).", whats_msg_sem: "Olá! Quero reservar um studio pelo site."
     },
     en: {
@@ -189,13 +189,13 @@
       p_nao_encontrada: ["Booking not found", "Make sure you opened the full link. If you have already paid, talk to us on WhatsApp."],
       s_confirmada: ["Booking confirmed!", "Payment received and booking made. Keep your booking number."],
       s_confirmada_teste: ["Test booking confirmed", "Test payment received and booking created (marked as TEST)."],
-      s_aguardando: ["Waiting for payment", "If you have already paid, hold on: this page refreshes by itself. Your dates are held until {h}."],
+      s_aguardando: ["Waiting for payment", "Pay on the Pagar.me page (we opened it in another tab). As soon as the payment goes through, this page confirms by itself. Your dates are held until {h}."],
+      abrindo: "Opening secure payment…", abrir_pagamento: "Open the payment",
       s_processando: ["Payment received", "We are confirming your booking. This page refreshes by itself."],
       s_expirada: ["The payment time ran out", "The dates were released. You can get a new quote; if you just paid, talk to us."],
       s_cancelada: ["Booking cancelled", "The payment was refunded."],
       s_erro: ["We couldn't open the payment", "Nothing was charged. Try again or talk to us on WhatsApp."],
       checkin: "Online check-in", checkin_dica: "Check in before you arrive: access instructions are sent on your arrival day.",
-      voltar_pagar: "Back to payment",
       whats_msg: "Hello! I booked on the website (code {c}).", whats_msg_sem: "Hello! I'd like to book a studio on the website."
     },
     es: {
@@ -223,19 +223,19 @@
       p_nao_encontrada: ["Reserva no encontrada", "Verifique que abrió el enlace completo. Si ya pagó, hable con nosotros por WhatsApp."],
       s_confirmada: ["¡Reserva confirmada!", "Pago recibido y reserva hecha. Guarde el número de reserva."],
       s_confirmada_teste: ["Reserva de prueba confirmada", "Pago de prueba recibido y reserva creada (marcada como TESTE)."],
-      s_aguardando: ["Esperando el pago", "Si ya pagó, espere un momento: esta página se actualiza sola. Las fechas quedan reservadas para usted hasta las {h}."],
+      s_aguardando: ["Esperando el pago", "Pague en la página de Pagar.me (la abrimos en otra pestaña). En cuanto se acredite el pago, esta página confirma sola. Las fechas quedan reservadas para usted hasta las {h}."],
+      abrindo: "Abriendo el pago seguro…", abrir_pagamento: "Abrir el pago",
       s_processando: ["Pago recibido", "Estamos confirmando su reserva. Esta página se actualiza sola."],
       s_expirada: ["Se acabó el plazo para pagar", "Las fechas fueron liberadas. Puede hacer una nueva cotización; si acaba de pagar, hable con nosotros."],
       s_cancelada: ["Reserva cancelada", "El pago fue reembolsado."],
       s_erro: ["No pudimos abrir el pago", "No se cobró nada. Intente de nuevo o hable con nosotros por WhatsApp."],
       checkin: "Hacer el check-in en línea", checkin_dica: "Haga el check-in antes de llegar: las instrucciones de acceso se envían el día de la entrada.",
-      voltar_pagar: "Volver al pago",
       whats_msg: "¡Hola! Hice una reserva en el sitio (código {c}).", whats_msg_sem: "¡Hola! Quiero reservar un estudio en el sitio."
     }
   };
 
   const params = new URLSearchParams(location.search);
-  const CODIGO = (params.get("c") || "").toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 20);
+  let CODIGO = (params.get("c") || "").toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 20);
   const pedido = { studio: POR_CHAVE[params.get("studio") || ""] || "", entrada: params.get("entrada") || "", saida: params.get("saida") || "", hospedes: Math.min(2, Math.max(1, Number(params.get("hospedes")) || 2)) };
   const nav = (navigator.language || "pt").slice(0, 2);
   let idioma = ["pt", "en", "es"].includes(params.get("lang")) ? params.get("lang") : (nav === "es" ? "es" : nav === "en" ? "en" : "pt");
@@ -316,7 +316,7 @@
       botao(t("checkin"), s.checkin, false, false);
       const p = document.createElement("p"); p.className = "nota"; p.textContent = t("checkin_dica"); acoes.append(p);
     }
-    if (s.status === "aguardando" && s.pagarEm) botao(t("voltar_pagar"), s.pagarEm, false, false);
+    if (s.status === "aguardando" && s.pagarEm) botao(t("abrir_pagamento"), s.pagarEm, false, true);
     if (s.status === "expirada" || s.status === "erro") botao(t("nova_cotacao"), "/#reservar", false, false);
     botao(t("falar_whats"), linkWhats(), true, true);
     mostrar("situacao");
@@ -359,15 +359,42 @@
       nome: f.nome.value, email: f.email.value, telefone: f.telefone.value,
       documentoTipo: f.documentoTipo.value, documento: f.documento.value, aceite: f.aceite.checked
     };
+    // O óbvio confere aqui mesmo, antes de abrir a aba do pagamento.
+    const faltando = {};
+    if (corpo.nome.trim().split(/ +/).filter((p) => p.length >= 2).length < 2) faltando.nome = 1;
+    if (!/^[^ @]+@[^ @]+[.][^ @]{2,}$/.test(corpo.email.trim())) faltando.email = 1;
+    if (corpo.telefone.replace(/[^0-9]/g, "").length < 10) faltando.telefone = 1;
+    if (corpo.documento.replace(/[^0-9A-Za-z]/g, "").length < 5) faltando.documento = 1;
+    if (!corpo.aceite) faltando.aceite = 1;
+    if (Object.keys(faltando).length) { marcarErros(faltando); return; }
+    // A Pagar.me não devolve o hóspede ao site depois de pagar (fica no
+    // comprovante -- visto no primeiro teste, 26/10/2026). Por isso o
+    // pagamento abre em outra aba, aberta já no clique (assim o navegador
+    // não bloqueia), e esta aba fica acompanhando até confirmar. Se a aba
+    // for bloqueada, o pagamento abre aqui mesmo, como antes.
+    let aba = null;
+    try {
+      aba = window.open("", "_blank");
+      if (aba) aba.document.write("<!doctype html><meta charset='utf-8'><title>SNT Studios</title><body style='background:#020617;color:#e2e8f0;font:16px system-ui;display:grid;place-items:center;height:90vh'>" + t("abrindo") + "</body>");
+    } catch (e) { aba = null; }
+    const fecharAba = () => { try { if (aba) aba.close(); } catch (e) { /* já fechada */ } };
     const botao = $(".enviar"); botao.disabled = true;
     try {
       const r = await fetch(BASE + "/venda", { method: "POST", headers: { "Content-Type": "text/plain" }, body: JSON.stringify(corpo) });
       const j = await r.json().catch(() => ({}));
-      if (r.status === 422) { marcarErros(j.erros); return; }
-      if (!r.ok || !j.ok || !j.url) { problema(j.erro || "falha"); return; }
-      window.location.href = j.url;
+      if (r.status === 422) { fecharAba(); marcarErros(j.erros); return; }
+      if (!r.ok || !j.ok || !j.url) { fecharAba(); problema(j.erro || "falha"); return; }
+      if (aba && !aba.closed) {
+        aba.location.href = j.url;
+        CODIGO = String(j.codigo || "");
+        history.replaceState(null, "", "/reserva/?c=" + encodeURIComponent(CODIGO) + "&lang=" + idioma);
+        consultas = 0;
+        consultarSituacao();
+      } else {
+        window.location.href = j.url;
+      }
       return;
-    } catch (e) { problema("falha"); }
+    } catch (e) { fecharAba(); problema("falha"); }
     finally { botao.disabled = false; }
   };
 
@@ -380,8 +407,8 @@
       else { situacao = j; pintarSituacao(); }
     } catch (e) { if (!situacao) problema("falha"); }
     consultas += 1;
-    // Pagou e voltou antes do aviso chegar: confere de novo por alguns minutos.
-    if (situacao && (situacao.status === "aguardando" || situacao.status === "processando") && consultas < 60) setTimeout(consultarSituacao, consultas < 15 ? 4000 : 10000);
+    // Enquanto o hóspede paga na outra aba: confere por até ~30 minutos.
+    if (situacao && (situacao.status === "aguardando" || situacao.status === "processando") && consultas < 200) setTimeout(consultarSituacao, consultas < 15 ? 4000 : 10000);
   }
 
   (async function iniciar() {

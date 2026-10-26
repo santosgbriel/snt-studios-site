@@ -22,7 +22,7 @@ async function simular(page, { venda = VENDA_LIGADA, cotacao = COTACAO, aoPagar 
   });
   await page.route("**/api/studios/public/cotacao**", (route) => route.fulfill({ json: cotacao }));
   await page.route("**/api/studios/public/reserva**", (route) => route.fulfill(situacao ? situacao() : { status: 404, json: { ok: false } }));
-  await page.route("**/checkout-falso.html", (route) => route.fulfill({ contentType: "text/html", body: "<h1>Checkout da Pagar.me</h1>" }));
+  await page.context().route("**/checkout-falso.html", (route) => route.fulfill({ contentType: "text/html", body: "<h1>Checkout da Pagar.me</h1>" }));
   return pedidos;
 }
 
@@ -33,6 +33,8 @@ test("formulário mostra a estadia com Pix e cartão, cobra campos e segue para 
     aoPagar: (c) => (c.nome.trim().split(" ").length < 2
       ? { status: 422, json: { ok: false, erros: { nome: "nome e sobrenome", aceite: "aceite" } } }
       : { json: { ok: true, codigo: "STABC123", url: "http://localhost:4173/checkout-falso.html" } }),
+    situacao: () => ({ json: { ok: true, status: "aguardando", teste: false, studio: "12", entrada: "2030-03-10", saida: "2030-03-12", noites: 2, hospedes: 2,
+      valores: { pix: 520, cartao: 546, parcelas: 3 }, pagamento: null, pagarEm: "http://localhost:4173/checkout-falso.html", expiraEm: Date.now() + 1800000 } }),
   });
   await page.goto(FORM);
   await expect(page.getByRole("heading", { name: "Reserve e pague agora" })).toBeVisible();
@@ -52,11 +54,28 @@ test("formulário mostra a estadia com Pix e cartão, cobra campos e segue para 
   await page.fill("[name=telefone]", "+55 11 98765-4321");
   await page.fill("[name=documento]", "529.982.247-25");
   await page.check("[name=aceite]");
-  await page.click("button.enviar");
-  await expect(page.getByRole("heading", { name: "Checkout da Pagar.me" })).toBeVisible();
+  // O pagamento abre em outra aba; esta fica acompanhando (a Pagar.me não
+  // devolve o hóspede ao site).
+  const [aba] = await Promise.all([page.waitForEvent("popup"), page.click("button.enviar")]);
+  await expect(aba.getByRole("heading", { name: "Checkout da Pagar.me" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Aguardando o pagamento" })).toBeVisible();
+  await expect(page).toHaveURL(/\/reserva\/\?c=STABC123&lang=pt$/);
   const ultimo = pedidos[pedidos.length - 1];
   expect(ultimo).toMatchObject({ studio: "12", entrada: "2030-03-10", saida: "2030-03-12", hospedes: 2, documentoTipo: "cpf", aceite: true, idioma: "pt" });
   expect(ultimo.preco).toBeUndefined();
+});
+
+test("aba bloqueada pelo navegador: o pagamento abre na própria aba", async ({ page }) => {
+  await page.addInitScript(() => { window.open = () => null; });
+  await simular(page);
+  await page.goto(FORM);
+  await page.fill("[name=nome]", "Maria Souza");
+  await page.fill("[name=email]", "maria@example.com");
+  await page.fill("[name=telefone]", "11987654321");
+  await page.fill("[name=documento]", "52998224725");
+  await page.check("[name=aceite]");
+  await page.click("button.enviar");
+  await expect(page.getByRole("heading", { name: "Checkout da Pagar.me" })).toBeVisible();
 });
 
 test("política no idioma escolhido, e a em português quando falta a tradução", async ({ page }) => {
@@ -114,7 +133,7 @@ test("volta do pagamento: aguardando vira confirmada sozinha", async ({ page }) 
   });
   await page.goto("/reserva/?c=STABC123&lang=pt");
   await expect(page.getByRole("heading", { name: "Aguardando o pagamento" })).toBeVisible();
-  await expect(page.getByRole("link", { name: "Voltar para o pagamento" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Abrir o pagamento" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Reserva confirmada!" })).toBeVisible({ timeout: 8000 });
 });
 
